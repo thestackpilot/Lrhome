@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="101.169" height="23.589" viewBox="0 0 101.169 23.589">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" y1="-0.141" x2="0.5" y2="1.763" gradientUnits="objectBoundingBox">
+      <stop offset="0.343" stop-color="#535353"/>
+      <stop offset="0.383" stop-color="#5d5d5d"/>
+      <stop offset="0.454" stop-color="#797979"/>
+      <stop offset="0.545" stop-color="#a7a7a7"/>
+      <stop offset="0.569" stop-color="#b5b5b5"/>
+      <stop offset="0.681" stop-color="#b3b3b3"/>
+      <stop offset="0.721" stop-color="#acacac"/>
+      <stop offset="0.75" stop-color="#a0a0a0"/>
+      <stop offset="0.773" stop-color="#909090"/>
+      <stop offset="0.817" stop-color="#7d7d7d"/>
+      <stop offset="1" stop-color="#323232"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0.5" y1="-0.387" x2="0.5" y2="0.988" gradientUnits="objectBoundingBox">
+      <stop offset="0.216" stop-color="#535353"/>
+      <stop offset="0.251" stop-color="#5d5d5d"/>
+      <stop offset="0.312" stop-color="#797979"/>
+      <stop offset="0.391" stop-color="#a7a7a7"/>
+      <stop offset="0.412" stop-color="#b5b5b5"/>
+      <stop offset="0.676" stop-color="#909090"/>
+      <stop offset="0.741" stop-color="#767676"/>
+      <stop offset="0.853" stop-color="#515151"/>
+      <stop offset="0.943" stop-color="#3a3a3a"/>
+      <stop offset="1" stop-color="#323232"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_2431" data-name="Group 2431" transform="translate(-588.885 -1020.131)">
+    <path id="Path_11" data-name="Path 11" d="M1121.187,203.874a8.446,8.446,0,0,0-5.48-2.638l-25.836-.345H1070.9v7.577h53.067Z" transform="translate(-433.914 819.24)" fill="#116541"/>
+    <path id="Path_12" data-name="Path 12" d="M1121.269,203.841a5.947,5.947,0,0,0-5.137-2.95H1070.9v7.577h53.067Z" transform="translate(-433.914 819.24)" fill="url(#linear-gradient)" style="mix-blend-mode: overlay;isolation: isolate"/>
+    <path id="Path_13" data-name="Path 13" d="M1091.7,200.891h-88.3c-6.164,0,8.538,23.441,43.043,23.441,15.469,0,25.481-5.025,39.548-15.18,7.609-6.314,13.3-6.134,14.729-4.921A12.188,12.188,0,0,0,1091.7,200.891Z" transform="translate(-413.147 819.24)" fill="#287c58"/>
+    <path id="Path_14" data-name="Path 14" d="M1091.7,200.891h-88.3c-6.164,0,8.538,23.441,43.043,23.441,15.469,0,25.481-5.025,39.548-15.18,7.609-6.314,13.3-6.134,14.729-4.921A12.188,12.188,0,0,0,1091.7,200.891Z" transform="translate(-413.032 819.388)" fill="url(#linear-gradient-2)" style="mix-blend-mode: overlay;isolation: isolate"/>
+    <text id="Clearance" transform="translate(609 1035)" fill="#fff" font-size="12" font-family="BebasNeue-Regular, Bebas Neue" letter-spacing="0.05em"><tspan x="0" y="0">Clearance</tspan></text>
+  </g>
+</svg>

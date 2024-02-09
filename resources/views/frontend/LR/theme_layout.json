@@ -1,0 +1,502 @@
+{
+    "theme_name": "LR Resources",
+    "theme_slug": "lr",
+    "theme_abrv": "LR",
+    "theme_api_slug": "api-slug-lr",
+    "theme_api_base_url": "http://205.144.222.165/B2B.API.UAT/api/Service/",
+    "theme_api_dev_base_url": "http://122.129.80.197/LR.B2BAPI.Client/api/Service/",
+    "theme_api_key": "64d3b4ae-dba9-47b2-bf88-f72dfbae0e9d",
+    "theme_api_company": "LRResources",
+    "theme_api_image_url": "http://lrhome.us/",
+    "theme_api_thumbnail_url": "http://lrhome.us/",
+    "general": {
+        "category_based_filters": true,
+        "allow_custom_cost": true,
+        "allow_freight_percentage": true,
+        "allow_sales_rep_details": true,
+        "show_recent_orders": true,
+        "use_theme_header": true,
+        "use_company_credit": false,
+        "payment_method": {
+            "enabled": true,
+            "gateway": "paytrace"
+        },
+        "tabular_orders": true,
+        "advance_filters_for_orders": true,
+        "allow_hang_tags": true,
+        "date_format": "MMM-DD-YYYY",
+        "allow_emails": true,
+        "order_ack": true
+    },
+    "sidebar": {
+        "dashboard": {
+            "label": "Dashboard",
+            "slug": "dashboard",
+            "permission": ""
+        },
+        "myaccount": {
+            "label": "My Account",
+            "slug": "dashboard.myaccount",
+            "permission": ""
+        },
+        "accountinfo": {
+            "label": "Account Information",
+            "slug": "dashboard.accountinfo",
+            "permission": ""
+        },
+        "document": {
+            "label": "Documents",
+            "slug": "dashboard.document",
+            "permission": ""
+        },
+        "staff": {
+            "label": "Manage Staff",
+            "slug": "dashboard.staff",
+            "permission": "manage-staff"
+        },
+        "companycredit": {
+            "label": "Company Credit",
+            "slug": "dashboard.companycredit",
+            "permission": "manage-financials"
+        },
+        "financialtransactions": {
+            "label": "Financial Transactions",
+            "slug": "dashboard.financialtransactions",
+            "permission": "manage-financials"
+        },
+        "paymentoptions": {
+            "label": "Payment Options",
+            "slug": "dashboard.paymentoptions",
+            "permission": "manage-financials"
+        },
+        "normalorder": {
+            "label": "Place Order",
+            "slug": "dashboard.placeorder",
+            "permission": "manage-orders"
+        },
+        "vieworder": {
+            "label": "View Orders",
+            "slug": "dashboard.vieworder",
+            "permission": "manage-orders"
+        },
+        "initreturn": {
+            "label": "Initiate a Return/Claim",
+            "slug": "dashboard.initreturn",
+            "permission": "manage-claims"
+        },
+        "viewreturn": {
+            "label": "View Returns",
+            "slug": "dashboard.viewreturn",
+            "permission": "manage-claims"
+        },
+        "freightestimator": {
+            "label": "Freight Estimator",
+            "slug": "dashboard.freightestimator",
+            "permission": "manage-freights"
+        },
+        "hangtags": {
+            "label": "Hang Tags",
+            "slug": "dashboard.hangtags",
+            "permission": ""
+        }
+    },
+    "pages": {
+        "all_pages": {
+            "title": "All Pages Common",
+            "slug": "all_pages",
+            "sections": {
+                "main_top_menu": {
+                    "slug": "main_top_menu",
+                    "title": "Main Top Menu",
+                    "metas": {
+                        "menu_1_caption": "text",
+                        "menu_1_url": "text",
+
+                        "menu_2_caption": "text",
+                        "menu_2_url": "text",
+
+                        "menu_3_caption": "text",
+                        "menu_3_url": "text",
+
+                        "menu_4_caption": "text",
+                        "menu_4_url": "text",
+
+                        "menu_5_caption": "text",
+                        "menu_5_url": "text"
+                    }
+                },
+                "footer_social_media": {
+                    "slug": "footer_social_media",
+                    "title": "Footer Social media Items",
+                    "metas": {
+                        "insta_url": "text",
+
+                        "facebook_url": "text",
+
+                        "pinterest_url": "text",
+
+                        "twitter_url": "text",
+
+                        "linkedin_url": "text"
+                    }
+                }
+            }
+        },
+        "home": {
+            "title": "Home",
+            "slug": "home",
+            "sections": {
+                "banner": {
+                    "slug": "banner",
+                    "title": "Banner",
+                    "metas": {
+                        "caption_1": "text",
+                        "caption_2": "text",
+                        "image": "file",
+                        "url": "url"
+                    }
+                },
+                "key_categories": {
+                    "slug": "key_categories",
+                    "title": "KEY CATEGORIES",
+                    "metas": {
+                        "image_1_title": "text",
+                        "image_1_caption": "text",
+                        "image_1_image": "file",
+                        "image_1_url": "url",
+                        "image_2_title": "text",
+                        "image_2_caption": "text",
+                        "image_2_image": "file",
+                        "image_2_url": "url",
+                        "image_3_title": "text",
+                        "image_3_caption": "text",
+                        "image_3_image": "file",
+                        "image_3_url": "url",
+                        "image_4_title": "text",
+                        "image_4_caption": "text",
+                        "image_4_image": "file",
+                        "image_4_url": "url",
+                        "image_5_title": "text",
+                        "image_5_caption": "text",
+                        "image_5_image": "file",
+                        "image_5_url": "url",
+                        "image_6_title": "text",
+                        "image_6_caption": "text",
+                        "image_6_image": "file",
+                        "image_6_url": "url"
+                    }
+                },
+                "new_arrivals": {
+                    "slug": "new_arrivals",
+                    "title": "NEW ARRIVALS",
+                    "metas": {
+                        "image_1_title": "text",
+                        "image_1_caption": "text",
+                        "image_1_image": "file",
+                        "image_1_url": "url",
+                        "image_2_title": "text",
+                        "image_2_caption": "text",
+                        "image_2_image": "file",
+                        "image_2_url": "url",
+                        "image_3_title": "text",
+                        "image_3_caption": "text",
+                        "image_3_image": "file",
+                        "image_3_url": "url"
+                    }
+                },
+                "catalog": {
+                    "slug": "catalog",
+                    "title": "Catalog",
+                    "metas": {
+                        "caption": "text",
+                        "title": "text",
+                        "button_text": "text",
+                        "button_url": "url",
+                        "catalog_pdf": "url",
+                        "catalog_img": "file"
+                    }
+                },
+                "partnership": {
+                    "slug": "partnership",
+                    "title": "Partnership",
+                    "metas": {
+                        "title": "text",
+                        "button_text": "text",
+                        "button_url": "url"
+                    }
+                }
+            }
+        },
+        "about_us": {
+            "title": "About Us",
+            "slug": "about_us",
+            "sections": {
+                "about_us_items": {
+                    "slug": "about_us_items",
+                    "title": "About Us Items",
+                    "metas": {
+                        "about_us_description_1": "textarea",
+                        "about_us_image_1": "file",
+                        "about_us_description_2": "textarea",
+                        "about_us_image_2": "file",
+                        "about_us_description_3": "textarea",
+                        "about_us_image_3": "file"
+                    }
+                }
+            }
+        },
+        "documents": {
+            "title": "Documents",
+            "slug": "documents",
+            "sections": {
+                "catalog": {
+                    "slug": "catalog",
+                    "title": "Documents",
+                    "metas": {
+                        "document_title_1": "text",
+                        "document_url_1": "url",
+                        "document_title_2": "text",
+                        "document_url_2": "url",
+                        "document_title_3": "text",
+                        "document_url_3": "url",
+                        "document_title_4": "text",
+                        "document_url_4": "url",
+                        "document_title_5": "text",
+                        "document_url_5": "url"
+                    }
+                }
+            }
+        }
+    },
+    "sliders": {
+        "lr_slider": {
+            "slug": "lr_slider",
+            "title": "LR Slider",
+            "metas": {
+                "caption_1": "text",
+                "caption_2": "text",
+                "image": "url"
+            }
+        }
+    },
+    "showrooms": {
+        "lr_showrooms": {
+            "slug": "lr_showrooms",
+            "title": "LR Showrooms",
+            "metas": {
+                "title": "text",
+                "area": "text",
+                "address": "text",
+                "image": "url"
+            }
+        }
+    },
+    "catalogs": {
+        "lr_catalogs": {
+            "slug": "lr_catalogs",
+            "title": "LR Catalogs",
+            "metas": {
+                "image": "url",
+                "caption": "text",
+                "title": "text",
+                "button_text": "text",
+                "catalog_pdf": "url"
+            }
+        }
+    },
+    "forms": {
+        "contact_us": {
+            "slug": "contact_us",
+            "title": "Contact Us",
+            "metas": {
+                "fullname": "text",
+                "subject": "text",
+                "email": "text",
+                "company": "text",
+                "phone": "number",
+                "city": "text",
+                "state": "text",
+                "inquiry": "para"
+            }
+        },
+        "partner_requests": {
+            "slug": "partner_requests",
+            "title": "Partner Requests",
+            "metas": {}
+        },
+        "newsletter": {
+            "slug": "newsletter",
+            "title": "Newsletter",
+            "metas": {
+                "email": "text"
+            }
+        }
+    },
+    "menus": {
+        "rug_header": {
+            "slug": "rug_header",
+            "title": "RUGS",
+            "metas": {
+                "key": "text",
+                "title": "text",
+                "url": "url",
+                "image": "image",
+                "parent_key": "text"
+            }
+        },
+        "rug_shop_header": {
+            "slug": "rug_shop_header",
+            "title": "RUGS IMAGES",
+            "metas": {
+                "key": "text",
+                "title": "text",
+                "url": "url",
+                "image": "image",
+                "parent_key": "text"
+            }
+        },
+        "pillow_header": {
+            "slug": "pillow_header",
+            "title": "HOME DECOR",
+            "metas": {
+                "key": "text",
+                "title": "text",
+                "url": "url",
+                "image": "image",
+                "parent_key": "text"
+            }
+        },
+        "pet_header": {
+            "slug": "pet_header",
+            "title": "PETS",
+            "metas": {
+                "key": "text",
+                "title": "text",
+                "url": "url",
+                "image": "image",
+                "parent_key": "text"
+            }
+        },
+        "pillow_shop_header": {
+            "slug": "pillow_shop_header",
+            "title": "PILLOW IMAGES",
+            "metas": {
+                "key": "text",
+                "title": "text",
+                "url": "url",
+                "image": "image",
+                "parent_key": "text"
+            }
+        },
+        "furniture_header": {
+            "slug": "furniture_header",
+            "title": "LIVING ROOM",
+            "metas": {
+                "key": "text",
+                "title": "text",
+                "url": "url",
+                "image": "image",
+                "parent_key": "text"
+            }
+        },
+        "dining_header": {
+            "slug": "dining_header",
+            "title": "DINING ROOM",
+            "metas": {
+                "key": "text",
+                "title": "text",
+                "url": "url",
+                "image": "image",
+                "parent_key": "text"
+            }
+        },
+        "furniture_shop_header": {
+            "slug": "furniture_shop_header",
+            "title": "FURNITURE IMAGES",
+            "metas": {
+                "key": "text",
+                "title": "text",
+                "url": "url",
+                "image": "image",
+                "parent_key": "text"
+            }
+        },
+        "outdoor_header": {
+            "slug": "outdoor_header",
+            "title": "OUTDOOR",
+            "metas": {
+                "key": "text",
+                "title": "text",
+                "url": "url",
+                "image": "image",
+                "parent_key": "text"
+            }
+        },
+        "outdoor_shop_header": {
+            "slug": "outdoor_shop_header",
+            "title": "OUTDOOR IMAGES",
+            "metas": {
+                "key": "text",
+                "title": "text",
+                "url": "url",
+                "image": "image",
+                "parent_key": "text"
+            }
+        },
+        "aboutus_header": {
+            "slug": "aboutus_header",
+            "title": "ABOUT US IMAGES",
+            "metas": {
+                "key": "text",
+                "title": "text",
+                "url": "url",
+                "image": "image",
+                "parent_key": "text"
+            }
+        },
+        "first_footer": {
+            "slug": "first_footer",
+            "title": "ABOUT US",
+            "metas": {
+                "key": "text",
+                "title": "text",
+                "url": "url",
+                "image": "image",
+                "parent_key": "text"
+            }
+        },
+        "second_footer": {
+            "slug": "second_footer",
+            "title": "PRODUCT CATEGORY",
+            "metas": {
+                "key": "text",
+                "title": "text",
+                "url": "url",
+                "image": "image",
+                "parent_key": "text"
+            }
+        },
+        "third_footer": {
+            "slug": "third_footer",
+            "title": "RESOURCES",
+            "metas": {
+                "key": "text",
+                "title": "text",
+                "url": "url",
+                "image": "image",
+                "parent_key": "text"
+            }
+        },
+        "fourth_footer": {
+            "slug": "fourth_footer",
+            "title": "CONTACT US",
+            "metas": {
+                "key": "text",
+                "title": "text",
+                "url": "url",
+                "image": "image",
+                "parent_key": "text"
+            }
+        }
+    }
+}
