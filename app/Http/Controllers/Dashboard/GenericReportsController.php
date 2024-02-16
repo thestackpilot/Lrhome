@@ -141,8 +141,7 @@ class GenericReportsController extends DashboardController
             $report_data = $request->report_data;
             $report_data = json_decode($report_data, true);
             View::share( 'report_data', $report_data );
-//dd($report_data);
-//            return view( 'dashboard.order-rep' );
+            // dd($report_data);
             return view( 'dashboard.order-report-pdf' );
         }
         else
@@ -280,7 +279,7 @@ class GenericReportsController extends DashboardController
                                         'content' => $transaction['ShipToAddress']
                                     ],
                                     [
-                                        'title'   => 'Details',
+                                        'title'   => 'Detail',
                                         'content' => $transaction['Details']
                                     ]
 
@@ -405,6 +404,7 @@ class GenericReportsController extends DashboardController
 
                 foreach ( $memos['CreditMemos'] as $memo )
                 {
+                // dd($memo);
                     foreach($memo['Details'] as $index => $view)
                     {
                         $column = CommonController::get_selected_columns($view, [
@@ -412,6 +412,27 @@ class GenericReportsController extends DashboardController
                         ]);
                         $memo['Details'][$index] = $column;
                     }
+                        // echo print_r($memo,1);
+
+                        $contents = [
+                            'PO#'                   => $memo['CustomerPO'],
+                            'Ref Invoice#'          => $memo['SalesInvoiceNo'],
+                            'Customer ID'           => $memo['CustomerID'],
+                            'Ship Via'              => $memo['ShipVia'],
+                        ];
+
+                        if(!empty($memo['RMANo'])){
+                            $contents['RMA#'] = $memo['RMANo'];
+                        }
+                        if(!empty($memo['SalesRepID'])){
+                            $contents['Rep Name'] = $memo['SalesRepID'];
+                        }
+                        if(!empty($memo['SpecialInstructions'])){
+                            $contents['Special Instructions'] = $memo['SpecialInstructions'];
+                        }
+                        if(!empty($memo['Notes'])){
+                            $contents['Notes'] = $memo['Notes'];
+                        }
 
                     $table['tbody'][] = [
                         'memo_number'    => isset( $memo['SalesInvoiceNo'] ) ? $memo['SalesInvoiceNo'] : 'N/A',
@@ -426,27 +447,39 @@ class GenericReportsController extends DashboardController
                             'body'    => [
                                 'sections' => [
                                     [
-                                        'title'   => 'General',
+                                        'title'   => $memo['CustomerID'].' '.$memo['CustomerName'],
+                                        'content' => $contents,
+                                        'cols'    => 6
+                                    ],
+                                    [
+                                        'title'   => $memo['TransactionType'].' '.$memo['TransactionNo'],
                                         'content' => [
-                                            'Invoice Number'   => $memo['SalesInvoiceNo'],
-                                            'Customer ID'      => $memo['CustomerID'],
-                                            'Customer PO'      => $memo['CustomerPO'],
-                                            'Sales Order #'    => $memo['SalesOrderNo'],
-                                            'Total Amount'     => ConstantsController::CURRENCY.number_format( $memo['TotalAmount'], ConstantsController::ALLOWED_DECIMALS ),
-                                            'Payment Due Date' => CommonController::get_date_format( $memo['PaymentDueDate'] )
-                                        ]
+                                            'Status'                => $memo['Status'],
+                                            'Date'                  => $memo['InvoiceDate'],
+                                            'Terms'                 => $memo['Terms'],
+                                            'Total Quantity'        => $memo['TotalQty'],
+                                            'Merchandise Amount'    => $memo['TotalMerchandise'],
+                                            'Discount'              => $memo['Discount'],
+                                            'Tax % and Amount'      => $memo['TaxRate']."% = ".$memo['TaxAmount'],
+                                            'Other Charges'         => $memo['OtherCharges'],
+                                            'Total Amount'          => $memo['TotalAmount'],
+                                        ],
+                                        'cols'                 => 6
                                     ],
                                     [
-                                        'title'   => 'Billing Details',
-                                        'content' => $memo['BillToAddress']
+                                        'title'   => 'Bill To:',
+                                        'content' => $memo['BillToAddress'],
+                                        'cols'    => 6
                                     ],
                                     [
-                                        'title'   => 'Shipping Details',
-                                        'content' => $memo['ShipToAddress']
+                                        'title'   => 'Ship To:',
+                                        'content' => $memo['ShipToAddress'],
+                                        'cols'    => 6
                                     ],
                                     [
                                         'title'   => 'Details',
-                                        'content' => $memo['Details']
+                                        'content' => $memo['Details'],
+                                        'cols'    => 12
                                     ]
                                 ]
                             ]
@@ -517,7 +550,6 @@ class GenericReportsController extends DashboardController
         ];
 
         $return['filters'] = $filters;
-
         return $return;
     }
 
