@@ -133,11 +133,10 @@ function get_table( $table, $tab = '' ) {
             // console.log('Details Clicked');
             var data = JSON.parse($('span.row-details', $(this).parent()).html());
             var modal_body = '';
+            modal_body += '<div class="row mt-5">';
             data.body.sections.forEach((section, i) => {
-                modal_body += '<div class="row ' + (i == 0 ? '' : 'mt-5') + '">';
-                modal_body += '<div class="col-md-12">';
-                modal_body += '<h3>' + section.title + '</h3>';
-                modal_body += '<div class="row">';
+                modal_body += '<div class="mb-3 col-md-' + section.cols + '">';
+
                 if (Array.isArray(section.content) && typeof section.content.length !== 'undefined') {
                     modal_body += getDetails(section.content);
                 } else if (typeof section.content.tabs !== 'undefined') {
@@ -157,25 +156,24 @@ function get_table( $table, $tab = '' ) {
                     });
                     modal_body += '</div>';
                 } else {
+                    // modal_body += '<div class="col-12">';
+                    modal_body += '<h4>' + section.title + '</h3>';
                     Object.keys(section.content).forEach(function(key) {
                         var value = section.content[key] == 0 || section.content[key] == '' ? 'N/A' : section.content[key];
-                        modal_body += '<div class="col-md-4">' + ((key.replace(/([A-Z|0-9])/g, ' $1').trim()).replace('_', ' ').replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())).replace(/([A-Z])\s(?=[A-Z])/g, '$1') + ' : ' + value + '</div>';
+                        modal_body += '<p class="m-0"><strong>' + ((key.replace(/([A-Z|0-9])/g, ' $1').trim()).replace('_', ' ').replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())).replace(/([A-Z])\s(?=[A-Z])/g, '$1') + ' :</strong> ' + value + '</p>'
+                        // modal_body += '<div class="col-md-4">' + ((key.replace(/([A-Z|0-9])/g, ' $1').trim()).replace('_', ' ').replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())).replace(/([A-Z])\s(?=[A-Z])/g, '$1') + ' : ' + value + '</div>';
                     });
+                    // modal_body += '</div>';
                 }
                 modal_body += '</div>';
-                modal_body += '</div>';
-                modal_body += '</div>';
             });
+            modal_body += '</div>';
             $('.details-modal .modal-header').html(`
-                <h1 class="col-md-12 text-center">
-                    ${data.heading}
-                    <form action="{{ route('dashboard.orders-print-download') }}" method="POST" target="_blank">
-                        @csrf
-                        <button type="submit" class="btn btn-secondary" style="float: right;">Print</button>
-                        <textarea style="display: none;" name="report_data">${JSON.stringify(data.body)}</textarea>
-                    </form>
-
-                </h1>
+                <form action="{{ route('dashboard.orders-print-download') }}" class="w-100" method="POST" target="_blank">
+                @csrf
+                    <button type="submit" class="btn btn-secondary" style="float: right;">Print</button>
+                    <textarea style="display: none;" name="report_data">${JSON.stringify(data.body)}</textarea>
+                </form>
             `);
             $('.details-modal .modal-body').html(modal_body);
             $('.details-modal').modal('show');
@@ -239,7 +237,7 @@ function get_table( $table, $tab = '' ) {
                                         $('.table.data-table:visible').attr('data-tab-name') != json.data[i]['tab'] &&
                                         $('.table.data-table:visible').attr('data-tab-name') != 'All'
                                     ) continue;
-                                    
+
                                     if (json.data[i]['actions'][0]['type'] == 'modal')
                                         json.data[i]['actions'] = `
                                             <button class="btn btn-sm btn-primary view-details" type="button">${json.data[i]['actions'][0]['label']}</button>
@@ -253,7 +251,7 @@ function get_table( $table, $tab = '' ) {
                                     json.recordsFiltered = data.length;
                                     json.recordsTotal = data.length;
                                 }
-                                
+
                                 return data;
                             }
                         },
@@ -269,7 +267,7 @@ function get_table( $table, $tab = '' ) {
         }
 
         initTable('');
-        
+
         function getDetails(section) {
             var modal_body = '';
             if (section.length < 1) {
@@ -293,7 +291,7 @@ function get_table( $table, $tab = '' ) {
                         if ( index == 'href' )
                         {
                             // continue;
-                        } 
+                        }
                         else
                         {
                             if( index == 'ImageName' && row[index] !== '')
