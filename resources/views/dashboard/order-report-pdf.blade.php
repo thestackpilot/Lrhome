@@ -42,90 +42,6 @@
     </style>
 
     <script>
-        {{--$(document).ready(function() {--}}
-        {{--    var data = JSON.parse($('#report_details').html());--}}
-        {{--    var content_body = '';--}}
-
-        {{--    function formatText(key) {--}}
-        {{--        return ((key.replace(/([A-Z|0-9])/g, ' $1').trim()).replace('_', ' ')).replace(/([A-Z])\s(?=[A-Z])/g, '$1');--}}
-        {{--    }--}}
-
-        {{--    function getDetails(section) {--}}
-        {{--        var modal_body = '';--}}
-        {{--        if (section.length < 1) {--}}
-        {{--            modal_body += '<div class="col-md-12">';--}}
-        {{--            modal_body += '<h5>N/A</h5>';--}}
-        {{--            modal_body += '</div>';--}}
-        {{--        } else {--}}
-        {{--            modal_body += '<div class="col-md-12">';--}}
-        {{--            modal_body += '<table class="table mt-2 text-center details">';--}}
-        {{--            modal_body += '<thead>';--}}
-        {{--            modal_body += '<tr>';--}}
-        {{--            Object.keys(section[0]).forEach(function(key) {--}}
-        {{--                if (key !== 'href') modal_body += "<th style='text-align: center;'>" + ((key.replace(/([A-Z|0-9])/g, ' $1').trim()).replace('_', ' ')).replace(/([A-Z])\s(?=[A-Z])/g, '$1') + "</th>";--}}
-        {{--            });--}}
-        {{--            modal_body += '</tr>';--}}
-        {{--            modal_body += '</thead>';--}}
-        {{--            modal_body += '<tbody>';--}}
-        {{--            section.forEach(row => {--}}
-        {{--                modal_body += '<tr>';--}}
-        {{--                Object.keys(row).forEach(function(index) {--}}
-        {{--                    if (index == 'href') {--}}
-        {{--                        // continue;--}}
-        {{--                    } else {--}}
-        {{--                        if( (index == 'ImageName' || index == 'Image') && row[index] !== '')--}}
-        {{--                        {--}}
-        {{--                            modal_body += `<td><img src='{{$active_theme_json->theme_api_image_url}}${row[index]}' orig-src='{{$active_theme_json->theme_api_image_url}}${row[index]}' onerror='this.onerror=null;this.src="{{url('/').ConstantsController::IMAGE_PLACEHOLDER}}"' width='110' ></td>`;--}}
-        {{--                        }--}}
-        {{--                        else--}}
-        {{--                        {--}}
-        {{--                            modal_body += "<td>" + (row[index] == null || row[index] == '' ? ((index == 'ImageName') ? 'No Image' : '-') : row[index]) + "</td>";--}}
-        {{--                        }--}}
-        {{--                    }--}}
-        {{--                });--}}
-        {{--                modal_body += '</tr>';--}}
-        {{--            });--}}
-        {{--            modal_body += '</tbody>';--}}
-        {{--            modal_body += '</table>';--}}
-        {{--            modal_body += '</div>';--}}
-        {{--        }--}}
-
-        {{--        return modal_body;--}}
-        {{--    }--}}
-
-        {{--    content_body += '<div class="row mt-5">';--}}
-        {{--    data.sections.forEach((section, i) => {--}}
-        {{--        content_body += '<div class="col-md-' + section.cols + '">';--}}
-        {{--        // content_body += '<h4>' + section.title + '</h4>';--}}
-        {{--        content_body += '<div class="row">';--}}
-        {{--        if (Array.isArray(section.content) && typeof section.content.length !== 'undefined') {--}}
-        {{--            content_body += getDetails(section.content);--}}
-        {{--        } else if (typeof section.content.tabs !== 'undefined') {--}}
-        {{--            content_body += '<div class="col-md-12">';--}}
-        {{--            Object.keys(section.content.tabs).forEach(function(tab, i) {--}}
-        {{--                content_body += `<h4 style="text-transform: capitalize">${tab}</h4>`;--}}
-        {{--                content_body += `<div id="${tab}" role="tabpanel" aria-labelledby="${tab}-tab">`;--}}
-        {{--                content_body += getDetails(section.content.tabs[tab]);--}}
-        {{--                content_body += '</div>';--}}
-        {{--            });--}}
-        {{--            content_body += '</div>';--}}
-        {{--        } else {--}}
-        {{--            content_body += '<h4>' + section.title + '</h4>';--}}
-        {{--            Object.keys(section.content).forEach(function(key) {--}}
-        {{--                var value = section.content[key] == 0 || section.content[key] == '' ? 'N/A' : section.content[key];--}}
-        {{--                content_body += '<p class="m-0"><strong>' + ((key.replace(/([A-Z|0-9])/g, ' $1').trim()).replace('_', ' ').replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())).replace(/([A-Z])\s(?=[A-Z])/g, '$1') + ' :</strong> ' + value + '</p>'--}}
-        {{--                // content_body += '<div class="col-md-3">' + ((key.replace(/([A-Z|0-9])/g, ' $1').trim()).replace('_', ' ').replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())).replace(/([A-Z])\s(?=[A-Z])/g, '$1') + ' : ' + value + '</div>';--}}
-        {{--            });--}}
-        {{--        }--}}
-        {{--        content_body += '</div>';--}}
-        {{--        content_body += '</div>';--}}
-        {{--    });--}}
-        {{--    content_body += '</div>';--}}
-
-        {{--    // $('#report_content').html(content_body);--}}
-        {{--    window.print();--}}
-
-        {{--});--}}
         $(document).ready(function () {
             window.print()
         })
@@ -171,10 +87,11 @@
     <div id="report_details">
         @if(count($report_data['sections']))
             <div class="details" style="margin-top: 10px">
+{{--                @dd($report_data)--}}
                 @foreach($report_data['sections'] as $section)
                     <div class="w-{{ $section['cols'] }}">
                         <h5 style="margin: 0"><strong>{{ $section['title'] }}</strong></h5>
-                        @if($section['title'] !== 'Detail')
+                        @if($section['title'] !== 'Detail' && $section['title'] !== 'Details')
                             @foreach($section['content'] as $key => $content)
                                 <p style="margin: 0; font-size: 12px"><strong>{{ formatKey($key) }}: </strong>{{ $content }}</p>
                             @endforeach

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use Carbon\Carbon;
 use View;
 use App\Models\Cart;
 use Illuminate\Http\Request;
@@ -689,6 +690,24 @@ class GenericReportsController extends DashboardController
                         $invoice['OrderTrackingDetail'][$index] = $column;
                     }
 
+                    $customer_content = [
+                        'PO#' => $invoice['CustomerPO'],
+                        'ShipVia' => $invoice['ShipVia'],
+                        'OrderPlacedBy' => $invoice['OrderPlacedBy']
+                    ];
+
+                    if (!empty($invoice['SalesRepID'])) {
+                        $customer_content['RepName'] = $invoice['SalesRepID'];
+                    }
+
+                    if (!empty($invoice['SpecialInstructions'])) {
+                        $customer_content['SpecialInstructions'] = $invoice['SpecialInstructions'];
+                    }
+
+                    if (!empty($invoice['Notes'])) {
+                        $customer_content['Notes'] = $invoice['Notes'];
+                    }
+
                     $table['tbody'][] = [
                         'invoice_no'     => $invoice['SalesInvoiceNo'],
                         'invoice_date'   => CommonController::get_date_format( $invoice['InvoiceDate'] ),
@@ -702,27 +721,38 @@ class GenericReportsController extends DashboardController
                             'body'    => [
                                 'sections' => [
                                     [
-                                        'title'   => 'General',
+                                        'title'   => $invoice['CustomerID'] . ' ' . $invoice['CustomerName'],
+                                        'content' => $customer_content,
+                                        'cols'    => 6
+                                    ],
+                                    [
+                                        'title'   => $invoice['TransactionType'] . '#: ' . $invoice['TransactionNo'],
                                         'content' => [
-                                            'Invoice Number'   => $invoice['SalesInvoiceNo'],
-                                            'Customer ID'      => $invoice['CustomerID'],
-                                            'Customer PO'      => $invoice['CustomerPO'],
-                                            'Sales Order #'    => $invoice['SalesOrderNo'],
-                                            'Total Amount'     => ConstantsController::CURRENCY.number_format( $invoice['TotalAmount'], ConstantsController::ALLOWED_DECIMALS ),
-                                            'Invoice Date'     => CommonController::get_date_format( $invoice['InvoiceDate'] ),
-                                            'Payment Due Date' => CommonController::get_date_format( $invoice['PaymentDueDate'] )
-                                        ]
+                                            'Status ' => $invoice['Status'],
+                                            'Date ' => Carbon::parse($invoice['InvoiceDate'])->format('M/d/Y'),
+                                            'Terms' => $invoice['Terms'],
+                                            'TotalQty' => $invoice['TotalQty'],
+                                            'MerchandiseAmount' => $invoice['TotalMerchandise'],
+                                            'Discount' => $invoice['Discount'],
+                                            'Tax% &Amount' => $invoice['TaxRate'] . ' ' . $invoice['TaxAmount'],
+                                            'OtherCharges' => $invoice['ShippingCharges'] + $invoice['HandlingCharges'],
+                                            'TotalAmount' => $invoice['TotalAmount'],
+                                        ],
+                                        'cols' => 6
                                     ],
                                     [
-                                        'title'   => 'Billing Details',
-                                        'content' => $invoice['BillToAddress']
+                                        'title'   => 'Bill To',
+                                        'content' => $invoice['BillToAddress'],
+                                        'cols' => 6
                                     ],
                                     [
-                                        'title'   => 'Shipping Details',
-                                        'content' => $invoice['ShipToAddress']
+                                        'title'   => 'Ship To',
+                                        'content' => $invoice['ShipToAddress'],
+                                        'cols' => 6
                                     ],
                                     [
                                         'title'   => 'Details',
+                                        'cols' => 12,
                                         'content' => isset( $invoice['OrderTrackingDetail'] ) ? [
                                             'tabs' => [
                                                 'products' => $invoice['Details'],
