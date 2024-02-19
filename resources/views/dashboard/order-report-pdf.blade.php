@@ -56,12 +56,12 @@
         }
 
         .w-6 {
-            width: 50% !important;
+            width: 49% !important;
             float: left;
         }
 
         .w-12 {
-            width: 100% !important;
+            width: 99% !important;
             display: inline-block;
         }
 
@@ -87,7 +87,6 @@
     <div id="report_details">
         @if(count($report_data['sections']))
             <div class="details" style="margin-top: 10px">
-{{--                @dd($report_data)--}}
                 @foreach($report_data['sections'] as $section)
                     <div class="w-{{ $section['cols'] }}">
                         <h5 style="margin: 0"><strong>{{ $section['title'] }}</strong></h5>

@@ -141,7 +141,7 @@ class GenericReportsController extends DashboardController
             $report_data = $request->report_data;
             $report_data = json_decode($report_data, true);
             View::share( 'report_data', $report_data );
-            // dd($report_data);
+
             return view( 'dashboard.order-report-pdf' );
         }
         else
@@ -979,9 +979,9 @@ class GenericReportsController extends DashboardController
                         $ship_to_content['StreetAddress2'] = $view_order['Header']['ShippingAddress2'];
                     }
                     $ship_to_content['City,State,Zip'] = $view_order['Header']['ShippingState']. ', ' . $view_order['Header']['ShippingZipCode'];
-//                    $ship_to_content['Country'] = $view_order['Header']['ShippingCountry'];
-//                    $ship_to_content['PhoneNumber'] = $view_order['Header']['ShippingPhone1'];
-//                    $ship_to_content['Email'] = $view_order['Header']['ShippingEmail'];
+                    $ship_to_content['Country'] = $view_order['Header']['ShippingCountry'];
+                    $ship_to_content['PhoneNumber'] = $view_order['Header']['ShippingPhone'];
+                    $ship_to_content['Email'] = $view_order['Header']['ShippingEmail'];
 
                     $table['tbody'][] = [
                         'order_no'     => $view_order['Header']['OrderNo'],
@@ -1006,8 +1006,8 @@ class GenericReportsController extends DashboardController
                                         'title'   => $view_order['Header']['TransactionType'] . '#: ' . $view_order['Header']['TransactionNo'],
                                         'content' => [
                                             'Status ' => $view_order['Header']['Status'],
-                                            'OrderDate ' => $view_order['Header']['OrderDate'],
-                                            'ShipDate' => $view_order['Header']['ShippingDate'],
+                                            'OrderDate ' => Carbon::parse($view_order['Header']['OrderDate'])->format('M d, Y'),
+                                            'ShipDate' => Carbon::parse($view_order['Header']['ShippingDate'])->format('M d, Y'),
                                             'Terms' => $view_order['Header']['PaymentTerm'],
                                             'TotalQty' => $view_order['Header']['TotalQty'],
                                             'MerchandiseTotal' => $view_order['Header']['TotalMerchandise']
