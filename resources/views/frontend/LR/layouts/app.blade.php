@@ -53,7 +53,7 @@ use App\Http\Controllers\CommonController;
     <link rel="stylesheet" href="{{asset('/LR/css/vendor/vendor.min.css')}}">
     <link rel="stylesheet" href="{{asset('/LR/css/plugins/plugins.min.css')}}?v=0.01">
     @yield('styles')
-    <link rel="stylesheet" href="{{asset('/LR/css/style.css')}}?v={{time()}}">
+    <link rel="stylesheet" href="{{asset('/LR/css/style.css')}}?v=0.01">
     <link rel="stylesheet" href="{{asset('/LR/css/toastr.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
@@ -72,19 +72,19 @@ use App\Http\Controllers\CommonController;
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <script src="https://img1.wsimg.com/tcc/tcc_l.combined.1.0.6.min.js"></script>
     <script src="https://www.google.com/recaptcha/api.js"></script>
-    
+
     @if ( env('APP_ENV') == 'prod' )
-    <!-- Google tag (gtag.js) --> 
-    <script async src=https://www.googletagmanager.com/gtag/js?id=G-NRS85ZK87F></script> 
-    <script> 
-        window.dataLayer = window.dataLayer || []; 
+    <!-- Google tag (gtag.js) -->
+    <script async src=https://www.googletagmanager.com/gtag/js?id=G-NRS85ZK87F></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
         function gtag(){
             dataLayer.push(arguments);
-        } 
-        gtag('js', new Date()); 
-        gtag('config', 'G-NRS85ZK87F'); 
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-NRS85ZK87F');
     </script>
-    <!--End Google tag (gtag.js) --> 
+    <!--End Google tag (gtag.js) -->
     @endif
 </head>
 <body>
@@ -229,7 +229,7 @@ use App\Http\Controllers\CommonController;
 
         $('#custom_cost').click(function(){
             $('.quick-profile').addClass("d-none");
-            $('.cost-type').removeClass("d-none"); 
+            $('.cost-type').removeClass("d-none");
         });
 
         $('select[name="cost-type"]').change(function() {
@@ -239,18 +239,18 @@ use App\Http\Controllers\CommonController;
                 $('.my-msrp').removeClass('d-none');
             }
         }).change();
-        
+
         if($('select[name="cost-type"]').val() != 'msrp') {
             $('.my-msrp').addClass('d-none');
         } else {
             $('.my-msrp').removeClass('d-none');
         }
-        // homepage popup 
+        // homepage popup
         $(".overlay-home-popup, .close-home-popup").click(function() {
             $(".home-popup").hide();
             // document.cookie = "homepage_popup=true;expires=" + new Date(new Date().getTime() + 1 * 24 * 60 * 60 * 1000).toUTCString();
         });
-        
+
     });
 
     function refreshUser(type,callback) //cart,profile
