@@ -75,13 +75,18 @@
 <body marginstyle="width:0" marginheight="0" topmargin="0">
 
 <div class="content">
-    <div
-        style="display: flex;justify-content: space-between;align-items: center; border-bottom: 1px solid #ececec; padding-bottom: 20px;">
-        <div class="logo text-md-left">
-            <img src="{{asset($basicSettings -> logo_dark)}}" width="110" alt="LR Home">
-        </div>
-        <div>
-            <p>{{$basicSettings -> address}} &nbsp; {{$basicSettings -> contact}}</p>
+    <div class="col-6">
+        <div style="display: flex;align-items: center; border-bottom: 1px solid #ececec; padding-bottom: 20px;">
+            <div class="logo text-md-left">
+                <img src="{{asset($basicSettings -> logo_dark)}}" width="200" alt="LR Home">
+            </div>
+            <div style="margin-left: 20px">
+                <p style="margin: 0"><strong>{{$basicSettings -> address}}</strong></p>
+                <p style="margin: 0"><strong>TEL {{$basicSettings -> contact}}</strong></p>
+                <p style="margin: 0"><strong>Fax (706)-259-0156</strong></p>
+                <p style="margin: 0"><strong>Email: {{$basicSettings->email}}</strong></p>
+                <p style="margin: 0"><strong>EIN: 58-2658997</strong></p>
+            </div>
         </div>
     </div>
     <div id="report_details">
@@ -92,7 +97,13 @@
                         <h5 style="margin: 0"><strong>{{ $section['title'] }}</strong></h5>
                         @if($section['title'] !== 'Detail' && $section['title'] !== 'Details')
                             @foreach($section['content'] as $key => $content)
-                                <p style="margin: 0; font-size: 12px"><strong>{{ formatKey($key) }}: </strong>{{ $content }}</p>
+                                @if($content !== 'N/A' && $content)
+                                    @if(empty($section['hide_labels']))
+                                        <p style="margin: 0; font-size: 12px"><strong>{{ formatKey($key) }}: </strong>{{ $content }}</p>
+                                    @else
+                                        <p style="margin: 0; font-size: 12px">{{ $content }}</p>
+                                    @endif
+                                @endif
                             @endforeach
                                 <br>
                         @else

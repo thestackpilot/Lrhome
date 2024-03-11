@@ -469,11 +469,13 @@ class GenericReportsController extends DashboardController
                                     [
                                         'title'   => 'Bill To:',
                                         'content' => $memo['BillToAddress'],
+                                        'hide_labels' => true,
                                         'cols'    => 6
                                     ],
                                     [
                                         'title'   => 'Ship To:',
                                         'content' => $memo['ShipToAddress'],
+                                        'hide_labels' => true,
                                         'cols'    => 6
                                     ],
                                     [
@@ -724,12 +726,16 @@ class GenericReportsController extends DashboardController
 
                     $customer_content = [
                         'PO#' => $invoice['CustomerPO'],
-                        'ShipVia' => $invoice['ShipVia'],
+                        'SO#' => $invoice['SalesOrderNo'],
                         'OrderPlacedBy' => $invoice['OrderPlacedBy']
                     ];
 
                     if (!empty($invoice['SalesRepID'])) {
-                        $customer_content['RepName'] = $invoice['SalesRepID'];
+                        $customer_content['Rep'] = $invoice['SalesRepID'];
+                    }
+
+                    if (!empty($invoice['ShipVia'])) {
+                        $customer_content['ShipVia'] = $invoice['ShipVia'];
                     }
 
                     if (!empty($invoice['SpecialInstructions'])) {
@@ -739,6 +745,24 @@ class GenericReportsController extends DashboardController
                     if (!empty($invoice['Notes'])) {
                         $customer_content['Notes'] = $invoice['Notes'];
                     }
+
+                    $bill_to_details = [
+                        'name' => $invoice['BillToAddress']['FirstName'] . ($invoice['BillToAddress']['LastName'] ? ' ' . $invoice['BillToAddress']['LastName'] : ''),
+                        'address1' => $invoice['BillToAddress']['Address1'],
+                        'address2' => $invoice['BillToAddress']['Address2'] !== 'N/A' && $invoice['BillToAddress']['Address2'] ? $invoice['BillToAddress']['Address2'] : '',
+                        'city_address' => $invoice['BillToAddress']['City'] . ', ' . $invoice['BillToAddress']['State'] . ' ' .$invoice['BillToAddress']['ZIP'],
+                        'country' => $invoice['BillToAddress']['Country'],
+                        'phone' => $invoice['BillToAddress']['Phone1'] ? $invoice['BillToAddress']['Phone1'] : ''
+                    ];
+
+                    $ship_to_details = [
+                        'name' => $invoice['ShipToAddress']['FirstName'] . ($invoice['ShipToAddress']['LastName'] ? ' ' . $invoice['ShipToAddress']['LastName'] : ''),
+                        'address1' => $invoice['ShipToAddress']['Address1'],
+                        'address2' => $invoice['ShipToAddress']['Address2'] !== 'N/A' && $invoice['ShipToAddress']['Address2'] ? $invoice['ShipToAddress']['Address2'] : '',
+                        'city_address' => $invoice['ShipToAddress']['City'] . ', ' . $invoice['ShipToAddress']['State'] . ' ' .$invoice['ShipToAddress']['ZIP'],
+                        'country' => $invoice['ShipToAddress']['Country'],
+                        'phone' => $invoice['ShipToAddress']['Phone1'] ? $invoice['ShipToAddress']['Phone1'] : ''
+                    ];
 
                     $table['tbody'][] = [
                         'invoice_no'     => $invoice['SalesInvoiceNo'],
@@ -758,28 +782,30 @@ class GenericReportsController extends DashboardController
                                         'cols'    => 6
                                     ],
                                     [
-                                        'title'   => $invoice['TransactionType'] . '#: ' . $invoice['TransactionNo'],
+                                        'title'   => 'Sales Invoice#: ' . $invoice['TransactionNo'],
                                         'content' => [
                                             'Status ' => $invoice['Status'],
-                                            'Date ' => Carbon::parse($invoice['InvoiceDate'])->format('M/d/Y'),
+                                            'Date ' => Carbon::parse($invoice['InvoiceDate'])->format('d-m-Y'),
                                             'Terms' => $invoice['Terms'],
                                             'TotalQty' => $invoice['TotalQty'],
-                                            'MerchandiseAmount' => $invoice['TotalMerchandise'],
+                                            'MerchandiseAmount' => round($invoice['TotalMerchandise'], 2),
                                             'Discount' => $invoice['Discount'],
-                                            'Tax% &Amount' => $invoice['TaxRate'] . ' ' . $invoice['TaxAmount'],
-                                            'OtherCharges' => $invoice['ShippingCharges'] + $invoice['HandlingCharges'],
-                                            'TotalAmount' => $invoice['TotalAmount'],
+                                            'Tax% &Amount' => round($invoice['TaxRate'], 1) . '%;' . round($invoice['TaxAmount'], 2),
+                                            'Shipping &Handling' => $invoice['ShippingCharges'] + $invoice['HandlingCharges'],
+                                            'TotalAmount' => round($invoice['TotalAmount'], 2),
                                         ],
                                         'cols' => 6
                                     ],
                                     [
                                         'title'   => 'Bill To',
-                                        'content' => $invoice['BillToAddress'],
+                                        'content' => $bill_to_details,
+                                        'hide_labels' => true,
                                         'cols' => 6
                                     ],
                                     [
                                         'title'   => 'Ship To',
-                                        'content' => $invoice['ShipToAddress'],
+                                        'content' => $ship_to_details,
+                                        'hide_labels' => true,
                                         'cols' => 6
                                     ],
                                     [
