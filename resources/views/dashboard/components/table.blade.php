@@ -160,7 +160,13 @@ function get_table( $table, $tab = '' ) {
                     modal_body += '<h4>' + section.title + '</h3>';
                     Object.keys(section.content).forEach(function(key) {
                         var value = section.content[key] == 0 || section.content[key] == '' ? 'N/A' : section.content[key];
-                        modal_body += '<p class="m-0"><strong>' + ((key.replace(/([A-Z|0-9])/g, ' $1').trim()).replace('_', ' ').replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())).replace(/([A-Z])\s(?=[A-Z])/g, '$1') + ' :</strong> ' + value + '</p>'
+                        if (value !== 'N/A' && value) {
+                            if (!section.hide_labels) {
+                                modal_body += '<p class="m-0"><strong>' + ((key.replace(/([A-Z|0-9])/g, ' $1').trim()).replace('_', ' ').replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())).replace(/([A-Z])\s(?=[A-Z])/g, '$1') + ' :</strong> ' + value + '</p>'
+                            } else {
+                                modal_body += '<p class="m-0">' + value + '</p>'
+                            }
+                        }
                         // modal_body += '<div class="col-md-4">' + ((key.replace(/([A-Z|0-9])/g, ' $1').trim()).replace('_', ' ').replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())).replace(/([A-Z])\s(?=[A-Z])/g, '$1') + ' : ' + value + '</div>';
                     });
                     // modal_body += '</div>';
