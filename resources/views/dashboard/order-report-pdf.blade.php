@@ -105,7 +105,7 @@
                             @foreach($report_data['sections'] as $section)
                                 <div class="w-{{ $section['cols'] }}">
                                     <h5 style="margin: 0"><strong>{{ $section['title'] }}</strong></h5>
-                                    @if($section['title'] !== 'Detail' && $section['title'] !== 'Details')
+                                    @if($section['title'] !== 'Detail' && $section['title'] !== 'Details' && $section['title'] !== 'Items List')
                                         @foreach($section['content'] as $key => $content)
                                             @if($content !== 'N/A' && $content)
                                                 @if(empty($section['hide_labels']))
