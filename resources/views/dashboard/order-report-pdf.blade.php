@@ -107,7 +107,14 @@
                                     <h5 style="margin: 0"><strong>{{ $section['title'] }}</strong></h5>
                                     @if($section['title'] !== 'Detail' && $section['title'] !== 'Details' && $section['title'] !== 'Items List')
                                         @foreach($section['content'] as $key => $content)
-                                            @if($content !== 'N/A' && $content)
+                                            @if(($content !== 'N/A' && $content) || $key === 'Discount')
+                                                @if($key === 'Discount')
+{{--                                                    @if($content === 'N/A')--}}
+                                                        @php
+                                                            $content = number_format($content, ConstantsController::ALLOWED_DECIMALS)
+                                                        @endphp
+{{--                                                    @endif--}}
+                                                @endif
                                                 @if(empty($section['hide_labels']))
                                                     <p style="margin: 0; font-size: 10px"><strong>{{ formatKey($key) }}
                                                             : </strong>{{ $content }}</p>
