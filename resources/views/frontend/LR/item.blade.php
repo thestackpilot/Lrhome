@@ -954,7 +954,8 @@ foreach ($items['Items'] as $item) {
         if ((/^\+?[1-9]\d*/).test(parseInt($('#item_qty').val()))) {
             $.ajax({
                 method: 'POST',
-                url: '{{route("frontend.cart.add")}}',
+                url: '/cart/add',
+                {{--url: '{{route("frontend.cart.add")}}',--}}
                 data: {
                     '_token': '{{csrf_token()}}',
                     'cart_item_id': $('#cart_item_id').val(),
