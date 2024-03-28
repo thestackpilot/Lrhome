@@ -667,7 +667,7 @@ foreach ($items['Items'] as $item) {
                     if (!$('#qty-main').is(':visible'))
                         show_components(['.qty-loader']);
                     $.ajax({
-                        url: '{{secure_url(route("frontend.item.ats"))}}',
+                        url: '/item/ats',
                         data: {
                             _token: '{{csrf_token()}}',
                             item_id: ItemID,
@@ -700,7 +700,7 @@ foreach ($items['Items'] as $item) {
                         show_components(['.qty-loader']);
 
                     $.ajax({
-                        url: '{{secure_url(route("frontend.item.ats"))}}',
+                        url: '/item/ats',
                         data: {
                             _token: '{{csrf_token()}}',
                             item_id: ItemID,
@@ -839,7 +839,7 @@ foreach ($items['Items'] as $item) {
                             show_components(['.qty-loader']);
 
                         $.ajax({
-                            url: '{{secure_url(route("frontend.item.ats"))}}',
+                            url: '/item/ats',
                             data: {
                                 _token: '{{csrf_token()}}',
                                 item_id: item_id,
