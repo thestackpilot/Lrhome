@@ -258,11 +258,13 @@ use App\Http\Controllers\CommonController;
         var url = '';
         if(type == 'quick-cart')
         {
-            url = '{{route('frontend.cart.refresh',['quick-cart'])}}';
+            {{--url = '{{route('frontend.cart.refresh',['quick-cart'])}}';--}}
+            url = '/cart/refresh/quick-cart';
         }
         else if(type == 'profile')
         {
-            url = '{{route('frontend.cart.refresh',['profile'])}}';
+            {{--url = '{{route('frontend.cart.refresh',['profile'])}}';--}}
+            url = '/cart/refresh/profile';
         }
         else
         {

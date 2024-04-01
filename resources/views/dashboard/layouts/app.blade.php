@@ -18,12 +18,12 @@ use App\Http\Controllers\CommonController;
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     @yield('head_scripts')
-    
+
     @if($active_theme_json->general->use_theme_header)
     <link rel="stylesheet" href="{{asset('/LR/css/vendor/vendor.min.css')}}">
     <link rel="stylesheet" href="{{asset('/LR/css/style.css')}}?v=0.10">
     @endif
-    
+
     <link href="{{asset('Dashboard/css/sb-dasboard-2.min.css')}}" rel="stylesheet">
     <link href="{{asset('Dashboard/css/custom.css')}}" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css" rel="stylesheet" />
@@ -134,7 +134,7 @@ use App\Http\Controllers\CommonController;
             if ( typeof $(this).attr('maxlength') !== "undefined" && this.value.length > $(this).attr('maxlength')) {
                 this.value = this.value.slice(0, (this.value.indexOf('.') > -1) ? parseFloat($(this).attr('maxlength')) + 1 : $(this).attr('maxlength'));
             }
-            
+
             if ( typeof $(this).attr('max') !== 'undefined' && parseFloat($(this).attr('max')) < parseFloat(this.value) ) {
                 $(this).val($(this).attr('max') >= 0 ? $(this).attr('max') : 0);
             }
@@ -142,7 +142,7 @@ use App\Http\Controllers\CommonController;
 
 	    // $('#custom_cost').click(function(){
         //     $('.quick-profile').addClass("d-none");
-        //     $('.cost-type').removeClass("d-none"); 
+        //     $('.cost-type').removeClass("d-none");
         // });
 
         // hide alert message on cross btn click
@@ -164,11 +164,13 @@ use App\Http\Controllers\CommonController;
         var url = '';
         if(type == 'quick-cart')
         {
-            url = '{{route('frontend.cart.refresh',['quick-cart'])}}';
+            {{--url = '{{route('frontend.cart.refresh',['quick-cart'])}}';--}}
+                url = '/cart/refresh/quick-cart';
         }
         else if(type == 'profile')
         {
-            url = '{{route('frontend.cart.refresh',['profile'])}}';
+            {{--url = '{{route('frontend.cart.refresh',['profile'])}}';--}}
+                url = '/cart/refresh/profile';
         }
         else
         {
@@ -389,7 +391,7 @@ use App\Http\Controllers\CommonController;
             $(document).on('click','.btn-close',function(){
                 $('.alert').hide();
             });
-            
+
             $('.datepicker').datepicker({
                 format: "{{isset($active_theme_json->general->date_format) && $active_theme_json->general->date_format ? str_replace('Y', 'yyyy', $active_theme_json->general->date_format) : 'yyyy-mm-dd'}}",
                 startDate: "{{isset($datepicker_dates) && $datepicker_dates['min'] ? $datepicker_dates['min'] : '-10Y'}}",
