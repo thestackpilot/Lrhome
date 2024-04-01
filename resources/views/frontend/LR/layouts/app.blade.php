@@ -351,7 +351,8 @@ use App\Http\Controllers\CommonController;
         $.ajax(
         {
             method: "POST",
-            url: "{{route('frontend.cart.update')}}",
+            {{--url: "{{route('frontend.cart.update')}}",--}}
+            url: "/cart/update",
             data: formData
         })
         .done(function (response)
