@@ -427,7 +427,8 @@ use App\Http\Controllers\CommonController;
             $.ajax(
             {
                 method: "POST",
-                url: "{{route('frontend.cart.remove')}}",
+                {{--url: "{{route('frontend.cart.remove')}}",--}}
+                url: "/cart/remove",
                 data: formData
             })
             .done(function (response)

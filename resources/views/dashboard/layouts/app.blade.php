@@ -12,7 +12,7 @@ use App\Http\Controllers\CommonController;
 
 <head>
 
-    <title>@yield('title')</title>
+{{--    <title>@yield('title')</title>--}}
     <script src="{{asset('Dashboard/vendor/jquery/jquery.min.js')}}"></script>
 
     <meta charset="utf-8">
@@ -331,7 +331,8 @@ use App\Http\Controllers\CommonController;
             $.ajax(
             {
                 method: "POST",
-                url: "{{route('frontend.cart.remove')}}",
+                {{--url: "{{route('frontend.cart.remove')}}",--}}
+                url: "/cart/remove",
                 data: formData
             })
             .done(function (response)
