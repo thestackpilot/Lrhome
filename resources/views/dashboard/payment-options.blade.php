@@ -217,7 +217,8 @@ use App\Http\Controllers\CommonController;
 <script type="text/javascript">
     $(document).ready(function() {
         if (typeof paytrace !== 'undefined')
-            paytrace.setKeyAjax('{{route("checkout.security")}}');
+            {{--paytrace.setKeyAjax('{{route("checkout.security")}}');--}}
+            paytrace.setKeyAjax('/checkout/pt/security');
 
         $("[data-inputmask]").inputmask({
             greedy: false,
