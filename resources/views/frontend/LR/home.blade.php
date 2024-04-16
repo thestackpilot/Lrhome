@@ -12,8 +12,14 @@ use App\Http\Controllers\CommonController;
 @section('content')
 @include('frontend.'.$active_theme -> theme_abrv.'.components.header')
 
+
 <div class="site-wrapper-reveal">
     <div class="hero-box-area mt-md-0 ">
+        <div class="z-index-3">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScxCB0Whh4jcUVZArWeC-K8ElhxL8bVNtcOW0Eb0723e0T5Gw/viewform" target="_blank">
+                <img src="{{ asset('LR/images/banners/header-img.jpg') }}" class="img-fluid">
+            </a>
+        </div>
         <div class="home-row hp-video" style="background-image: url({{$pages -> home -> sections -> banner -> image}}) !important;">
             <div class="hpmt-video-text">
                 <div class="hpmt-video-text-content">
@@ -199,7 +205,7 @@ use App\Http\Controllers\CommonController;
             </div>
         </div> --}}
     {{-- @endif --}}
-    
+
 </div>
 @include('frontend.'.$active_theme -> theme_abrv.'.components.footer')
 
