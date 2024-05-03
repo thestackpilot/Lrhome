@@ -596,9 +596,9 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
                   <button type="button" id="nextBtn" onclick="nextPrev(1)" class="btn btn--md btn--border_1">Next</button>
                   <button type="button" id="review" class="btn btn--md btn--border_1 d-none">Review Details</button>
                   <button type="submit" id="submitForm" class="btn btn--md btn--border_1 d-none">Submit</button>
-                  <button type="button" id="submit" class="btn btn--md btn--border_1 d-none g-recaptcha" 
-                          data-sitekey="{{config('services.recaptcha.key')}}" 
-                          data-callback='onSubmitPartnerRequest' 
+                  <button type="button" id="submit" class="btn btn--md btn--border_1 d-none g-recaptcha"
+                          data-sitekey="{{config('services.recaptcha.key')}}"
+                          data-callback='onSubmitPartnerRequest'
                           data-action='submit'>Submit</button>
                 </div>
               </div>
@@ -652,15 +652,21 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
     var x, y, i, valid = true;
     x = document.getElementsByClassName("tab");
     y = x[currentTab].getElementsByTagName("input");
+    console.log('x val', x);
+    console.log('cur tab', currentTab);
+    console.log('y val', y);
     // A loop that checks every input field in the current tab:
     for (i = 0; i < y.length; i++) {
-      if (y[i].value == "") {
-        y[i].className += " invalid";
-        valid = false;
-        document.getElementById(y[i].id).style.borderColor = 'red';
-      } else {
-        document.getElementById(y[i].id).style.borderColor = 'green';
-      }
+
+    if(y[i].id != "duns" && y[i].id != "sales_rep" && y[i].id != "billing_address_two" && y[i].id != "billing_dba" && y[i].id != "shipping_dba"  && y[i].id != "shipping_address_two"){
+        if (y[i].value == "") {
+            y[i].className += " invalid";
+            valid = false;
+            document.getElementById(y[i].id).style.borderColor = 'red';
+        } else {
+            document.getElementById(y[i].id).style.borderColor = 'green';
+        }
+    }
 
       if (y[i].id == "business_email" && y[i].value != "") {
         if (!isValidEmailAddress(y[i].value)) {
