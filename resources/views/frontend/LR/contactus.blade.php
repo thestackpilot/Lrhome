@@ -27,9 +27,9 @@ use App\Http\Controllers\CommonController;
         <div class="row">
             @if(isset($showrooms -> lr_showrooms))
                 @foreach($showrooms -> lr_showrooms -> metas as $showroom)
-                  
+
                   <div class="col-md-4">
-                    <div class="showroom text-center"> 
+                    <div class="showroom text-center">
                       @if(!empty($showroom->image))
                         <img class="img-full" src="{{asset($showroom->image)}}" alt="{{ $showroom -> title }}">
                       @endif
@@ -37,7 +37,7 @@ use App\Http\Controllers\CommonController;
                       <p>{!! $showroom -> address !!}</p>
                     </div>
                   </div>
-                  
+
                 @endforeach
             @endif
         </div>
@@ -151,10 +151,10 @@ use App\Http\Controllers\CommonController;
                       <div class="submit-btn mt-20">
                         {{-- <input type="submit" class="btn btn--black btn--md"> --}}
                         {{-- <button class="btn btn--black btn--md" type="submit">Submit</button> --}}
-                        <button class="btn btn--black btn--md g-recaptcha" 
-                          data-sitekey="{{config('services.recaptcha.key')}}" 
-                          data-callback='onSubmitContactUs' 
-                          data-action='submit'>Submit</button>
+                          <button class="g-recaptcha btn btn--black btn--md"
+                                  data-sitekey="{{ config('services.recaptcha.key') }}"
+                                  data-callback='onSubmitContactUs'
+                                  data-action='submit'>Submit</button>
                         <!--<p class="form-messege"></p>-->
                       </div>
                     </div>
