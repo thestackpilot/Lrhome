@@ -12,6 +12,7 @@ if (
    strtolower($payment_terms_list[md5( $payment_term )]['CreditCardTerms']) != 'false' &&
    strtolower($payment_terms_list[md5( $payment_term )]['CreditCardTerms']) != ''
 ){
+    prr($payment_term);
    $card_required = 'data-required=true';
 }
 @endphp
@@ -1040,7 +1041,8 @@ if (
                   $('#checkOut_popup .title').html('<i class="bi bi-check-circle-fill" style="color:#127812;font-size:30px;"></i> Order Placed');
                   $("#checkOut_popup .btn-back-to-home").removeAttr('data-dismiss').attr('href', "{{route('frontend.home')}}").html("Back to Home");
                } else {
-                  $('#checkOut_popup .title').html('<i class="bi bi-info-circle-fill" style="color:#c90f41;font-size:30px;"></i>Oops!');
+                  $('#checkOut_popup .title').html('<i class="bi bi-info-circle-fill" style="color:#c90f41;font-size:30px;"></i>' +
+                      's!');
                   $('#checkOut_popup .btn-back-to-home').attr('data-dismiss', 'modal').attr('href', "#").html("Close");
                   $('.place-order-btn, .go-back').removeAttr('disabled').removeClass('btn-muted');
                }

@@ -596,7 +596,7 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
                   <button type="button" id="nextBtn" onclick="nextPrev(1)" class="btn btn--md btn--border_1">Next</button>
                   <button type="button" id="review" class="btn btn--md btn--border_1 d-none">Review Details</button>
                   <button type="submit" id="submitForm" class="btn btn--md btn--border_1 d-none">Submit</button>
-                  <button type="button" id="submit" class="btn btn--md btn--border_1 d-none g-recaptcha"
+                  <button type="button" id="submit" class="g-recaptcha btn btn--md btn--border_1 d-none"
                           data-sitekey="{{config('services.recaptcha.key')}}"
                           data-callback='onSubmitPartnerRequest'
                           data-action='submit'>Submit</button>
@@ -827,7 +827,7 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
     } else {
       const fi = document.getElementById(field_id);
       if (fi.files.length > 0) {
-        for (const i = 0; i <= fi.files.length - 1; i++) {
+        for (var i = 0; i <= fi.files.length - 1; i++) {
 
           const fsize = fi.files.item(i).size;
           const file = Math.round((fsize / 1024));
