@@ -242,10 +242,10 @@
             <div class="width-100 d-flex">
                 <div class="width-50">
                     <div class="margin-bottom-5"><strong>Bill to:</strong></div>
-                    <p class="sub-heading">{!! $data['shipping']['FirstName'] == '' ? 'N/A' : $data['shipping']['FirstName'].' '.$data['shipping']['LastName'] !!}  </p>
+                    <p class="sub-heading">{!! $data['shipping']['BillingFirstName'] == '' ? 'N/A' : $data['shipping']['BillingFirstName'].' '.$data['shipping']['BillingLastName'] !!}  </p>
                     <p class="sub-heading">{!!$data['shipping']['BillingAddress1'] == '' ? 'N/A' : $data['shipping']['BillingAddress1'] !!} </p>
                     {{-- <p class="sub-heading">{!!$data['shipping']['Address1'] == '' ? 'N/A' : $data['shipping']['Address1'] !!} </p> --}}
-                    <p class="sub-heading">{!! $data['shipping']['City'] !!}, {!! $data['shipping']['State'] !!}, {!! $data['shipping']['Zip'] !!} </p>
+                    <p class="sub-heading">{!! $data['shipping']['BillingCity'] !!}, {!! $data['shipping']['BillingState'] !!}, {!! $data['shipping']['BillingZip'] !!} </p>
                     {{-- <p class="sub-heading">Address 2: {!! $data['shipping']['Address2'] == '' ? 'N/A' : $data['shipping']['Address2'] !!} </p> --}}
                     {{-- <p class="sub-heading">City: {!! $data['shipping']['City'] !!} </p>
                     <p class="sub-heading">State: {!! $data['shipping']['State'] !!}</p>
