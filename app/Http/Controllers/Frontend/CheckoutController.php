@@ -439,6 +439,11 @@ $states = $this->ApiObj->Get_CountryStates( $country_id );
                         $cust_detail  = $this->ApiObj->Get_CustomerDetail($cart_data['shipping']['CustomerID']);
                         $cust_billing_email = $cust_detail['CustomerDetail']['CustomerAddressDetail']['BillToAddresses'][0]['Email'];
                         $cart_data['shipping']['BillingAddress1'] = $cust_detail['CustomerDetail']['CustomerAddressDetail']['BillToAddresses'][0]['Address1'];
+                        $cart_data['shipping']['BillingFirstName'] = $cust_detail['CustomerDetail']['CustomerAddressDetail']['BillToAddresses'][0]['FirstName'];
+                        $cart_data['shipping']['BillingLastName'] = $cust_detail['CustomerDetail']['CustomerAddressDetail']['BillToAddresses'][0]['LastName'];
+                        $cart_data['shipping']['BillingCity'] = $cust_detail['CustomerDetail']['CustomerAddressDetail']['BillToAddresses'][0]['City'];
+                        $cart_data['shipping']['BillingState'] = $cust_detail['CustomerDetail']['CustomerAddressDetail']['BillToAddresses'][0]['State'];
+                        $cart_data['shipping']['BillingZip'] = $cust_detail['CustomerDetail']['CustomerAddressDetail']['BillToAddresses'][0]['Zip'];
                         if (!empty($cust_billing_email)) {
                             array_push($to_email, $cust_billing_email);
 
