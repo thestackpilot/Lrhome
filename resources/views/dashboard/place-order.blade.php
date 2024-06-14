@@ -26,6 +26,37 @@ use App\Http\Controllers\CommonController;
                      {!!Session::get('message')['body']!!}
                   </div>
                   @endif
+
+                @if (Session::has('message') && Session::get('message')['type'] != "danger")
+                <script type="text/javascript">
+                    document.addEventListener("DOMContentLoaded", function() {
+                      var messageModal = new bootstrap.Modal(document.getElementById('messageModal'));
+                      messageModal.show();
+                    });
+                    function closePopUp() {
+                        console.log('click ooo');
+                        var messageModal = document.getElementById('messageModal');
+                        messageModal.hide();
+                    }
+                </script>
+                <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                      <div class="modal-content">
+                          <div class="modal-header col-sm-12 justify-content-center flex-column">
+                             <h2 class="text-center"><i class="bi bi-check-circle-fill" style="color:#127812;font-size:30px;"></i> Order Placed</h2>
+                          </div>
+                          <div class="modal-body">
+                             <p class="thanku-msg text-center">{!! Session::get('message')['body'] !!}</p>
+                             {{-- <a href="#"  class="btn btn-dark text-uppercase checkout-signin mt-20 col pull-left btn-back-to-home" onclick="closePopUp() ">Close</a> --}}
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-dark text-uppercase checkout-signin mt-20 col pull-left btn-back-to-home" data-dismiss="modal" onclick="closePopUp()">Close</button>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+                @endif
+
                   <div class="account-content p-5">
                      <h1 class="section-title text-center mb-3 mt-3 font-ropa">Place Order</h1>
 {{--                     <form method="POST" class="place-order-form" action="{{ route('dashboard.placeorder') }}" class="pt-3">--}}
