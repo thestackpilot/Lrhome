@@ -26,6 +26,37 @@ use App\Http\Controllers\CommonController;
                      {!!Session::get('message')['body']!!}
                   </div>
                   @endif
+
+                @if (Session::has('message') && Session::get('message')['type'] != "danger")
+                <script type="text/javascript">
+                    document.addEventListener("DOMContentLoaded", function() {
+                      var messageModal = new bootstrap.Modal(document.getElementById('messageModal'));
+                      messageModal.show();
+                    });
+                    function closePopUp() {
+                        console.log('click ooo');
+                        var messageModal = document.getElementById('messageModal');
+                        messageModal.hide();
+                    }
+                </script>
+                <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                      <div class="modal-content">
+                          <div class="modal-header col-sm-12 justify-content-center flex-column">
+                             <h2 class="text-center"><i class="bi bi-check-circle-fill" style="color:#127812;font-size:30px;"></i> Order Placed</h2>
+                          </div>
+                          <div class="modal-body">
+                             <p class="thanku-msg text-center">{!! Session::get('message')['body'] !!}</p>
+                             {{-- <a href="#"  class="btn btn-dark text-uppercase checkout-signin mt-20 col pull-left btn-back-to-home" onclick="closePopUp() ">Close</a> --}}
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-dark text-uppercase checkout-signin mt-20 col pull-left btn-back-to-home" data-dismiss="modal" onclick="closePopUp()">Close</button>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+                @endif
+
                   <div class="account-content p-5">
                      <h1 class="section-title text-center mb-3 mt-3 font-ropa">Place Order</h1>
                      <form method="POST" class="place-order-form" action="{{ route('dashboard.placeorder') }}" class="pt-3">
@@ -247,8 +278,8 @@ use App\Http\Controllers\CommonController;
                                              @endforeach
                                           </select> -->
                                        @endif
-                                       
-                                       
+
+
                                     </td>
                                     <td>
                                        <input data-required="true" name="OrderQty[]" class="form-control item-quantity" maxlength="4" max="9999" min="1" step="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57" type="number" value="" />
@@ -452,21 +483,21 @@ use App\Http\Controllers\CommonController;
                   status = true;
                }
                $('.search-item').removeAttr('disabled');
-               
+
             });
             if(status == false){
                if ( $('.item-quantity:last').val() !== "" || $('.item-id:last').val() !== "" || $('.item-sidemark:last').val() !== "" ) {
                $('.add-row').click();
             }
-          
-        
+
+
             $('.item-id:last').val($('select.all-designs').val());
             toastr.success("Item added...",
                {
                   hideDuration: 10000,
                   closeButton: true,
                });
-            
+
             $('.search-item').removeAttr('disabled');
             }
             return status;
@@ -920,10 +951,10 @@ use App\Http\Controllers\CommonController;
 
       function getQuantityMessage(ATSInfo) {
          var date = new Date(ATSInfo.ETADate);
-         var formattedDate = new Intl.DateTimeFormat('en-US', { 
-            month: 'short', 
-            day: 'numeric', 
-            year: 'numeric' 
+         var formattedDate = new Intl.DateTimeFormat('en-US', {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric'
          }).format(date);
 
          if ($('#login_by_popup').length) {
@@ -934,8 +965,8 @@ use App\Http\Controllers\CommonController;
             else
                   return `In stock, ${ATSInfo.ATSQty}`;
          } else {
-         if (ATSInfo.ATSQty <= 0)	
-            return `Backorder ETA: ${formattedDate}`;            
+         if (ATSInfo.ATSQty <= 0)
+            return `Backorder ETA: ${formattedDate}`;
          return `In stock, ${ATSInfo.ATSQty}`;
 
             if (ATSInfo.ATSQty == 0)
