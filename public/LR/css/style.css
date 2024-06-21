@@ -618,7 +618,7 @@ input[type="radio"] {
 
 /*===================================
 
- - Breadvrumb  
+ - Breadvrumb
 
 =================================*/
 
@@ -727,7 +727,7 @@ only screen and (min-width: 992px) and (max-width: 1199px) {
 
 
 
-   - Scroll top         
+   - Scroll top
 
 
 
@@ -788,7 +788,7 @@ only screen and (min-width: 992px) and (max-width: 1199px) {
     bottom: 80px;
 }
 /*=============================================
-   - Ask Us Floating Button 
+   - Ask Us Floating Button
 =============================================*/
 
 .askus-floating-btn {
@@ -3069,7 +3069,7 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 }
 
 
-/*============================== 
+/*==============================
 
 
 
@@ -3491,7 +3491,7 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 }
 
 
-/*================================ 
+/*================================
 
 
 
@@ -7950,7 +7950,7 @@ only screen and (max-width: 767px) {
 
 
 
-=                 17. Product Css             =       
+=                 17. Product Css             =
 
 
 
@@ -8214,7 +8214,7 @@ only screen and (max-width: 767px) {
 
 
 
-=       18. Product Tab list Css             =       
+=       18. Product Tab list Css             =
 
 
 
@@ -8294,7 +8294,7 @@ only screen and (max-width: 767px) {
 
 
 
-=     19. Single Product details Css             =       
+=     19. Single Product details Css             =
 
 
 
@@ -10318,9 +10318,7 @@ only screen and (max-width: 767px) {
 }
 
 .catalog-section.fetaure-ancher img {
-    width: 360px;
-    min-width: 360px;
-    max-width: 360px;
+    width: 100%;
     height: 480px;
     object-fit: cover;
 }
@@ -10575,11 +10573,11 @@ only screen and (max-width: 767px) {
 .home-popup-inner{
     background-color: transparent;
     background-clip: padding-box;
-    
+
 }
 .homepopup-info {
     margin-top: -60px;
-} 
+}
 .close-home-popup {
     z-index: 9999;
     opacity: 1;
@@ -11418,7 +11416,7 @@ input.invalid {
 
 
 /*
-==================================================== 
+====================================================
 START OF NEW ADDITION OF CSS AFI 66
 ====================================================
  */
@@ -11862,7 +11860,7 @@ span.container-checker {
     top: 95px;
 }
 
-/* 
+/*
 .cartoverlay{
     position:fixed;
     top:0;
@@ -11878,9 +11876,9 @@ span.container-checker {
 
 
 /*
-==================================================== 
+====================================================
 END OF NEW ADDITION OF CSS AFI 66
-==================================================== 
+====================================================
  */
 
 @media(max-width:767px) {
@@ -12522,7 +12520,7 @@ mark {
     line-height: 20px;
     letter-spacing: 1px;
     margin: 0 auto;
-    margin-left: 5px; 
+    margin-left: 5px;
     margin-right: 5px;
     margin-bottom: 10px;
     text-align: center;
@@ -12657,7 +12655,7 @@ mark {
 }*/
 
 .my-table.table td, .my-table.table th {
-    padding: 0.25rem;    
+    padding: 0.25rem;
 }
 
 .my-table tr td:first-child {
@@ -12665,7 +12663,7 @@ mark {
 }
 
 tr td:first-child {
-    font-weight: bold;    
+    font-weight: bold;
 }
 
 .my-table tr td {
@@ -12878,7 +12876,7 @@ tr td:first-child {
 .alternate-check {
     justify-content: center;
     margin-top: 20px;
-    color: #696868; 
+    color: #696868;
 }
 
 .alternate-check p>a {
@@ -13341,7 +13339,7 @@ input[type="checkbox"].save-update-card {
     text-align: center;
 }
 .filter-content-selected{
-    margin: auto; 
+    margin: auto;
     width: 100%;
 }
 .item-accordion {
@@ -13428,7 +13426,7 @@ input[type="checkbox"].save-update-card {
         margin: 0;
         padding: 0;
         letter-spacing: 1px;
-        margin: 0 10px 0 -15px;   
+        margin: 0 10px 0 -15px;
     }
     .cust-order-details .for-mobile-only .product-description p,
     .cust-order-details .for-mobile-only h6 {
@@ -13448,7 +13446,7 @@ input[type="checkbox"].save-update-card {
         align-items: center;
         padding: 10px 0;
     }
-    .cust-order-details .for-mobile-only .product-description, 
+    .cust-order-details .for-mobile-only .product-description,
     .cust-order-details .for-mobile-only .order-qty {
         padding: 10px 0;
     }
@@ -13520,7 +13518,7 @@ input[type="checkbox"].save-update-card {
     }
     .product-slider-active .slick-arrow.arrow-next{
         right: 0;
-    }   
+    }
     .product-details-content .mbl-qty-main-box {
         flex-direction: column;
         align-items: flex-start;

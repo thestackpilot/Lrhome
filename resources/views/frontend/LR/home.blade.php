@@ -12,8 +12,16 @@ use App\Http\Controllers\CommonController;
 @section('content')
 @include('frontend.'.$active_theme -> theme_abrv.'.components.header')
 
+
 <div class="site-wrapper-reveal">
     <div class="hero-box-area mt-md-0 ">
+
+        <div class="z-index-3">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScV-1ubFifm4-pzsGPfnPJTLSH_1E9etsaPyOF5cq-X4me7aA/viewform" target="_blank">
+                <img src="{{ asset('LR/images/banners/atlanta-appointment.jpeg') }}" class="img-fluid">
+            </a>
+        </div>
+
         <div class="home-row hp-video" style="background-image: url({{$pages -> home -> sections -> banner -> image}}) !important;">
             <div class="hpmt-video-text">
                 <div class="hpmt-video-text-content">
@@ -199,7 +207,7 @@ use App\Http\Controllers\CommonController;
             </div>
         </div> --}}
     {{-- @endif --}}
-    
+
 </div>
 @include('frontend.'.$active_theme -> theme_abrv.'.components.footer')
 

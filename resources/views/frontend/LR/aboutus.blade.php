@@ -5,13 +5,13 @@
 use App\Http\Controllers\ConstantsController;
 use App\Http\Controllers\CommonController;
 
-@endphp 
+@endphp
 @extends('frontend.'.$active_theme -> theme_abrv.'.layouts.app')
 @section('title','About Us')
 @section('content')
 <div class="wrapper">
     @include('frontend.'.$active_theme -> theme_abrv.'.components.header')
-    
+
 <section class="inner-banner our-story">
     <div class="container">
         <div class="row">
@@ -30,18 +30,18 @@ use App\Http\Controllers\CommonController;
             <div class="col-lg-6 col-md-6 col-sm-12 col-12 text-justify order-md-1 order-2">
               {!!$pages -> about_us -> sections -> about_us_items -> about_us_description_1!!}
             </div>
-            <div class="col-lg-6 col-md-6  col-sm-12 order-md-2 order-1"> 
+            <div class="col-lg-6 col-md-6  col-sm-12 order-md-2 order-1">
               <!-- <img src="https://lrhome.us/media/images/rug-makker2.jpg" class="catlog">  -->
-              <img src="{{$pages -> about_us -> sections -> about_us_items -> about_us_image_1}}" class="catlog" />
+              <img src="{{asset($pages -> about_us -> sections -> about_us_items -> about_us_image_1)}}" class="catlog" />
             </div>
           </div>
         </div>
         <section class="about-story">
           <div class="container">
             <div class="row align-items-center" style="margin-top: 10px;">
-              <div class="col-lg-6 col-md-6  col-sm-12"> 
+              <div class="col-lg-6 col-md-6  col-sm-12">
                 <!-- <img src="https://lrhome.us/media/images/rug-makker3.jpg" class="catlog">  -->
-                <img src="{{$pages -> about_us -> sections -> about_us_items -> about_us_image_2}}" class="catlog" />
+                <img src="{{asset($pages -> about_us -> sections -> about_us_items -> about_us_image_2)}}" class="catlog" />
               </div>
               <div class="col-lg-6 col-md-6 col-sm-12 col-12 text-justify">
                 {!!$pages -> about_us -> sections -> about_us_items -> about_us_description_2!!}
@@ -51,9 +51,9 @@ use App\Http\Controllers\CommonController;
               <div class="col-lg-6 col-md-6 col-sm-12 col-12 text-justify order-md-1 order-2">
                 {!!$pages -> about_us -> sections -> about_us_items -> about_us_description_3!!}
               </div>
-              <div class="col-lg-6 col-md-6  col-sm-12 order-md-2 order-1"> 
+              <div class="col-lg-6 col-md-6  col-sm-12 order-md-2 order-1">
                 <!-- <img src="https://lrhome.us/media/images/rug-makker4.jpg" class="catlog">  -->
-                <img src="{{$pages -> about_us -> sections -> about_us_items -> about_us_image_3}}" class="catlog" />
+                <img src="{{asset($pages -> about_us -> sections -> about_us_items -> about_us_image_3)}}" class="catlog" />
               </div>
             </div>
           </div>
@@ -64,7 +64,7 @@ use App\Http\Controllers\CommonController;
           <div class="partner-apply grey-row" id="partner-apply">
             <div class="wrap">
               <div class="section-title"><span>apply to become a LR HOME partner</span></div>
-              <div class="content"> 
+              <div class="content">
                 <!-- <p>Sign up to place orders and see pricing</p>-->
                 <div class="actions-toolbar">
                   <div class="primary darkbtn">
