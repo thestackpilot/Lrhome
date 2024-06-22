@@ -142,8 +142,12 @@ function get_table( $table, $tab = '' ) {
                 } else if (typeof section.content.tabs !== 'undefined') {
                     modal_body += '<ul class="nav nav-tabs" id="myTab" role="tablist">';
                     Object.keys(section.content.tabs).forEach(function(tab, i) {
+                        let title = tab;
+                        if (tab === 'tracks') {
+                            title = 'Tracking Info';
+                        }
                         modal_body += '<li class="nav-item" role="presentation">';
-                        modal_body += `<button data-type="modal" class="nav-link ${i == 0 ? 'active': ''}" id="${tab}-tab" data-bs-toggle="tab" data-bs-target="#${tab}" type="button" role="tab" aria-controls="${tab}" aria-selected="true">${tab}</button>`;
+                        modal_body += `<button data-type="modal" class="nav-link ${i == 0 ? 'active': ''}" id="${tab}-tab" data-bs-toggle="tab" data-bs-target="#${tab}" type="button" role="tab" aria-controls="${tab}" aria-selected="true">${title}</button>`;
                         modal_body += '</li>';
                     });
                     modal_body += '</ul>';
@@ -291,6 +295,9 @@ function get_table( $table, $tab = '' ) {
                 modal_body += '<thead>';
                 modal_body += '<tr>';
                 Object.keys(section[0]).forEach(function(key) {
+                    if (key === 'ImageName') {
+                        key = 'Image';
+                    }
                     if ( key !== 'href' ) modal_body += "<th>" + ((key.replace(/([A-Z|0-9])/g, ' $1').trim()).replace('_', ' ')).replace(/([A-Z])\s(?=[A-Z])/g, '$1') + "</th>";
                 });
                 modal_body += '</tr>';
