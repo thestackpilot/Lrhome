@@ -133,6 +133,25 @@ class GenericReportsController extends DashboardController
         return view( 'dashboard.generic-report' );
     }
 
+    public function order_report(Request $request)
+    {
+        try {
+            $SalesRepId = $request->has('SalesRepId') ? $request->SalesRepId : '';
+            $CustomerId = $request->has('CustomerId') ? $request->CustomerId : '';
+            $MenuTag = $request->has('MenuTag') ? $request->MenuTag : 'View Order';
+            $DocumentNo = $request->has('DocumentNo') ? $request->DocumentNo : 0000;
+            $report = $this->ApiObj->Get_ViewDocumentsReport($SalesRepId, $CustomerId, $MenuTag, $DocumentNo);
+            if( $report['document']['Success'] )
+            {
+                View::share( 'ReportData', $report['document']['ReportData'] );
+                return $report['document']['ReportData'];
+            }
+        } catch (\Exception $e) {
+            dd($e);
+            return response()->json(['error' => 'An error occurred. Please try again later.']);
+        }
+    }
+
     public function download_print_orders( Request $request )
     {
 
@@ -936,7 +955,8 @@ class GenericReportsController extends DashboardController
                 'total_qty'    => 'Total Quantity',
                 'status'       => 'Status',
                 'order_date'   => 'Order Date',
-                'actions'      => 'Actions'
+                'actions'      => 'Actions',
+                'other_actions' => 'Reports',
             ], 'tbody' => [] );
 
             if ( isset( $view_orders['Orders'] ) )
@@ -1019,6 +1039,10 @@ class GenericReportsController extends DashboardController
                         'tab'          => isset( $view_order['Header']['TabStatusDescription'] ) ? $view_order['Header']['TabStatusDescription'] : '',
                         'order_date'   => isset( $view_order['Header']['OrderDate'] ) ? CommonController::get_date_format( $view_order['Header']['OrderDate'] ) : 'N/A',
                         'actions'      => [['type' => 'modal', 'label' => 'View Details']],
+                        'other_actions' => [['type' => 'modal', 'label' => 'View Reports']],
+                        'other_actions_details' => [
+                            'OrderNo'   => $view_order['Header']['OrderNo'],
+                        ],
                         'details'      => [
                             'heading' => $view_order['Header']['OrderNo'].' : '.$view_order['Header']['CustomerID'],
                             'body'    => [
