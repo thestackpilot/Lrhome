@@ -461,7 +461,7 @@ $response = $this->ApiObj->Get_OrderInquiryData( $request->FilterType, $request-
                     ]
                 );
 
-//                if ( isset($this->active_theme_json->general->order_ack) && $this->active_theme_json->general->order_ack ) {
+                if ( isset($this->active_theme_json->general->order_ack) && $this->active_theme_json->general->order_ack ) {
                     $cart_data = [
                         'shipping' => $headers,
                         'items'    => $cartItems,
@@ -479,7 +479,7 @@ $response = $this->ApiObj->Get_OrderInquiryData( $request->FilterType, $request-
                         $to_email = ConstantsController::ORDER_NOTIFICATION;
 
                         if(isset($headers['Email']) && $headers['Email'] != ''){
-                            array_push($to_email, $headers['Email']);
+                            $to_email[] = $headers['Email'];
                         }
 
                         SendMail::dispatch( [
@@ -496,7 +496,7 @@ $response = $this->ApiObj->Get_OrderInquiryData( $request->FilterType, $request-
                     {
                         prr( "Order Placement Email Exception :: ".$e->getMessage() );
                     }
-//                }
+                }
 
                 return redirect()->back()->with( 'message', ['type' => 'success', 'body' => $message] );
             }
