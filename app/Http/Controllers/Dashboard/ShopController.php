@@ -479,7 +479,7 @@ $response = $this->ApiObj->Get_OrderInquiryData( $request->FilterType, $request-
                         $to_email = ConstantsController::ORDER_NOTIFICATION;
 
                         if(isset($headers['Email']) && $headers['Email'] != ''){
-                            $to_email[] = $headers['Email'];
+                            array_push($to_email, $headers['Email']);
                         }
 
                         SendMail::dispatch( [
