@@ -560,7 +560,7 @@ use App\Http\Controllers\CommonController;
 
       $('input[name="FilterType"]').click(function() {
          $('.additional-filters select').html('<option value="">Loading options</option>').attr('disabled', 'disabled');
-         $.post('/additional-filters', {
+         $.post('/dashboard/additional-filters', {
             FilterType: $(this).val(),
             _token: '{{csrf_token()}}'
          }, function(data) {
@@ -724,7 +724,7 @@ use App\Http\Controllers\CommonController;
          $('.other-address').addClass('d-none');
 
          let addresses = '<div class="col-md-12">';
-         $.post('/get-customer-addresses', {
+         $.post('/dashboard/get-customer-addresses', {
             customer: $(this).val(),
             _token: '{{csrf_token()}}'
          }, function(data) {
