@@ -152,6 +152,13 @@ class ApisController extends RootController
         return $this->Post_API_Signature( 'Get_Designs', 'Get Design', $post_array, ['Designs', 'TotalRows'] );
     }
 
+    public function Get_ViewDocumentsReport($SalesRepId = '', $CustomerId = '', $MenuTag = '', $DocumentNo = '')
+    {
+        $post_array    = array('SalesRepID' => $SalesRepId, 'CustomerID' => $CustomerId, 'MenuTag' => $MenuTag, 'DocumentNo' => $DocumentNo);
+        $responseArray = $this->Post_API_Signature('Get_ViewDocumentsReport', 'Get Document Report', $post_array);
+        return array("document" => $responseArray['OutPut']);
+    }
+
     public function Get_Docuemnts()
     {
         $get_type = 1;
