@@ -137,9 +137,9 @@ class ApisController extends RootController
         return $this->Post_API_Signature( 'Get_CustomerDetail', 'Get Customer Details', $post_array, ['Success', 'Message', 'CustomerDetail'] );
     }
 
-    public function Get_DebitMemos( $customerId, $FromDate = '', $ToDate = '', $PayableInvoiceNo = '', $VendorID = '' )
+    public function Get_DebitMemos( $FromDate = '', $ToDate = '', $PayableInvoiceNo = '', $VendorID = '', $PageIndex = 1, $PageSize = 25 )
     {
-        $post_array = array( 'CustomerID' => $customerId, 'FromDate' => $FromDate, 'ToDate' => $ToDate, 'PayableInvoiceNo' => $PayableInvoiceNo, 'VendorID' => $VendorID );
+        $post_array = array( 'FromDate' => $FromDate, 'ToDate' => $ToDate, 'PayableInvoiceNo' => $PayableInvoiceNo, 'VendorID' => $VendorID, 'PageSize' => $PageSize, 'PageIndex' => $PageIndex );
 
         return $this->Post_API_Signature( 'Get_DebitMemos', 'Get Debit Memos', $post_array, ['DebitMemos'] );
     }

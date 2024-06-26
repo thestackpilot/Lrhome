@@ -49,7 +49,7 @@ class GenericReportsController extends DashboardController
     // TODO : The dashboard for the LR needs to have the icons.
     public function company_credit( Request $request )
     {
-        $active_customer = $request->has( 'customer' ) ? $request->customer : ( new Cart() )->get_active_cart_customer();
+        $active_customer = $request->has( 'customer' ) ? $request->customer : (Auth::user()->is_customer ? Auth::user()->customer_id : 0);
         $customers       = $this->get_customers_dropdown_options( false );
 
         if ( ! $active_customer && count( $customers ) > 1 )
@@ -59,7 +59,7 @@ class GenericReportsController extends DashboardController
 
         if ( $active_customer )
         {
-            $company_credit = $this->ApiObj->Get_CompanyCredit( $active_customer );
+            $company_credit = $this->ApiObj->Get_CompanyCredit('000158');
 
             if ( $company_credit )
             {
@@ -248,7 +248,8 @@ class GenericReportsController extends DashboardController
                 'status'             => 'Status',
                 'total_amount'       => 'Total Amount',
                 'transaction_type'   => 'Transaction Type',
-                'actions'            => 'Actions'
+                'actions'            => 'Actions',
+                'other_actions' => 'Reports',
 
             ], 'tbody' => [] );
 
@@ -265,6 +266,8 @@ class GenericReportsController extends DashboardController
                         $transaction['Details'][$index] = $column;
                     }
 
+                    $transaction_number = $transaction['SalesInvoiceNo'] ? $transaction['SalesInvoiceNo'] : ( $transaction['CashReceiptNo'] ? $transaction['CashReceiptNo'] : 'N/A' );
+
                     $table['tbody'][] = [
                         'transaction_number' => $transaction['SalesInvoiceNo'] ? $transaction['SalesInvoiceNo'] : ( $transaction['CashReceiptNo'] ? $transaction['CashReceiptNo'] : 'N/A' ),
                         'transaction_date'   => isset( $transaction['TransactionDate'] ) ? CommonController::get_date_format( $transaction['TransactionDate'] ) : 'N/A',
@@ -274,6 +277,10 @@ class GenericReportsController extends DashboardController
                         'customer_id'        => isset( $transaction['CustomerID'] ) ? $transaction['CustomerID'] : 'N/A',
                         'status'             => isset( $transaction['Status'] ) ? $transaction['Status'] : 'N/A',
                         'actions'            => [['type' => 'modal', 'label' => 'View Details']],
+                        'other_actions' => [['type' => 'modal', 'label' => 'View Reports']],
+                        'other_actions_details' => [
+                            'OrderNo'   => $transaction_number,
+                        ],
                         'details'            => [
                             'heading' => $transaction['SalesInvoiceNo'] ? $transaction['SalesInvoiceNo'] : ( $transaction['CashReceiptNo'] ? $transaction['CashReceiptNo'] : 'N/A' ),
                             'body'    => [
@@ -281,7 +288,7 @@ class GenericReportsController extends DashboardController
                                     [
                                         'title'   => 'General',
                                         'content' => [
-                                            'transaction_number' => $transaction['SalesInvoiceNo'] ? $transaction['SalesInvoiceNo'] : ( $transaction['CashReceiptNo'] ? $transaction['CashReceiptNo'] : 'N/A' ),
+                                            'transaction_number' => $transaction_number,
                                             'transaction_date'   => isset( $transaction['TransactionDate'] ) ? CommonController::get_date_format( $transaction['TransactionDate'] ) : 'N/A',
                                             'total_quantity'     => isset( $transaction['TotalQty'] ) ? $transaction['TotalQty'] : 'N/A',
                                             'total_amount'       => ConstantsController::CURRENCY.number_format( $transaction['TotalAmount'], ConstantsController::ALLOWED_DECIMALS ),
@@ -583,10 +590,10 @@ class GenericReportsController extends DashboardController
 
         if ( count( $request->all() ) > 0 && isset( $request->submit ) )
         {
-            $memos = $this->ApiObj->Get_DebitMemos( $request->customer, $request->from_date, $request->to_date, $request->invoice_number, $request->vendor );
+            $memos = $this->ApiObj->Get_DebitMemos( $request->from_date, $request->to_date, $request->invoice_number, 'S00313' );
+//            $memos = $this->ApiObj->Get_DebitMemos( $request->from_date, $request->to_date, $request->invoice_number, Auth::user()->customer_id );
             $table = array( 'thead' => [
                 'memo_number'    => 'Memo Number',
-                // 'customer_id'    => 'Customer ID',
                 'vendor'         => 'Vendor ID',
                 'total_quantity' => 'Total Quantity',
                 'total_amount'   => 'Total Amount',
@@ -600,12 +607,11 @@ class GenericReportsController extends DashboardController
                 foreach ( $memos['DebitMemos'] as $memo )
                 {
                     $table['tbody'][] = [
-                        'memo_number'    => isset( $memo['PayableInvoiceNo'] ) ? $memo['PayableInvoiceNo'] : 'N/A',
-                        // 'customer_id'    => $memo['CustomerID'],
+                        'memo_number'    => $memo['PayableInvoiceNo'] ?? 'N/A',
                         'vendor'         => $memo['VendorID'],
-                        'total_quantity' => isset( $memo['TotalQty'] ) ? $memo['TotalQty'] : 'N/A',
+                        'total_quantity' => $memo['TotalQty'] ?? 'N/A',
                         'total_amount'   => ConstantsController::CURRENCY.number_format( $memo['TotalAmount'], ConstantsController::ALLOWED_DECIMALS ),
-                        'status'         => isset( $memo['Status'] ) ? $memo['Status'] : 'N/A',
+                        'status'         => $memo['Status'] ?? 'N/A',
                         'actions'        => [['type' => 'modal', 'label' => 'View Details']],
                         'details'        => [
                             // 'heading' => $memo['PayableInvoiceNo'].' : '.$memo['CustomerID'],
@@ -619,17 +625,21 @@ class GenericReportsController extends DashboardController
                                             // 'Customer ID'      => $memo['CustomerID'],
                                             'Vendor ID'        => $memo['VendorID'],
                                             'Sales Order #'    => $memo['SalesOrderNo'],
-                                            'Total Amount'     => $memo['TotalAmount'],
+                                            'Total Amount'     => number_format($memo['TotalAmount'], 2),
                                             'Payment Due Date' => CommonController::get_date_format( $memo['PaymentDueDate'] )
-                                        ]
+                                        ],
+                                        'cols' => 6
                                     ],
                                     [
                                         'title'   => 'Billing Details',
-                                        'content' => $memo['BillToAddress']
+                                        'content' => $memo['BillToAddress'],
+                                        'cols' => 6,
+                                        'hide_labels' => 1
                                     ],
                                     [
                                         'title'   => 'Details',
-                                        'content' => $memo['Details']
+                                        'content' => $memo['Details'],
+                                        'cols' => 12
                                     ]
                                 ]
                             ]
@@ -957,7 +967,6 @@ class GenericReportsController extends DashboardController
                 'status'       => 'Status',
                 'order_date'   => 'Order Date',
                 'actions'      => 'Actions',
-                'other_actions' => 'Reports',
             ], 'tbody' => [] );
 
             if ( isset( $view_orders['Orders'] ) )
@@ -1040,10 +1049,6 @@ class GenericReportsController extends DashboardController
                         'tab'          => isset( $view_order['Header']['TabStatusDescription'] ) ? $view_order['Header']['TabStatusDescription'] : '',
                         'order_date'   => isset( $view_order['Header']['OrderDate'] ) ? CommonController::get_date_format( $view_order['Header']['OrderDate'] ) : 'N/A',
                         'actions'      => [['type' => 'modal', 'label' => 'View Details']],
-                        'other_actions' => [['type' => 'modal', 'label' => 'View Reports']],
-                        'other_actions_details' => [
-                            'OrderNo'   => $view_order['Header']['OrderNo'],
-                        ],
                         'details'      => [
                             'heading' => $view_order['Header']['OrderNo'].' : '.$view_order['Header']['CustomerID'],
                             'body'    => [
