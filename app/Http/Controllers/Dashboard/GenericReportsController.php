@@ -145,9 +145,10 @@ class GenericReportsController extends DashboardController
             {
                 View::share( 'ReportData', $report['document']['ReportData'] );
                 return $report['document']['ReportData'];
+            } else {
+                return $report;
             }
         } catch (\Exception $e) {
-            dd($e);
             return response()->json(['error' => 'An error occurred. Please try again later.']);
         }
     }
