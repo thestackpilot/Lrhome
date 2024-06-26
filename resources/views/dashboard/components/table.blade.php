@@ -361,7 +361,8 @@ function get_table( $table, $tab = '' ) {
 
         $(document).on('click', '.other-details', function(){
             $('#loader-container').css('display', 'block');
-            const url = "{{ route('dashboard.orderreport') }}";
+            const url = "/dashboard/order_report";
+            {{--const url = "{{ route('dashboard.orderreport') }}";--}}
             var data = JSON.parse($('span.other-row-details', $(this).parent()).html());
             //console.log('Data', data);
             let SalesRepId = '';
