@@ -359,9 +359,9 @@ function get_table( $table, $tab = '' ) {
             //console.log('Data', data);
             let SalesRepId = '';
             let CustomerId = '';
-            let MenuTag = 'ViewOrder';
+            let MenuTag = 'ViewCashReceipt';
             let DocumentNo =  data.OrderNo;
-            const fullUrl = `${url}?SalesRepId=${SalesRepId}&CustomerId=${CustomerId}&MenuTag=${MenuTag}&DocumentNo=${DocumentNo}`;
+            const fullUrl = `${url}?MenuTag=${MenuTag}&DocumentNo=${DocumentNo}`;
             // console.log('full URL', fullUrl);
             $.ajax({
                 url: url,
