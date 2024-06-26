@@ -416,6 +416,7 @@ class GenericReportsController extends DashboardController
                             'ImageName', 'ItemID', 'ItemDescription', 'OrderQuantity', 'InvoicedQuantity', 'Price'
                         ]);
                         $memo['Details'][$index] = $column;
+                        $memo['Details'][$index]['Price'] = number_format($view['Price'], 2);
                     }
                         // echo print_r($memo,1);
 
@@ -745,6 +746,8 @@ class GenericReportsController extends DashboardController
                             'ImageName', 'ItemID', 'LineNo', 'ItemDescription', 'OrderQuantity', 'InvoicedQuantity', 'Price', 'ExtPrice', 'OpenQuantity'
                         ]);
                         $invoice['Details'][$index] = $column;
+                        $invoice['Details'][$index]['Price'] = number_format($view['Price'], 2);
+                        $invoice['Details'][$index]['ExtPrice'] = number_format($view['ExtPrice'], 2);
                     }
 
                     foreach($invoice['OrderTrackingDetail'] as $index => $view)
@@ -986,6 +989,8 @@ class GenericReportsController extends DashboardController
                             $column['href'] = route('frontend.item', [$view['Collection'], $view['DesignID']]);
                             $column['BackOrderQty'] = isset($view['BackOrder']) && CommonController::check_bit_field($view, 'BackOrder' ) ? ( (isset($view['ETADate']) ? $view['ETADate'] : '') . (isset($view['ETAQty']) ? $view['ETAQty'] : '')) : '';
                             $view_order['Detail'][$index] = $column;
+                            $view_order['Detail'][$index]['UnitPrice'] = number_format($view['UnitPrice'], 2);
+                            $view_order['Detail'][$index]['ExtPrice'] = number_format($view['ExtPrice'], 2);
                         }
 
                         foreach($view_order['OrderTrackingDetail'] as $index => $view)
