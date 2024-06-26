@@ -281,7 +281,7 @@ function get_table( $table, $tab = '' ) {
                                         `;
 
                                     data.push(json.data[i]);
-                                    if (json.data[i]['other_actions'][0]['type'] == 'modal')
+                                    if (typeof json.data[i]['other_actions'] !== 'undefined' && json.data[i]['other_actions'][0]['type'] == 'modal')
                                         json.data[i]['other_actions'] = `
                                             <button class="btn btn-sm btn-primary other-details" type="button">${json.data[i]['other_actions'][0]['label']}</button>
                                             <span class="other-row-details" style="display: none !important;">${JSON.stringify(json.data[i]['other_actions_details'])}</span>
@@ -312,11 +312,7 @@ function get_table( $table, $tab = '' ) {
 
         function getDetails(section) {
             var modal_body = '';
-            if (section.length < 1) {
-                modal_body += '<div class="col-md-12">';
-                modal_body += '<h5>N/A</h5>';
-                modal_body += '</div>';
-            } else {
+            if (section.length != 0) {
                 modal_body += '<div class="col-md-12">';
                 modal_body += '<table class="table mt-2 text-center details">';
                 modal_body += '<thead>';
