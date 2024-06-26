@@ -59,8 +59,7 @@ use App\Http\Controllers\CommonController;
 
                   <div class="account-content p-5">
                      <h1 class="section-title text-center mb-3 mt-3 font-ropa">Place Order</h1>
-{{--                     <form method="POST" class="place-order-form" action="{{ route('dashboard.placeorder') }}" class="pt-3">--}}
-                     <form method="POST" class="place-order-form" action="/checkout/place-order" class="pt-3">
+                     <form method="POST" class="place-order-form" action="{{ route('dashboard.placeorder') }}" class="pt-3">
                         @csrf
                         <div class="row">
                            @if($filters)
