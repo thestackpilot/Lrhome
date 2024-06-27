@@ -286,7 +286,7 @@ class CommonController
         }
         else
         {
-            $new_date = date("M-d-Y", strtotime($date));
+            $new_date = date("Y-m-d", strtotime($date));
         }
 
         return $new_date;
