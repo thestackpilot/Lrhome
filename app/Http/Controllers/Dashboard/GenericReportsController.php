@@ -249,8 +249,6 @@ class GenericReportsController extends DashboardController
                 'total_amount'       => 'Total Amount',
                 'transaction_type'   => 'Transaction Type',
                 'actions'            => 'Actions',
-                'other_actions' => 'Reports',
-
             ], 'tbody' => [] );
 
             if ( isset( $transactions['FinancialTransactions'] ) )
@@ -276,8 +274,8 @@ class GenericReportsController extends DashboardController
                         'transaction_type'   => $transaction['TransactionType'],
                         'customer_id'        => isset( $transaction['CustomerID'] ) ? $transaction['CustomerID'] : 'N/A',
                         'status'             => isset( $transaction['Status'] ) ? $transaction['Status'] : 'N/A',
-                        'actions'            => [['type' => 'modal', 'label' => 'View Details']],
-                        'other_actions' => [['type' => 'modal', 'label' => 'View Reports']],
+                        'actions'            => $transaction['TransactionType'] === 'Cash Receipt' ? [['type' => 'modal', 'label' => 'View Reports']] : [['type' => 'modal', 'label' => 'View Details']],
+//                        'other_actions' => [['type' => 'modal', 'label' => 'View Reports']],
                         'other_actions_details' => [
                             'OrderNo'   => $transaction_number,
                         ],
@@ -457,8 +455,9 @@ class GenericReportsController extends DashboardController
                         if(!empty($memo['RMANo'])){
                             $contents['RMA#'] = $memo['RMANo'];
                         }
-                        if(!empty($memo['SalesRepID'])){
-                            $contents['Rep'] = $memo['SalesRepID'];
+                        if(!empty($memo['SalesRepID']) && Auth::user()->is_sale_rep){
+                            $contents['Rep'] = $memo['SalesRepID'] . ' ' . Auth::user()->firstname . ' ' . Auth::user()->lastname;
+                            $contents['Created By'] = Auth::user()->firstname . ' ' . Auth::user()->lastname;
                         }
                         if(!empty($memo['SpecialInstructions'])){
                             $contents['Special Instructions'] = $memo['SpecialInstructions'];
@@ -794,8 +793,8 @@ class GenericReportsController extends DashboardController
                         'OrderPlacedBy' => $invoice['OrderPlacedBy']
                     ];
 
-                    if (!empty($invoice['SalesRepID'])) {
-                        $customer_content['Rep'] = $invoice['SalesRepID'];
+                    if (!empty($invoice['SalesRepID']) && Auth::user()->is_sale_rep) {
+                        $customer_content['Rep'] = $invoice['SalesRepID'] . ' ' . Auth::user()->firstname . ' ' . Auth::user()->lastname;
                     }
 
                     if (!empty($invoice['ShipVia'])) {
@@ -1043,8 +1042,8 @@ class GenericReportsController extends DashboardController
                         'OrderPlacedBy'   => $view_order['Header']['OrderTakenBy']
                     ];
 
-                    if (!empty($view_order['Header']['SalesRepID'])) {
-                        $customer_content['Rep'] = $view_order['Header']['SalesRepID'];
+                    if (!empty($view_order['Header']['SalesRepID']) && Auth::user()->is_sale_rep) {
+                        $customer_content['Rep'] = $view_order['Header']['SalesRepID'] . ' ' . Auth::user()->firstname . ' ' . Auth::user()->lastname;
                     }
 
                     if (!empty($view_order['Header']['SalesRepID'])) {
