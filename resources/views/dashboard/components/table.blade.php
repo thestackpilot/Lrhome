@@ -42,10 +42,17 @@ function get_table( $table, $tab = '' ) {
                     $table_body .= '<td>';
                     foreach($row['actions'] as $action) {
                         if($action['type'] == 'modal' ) {
-                            $table_body .= '
-                            <button class="btn btn-sm btn-primary view-details" type="button">'.$action['label'].'</button>
-                            <span class="row-details" style="display: none !important;">'.json_encode($row['details']).'</span>
-                            ';
+                            if (isset($row['transaction_type']) && $row['transaction_type'] === 'Cash Receipt') {
+                                 $table_body .= '
+                                 <button class="btn btn-sm btn-primary other-details" type="button">'.$action['label'].'</button>
+                                 <span class="other-row-details" style="display: none !important;">'.json_encode($row['other_actions_details']).'</span>
+                                 ';
+                            } else {
+                                $table_body .= '
+                                <button class="btn btn-sm btn-primary view-details" type="button">'.$action['label'].'</button>
+                                <span class="row-details" style="display: none !important;">'.json_encode($row['details']).'</span>
+                                ';
+                            }
                         }
                     }
                     $table_body .= '</td>';
@@ -270,19 +277,29 @@ function get_table( $table, $tab = '' ) {
                                         $('.table.data-table:visible').attr('data-tab-name') != 'All'
                                     ) continue;
 
-                                    if (json.data[i]['actions'][0]['type'] == 'modal')
-                                        json.data[i]['actions'] = `
+                                    console.log(json.data)
+
+                                    if (json.data[i]['actions'][0]['type'] == 'modal') {
+                                        if (typeof json.data[i]['transaction_type'] != 'undefined' && json.data[i]['transaction_type'] === 'Cash Receipt') {
+                                            json.data[i]['actions'] = `
+                                            <button class="btn btn-sm btn-primary other-details" type="button">${json.data[i]['actions'][0]['label']}</button>
+                                            <span class="other-row-details" style="display: none !important;">${JSON.stringify(json.data[i]['other_actions_details'])}</span>
+                                            `;
+                                        } else {
+                                            json.data[i]['actions'] = `
                                             <button class="btn btn-sm btn-primary view-details" type="button">${json.data[i]['actions'][0]['label']}</button>
                                             <span class="row-details" style="display: none !important;">${JSON.stringify(json.data[i]['details'])}</span>
-                                        `;
-
-                                    data.push(json.data[i]);
-                                    if (typeof json.data[i]['other_actions'] !== 'undefined' && json.data[i]['other_actions'][0]['type'] == 'modal')
+                                            `;
+                                        }
+                                        data.push(json.data[i]);
+                                    }
+                                    if (typeof json.data[i]['other_actions'] !== 'undefined' && json.data[i]['other_actions'][0]['type'] == 'modal') {
                                         json.data[i]['other_actions'] = `
                                             <button class="btn btn-sm btn-primary other-details" type="button">${json.data[i]['other_actions'][0]['label']}</button>
                                             <span class="other-row-details" style="display: none !important;">${JSON.stringify(json.data[i]['other_actions_details'])}</span>
                                         `;
-                                    data.push(json.data[i]);
+                                        data.push(json.data[i]);
+                                    }
                                 }
 
                                 if (data.length != json.data.length) {
