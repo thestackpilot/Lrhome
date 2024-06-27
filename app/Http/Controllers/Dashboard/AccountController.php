@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use Carbon\Carbon;
 use View;
 use Session;
 use App\Models\Cart;
@@ -191,7 +192,7 @@ class AccountController extends DashboardController
                     'customer_po'  => $view_order['Header']['CustomerPO'],
                     'total_Amount' => ConstantsController::CURRENCY.number_format( $view_order['Header']['TotalAmount'], ConstantsController::ALLOWED_DECIMALS ),
                     'status'       => $view_order['Header']['Status'],
-                    'order_date'   => isset( $view_order['Header']['OrderDate'] ) ? $view_order['Header']['OrderDate'] : 'N/A',
+                    'order_date'   => isset( $view_order['Header']['OrderDate'] ) ? Carbon::parse($view_order['Header']['OrderDate'])->format('M-d-Y') : 'N/A',
                     // 'tab'          => isset( $view_order['Header']['TabStatusDescription'] ) ? $view_order['Header']['TabStatusDescription'] : '',
                     'actions'      => [['type' => 'modal', 'label' => 'View Details']],
                     'details'      => [
