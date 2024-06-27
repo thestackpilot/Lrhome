@@ -794,7 +794,7 @@ class GenericReportsController extends DashboardController
 
                     $table['tbody'][] = [
                         'invoice_no'     => $invoice['SalesInvoiceNo'],
-                        'invoice_date'   => CommonController::get_date_format( $invoice['InvoiceDate'] ),
+                        'invoice_date'   => Carbon::parse( $invoice['InvoiceDate'] )->format('M-d-Y'),
                         'customer_id'    => $invoice['CustomerID'],
                         'total_quantity' => isset( $invoice['TotalQty'] ) ? $invoice['TotalQty'] : 'N/A',
                         'total_amount'   => ConstantsController::CURRENCY.number_format( $invoice['TotalAmount'], ConstantsController::ALLOWED_DECIMALS ),
