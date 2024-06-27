@@ -120,6 +120,23 @@ function get_table( $table, $tab = '' ) {
         </div>
     </div>
 </div>
+<div class="modal fade other-detail-modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-xl">
+        <div class="modal-content">
+            <div class="modal-header other-detail-modal-header text-center">
+                <h4 style='float: left;'>Report Details</h4>
+                <button type="button" class="close other-detail-modal-close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" style="font-size: 40px;">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body other-detail-modal-body p-5" id="section-details" style="background: #fff;">
+            </div>
+            <div class="modal-footer">
+                {{-- <button type="button" class="btn btn-secondary close-modal other-detail-modal-close" data-dismiss="modal">Close</button> --}}
+            </div>
+        </div>
+    </div>
+</div>
 <div class="loader-container" id="loader-container" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999;">
     <div class="loader" style="border: 50px solid #f3f3f3; border-top: 50px solid #660000; border-radius: 50%; width: 100px; height: 100px; animation: spin 1s linear infinite;">
     </div>
