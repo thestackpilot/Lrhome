@@ -23,7 +23,7 @@ use App\Http\Controllers\CommonController;
 
         <div class="home-row hp-video" style="background-image: url({{$pages -> home -> sections -> banner -> image}}) !important;">
             <div class="hpmt-video-text">
-                <div class="hpmt-video-text-content">
+                <div class="hpmt-video-text-content" style="display: none !important">
                     <h2 class="title">{{$pages -> home -> sections -> banner -> caption_1}}</h2>
                     <a href="{{$pages -> home -> sections -> banner -> url}}" class="cta-btn" target="_blank">{{$pages -> home -> sections -> banner -> caption_2}}</a>
                     <a href="https://lrhome.us/images-bkp/LR_Home_Retail_Partner_Appreciation_Promotion_FINAL_Oct_2_2022_v2.pdf" class="" target="_blank" style="font-size: 12px;text-decoration: underline;font-weight: bold;">Terms &amp; Conditions</a>
