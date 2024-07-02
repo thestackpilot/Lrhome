@@ -621,7 +621,13 @@ class GenericReportsController extends DashboardController
 
         if ( count( $request->all() ) > 0 && isset( $request->submit ) )
         {
-            $memos = $this->ApiObj->Get_DebitMemos( $request->from_date, $request->to_date, $request->invoice_number, Auth::user()->customer_id );
+           // $memos = $this->ApiObj->Get_DebitMemos( $request->from_date, $request->to_date, $request->invoice_number, Auth::user()->customer_id );
+           if(Auth::user()->is_customer){
+            $memos = $this->ApiObj->Get_DebitMemos( Auth::user()->customer_id , $request->from_date, $request->to_date, $request->invoice_number, "");
+           }
+           else if(Auth::user()->is_sale_rep){
+            $memos = $this->ApiObj->Get_DebitMemos( "" , $request->from_date, $request->to_date, $request->invoice_number, Auth::user()->customer_id);
+           }
             $table = array( 'thead' => [
                 'memo_number'    => 'Memo Number',
                 'vendor'         => 'Vendor ID',
@@ -637,23 +643,24 @@ class GenericReportsController extends DashboardController
                 foreach ( $memos['DebitMemos'] as $memo )
                 {
                     $table['tbody'][] = [
-                        'memo_number'    => $memo['PayableInvoiceNo'] ?? 'N/A',
-                        'vendor'         => $memo['VendorID'],
-                        'total_quantity' => $memo['TotalQty'] ?? 'N/A',
+                        'memo_number'    => isset( $memo['SalesInvoiceNo'] ) ? $memo['SalesInvoiceNo'] : 'N/A',
+                        // 'customer_id'    => $memo['CustomerID'],
+                        'vendor'         => $memo['CustomerID'],
+                        'total_quantity' => isset( $memo['TotalQty'] ) ? $memo['TotalQty'] : 'N/A',
                         'total_amount'   => ConstantsController::CURRENCY.number_format( $memo['TotalAmount'], ConstantsController::ALLOWED_DECIMALS ),
                         'status'         => $memo['Status'] ?? 'N/A',
                         'actions'        => [['type' => 'modal', 'label' => 'View Details']],
                         'details'        => [
                             // 'heading' => $memo['PayableInvoiceNo'].' : '.$memo['CustomerID'],
-                            'heading' => $memo['PayableInvoiceNo'],
+                           'heading' => $memo['SalesInvoiceNo'],
                             'body'    => [
                                 'sections' => [
                                     [
                                         'title'   => 'General',
                                         'content' => [
-                                            'Invoice Number'   => $memo['PayableInvoiceNo'],
-                                            // 'Customer ID'      => $memo['CustomerID'],
-                                            'Vendor ID'        => $memo['VendorID'],
+                                           'Invoice Number'   => $memo['SalesInvoiceNo'],
+                                            'Customer ID'      => $memo['CustomerID'],
+                                           'Vendor ID'        => $memo['CustomerID'],
                                             'Sales Order #'    => $memo['SalesOrderNo'],
                                             'Total Amount'     => number_format($memo['TotalAmount'], 2),
                                             'Payment Due Date' => CommonController::get_date_format( $memo['PaymentDueDate'] )
@@ -663,8 +670,7 @@ class GenericReportsController extends DashboardController
                                     [
                                         'title'   => 'Billing Details',
                                         'content' => $memo['BillToAddress'],
-                                        'cols' => 6,
-                                        'hide_labels' => 1
+                                        'cols' => 6
                                     ],
                                     [
                                         'title'   => 'Details',
