@@ -563,7 +563,14 @@ class GenericReportsController extends DashboardController
 
         if ( count( $request->all() ) > 0 && isset( $request->submit ) )
         {
-            $memos = $this->ApiObj->Get_DebitMemos( $request->customer, $request->from_date, $request->to_date, $request->invoice_number, $request->vendor );
+           // $memos = $this->ApiObj->Get_DebitMemos( $request->customer, $request->from_date, $request->to_date, $request->invoice_number, $request->vendor );
+           if(Auth::user()->is_customer){
+            $memos = $this->ApiObj->Get_DebitMemos( Auth::user()->customer_id , $request->from_date, $request->to_date, $request->invoice_number, "");
+           }
+           else if(Auth::user()->is_sale_rep){
+            $memos = $this->ApiObj->Get_DebitMemos( "" , $request->from_date, $request->to_date, $request->invoice_number, Auth::user()->customer_id);
+           }
+
             $table = array( 'thead' => [
                 'memo_number'    => 'Memo Number',
                 // 'customer_id'    => 'Customer ID',
@@ -580,36 +587,39 @@ class GenericReportsController extends DashboardController
                 foreach ( $memos['DebitMemos'] as $memo )
                 {
                     $table['tbody'][] = [
-                        'memo_number'    => isset( $memo['PayableInvoiceNo'] ) ? $memo['PayableInvoiceNo'] : 'N/A',
+                        'memo_number'    => isset( $memo['SalesInvoiceNo'] ) ? $memo['SalesInvoiceNo'] : 'N/A',
                         // 'customer_id'    => $memo['CustomerID'],
-                        'vendor'         => $memo['VendorID'],
+                        'vendor'         => $memo['CustomerID'],
                         'total_quantity' => isset( $memo['TotalQty'] ) ? $memo['TotalQty'] : 'N/A',
                         'total_amount'   => ConstantsController::CURRENCY.number_format( $memo['TotalAmount'], ConstantsController::ALLOWED_DECIMALS ),
                         'status'         => isset( $memo['Status'] ) ? $memo['Status'] : 'N/A',
                         'actions'        => [['type' => 'modal', 'label' => 'View Details']],
                         'details'        => [
                             // 'heading' => $memo['PayableInvoiceNo'].' : '.$memo['CustomerID'],
-                            'heading' => $memo['PayableInvoiceNo'],
+                           'heading' => $memo['SalesInvoiceNo'],
                             'body'    => [
                                 'sections' => [
                                     [
                                         'title'   => 'General',
                                         'content' => [
-                                            'Invoice Number'   => $memo['PayableInvoiceNo'],
-                                            // 'Customer ID'      => $memo['CustomerID'],
-                                            'Vendor ID'        => $memo['VendorID'],
+                                           'Invoice Number'   => $memo['SalesInvoiceNo'],
+                                            'Customer ID'      => $memo['CustomerID'],
+                                           'Vendor ID'        => $memo['CustomerID'],
                                             'Sales Order #'    => $memo['SalesOrderNo'],
                                             'Total Amount'     => $memo['TotalAmount'],
                                             'Payment Due Date' => CommonController::get_date_format( $memo['PaymentDueDate'] )
-                                        ]
+                                        ],
+                                        'cols' => 6
                                     ],
                                     [
                                         'title'   => 'Billing Details',
-                                        'content' => $memo['BillToAddress']
+                                        'content' => $memo['BillToAddress'],
+                                        'cols' => 6
                                     ],
                                     [
                                         'title'   => 'Details',
-                                        'content' => $memo['Details']
+                                        'content' => $memo['Details'],
+                                        'cols' => 6
                                     ]
                                 ]
                             ]

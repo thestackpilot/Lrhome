@@ -135,12 +135,13 @@ function get_table( $table, $tab = '' ) {
             var modal_body = '';
             modal_body += '<div class="row mt-5">';
             data.body.sections.forEach((section, i) => {
+                console.log('section check', section, i);
                 modal_body += '<div class="mb-3 col-md-' + section.cols + '">';
 
                 if (Array.isArray(section.content) && typeof section.content.length !== 'undefined') {
                     modal_body += getDetails(section.content);
                 } else if (typeof section.content.tabs !== 'undefined') {
-                    modal_body += '<ul class="nav nav-tabs" id="myTab" role="tablist">';
+                     modal_body += '<ul class="nav nav-tabs" id="myTab" role="tablist">';
                     Object.keys(section.content.tabs).forEach(function(tab, i) {
                         modal_body += '<li class="nav-item" role="presentation">';
                         modal_body += `<button data-type="modal" class="nav-link ${i == 0 ? 'active': ''}" id="${tab}-tab" data-bs-toggle="tab" data-bs-target="#${tab}" type="button" role="tab" aria-controls="${tab}" aria-selected="true">${tab}</button>`;
