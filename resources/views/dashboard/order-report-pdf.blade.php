@@ -2,6 +2,14 @@
     use App\Http\Controllers\ConstantsController;
     use App\Http\Controllers\CommonController;
 @endphp
+@php
+    function formatKey ($key) {
+            $result = preg_replace('/([A-Z|0-9])/', ' $1', $key);
+            $result = trim($result);
+            $result = str_replace('_', ' ', $result);
+            return ucfirst(preg_replace('/([A-Z])\s(?=[A-Z])/', '$1', $result));
+        }
+@endphp
 <html>
 <head>
     <title>Order Report</title>
@@ -36,7 +44,7 @@
         }
 
         .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
-            font-size: 12px;
+            font-size: 10px;
             vertical-align: middle;
         }
     </style>
@@ -57,7 +65,7 @@
 
         .w-6 {
             width: 49% !important;
-            float: left;
+            /*float: left;*/
         }
 
         .w-12 {
@@ -72,99 +80,159 @@
 
 </head>
 
-<body marginstyle="width:0" marginheight="0" topmargin="0">
+<body>
 
 <div class="content">
-    <div class="col-6">
-        <div style="display: flex;align-items: center; border-bottom: 1px solid #ececec; padding-bottom: 20px;">
-            <div class="logo text-md-left">
-                <img src="{{asset($basicSettings -> logo_dark)}}" width="200" alt="LR Home">
-            </div>
-            <div style="margin-left: 20px">
-                <p style="margin: 0"><strong>{{$basicSettings -> address}}</strong></p>
-                <p style="margin: 0"><strong>TEL {{$basicSettings -> contact}}</strong></p>
-                <p style="margin: 0"><strong>Fax (706)-259-0156</strong></p>
-                <p style="margin: 0"><strong>Email: {{$basicSettings->email}}</strong></p>
-                <p style="margin: 0"><strong>EIN: 58-2658997</strong></p>
-            </div>
-        </div>
-    </div>
-    <div id="report_details">
-        @if(count($report_data['sections']))
-            <div class="details" style="margin-top: 10px">
-                @foreach($report_data['sections'] as $section)
-                    <div class="w-{{ $section['cols'] }}">
-                        <h5 style="margin: 0"><strong>{{ $section['title'] }}</strong></h5>
-                        @if($section['title'] !== 'Detail' && $section['title'] !== 'Details')
-                            @foreach($section['content'] as $key => $content)
-                                @if($content !== 'N/A' && $content)
-                                    @if(empty($section['hide_labels']))
-                                        <p style="margin: 0; font-size: 12px"><strong>{{ formatKey($key) }}: </strong>{{ $content }}</p>
-                                    @else
-                                        <p style="margin: 0; font-size: 12px">{{ $content }}</p>
-                                    @endif
-                                @endif
-                            @endforeach
-                                <br>
-                        @else
-                            <div class="items" style="margin-top: 10px;">
-                                @if(!empty($section['content']))
-                                    @if(!empty($section['content']['tabs']))
-                                        @foreach($section['content']['tabs'] as $key => $items)
-                                            <h5 style="margin: 0"><strong>{{ formatKey($key) }}</strong></h5>
-                                            <table class="table mt-2 details">
-                                                @if(count($items))
+    {{--    <div id="report_details">--}}
+    <table>
+        <tr>
+            <td>
+                <div style="display: flex;align-items: center; border-bottom: 1px solid #ececec; padding-bottom: 20px;justify-content: space-between">
+                    <div class="logo text-md-left">
+                        <img src="{{asset($basicSettings -> logo_dark)}}" width="175" alt="LR Home">
+                    </div>
+                    <div style="margin-left: 20px;">
+                        <p style="margin: 0"><strong>{{$basicSettings -> address}}</strong></p>
+                        <p style="margin: 0"><strong>TEL {{$basicSettings -> contact}}</strong></p>
+                        <p style="margin: 0"><strong>Fax (706)-259-0156</strong></p>
+                        <p style="margin: 0"><strong>Email: {{$basicSettings->email}}</strong></p>
+                        <p style="margin: 0"><strong>EIN: 58-2658997</strong></p>
+                    </div>
+                </div>
+                @if(count($report_data['sections']))
+                    <div class="details" style="margin-top: 10px; display: flex; flex-wrap: wrap">
+
+                        @foreach($report_data['sections'] as $section)
+                            <div class="w-{{ $section['cols'] }}">
+                                <h5 style="margin: 0"><strong>{{ $section['title'] }}</strong></h5>
+                                @if($section['title'] !== 'Detail' && $section['title'] !== 'Details' && $section['title'] !== 'Items List')
+                                    @foreach($section['content'] as $key => $content)
+                                        @if(($content !== 'N/A' && $content) || $key === 'Discount')
+                                            @if($key === 'Discount')
+                                                {{--                                                    @if($content === 'N/A')--}}
+                                                @php
+                                                    $content = number_format($content, ConstantsController::ALLOWED_DECIMALS)
+                                                @endphp
+                                                {{--                                                    @endif--}}
+                                            @endif
+                                            @if(empty($section['hide_labels']))
+                                                <p style="margin: 0; font-size: 10px"><strong>{{ formatKey($key) }}
+                                                        : </strong>{{ $content }}</p>
+                                            @else
+                                                <p style="margin: 0; font-size: 12px">{{ $content }}</p>
+                                            @endif
+                                        @endif
+                                    @endforeach
+                                    <br>
+                                @else
+                                    <div class="items" style="margin-top: 10px;">
+                                        @if(!empty($section['content']))
+                                            @if(!empty($section['content']['tabs']))
+                                                @foreach($section['content']['tabs'] as $key => $items)
+                                                    <h5 style="margin: 0"><strong>{{ formatKey($key) }}</strong></h5>
+                                                    <table class="table mt-2 details">
+                                                        @if(count($items))
+                                                            <thead>
+                                                            @foreach($items[0] as $item_key => $item)
+                                                                @if($item_key !== 'href')
+                                                                    @php
+                                                                        if ($item_key === 'ImageName') {
+                                                                            $item_key = 'Image';
+                                                                        }
+                                                                    @endphp
+                                                                    <th>{{ formatKey($item_key) }}</th>
+                                                                @endif
+                                                            @endforeach
+                                                            </thead>
+                                                            <tbody>
+                                                            @foreach($items as $item_key => $item_data)
+                                                                <tr>
+                                                                    @foreach($item_data as $item_key => $item)
+                                                                        @if($item_key !== 'href' && $item_key !== 'ImageName')
+                                                                            <td><span>{{ $item }}</span></td>
+                                                                        @endif
+                                                                        @if($item_key === 'ImageName')
+                                                                            <td>
+                                                                                <img
+                                                                                    src="{{$active_theme_json->theme_api_image_url . $item}}"
+                                                                                    alt="{{ $item }}"
+                                                                                    onerror="{{url('/').ConstantsController::IMAGE_PLACEHOLDER}}"
+                                                                                    width='50'>
+                                                                            </td>
+                                                                        @endif
+                                                                    @endforeach
+                                                                </tr>
+                                                            @endforeach
+                                                            </tbody>
+                                                        @else
+                                                            <div class="m-4 text-center">
+                                                                <h4>No Data Found</h4>
+                                                            </div>
+                                                        @endif
+                                                    </table>
+                                                @endforeach
+                                            @elseif(count($section['content']) && empty($section['content']['tabs']))
+                                                <table class="table mt-2 details">
+                                                    @php
+                                                        $header = $section['content'][0];
+                                                    @endphp
                                                     <thead>
-                                                    @foreach($items[0] as $item_key => $item)
+                                                    @foreach($header as $item_key => $item)
                                                         @if($item_key !== 'href')
+                                                            @php
+                                                                if ($item_key === 'ImageName') {
+                                                                    $item_key = 'Image';
+                                                                }
+                                                            @endphp
                                                             <th>{{ formatKey($item_key) }}</th>
                                                         @endif
                                                     @endforeach
                                                     </thead>
                                                     <tbody>
-                                                    @foreach($items as $item_key => $item_data)
+                                                    @foreach($section['content'] as $key => $item_object)
                                                         <tr>
-                                                            @foreach($item_data as $item_key => $item)
+                                                            @foreach($item_object as $item_key => $item)
+
                                                                 @if($item_key !== 'href' && $item_key !== 'ImageName')
                                                                     <td><span>{{ $item }}</span></td>
                                                                 @endif
                                                                 @if($item_key === 'ImageName')
                                                                     <td>
-                                                                        <img src="{{$active_theme_json->theme_api_image_url . $item}}" alt="{{ $item }}" onerror="{{url('/').ConstantsController::IMAGE_PLACEHOLDER}}" width='50'>
+                                                                        <img
+                                                                            src="{{$active_theme_json->theme_api_image_url . $item}}"
+                                                                            alt="{{ $item }}"
+                                                                            onerror="{{url('/').ConstantsController::IMAGE_PLACEHOLDER}}"
+                                                                            width='50'>
                                                                     </td>
                                                                 @endif
                                                             @endforeach
                                                         </tr>
                                                     @endforeach
                                                     </tbody>
-                                                @else
-                                                    <div class="m-4 text-center">
-                                                        <h4>No Data Found</h4>
-                                                    </div>
-                                                @endif
-                                            </table>
-                                        @endforeach
-                                    @else
-                                        <div class="m-4 text-center">
-                                            <h4>No Data Found</h4>
-                                        </div>
-                                    @endif
-                                @else
-                                    <div class="m-4 text-center">
-                                        <h4>No Data Found</h4>
+                                                    @else
+                                                        <div class="m-4 text-center">
+                                                            <h4>No Data Found</h4>
+                                                        </div>
+                                                    @endif
+                                                    @else
+                                                        <div class="m-4 text-center">
+                                                            <h4>No Data Found</h4>
+                                                        </div>
+                                            @endif
                                     </div>
                                 @endif
                             </div>
-                        @endif
+                        @endforeach
                     </div>
-                @endforeach
-            </div>
-        @else
-            <div class="m-4 text-center">
-                <h4>No Data Found</h4>
-            </div>
-        @endif
-    </div>
+                @else
+                    <div class="m-4 text-center">
+                        <h4>No Data Found</h4>
+                    </div>
+                @endif
+            </td>
+        </tr>
+    </table>
+    {{--    </div>--}}
 </div>
 
 </body>

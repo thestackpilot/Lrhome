@@ -12,6 +12,7 @@ if (
    strtolower($payment_terms_list[md5( $payment_term )]['CreditCardTerms']) != 'false' &&
    strtolower($payment_terms_list[md5( $payment_term )]['CreditCardTerms']) != ''
 ){
+    prr($payment_term);
    $card_required = 'data-required=true';
 }
 @endphp
@@ -355,7 +356,7 @@ if (
                                  </div>
                               </div>
                            </div>
-                           
+
                            <div class="d-flex flex-column justify-content-between column-gap-20 mb-3">
                               <label for="shipping_instructions" class="p-0 m-0 mb-3">Shipping Instructions</label>
                               <textarea maxlength="4000" name="shipping_instructions" class="form-control bg-white" placeholder="Shipping Instructions"></textarea>
@@ -378,8 +379,8 @@ if (
                               </div> --}}
                               <div id="" class="show" aria-labelledby="headingOne">
                                  @php
-                                    
-                                       
+
+
                                  @endphp
                                  <div class="card-body">
                                     <div class="new-cc-section">
@@ -475,7 +476,7 @@ if (
                               </div>
                            </div>
                         </div>
-                      
+
                         <div class="address-summery step-4 d-none mb-5">
                            <div class="d-flex column-gap-20 address-summery-inner">
                               <div class="d-flex flex-column fullwidth">
@@ -626,7 +627,8 @@ if (
       var card_required = "{{$card_required}}";
       console.log(card_required == "" ? true : false);
       if (typeof paytrace !== 'undefined')
-         paytrace.setKeyAjax('{{route("checkout.security")}}');
+         {{--paytrace.setKeyAjax('{{route("checkout.security")}}');--}}
+         paytrace.setKeyAjax('/checkout/pt/security');
 
       function validateEmail(email) {
          var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -645,7 +647,7 @@ if (
 
          for(i = step; i > 0; i--)
             $(`#progressbar li[data-step="${i}"]`).removeClass('muted').addClass('active');
-         
+
          $(`#progressbar li[data-step="${step}"]`).addClass('current');
 
          $('html, body').animate({scrollTop:0}, 'slow');
@@ -691,7 +693,7 @@ if (
          $('.step-2').removeClass('d-none');
          $('.go-back').attr('data-step', 'step-1');
          $('[name="ship-pickup"]').change();
-        
+
          update_active_step( 2 );
       });
       $('.go-back').on('click', function() {
@@ -768,7 +770,7 @@ if (
                }
             });
          }
-         
+
          if ($('.same-billing-address').is(':checked')) {
             tryingToFill = true;
          }
@@ -800,7 +802,7 @@ if (
             if(card_required == "")
             {
                shipping_address = '';
-               $('.go-back').attr('data-step', 'step-2'); 
+               $('.go-back').attr('data-step', 'step-2');
                if (!$('.other-address').hasClass('muted-fields')) {
                $('.other-address input[type="text"]').each(function() {
                   shipping_address += `<p class="m-0 mb-3"><b>${$(this).attr('placeholder').replace('*', '')}: </b> ${$(this).val()}</p>`;
@@ -1032,7 +1034,8 @@ if (
                _formData[$(this).attr('name')] = $(this).val();
             });
 
-            $.post("{{route('frontend.checkout.place_order')}}", _formData, function(data) {
+            {{--$.post("{{route('frontend.checkout.place_order')}}", _formData, function(data) {--}}
+            $.post("/checkout/place-order", _formData, function(data) {
                if ((typeof data).toLocaleLowerCase() != 'object')
                   data = JSON.parse(data);
 
@@ -1040,7 +1043,8 @@ if (
                   $('#checkOut_popup .title').html('<i class="bi bi-check-circle-fill" style="color:#127812;font-size:30px;"></i> Order Placed');
                   $("#checkOut_popup .btn-back-to-home").removeAttr('data-dismiss').attr('href', "{{route('frontend.home')}}").html("Back to Home");
                } else {
-                  $('#checkOut_popup .title').html('<i class="bi bi-info-circle-fill" style="color:#c90f41;font-size:30px;"></i>Oops!');
+                  $('#checkOut_popup .title').html('<i class="bi bi-info-circle-fill" style="color:#c90f41;font-size:30px;"></i>' +
+                      's!');
                   $('#checkOut_popup .btn-back-to-home').attr('data-dismiss', 'modal').attr('href', "#").html("Close");
                   $('.place-order-btn, .go-back').removeAttr('disabled').removeClass('btn-muted');
                }

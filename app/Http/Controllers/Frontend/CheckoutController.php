@@ -354,7 +354,7 @@ $states = $this->ApiObj->Get_CountryStates( $country_id );
                     'UnitPrice' => $item['item_price'],
                     'SubTotal'  => $item['item_total'],
                     'MarkFor'   => isset( $requestDataArray['sidemark'] ) && isset( $requestDataArray['sidemark'][$item['item_id']] ) ? $requestDataArray['sidemark'][$item['item_id']] : ''
-                
+
                 ]);
                 $total_amount += $item['item_total'];
             }
@@ -426,25 +426,36 @@ $states = $this->ApiObj->Get_CountryStates( $country_id );
                     if(array_key_exists('Instructions',$cart_data['shipping']) == false){
                         $cart_data['shipping']['Instructions'] = $request->shipping_instructions;
                     }
-                   
+
                     $cart_data['shipping']['SO_Number'] = $result['ObjectID'];
-                   
+
                     try {
-                       
+
                         $to_email = ConstantsController::ORDER_NOTIFICATION;
-    
-                        if(isset($headers['Email']) && $headers['Email'] != ''){
-                            array_push($to_email, $headers['Email']);
+
+                        // if(isset($headers['Email']) && $headers['Email'] != ''){
+                        //     array_push($to_email, $headers['Email']);
+                        // }
+                        $cust_detail  = $this->ApiObj->Get_CustomerDetail($cart_data['shipping']['CustomerID']);
+                        $cust_billing_email = $cust_detail['CustomerDetail']['CustomerAddressDetail']['BillToAddresses'][0]['Email'];
+                        $cart_data['shipping']['BillingAddress1'] = $cust_detail['CustomerDetail']['CustomerAddressDetail']['BillToAddresses'][0]['Address1'];
+                        $cart_data['shipping']['BillingFirstName'] = $cust_detail['CustomerDetail']['CustomerAddressDetail']['BillToAddresses'][0]['FirstName'];
+                        $cart_data['shipping']['BillingLastName'] = $cust_detail['CustomerDetail']['CustomerAddressDetail']['BillToAddresses'][0]['LastName'];
+                        $cart_data['shipping']['BillingCity'] = $cust_detail['CustomerDetail']['CustomerAddressDetail']['BillToAddresses'][0]['City'];
+                        $cart_data['shipping']['BillingState'] = $cust_detail['CustomerDetail']['CustomerAddressDetail']['BillToAddresses'][0]['State'];
+                        $cart_data['shipping']['BillingZip'] = $cust_detail['CustomerDetail']['CustomerAddressDetail']['BillToAddresses'][0]['Zip'];
+                        if (!empty($cust_billing_email)) {
+                            array_push($to_email, $cust_billing_email);
+
+                            SendMail::dispatch( [
+                                'data'     => $cart_data,
+                                'slug'     => "Thank you: Order# " . $result['ObjectID'],
+                                'email'    => $to_email,
+                                'template' => 'email.order-confirmation',
+                                'cc_email' => Auth::user()->is_sale_rep ? (isset(Auth::user()->email) ? Auth::user()->email : '') : ''
+                            ] );
                         }
-                        
-                        SendMail::dispatch( [
-                            'data'     => $cart_data,
-                            'slug'     => "Thank you: Order# " . $result['ObjectID'],
-                            'email'    => $to_email,
-                            'template' => 'email.order-confirmation',
-                            'cc_email' => Auth::user()->is_sale_rep ? (isset(Auth::user()->email) ? Auth::user()->email : '') : ''
-                        ] );
-                        
+
                         prr( " :: Order Acknowledgment Email Sent :: " );
                     }
                     catch ( \Exception $e )
@@ -452,7 +463,7 @@ $states = $this->ApiObj->Get_CountryStates( $country_id );
                         prr( "Order Acknowledgment Email Exception :: ".$e->getMessage() );
                     }
                 }
-                
+
             }
             else
             {

@@ -661,19 +661,34 @@ foreach ($items['Items'] as $item) {
                         $('#item_customer').prop('disabled', 'disabled');
                     }
                     var customer_id = item.UserCustomerInfo.CustomerSet ? item.UserCustomerInfo.CustomerSet : item.UserCustomerInfo.Customers[0].CustomerID;
-                    
+
                     $('#qty-main, .base_price').addClass('muted');
                     $('#qty_msg').css('opacity', '0.4');
                     if (!$('#qty-main').is(':visible'))
                         show_components(['.qty-loader']);
-                    $.post('{{route("frontend.item.ats")}}', {
-                        _token: '{{csrf_token()}}',
-                        item_id: ItemID,
-                        customer_id: customer_id
-                    }, function(response) {
-                        // console.log(`getQuantity::customer_id: ${customer_id}`);
-                        startBuying(ItemID, customer_id, response.data);
-                    });
+                    $.ajax({
+                        url: '/item/ats',
+                        data: {
+                            _token: '{{csrf_token()}}',
+                            item_id: ItemID,
+                            customer_id: customer_id
+                        },
+                        type: 'POST',
+                        success: function (response) {
+                            startBuying(ItemID, customer_id, response.data);
+                        }
+                    })
+
+                    {{--$.post('{{route("frontend.item.ats")}}', {--}}
+                    {{--    _token: '{{csrf_token()}}',--}}
+                    {{--    item_id: ItemID,--}}
+                    {{--    customer_id: customer_id--}}
+                    {{--}, function(response) {--}}
+                    {{--    // console.log(`getQuantity::customer_id: ${customer_id}`);--}}
+                    {{--    startBuying(ItemID, customer_id, response.data);--}}
+                    {{--});--}}
+
+
 
                     if (item.UserCustomerInfo.CustomerSet) {
                         // startBuying(item.ItemID, item.UserCustomerInfo.Customers[0].CustomerID , item.UserCustomerInfo.Customers[0].ATSInfo);
@@ -683,14 +698,27 @@ foreach ($items['Items'] as $item) {
                     $('#qty_msg').css('opacity', '0.4');
                     if (!$('#qty-main').is(':visible'))
                         show_components(['.qty-loader']);
-                    $.post('{{route("frontend.item.ats")}}', {
-                        _token: '{{csrf_token()}}',
-                        item_id: ItemID,
-                        customer_id: typeof item.UserCustomerInfo.Customers[0].CustomerID !== "undefined" ? item.UserCustomerInfo.Customers[0].CustomerID : ''
-                    }, function(response) {
-                        // console.log(`getQuantity::item.UserCustomerInfo.Customers[0].CustomerID: ${item.UserCustomerInfo.Customers[0].CustomerID}`);
-                        startBuying(ItemID, item.UserCustomerInfo.Customers[0].CustomerID, response.data);
-                    });
+
+                    $.ajax({
+                        url: '/item/ats',
+                        data: {
+                            _token: '{{csrf_token()}}',
+                            item_id: ItemID,
+                            customer_id: typeof item.UserCustomerInfo.Customers[0].CustomerID !== "undefined" ? item.UserCustomerInfo.Customers[0].CustomerID : ''
+                        },
+                        type: 'POST',
+                        success: function (response) {
+                            startBuying(ItemID, item.UserCustomerInfo.Customers[0].CustomerID, response.data);
+                        }
+                    })
+                    {{--$.post('{{route("frontend.item.ats")}}', {--}}
+                    {{--    _token: '{{csrf_token()}}',--}}
+                    {{--    item_id: ItemID,--}}
+                    {{--    customer_id: typeof item.UserCustomerInfo.Customers[0].CustomerID !== "undefined" ? item.UserCustomerInfo.Customers[0].CustomerID : ''--}}
+                    {{--}, function(response) {--}}
+                    {{--    // console.log(`getQuantity::item.UserCustomerInfo.Customers[0].CustomerID: ${item.UserCustomerInfo.Customers[0].CustomerID}`);--}}
+                    {{--    startBuying(ItemID, item.UserCustomerInfo.Customers[0].CustomerID, response.data);--}}
+                    {{--});--}}
                     // startBuying(item.ItemID, item.UserCustomerInfo.Customers[0].CustomerID , item.UserCustomerInfo.Customers[0].ATSInfo);
                 }
                 if ($('#checkOut_popup').is(':visible'))
@@ -809,14 +837,27 @@ foreach ($items['Items'] as $item) {
                         $('#qty_msg').css('opacity', '0.4');
                         if (!$('#qty-main').is(':visible'))
                             show_components(['.qty-loader']);
-                        $.post('{{route("frontend.item.ats")}}', {
-                            _token: '{{csrf_token()}}',
-                            item_id: item_id,
-                            customer_id: customer_id
-                        }, function(response) {
-                            // console.log(`getCartReady::CustomerID: ${customer_id}`);
-                            startBuying(item_id, customer_id, response.data, item_id);
-                        });
+
+                        $.ajax({
+                            url: '/item/ats',
+                            data: {
+                                _token: '{{csrf_token()}}',
+                                item_id: item_id,
+                                customer_id: customer_id
+                            },
+                            type: 'POST',
+                            success: function (response) {
+                                startBuying(item_id, customer_id, response.data, item_id);
+                            }
+                        })
+                        {{--$.post('{{route("frontend.item.ats")}}', {--}}
+                        {{--    _token: '{{csrf_token()}}',--}}
+                        {{--    item_id: item_id,--}}
+                        {{--    customer_id: customer_id--}}
+                        {{--}, function(response) {--}}
+                        {{--    // console.log(`getCartReady::CustomerID: ${customer_id}`);--}}
+                        {{--    startBuying(item_id, customer_id, response.data, item_id);--}}
+                        {{--});--}}
                         // startBuying(item_id, customer_id , Customer.ATSInfo);
                     }
                 });
@@ -877,10 +918,10 @@ foreach ($items['Items'] as $item) {
 
     function getQuantityMessage(ATSInfo) {
         var date = new Date(ATSInfo.ETADate);
-        var formattedDate = new Intl.DateTimeFormat('en-US', { 
-            month: 'short', 
-            day: 'numeric', 
-            year: 'numeric' 
+        var formattedDate = new Intl.DateTimeFormat('en-US', {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric'
         }).format(date);
 
         if ($('#login_by_popup').length) {
@@ -891,8 +932,8 @@ foreach ($items['Items'] as $item) {
             else
                 return `In stock, ${ATSInfo.ATSQty}`;
         } else {
-	    if (ATSInfo.ATSQty <= 0)	
-		return `Backorder ETA: ${formattedDate}`;            
+	    if (ATSInfo.ATSQty <= 0)
+		return `Backorder ETA: ${formattedDate}`;
 	    return `In stock, ${ATSInfo.ATSQty}`;
 
             if (ATSInfo.ATSQty == 0)
@@ -913,7 +954,8 @@ foreach ($items['Items'] as $item) {
         if ((/^\+?[1-9]\d*/).test(parseInt($('#item_qty').val()))) {
             $.ajax({
                 method: 'POST',
-                url: '{{route("frontend.cart.add")}}',
+                url: '/cart/add',
+                {{--url: '{{route("frontend.cart.add")}}',--}}
                 data: {
                     '_token': '{{csrf_token()}}',
                     'cart_item_id': $('#cart_item_id').val(),

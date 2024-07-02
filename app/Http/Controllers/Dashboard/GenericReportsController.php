@@ -268,19 +268,25 @@ class GenericReportsController extends DashboardController
                                             'transaction_type'   => $transaction['TransactionType'],
                                             'customer_id'        => isset( $transaction['CustomerID'] ) ? $transaction['CustomerID'] : 'N/A',
                                             'status'             => isset( $transaction['Status'] ) ? $transaction['Status'] : 'N/A'
-                                        ]
+                                        ],
+                                        'cols' => 6
                                     ],
                                     [
                                         'title'   => 'Billing Details',
-                                        'content' => $transaction['BillToAddress']
+                                        'content' => $transaction['BillToAddress'],
+                                        'cols' => 6,
+                                        'hide_labels' => 1
                                     ],
                                     [
                                         'title'   => 'Shipping Details',
-                                        'content' => $transaction['ShipToAddress']
+                                        'content' => $transaction['ShipToAddress'],
+                                        'cols' => 6,
+                                        'hide_labels' => 1
                                     ],
                                     [
                                         'title'   => 'Detail',
-                                        'content' => $transaction['Details']
+                                        'content' => $transaction['Details'],
+                                        'cols' => 12
                                     ]
 
                                 ]
@@ -404,13 +410,13 @@ class GenericReportsController extends DashboardController
 
                 foreach ( $memos['CreditMemos'] as $memo )
                 {
-                // dd($memo);
                     foreach($memo['Details'] as $index => $view)
                     {
                         $column = CommonController::get_selected_columns($view, [
                             'ImageName', 'ItemID', 'ItemDescription', 'OrderQuantity', 'InvoicedQuantity', 'Price'
                         ]);
                         $memo['Details'][$index] = $column;
+                        $memo['Details'][$index]['Price'] = number_format($view['Price'], 2);
                     }
                         // echo print_r($memo,1);
 
@@ -425,7 +431,7 @@ class GenericReportsController extends DashboardController
                             $contents['RMA#'] = $memo['RMANo'];
                         }
                         if(!empty($memo['SalesRepID'])){
-                            $contents['Rep Name'] = $memo['SalesRepID'];
+                            $contents['Rep'] = $memo['SalesRepID'];
                         }
                         if(!empty($memo['SpecialInstructions'])){
                             $contents['Special Instructions'] = $memo['SpecialInstructions'];
@@ -433,6 +439,32 @@ class GenericReportsController extends DashboardController
                         if(!empty($memo['Notes'])){
                             $contents['Notes'] = $memo['Notes'];
                         }
+
+                    $bill_to_content = [
+                        'First &LastName' => $memo['BillToAddress']['FirstName'] . ' ' . $memo['BillToAddress']['LastName'],
+                        'StreetAddress1' => $memo['BillToAddress']['Address1']
+                    ];
+
+                    if (!empty($memo['BillToAddress']['Address2'])) {
+                        $bill_to_content['StreetAddress2'] = $memo['BillToAddress']['Address1'];
+                    }
+                    $bill_to_content['City,State,Zip'] = $memo['BillToAddress']['City'] . ', ' . $memo['BillToAddress']['State']. ', ' . $memo['BillToAddress']['ZIP'];
+                    $bill_to_content['Country'] = $memo['BillToAddress']['Country'];
+                    $bill_to_content['PhoneNumber'] = $memo['BillToAddress']['Phone1'];
+                    $bill_to_content['Email'] = $memo['BillToAddress']['Email'];
+
+                    $ship_to_content = [
+                        'First &LastName' => $memo['ShipToAddress']['FirstName'] . ' ' . $memo['ShipToAddress']['LastName'],
+                        'StreetAddress1' => $memo['ShipToAddress']['Address1']
+                    ];
+
+                    if (!empty($memo['ShipToAddress']['Address2'])) {
+                        $ship_to_content['StreetAddress2'] = $memo['ShipToAddress']['Address2'];
+                    }
+                    $ship_to_content['City,State,Zip'] = $memo['ShipToAddress']['State']. ', ' . $memo['ShipToAddress']['ZIP'];
+                    $ship_to_content['Country'] = $memo['ShipToAddress']['Country'];
+                    $ship_to_content['PhoneNumber'] = $memo['ShipToAddress']['Phone1'];
+                    $ship_to_content['Email'] = $memo['ShipToAddress']['Email'];
 
                     $table['tbody'][] = [
                         'memo_number'    => isset( $memo['SalesInvoiceNo'] ) ? $memo['SalesInvoiceNo'] : 'N/A',
@@ -452,15 +484,15 @@ class GenericReportsController extends DashboardController
                                         'cols'    => 6
                                     ],
                                     [
-                                        'title'   => $memo['TransactionType'].' '.$memo['TransactionNo'],
+                                        'title'   => preg_replace('/([a-z])([A-Z])/', '$1 $2', $memo['TransactionType']) . '# '.$memo['TransactionNo'],
                                         'content' => [
                                             'Status'                => $memo['Status'],
-                                            'Date'                  => $memo['InvoiceDate'],
+                                            'Date'                  => Carbon::parse($memo['InvoiceDate'])->format('M-d-Y'),
                                             'Terms'                 => $memo['Terms'],
                                             'Total Quantity'        => $memo['TotalQty'],
-                                            'Merchandise Amount'    => $memo['TotalMerchandise'],
+                                            'Merchandise Amount'    => number_format($memo['TotalMerchandise'], 2),
                                             'Discount'              => $memo['Discount'],
-                                            'Tax % and Amount'      => $memo['TaxRate']."% = ".$memo['TaxAmount'],
+                                            'Tax % and Amount'      => $memo['TaxRate']."%; ". number_format($memo['TaxAmount'], 2),
                                             'Other Charges'         => $memo['OtherCharges'],
                                             'Total Amount'          => $memo['TotalAmount'],
                                         ],
@@ -468,13 +500,13 @@ class GenericReportsController extends DashboardController
                                     ],
                                     [
                                         'title'   => 'Bill To:',
-                                        'content' => $memo['BillToAddress'],
+                                        'content' => $bill_to_content,
                                         'hide_labels' => true,
                                         'cols'    => 6
                                     ],
                                     [
                                         'title'   => 'Ship To:',
-                                        'content' => $memo['ShipToAddress'],
+                                        'content' => $ship_to_content,
                                         'hide_labels' => true,
                                         'cols'    => 6
                                     ],
@@ -724,6 +756,8 @@ class GenericReportsController extends DashboardController
                             'ImageName', 'ItemID', 'LineNo', 'ItemDescription', 'OrderQuantity', 'InvoicedQuantity', 'Price', 'ExtPrice', 'OpenQuantity'
                         ]);
                         $invoice['Details'][$index] = $column;
+                        $invoice['Details'][$index]['Price'] = number_format($view['Price'], 2);
+                        $invoice['Details'][$index]['ExtPrice'] = number_format($view['ExtPrice'], 2);
                     }
 
                     foreach($invoice['OrderTrackingDetail'] as $index => $view)
@@ -731,6 +765,7 @@ class GenericReportsController extends DashboardController
                         $column = CommonController::get_selected_columns($view, [
                             'ImageName', 'ItemID', 'SalesOrderNo', 'DateCreated', 'SalesInvoiceNo', 'TrackingNo'
                         ]);
+                        $column['DateCreated'] = Carbon::parse($column['DateCreated'])->format('M-d-Y');
                         $invoice['OrderTrackingDetail'][$index] = $column;
                     }
 
@@ -795,14 +830,14 @@ class GenericReportsController extends DashboardController
                                         'title'   => 'Sales Invoice#: ' . $invoice['TransactionNo'],
                                         'content' => [
                                             'Status ' => $invoice['Status'],
-                                            'Date ' => Carbon::parse($invoice['InvoiceDate'])->format('d-m-Y'),
+                                            'Date ' => Carbon::parse($invoice['InvoiceDate'])->format('M-d-Y'),
                                             'Terms' => $invoice['Terms'],
                                             'TotalQty' => $invoice['TotalQty'],
-                                            'MerchandiseAmount' => round($invoice['TotalMerchandise'], 2),
-                                            'Discount' => $invoice['Discount'],
-                                            'Tax% &Amount' => round($invoice['TaxRate'], 1) . '%;' . round($invoice['TaxAmount'], 2),
-                                            'Shipping &Handling' => $invoice['ShippingCharges'] + $invoice['HandlingCharges'],
-                                            'TotalAmount' => round($invoice['TotalAmount'], 2),
+                                            'MerchandiseAmount' => number_format($invoice['TotalMerchandise'], ConstantsController::ALLOWED_DECIMALS),
+                                            'Discount' => ($invoice['Discount'] == 'N/A' ? number_format("0.00", ConstantsController::ALLOWED_DECIMALS) : $invoice['Discount']),
+                                            'Tax % &Amount' => number_format( $invoice['TaxRate'], ConstantsController::ALLOWED_DECIMALS ) . '%; ' . number_format($invoice['TaxAmount'], ConstantsController::ALLOWED_DECIMALS),
+                                            'Shipping &Handling' => number_format($invoice['ShippingCharges'] + $invoice['HandlingCharges'], ConstantsController::ALLOWED_DECIMALS),
+                                            'TotalAmount' => number_format($invoice['TotalAmount'], ConstantsController::ALLOWED_DECIMALS),
                                         ],
                                         'cols' => 6
                                     ],
@@ -964,6 +999,8 @@ class GenericReportsController extends DashboardController
                             $column['href'] = route('frontend.item', [$view['Collection'], $view['DesignID']]);
                             $column['BackOrderQty'] = isset($view['BackOrder']) && CommonController::check_bit_field($view, 'BackOrder' ) ? ( (isset($view['ETADate']) ? $view['ETADate'] : '') . (isset($view['ETAQty']) ? $view['ETAQty'] : '')) : '';
                             $view_order['Detail'][$index] = $column;
+                            $view_order['Detail'][$index]['UnitPrice'] = number_format($view['UnitPrice'], 2);
+                            $view_order['Detail'][$index]['ExtPrice'] = number_format($view['ExtPrice'], 2);
                         }
 
                         foreach($view_order['OrderTrackingDetail'] as $index => $view)
@@ -971,7 +1008,13 @@ class GenericReportsController extends DashboardController
                             $column = CommonController::get_selected_columns($view, [
                                 'ImageName', 'ItemID', 'SalesOrderNo', 'DateCreated', 'SalesInvoiceNo', 'TrackingNo'
                             ]);
+                            $column['DateCreated'] = Carbon::parse($column['DateCreated'])->format('M-d-Y');
                             $view_order['OrderTrackingDetail'][$index] = $column;
+                        }
+
+                        foreach ($view_order['OrderInvoiceDetail'] as $index => $view) {
+                            $view_order['OrderInvoiceDetail'][$index]['InvoiceDate'] = Carbon::parse($view['InvoiceDate'])->format('M-d-Y');
+                            $view_order['OrderInvoiceDetail'][$index]['TotalAmount'] = number_format($view['TotalAmount'], 2);
                         }
                     }
 
@@ -982,7 +1025,7 @@ class GenericReportsController extends DashboardController
                     ];
 
                     if (!empty($view_order['Header']['SalesRepID'])) {
-                        $customer_content['RepName'] = $view_order['Header']['SalesRepID'];
+                        $customer_content['Rep'] = $view_order['Header']['SalesRepID'];
                     }
 
                     if (!empty($view_order['Header']['SalesRepID'])) {
@@ -1039,26 +1082,28 @@ class GenericReportsController extends DashboardController
                                         'cols' => 6
                                     ],
                                     [
-                                        'title'   => $view_order['Header']['TransactionType'] . '#: ' . $view_order['Header']['TransactionNo'],
+                                        'title'   => preg_replace('/([a-z])([A-Z])/', '$1 $2', $view_order['Header']['TransactionType']) . '#: ' . $view_order['Header']['TransactionNo'],
                                         'content' => [
                                             'Status ' => $view_order['Header']['Status'],
                                             'OrderDate ' => Carbon::parse($view_order['Header']['OrderDate'])->format('M d, Y'),
                                             'ShipDate' => Carbon::parse($view_order['Header']['ShippingDate'])->format('M d, Y'),
                                             'Terms' => $view_order['Header']['PaymentTerm'],
                                             'TotalQty' => $view_order['Header']['TotalQty'],
-                                            'MerchandiseTotal' => $view_order['Header']['TotalMerchandise']
+                                            'MerchandiseTotal' => number_format(floatval($view_order['Header']['TotalMerchandise']), 2)
                                         ],
                                         'cols' => 6
                                     ],
                                     [
                                         'title'   => 'Bill To:',
                                         'content' => $bill_to_content,
-                                        'cols' => 6
+                                        'cols' => 6,
+                                        'hide_labels' => 1
                                     ],
                                     [
                                         'title'   => 'Ship To: ',
                                         'content' => $ship_to_content,
-                                        'cols' => 6
+                                        'cols' => 6,
+                                        'hide_labels' => 1
                                     ],
                                     [
                                         'title'   => 'Detail',

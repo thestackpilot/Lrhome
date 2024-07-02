@@ -42,7 +42,7 @@ Route::post( '/ajax/login', 'Auth\LoginController@authenticate_ajax' )->name( 'a
 Route::get( '/logout', 'Auth\LoginController@logout' )->name( 'auth.logout' );
 
 Route::get('forget-password', 'Auth\ForgotPasswordController@show_forget_password')->name('forget.password.get');
-Route::post('forget-password', 'Auth\ForgotPasswordController@submit_forget_password')->name('forget.password.post'); 
+Route::post('forget-password', 'Auth\ForgotPasswordController@submit_forget_password')->name('forget.password.post');
 Route::get('reset-password/{token}', 'Auth\ForgotPasswordController@show_reset_password')->name('reset.password.get');
 Route::post('reset-password', 'Auth\ForgotPasswordController@submit_reset_password')->name('reset.password.post');
 
@@ -71,7 +71,7 @@ Route::post( '/designs/{id}/{filter}/{type}/{page}', [DesignController::class, '
 Route::post( '/designs/{id}/{filter}/{type}/{with_title}/{page}', [DesignController::class, 'get_paginated_designs'] )->name( 'frontend.designs_page' );
 //Item Routes
 Route::get( '/item/{id}/{designId}/{colorId?}', [ItemController::class, 'index'] )->name( 'frontend.item' );
-Route::post( '/item/ats', [ItemController::class, 'get_item_ats'] )->name( 'frontend.item.ats' );
+Route::post( '/item/ats', [ItemController::class, 'get_item_ats'] )->name( 'frontend.item.ats' )->secure();
 //Search Routes
 Route::get( '/search/{string}/{type?}', [SearchController::class, 'index'] )->name( 'frontend.search' );
 

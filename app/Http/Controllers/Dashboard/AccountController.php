@@ -208,7 +208,8 @@ class AccountController extends DashboardController
                                         'PaymentTerm' => $view_order['Header']['PaymentTerm'],
                                         'OrderDate'   => $view_order['Header']['OrderDate'],
                                         'TotalAmount' => ConstantsController::CURRENCY.number_format( $view_order['Header']['TotalAmount'], ConstantsController::ALLOWED_DECIMALS )
-                                    ]
+                                    ],
+                                    'cols' => 6
                                 ],
                                 [
                                     'title'   => 'Billing Details',
@@ -223,7 +224,8 @@ class AccountController extends DashboardController
                                         'State'     => $view_order['Header']['BillingState'],
                                         'ZipCode'   => $view_order['Header']['BillingZipCode'],
                                         'Country'   => $view_order['Header']['BillingCountry']
-                                    ]
+                                    ],
+                                    'cols' => 6
                                 ],
                                 [
                                     'title'   => 'Shipping Details',
@@ -237,10 +239,12 @@ class AccountController extends DashboardController
                                         'ShipViaCode'  => $view_order['Header']['ShipViaCode'],
                                         'ShippingCost' => $view_order['Header']['ShippingCost'],
                                         'ShippingDate' => $view_order['Header']['ShippingDate']
-                                    ]
+                                    ],
+                                    'cols' => 6
                                 ],
                                 [
                                     'title'   => 'Items List',
+                                    'cols' => 12,
                                     'content' => isset( $view_order['Header']['TabStatusDescription'] ) ? [
                                         'tabs' => [
                                             'products' => $view_order['Detail'],

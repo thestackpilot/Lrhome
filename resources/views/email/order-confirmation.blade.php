@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    
+
     <style>
         body{
             margin: 0;
@@ -27,7 +27,7 @@
             margin-right: auto;
             margin-left: auto;
         }
-        
+
         .brand-section{
            background-color: #f6f3eb;
            padding: 10px 20px;
@@ -168,7 +168,7 @@
         h3.heading span{
             font-weight: 400;
         }
-        
+
         @media (max-width: 768px){
             .brand-section{
                 padding: 20px;
@@ -200,7 +200,7 @@
                 width: 50px;
                 height: 50px;
             }
-            h3.heading, 
+            h3.heading,
             td h3 {
                 font-size: 14px;
             }
@@ -242,9 +242,10 @@
             <div class="width-100 d-flex">
                 <div class="width-50">
                     <div class="margin-bottom-5"><strong>Bill to:</strong></div>
-                    <p class="sub-heading">{!! $data['shipping']['FirstName'] == '' ? 'N/A' : $data['shipping']['FirstName'].' '.$data['shipping']['LastName'] !!}  </p>
-                    <p class="sub-heading">{!!$data['shipping']['Address1'] == '' ? 'N/A' : $data['shipping']['Address1'] !!} </p>
-                    <p class="sub-heading">{!! $data['shipping']['City'] !!}, {!! $data['shipping']['State'] !!}, {!! $data['shipping']['Zip'] !!} </p>
+                    <p class="sub-heading">{!! $data['shipping']['BillingFirstName'] == '' ? 'N/A' : $data['shipping']['BillingFirstName'].' '.$data['shipping']['BillingLastName'] !!}  </p>
+                    <p class="sub-heading">{!!$data['shipping']['BillingAddress1'] == '' ? 'N/A' : $data['shipping']['BillingAddress1'] !!} </p>
+                    {{-- <p class="sub-heading">{!!$data['shipping']['Address1'] == '' ? 'N/A' : $data['shipping']['Address1'] !!} </p> --}}
+                    <p class="sub-heading">{!! $data['shipping']['BillingCity'] !!}, {!! $data['shipping']['BillingState'] !!}, {!! $data['shipping']['BillingZip'] !!} </p>
                     {{-- <p class="sub-heading">Address 2: {!! $data['shipping']['Address2'] == '' ? 'N/A' : $data['shipping']['Address2'] !!} </p> --}}
                     {{-- <p class="sub-heading">City: {!! $data['shipping']['City'] !!} </p>
                     <p class="sub-heading">State: {!! $data['shipping']['State'] !!}</p>
@@ -280,7 +281,7 @@
         </div>
         <div class="body-section border-top-0">
 
-            
+
             <div class="margin-bottom-15">
                 <h2 class="heading" ><strong>Order Details</strong></h2>
                 <p class="sub-heading">SO#: {!! $data['shipping']['SO_Number'] == '' ? 'N/A' : $data['shipping']['SO_Number'] !!} </p>
@@ -289,7 +290,7 @@
                 <p class="sub-heading">Email: {!! $data['shipping']['Email'] == '' ? 'N/A' : $data['shipping']['Email'] !!}</p>
                 <p class="sub-heading ">Delivery Method: {!! $data['shipping']['ShipViaCode'] !!}</p>
             </div>
-            
+
             <div class="scroll-the-table font-size-14">
                 <hr>
                 <div class="d-flex">
@@ -326,15 +327,15 @@
             <br>
             <!-- <h3 class="heading">Delivery Method: <span class="sub-heading">{!! $data['shipping']['ShipViaCode'] !!}</span></h3> -->
             <h3 class="heading">Additional Info: <span class="sub-heading">{!! array_key_exists('Instructions',$data['shipping']) && $data['shipping']['Instructions'] != '' ? $data['shipping']['Instructions'] : 'N/A' !!}</span></h3>
-        
+
         </div>
 
         <div class="body-section">
-                <p>&copy; Copyright 2021 - LR Home. All rights reserved. 
+                <p>&copy; Copyright 2021 - LR Home. All rights reserved.
                     <a href="https://www.lrhome.us/" class="float-right">www.LRHome.us</a>
                 </p>
-        </div>   
-    </div>      
+        </div>
+    </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
