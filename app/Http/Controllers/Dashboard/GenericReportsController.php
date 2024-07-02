@@ -596,12 +596,7 @@ class GenericReportsController extends DashboardController
         if ( count( $request->all() ) > 0 && isset( $request->submit ) )
         {
            // $memos = $this->ApiObj->Get_DebitMemos( $request->customer, $request->from_date, $request->to_date, $request->invoice_number, $request->vendor );
-           if(Auth::user()->is_customer){
-            $memos = $this->ApiObj->Get_DebitMemos( Auth::user()->customer_id , $request->from_date, $request->to_date, $request->invoice_number, "");
-           }
-           else if(Auth::user()->is_sale_rep){
-            $memos = $this->ApiObj->Get_DebitMemos( "" , $request->from_date, $request->to_date, $request->invoice_number, Auth::user()->customer_id);
-           }
+           $memos = $this->ApiObj->Get_DebitMemos( Auth::user()->is_customer ? Auth::user()->customer_id : null, $request->from_date, $request->to_date, $request->invoice_number, Auth::user()->is_sale_rep ? Auth::user()->customer_id : null);
 
             $table = array( 'thead' => [
                 'memo_number'    => 'Memo Number',
