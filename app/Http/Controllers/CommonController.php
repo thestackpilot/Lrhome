@@ -51,7 +51,7 @@ class CommonController
             $found = false;
             foreach($obj as $key => $value)
             {
-                if ( strcmp($column, $key) === 0 ) 
+                if ( strcmp($column, $key) === 0 )
                 {
                     $return[$key] = $value;
                     $found = true;
@@ -65,10 +65,10 @@ class CommonController
         return $return;
     }
 
-    public static function check_bit_field($obj, $key) 
+    public static function check_bit_field($obj, $key)
     {
         // prr([$key => $obj[$key]]);
-        if (isset($obj[$key])) 
+        if (isset($obj[$key]))
         {
             if (is_string($obj[$key])) return strtolower($obj[$key]) == 'true';
             else return $obj[$key] == 1 || $obj[$key] == true;
@@ -234,30 +234,30 @@ class CommonController
     }
 
     //CommonController::upload_file_ftp()
-    public static function upload_file_ftp( $file ) 
+    public static function upload_file_ftp( $file )
     {
         $dest_file = env('STORAGE_PATH', '') . $file->getClientOriginalName();
         $file_storage = env('STORAGE_METHOD', 'ONSITE');
         $source_file = $file->getPathname();
 
-        switch ($file_storage) 
+        switch ($file_storage)
         {
             case "FTP":
                 $ftp = ftp_connect(env('FTP_HOST'), env('FTP_PORT'));
 
-                if ($ftp) 
+                if ($ftp)
                 {
                     ftp_login($ftp, env('FTP_USER'), env('FTP_PASS'));
                     ftp_set_option($ftp, FTP_USEPASVADDRESS, false);
                     ftp_pasv($ftp, true);
                 }
 
-                if (file_exists($source_file)) 
+                if (file_exists($source_file))
                 {
                     $ret = ftp_put($ftp, $dest_file, $source_file, FTP_BINARY);
                 }
 
-                if ($ret) 
+                if ($ret)
                 {
                     return "http://" . env('FTP_HOST') . "/" . env('FTP_BASE_PATH') . $dest_file;
                 }
@@ -279,7 +279,7 @@ class CommonController
         {
             self::$theme_json = json_decode(  ( new Theme() )->get_active_theme()->theme_json );
         }
-        
+
         if ( isset(self::$theme_json->general->date_format) && self::$theme_json->general->date_format )
         {
             $new_date = date(self::$theme_json->general->date_format, strtotime($date));

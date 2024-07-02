@@ -2845,7 +2845,7 @@ body.LR .admin-side .btn.btn-primary {
     background-color: #d12b2b !important;
 }
 
-body.LR .admin-side .btn.btn-primary.view-details {
+body.LR .admin-side .btn.btn-primary.view-details, body.LR .admin-side .btn.btn-primary.other-details {
     height: 30px;
 }
 
@@ -2911,7 +2911,7 @@ body.LR .dataTables_wrapper .dataTables_length select {
     height: 35px;
     margin: 0 10px;
 }
-body.LR .table thead th, 
+body.LR .table thead th,
 body.LR table.dataTable tbody th, body.LR table.dataTable tbody td {
     vertical-align: middle;
 }
@@ -3294,7 +3294,7 @@ DASHBOARD OF LR
     .innersecright .col-lg-6.col-sm-12.col-12 {
         padding-right: 8px;
     }
-    
+
 }
 
 @media (min-width: 768px) {
@@ -3402,7 +3402,7 @@ DASHBOARD OF LR
     body.LR .admin-side .btn.btn-primary.view-details {
         height: 40px;
     }
-    
+
 }
 
 /* main website logo */
@@ -3877,7 +3877,7 @@ table.dataTable::-webkit-scrollbar,
 }
 /* Asad css end */
 
-#myTab.nav-tabs .nav-item.show .nav-link, 
+#myTab.nav-tabs .nav-item.show .nav-link,
 #myTab.nav-tabs .nav-link.active {
     color: #fff;
     background-color: #d12c2a;
@@ -3902,7 +3902,7 @@ table.dataTable::-webkit-scrollbar,
     flex-direction: column !important;
 }
 
-/* 
+/*
 
 .modal-body table.dataTable {
     display: block !important;

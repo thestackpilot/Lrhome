@@ -59,8 +59,7 @@ use App\Http\Controllers\CommonController;
 
                   <div class="account-content p-5">
                      <h1 class="section-title text-center mb-3 mt-3 font-ropa">Place Order</h1>
-{{--                     <form method="POST" class="place-order-form" action="{{ route('dashboard.placeorder') }}" class="pt-3">--}}
-                     <form method="POST" class="place-order-form" action="/checkout/place-order" class="pt-3">
+                     <form method="POST" class="place-order-form" action="{{ route('dashboard.placeorder') }}" class="pt-3">
                         @csrf
                         <div class="row">
                            @if($filters)
@@ -560,7 +559,7 @@ use App\Http\Controllers\CommonController;
 
       $('input[name="FilterType"]').click(function() {
          $('.additional-filters select').html('<option value="">Loading options</option>').attr('disabled', 'disabled');
-         $.post('{{route("dashboard.placeorder.additional-filters")}}', {
+         $.post('/dashboard/additional-filters', {
             FilterType: $(this).val(),
             _token: '{{csrf_token()}}'
          }, function(data) {
@@ -724,7 +723,7 @@ use App\Http\Controllers\CommonController;
          $('.other-address').addClass('d-none');
 
          let addresses = '<div class="col-md-12">';
-         $.post('{{route("dashboard.customeraddresses")}}', {
+         $.post('/dashboard/get-customer-addresses', {
             customer: $(this).val(),
             _token: '{{csrf_token()}}'
          }, function(data) {

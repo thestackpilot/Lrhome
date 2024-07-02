@@ -42,14 +42,34 @@ function get_table( $table, $tab = '' ) {
                     $table_body .= '<td>';
                     foreach($row['actions'] as $action) {
                         if($action['type'] == 'modal' ) {
+                            if (isset($row['transaction_type']) && $row['transaction_type'] === 'Cash Receipt') {
+                                 $table_body .= '
+                                 <button class="btn btn-sm btn-primary other-details" type="button">'.$action['label'].'</button>
+                                 <span class="other-row-details" style="display: none !important;">'.json_encode($row['other_actions_details']).'</span>
+                                 ';
+                            } else {
+                                $table_body .= '
+                                <button class="btn btn-sm btn-primary view-details" type="button">'.$action['label'].'</button>
+                                <span class="row-details" style="display: none !important;">'.json_encode($row['details']).'</span>
+                                ';
+                            }
+                        }
+                    }
+                    $table_body .= '</td>';
+                }
+                 else if ($key == 'other_actions') {
+                    $table_body .= '<td>';
+                    foreach($row['other_actions'] as $other_actions) {
+                        if($other_actions['type'] == 'modal') {
                             $table_body .= '
-                            <button class="btn btn-sm btn-primary view-details" type="button">'.$action['label'].'</button>
-                            <span class="row-details" style="display: none !important;">'.json_encode($row['details']).'</span>
+                            <button class="btn btn-sm btn-primary other-details" type="button">'.$other_actions['label'].'</button>
+                            <span class="other-row-details" style="display: none !important;">'.json_encode($row['other_actions_details']).'</span>
                             ';
                         }
                     }
                     $table_body .= '</td>';
-                } else {
+                }
+                else {
                     $table_body .= '<td>'.$row[$key].'</td>';
                 }
             }
@@ -100,6 +120,27 @@ function get_table( $table, $tab = '' ) {
         </div>
     </div>
 </div>
+<div class="modal fade other-detail-modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-xl">
+        <div class="modal-content">
+            <div class="modal-header other-detail-modal-header text-center">
+                <h4 style='float: left;'>Report Details</h4>
+                <button type="button" class="close other-detail-modal-close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" style="font-size: 40px;">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body other-detail-modal-body p-5" id="section-details" style="background: #fff;">
+            </div>
+            <div class="modal-footer">
+                {{-- <button type="button" class="btn btn-secondary close-modal other-detail-modal-close" data-dismiss="modal">Close</button> --}}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="loader-container" id="loader-container" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999;">
+    <div class="loader" style="border: 50px solid #f3f3f3; border-top: 50px solid #660000; border-radius: 50%; width: 100px; height: 100px; animation: spin 1s linear infinite;">
+    </div>
+</div>
 @section('styles')
 @parent
 <link href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css" rel="stylesheet" />
@@ -108,6 +149,10 @@ function get_table( $table, $tab = '' ) {
     table.dataTable thead .sorting_asc {
         background: none;
         background-image: none !important;
+    }
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
     }
 </style>
 @endsection
@@ -254,13 +299,29 @@ function get_table( $table, $tab = '' ) {
                                         $('.table.data-table:visible').attr('data-tab-name') != 'All'
                                     ) continue;
 
-                                    if (json.data[i]['actions'][0]['type'] == 'modal')
-                                        json.data[i]['actions'] = `
+                                    console.log(json.data)
+
+                                    if (json.data[i]['actions'][0]['type'] == 'modal') {
+                                        if (typeof json.data[i]['transaction_type'] != 'undefined' && json.data[i]['transaction_type'] === 'Cash Receipt') {
+                                            json.data[i]['actions'] = `
+                                            <button class="btn btn-sm btn-primary other-details" type="button">${json.data[i]['actions'][0]['label']}</button>
+                                            <span class="other-row-details" style="display: none !important;">${JSON.stringify(json.data[i]['other_actions_details'])}</span>
+                                            `;
+                                        } else {
+                                            json.data[i]['actions'] = `
                                             <button class="btn btn-sm btn-primary view-details" type="button">${json.data[i]['actions'][0]['label']}</button>
                                             <span class="row-details" style="display: none !important;">${JSON.stringify(json.data[i]['details'])}</span>
+                                            `;
+                                        }
+                                        data.push(json.data[i]);
+                                    }
+                                    if (typeof json.data[i]['other_actions'] !== 'undefined' && json.data[i]['other_actions'][0]['type'] == 'modal') {
+                                        json.data[i]['other_actions'] = `
+                                            <button class="btn btn-sm btn-primary other-details" type="button">${json.data[i]['other_actions'][0]['label']}</button>
+                                            <span class="other-row-details" style="display: none !important;">${JSON.stringify(json.data[i]['other_actions_details'])}</span>
                                         `;
-
-                                    data.push(json.data[i]);
+                                        data.push(json.data[i]);
+                                    }
                                 }
 
                                 if (data.length != json.data.length) {
@@ -286,11 +347,7 @@ function get_table( $table, $tab = '' ) {
 
         function getDetails(section) {
             var modal_body = '';
-            if (section.length < 1) {
-                modal_body += '<div class="col-md-12">';
-                modal_body += '<h5>N/A</h5>';
-                modal_body += '</div>';
-            } else {
+            if (section.length != 0) {
                 modal_body += '<div class="col-md-12">';
                 modal_body += '<table class="table mt-2 text-center details">';
                 modal_body += '<thead>';
@@ -332,6 +389,59 @@ function get_table( $table, $tab = '' ) {
 
             return modal_body;
         }
+
+        $(document).on('click', '.other-details', function(){
+            $('#loader-container').css('display', 'block');
+            const url = "/dashboard/order_report";
+            {{--const url = "{{ route('dashboard.orderreport') }}";--}}
+            var data = JSON.parse($('span.other-row-details', $(this).parent()).html());
+            //console.log('Data', data);
+            let SalesRepId = '';
+            let CustomerId = '';
+            let MenuTag = 'ViewCashReceipt';
+            let DocumentNo =  data.OrderNo;
+            const fullUrl = `${url}?MenuTag=${MenuTag}&DocumentNo=${DocumentNo}`;
+            // console.log('full URL', fullUrl);
+            $.ajax({
+                url: url,
+                url: fullUrl,
+                type: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                },
+                success: function(response) {
+                    $('#loader-container').css('display', 'none');
+                    //  console.log('Response', response);
+                    $(".other-detail-modal").modal("show");
+                    var modalBody = $(".modal-body");
+                    $(".other-detail-modal-header").html("<h4>Report Details</h4>");
+                    $(".other-detail-modal-body").empty();
+                    var obj = document.createElement('object');
+                    obj.style.width = '100%';
+                    obj.style.height = '842pt';
+                    obj.type = 'application/pdf';
+                    obj.data = 'data:application/pdf;base64,' + response;
+                    document.body.appendChild(obj);
+                    console.log(obj);
+                    //   console.log(obj);
+                    $(".other-detail-modal-body").append(obj);
+                    var link = document.createElement('a');
+                    link.innerHTML = 'Download Report';
+                    link.className = 'btn btn-primary my-3 py-3';
+                    link.download = 'Report.pdf';
+                    link.href = 'data:application/octet-stream;base64,' + response;
+                    document.body.appendChild(link);
+                    //$(".other-detail-modal-body").append(link);
+                },
+                error: function( error) {
+                    console.error("Error fetching", error);
+                    $('#loader-container').css('display', 'none');
+                    //  console.error("Error fetching", error);
+                }
+            });
+        });
     });
 </script>
 @endsection

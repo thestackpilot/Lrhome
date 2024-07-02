@@ -49,7 +49,7 @@ class GenericReportsController extends DashboardController
     // TODO : The dashboard for the LR needs to have the icons.
     public function company_credit( Request $request )
     {
-        $active_customer = $request->has( 'customer' ) ? $request->customer : ( new Cart() )->get_active_cart_customer();
+        $active_customer = $request->has( 'customer' ) ? $request->customer : (Auth::user()->is_customer ? Auth::user()->customer_id : 0);
         $customers       = $this->get_customers_dropdown_options( false );
 
         if ( ! $active_customer && count( $customers ) > 1 )
@@ -59,7 +59,7 @@ class GenericReportsController extends DashboardController
 
         if ( $active_customer )
         {
-            $company_credit = $this->ApiObj->Get_CompanyCredit( $active_customer );
+            $company_credit = $this->ApiObj->Get_CompanyCredit('000158');
 
             if ( $company_credit )
             {
@@ -131,6 +131,26 @@ class GenericReportsController extends DashboardController
         View::share( 'paginated', 'yes' );
 
         return view( 'dashboard.generic-report' );
+    }
+
+    public function order_report(Request $request)
+    {
+        try {
+            $SalesRepId = $request->has('SalesRepId') ? $request->SalesRepId : '';
+            $CustomerId = $request->has('CustomerId') ? $request->CustomerId : '';
+            $MenuTag = $request->has('MenuTag') ? $request->MenuTag : 'View Order';
+            $DocumentNo = $request->has('DocumentNo') ? $request->DocumentNo : 0000;
+            $report = $this->ApiObj->Get_ViewDocumentsReport($SalesRepId, $CustomerId, $MenuTag, $DocumentNo);
+            if( $report['document']['Success'] )
+            {
+                View::share( 'ReportData', $report['document']['ReportData'] );
+                return $report['document']['ReportData'];
+            } else {
+                return $report;
+            }
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'An error occurred. Please try again later.']);
+        }
     }
 
     public function download_print_orders( Request $request )
@@ -228,8 +248,7 @@ class GenericReportsController extends DashboardController
                 'status'             => 'Status',
                 'total_amount'       => 'Total Amount',
                 'transaction_type'   => 'Transaction Type',
-                'actions'            => 'Actions'
-
+                'actions'            => 'Actions',
             ], 'tbody' => [] );
 
             if ( isset( $transactions['FinancialTransactions'] ) )
@@ -245,6 +264,8 @@ class GenericReportsController extends DashboardController
                         $transaction['Details'][$index] = $column;
                     }
 
+                    $transaction_number = $transaction['SalesInvoiceNo'] ? $transaction['SalesInvoiceNo'] : ( $transaction['CashReceiptNo'] ? $transaction['CashReceiptNo'] : 'N/A' );
+
                     $table['tbody'][] = [
                         'transaction_number' => $transaction['SalesInvoiceNo'] ? $transaction['SalesInvoiceNo'] : ( $transaction['CashReceiptNo'] ? $transaction['CashReceiptNo'] : 'N/A' ),
                         'transaction_date'   => isset( $transaction['TransactionDate'] ) ? CommonController::get_date_format( $transaction['TransactionDate'] ) : 'N/A',
@@ -253,7 +274,11 @@ class GenericReportsController extends DashboardController
                         'transaction_type'   => $transaction['TransactionType'],
                         'customer_id'        => isset( $transaction['CustomerID'] ) ? $transaction['CustomerID'] : 'N/A',
                         'status'             => isset( $transaction['Status'] ) ? $transaction['Status'] : 'N/A',
-                        'actions'            => [['type' => 'modal', 'label' => 'View Details']],
+                        'actions'            => $transaction['TransactionType'] === 'Cash Receipt' ? [['type' => 'modal', 'label' => 'View Reports']] : [['type' => 'modal', 'label' => 'View Details']],
+//                        'other_actions' => [['type' => 'modal', 'label' => 'View Reports']],
+                        'other_actions_details' => [
+                            'OrderNo'   => $transaction_number,
+                        ],
                         'details'            => [
                             'heading' => $transaction['SalesInvoiceNo'] ? $transaction['SalesInvoiceNo'] : ( $transaction['CashReceiptNo'] ? $transaction['CashReceiptNo'] : 'N/A' ),
                             'body'    => [
@@ -261,7 +286,7 @@ class GenericReportsController extends DashboardController
                                     [
                                         'title'   => 'General',
                                         'content' => [
-                                            'transaction_number' => $transaction['SalesInvoiceNo'] ? $transaction['SalesInvoiceNo'] : ( $transaction['CashReceiptNo'] ? $transaction['CashReceiptNo'] : 'N/A' ),
+                                            'transaction_number' => $transaction_number,
                                             'transaction_date'   => isset( $transaction['TransactionDate'] ) ? CommonController::get_date_format( $transaction['TransactionDate'] ) : 'N/A',
                                             'total_quantity'     => isset( $transaction['TotalQty'] ) ? $transaction['TotalQty'] : 'N/A',
                                             'total_amount'       => ConstantsController::CURRENCY.number_format( $transaction['TotalAmount'], ConstantsController::ALLOWED_DECIMALS ),
@@ -430,8 +455,9 @@ class GenericReportsController extends DashboardController
                         if(!empty($memo['RMANo'])){
                             $contents['RMA#'] = $memo['RMANo'];
                         }
-                        if(!empty($memo['SalesRepID'])){
-                            $contents['Rep'] = $memo['SalesRepID'];
+                        if(!empty($memo['SalesRepID']) && Auth::user()->is_sale_rep){
+                            $contents['Rep'] = $memo['SalesRepID'] . ' ' . Auth::user()->firstname . ' ' . Auth::user()->lastname;
+                            $contents['Created By'] = Auth::user()->firstname . ' ' . Auth::user()->lastname;
                         }
                         if(!empty($memo['SpecialInstructions'])){
                             $contents['Special Instructions'] = $memo['SpecialInstructions'];
@@ -600,7 +626,6 @@ class GenericReportsController extends DashboardController
 
             $table = array( 'thead' => [
                 'memo_number'    => 'Memo Number',
-                // 'customer_id'    => 'Customer ID',
                 'vendor'         => 'Vendor ID',
                 'total_quantity' => 'Total Quantity',
                 'total_amount'   => 'Total Amount',
@@ -619,7 +644,7 @@ class GenericReportsController extends DashboardController
                         'vendor'         => $memo['CustomerID'],
                         'total_quantity' => isset( $memo['TotalQty'] ) ? $memo['TotalQty'] : 'N/A',
                         'total_amount'   => ConstantsController::CURRENCY.number_format( $memo['TotalAmount'], ConstantsController::ALLOWED_DECIMALS ),
-                        'status'         => isset( $memo['Status'] ) ? $memo['Status'] : 'N/A',
+                        'status'         => $memo['Status'] ?? 'N/A',
                         'actions'        => [['type' => 'modal', 'label' => 'View Details']],
                         'details'        => [
                             // 'heading' => $memo['PayableInvoiceNo'].' : '.$memo['CustomerID'],
@@ -633,7 +658,7 @@ class GenericReportsController extends DashboardController
                                             'Customer ID'      => $memo['CustomerID'],
                                            'Vendor ID'        => $memo['CustomerID'],
                                             'Sales Order #'    => $memo['SalesOrderNo'],
-                                            'Total Amount'     => $memo['TotalAmount'],
+                                            'Total Amount'     => number_format($memo['TotalAmount'], 2),
                                             'Payment Due Date' => CommonController::get_date_format( $memo['PaymentDueDate'] )
                                         ],
                                         'cols' => 6
@@ -646,7 +671,7 @@ class GenericReportsController extends DashboardController
                                     [
                                         'title'   => 'Details',
                                         'content' => $memo['Details'],
-                                        'cols' => 6
+                                        'cols' => 12
                                     ]
                                 ]
                             ]
@@ -770,8 +795,8 @@ class GenericReportsController extends DashboardController
                         'OrderPlacedBy' => $invoice['OrderPlacedBy']
                     ];
 
-                    if (!empty($invoice['SalesRepID'])) {
-                        $customer_content['Rep'] = $invoice['SalesRepID'];
+                    if (!empty($invoice['SalesRepID']) && Auth::user()->is_sale_rep) {
+                        $customer_content['Rep'] = $invoice['SalesRepID'] . ' ' . Auth::user()->firstname . ' ' . Auth::user()->lastname;
                     }
 
                     if (!empty($invoice['ShipVia'])) {
@@ -806,7 +831,7 @@ class GenericReportsController extends DashboardController
 
                     $table['tbody'][] = [
                         'invoice_no'     => $invoice['SalesInvoiceNo'],
-                        'invoice_date'   => CommonController::get_date_format( $invoice['InvoiceDate'] ),
+                        'invoice_date'   => Carbon::parse( $invoice['InvoiceDate'] )->format('M-d-Y'),
                         'customer_id'    => $invoice['CustomerID'],
                         'total_quantity' => isset( $invoice['TotalQty'] ) ? $invoice['TotalQty'] : 'N/A',
                         'total_amount'   => ConstantsController::CURRENCY.number_format( $invoice['TotalAmount'], ConstantsController::ALLOWED_DECIMALS ),
@@ -976,7 +1001,7 @@ class GenericReportsController extends DashboardController
                 'total_qty'    => 'Total Quantity',
                 'status'       => 'Status',
                 'order_date'   => 'Order Date',
-                'actions'      => 'Actions'
+                'actions'      => 'Actions',
             ], 'tbody' => [] );
 
             if ( isset( $view_orders['Orders'] ) )
@@ -1019,8 +1044,8 @@ class GenericReportsController extends DashboardController
                         'OrderPlacedBy'   => $view_order['Header']['OrderTakenBy']
                     ];
 
-                    if (!empty($view_order['Header']['SalesRepID'])) {
-                        $customer_content['Rep'] = $view_order['Header']['SalesRepID'];
+                    if (!empty($view_order['Header']['SalesRepID']) && Auth::user()->is_sale_rep) {
+                        $customer_content['Rep'] = $view_order['Header']['SalesRepID'] . ' ' . Auth::user()->firstname . ' ' . Auth::user()->lastname;
                     }
 
                     if (!empty($view_order['Header']['SalesRepID'])) {
