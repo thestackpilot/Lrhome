@@ -639,6 +639,19 @@ class GenericReportsController extends DashboardController
 
                 foreach ( $memos['DebitMemos'] as $memo )
                 {
+                    $bill_to_content = [
+                        'First &LastName' => $memo['BillToAddress']['FirstName'] . ' ' . $memo['BillToAddress']['LastName'],
+                        'StreetAddress1' => $memo['BillToAddress']['Address1']
+                    ];
+
+                    if (!empty($memo['BillToAddress']['Address2'])) {
+                        $bill_to_content['StreetAddress2'] = $memo['BillToAddress']['Address1'];
+                    }
+                    $bill_to_content['City,State,Zip'] = ($memo['BillToAddress']['City'] ? $memo['BillToAddress']['City']. ', ' : null) . ($memo['BillToAddress']['State'] ? $memo['BillToAddress']['State']. ', ' : null) . $memo['BillToAddress']['ZIP'];
+                    $bill_to_content['Country'] = $memo['BillToAddress']['Country'];
+                    $bill_to_content['PhoneNumber'] = $memo['BillToAddress']['Phone1'];
+                    $bill_to_content['Email'] = $memo['BillToAddress']['Email'];
+
                     $table['tbody'][] = [
                         'memo_number'    => isset( $memo['SalesInvoiceNo'] ) ? $memo['SalesInvoiceNo'] : 'N/A',
                         // 'customer_id'    => $memo['CustomerID'],
@@ -666,8 +679,9 @@ class GenericReportsController extends DashboardController
                                     ],
                                     [
                                         'title'   => 'Billing Details',
-                                        'content' => $memo['BillToAddress'],
-                                        'cols' => 6
+                                        'content' => $bill_to_content,
+                                        'cols' => 6,
+                                        'hide_labels' => 1
                                     ],
                                     [
                                         'title'   => 'Details',
