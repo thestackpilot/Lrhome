@@ -180,7 +180,7 @@ function get_table( $table, $tab = '' ) {
             var modal_body = '';
             modal_body += '<div class="row mt-5">';
             data.body.sections.forEach((section, i) => {
-                console.log('section check', section, i);
+                //console.log('section check', section, i);
                 modal_body += '<div class="mb-3 col-md-' + section.cols + '">';
 
                 if (Array.isArray(section.content) && typeof section.content.length !== 'undefined') {
@@ -207,6 +207,7 @@ function get_table( $table, $tab = '' ) {
                     modal_body += '</div>';
                 } else {
                     // modal_body += '<div class="col-12">';
+                      //  console.log('section.title', section.title);
                     modal_body += '<h4>' + section.title + '</h3>';
                     Object.keys(section.content).forEach(function(key) {
                         var value = section.content[key] == 0 || section.content[key] == '' ? 'N/A' : section.content[key];
@@ -219,7 +220,12 @@ function get_table( $table, $tab = '' ) {
                             if (!section.hide_labels) {
                                 modal_body += '<p class="m-0"><strong>' + ((key.replace(/([A-Z|0-9])/g, ' $1').trim()).replace('_', ' ').replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())).replace(/([A-Z])\s(?=[A-Z])/g, '$1') + ' :</strong> ' + value + '</p>'
                             } else {
-                                modal_body += '<p class="m-0">' + value + '</p>'
+                                if(value != ", "){
+                                    modal_body += '<p class="m-0">' + value + '</p>'
+                                }else{
+                                    modal_body += '<p class="m-0"></p>'
+                                }
+
                             }
                         }
                         // modal_body += '<div class="col-md-4">' + ((key.replace(/([A-Z|0-9])/g, ' $1').trim()).replace('_', ' ').replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())).replace(/([A-Z])\s(?=[A-Z])/g, '$1') + ' : ' + value + '</div>';
@@ -364,6 +370,8 @@ function get_table( $table, $tab = '' ) {
                 section.forEach(row => {
                     modal_body += '<tr>';
                     Object.keys(row).forEach(function(index) {
+                        // console.log('index', index);
+                        // console.log(' row[index]',  row[index]);
                         if ( index == 'href' )
                         {
                             // continue;
@@ -376,7 +384,16 @@ function get_table( $table, $tab = '' ) {
                             }
                             else
                             {
-                                modal_body += "<td>" + (row[index] == null || row[index] == '' ? ((index == 'ImageName') ? 'No Image' : '-') : row[index]) + "</td>";
+                               // modal_body += "<td>" + (row[index] == null || row[index] == '' ? ((index == 'ImageName') ? 'No Image' : '-') : row[index]) + "</td>";
+                               modal_body += "<td>" +
+                                            (row[index] == null || row[index] == ''
+                                                ? ((index == 'ImageName') ? 'No Image' : '-')
+                                                : (index == 'Price'
+                                                ? '$' + parseFloat(row[index]).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,')
+                                                : row[index]))
+                                            + "</td>";
+
+
                             }
                         }
                     });
