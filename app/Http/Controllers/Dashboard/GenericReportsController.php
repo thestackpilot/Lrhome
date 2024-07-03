@@ -474,7 +474,7 @@ class GenericReportsController extends DashboardController
                     if (!empty($memo['BillToAddress']['Address2'])) {
                         $bill_to_content['StreetAddress2'] = $memo['BillToAddress']['Address1'];
                     }
-                    $bill_to_content['City,State,Zip'] = $memo['BillToAddress']['City'] . ', ' . $memo['BillToAddress']['State']. ', ' . $memo['BillToAddress']['ZIP'];
+                    $bill_to_content['City,State,Zip'] = ($memo['BillToAddress']['City'] ? $memo['BillToAddress']['City']. ', ' : null) . ($memo['BillToAddress']['State'] ? $memo['BillToAddress']['State']. ', ' : null) . $memo['BillToAddress']['ZIP'];
                     $bill_to_content['Country'] = $memo['BillToAddress']['Country'];
                     $bill_to_content['PhoneNumber'] = $memo['BillToAddress']['Phone1'];
                     $bill_to_content['Email'] = $memo['BillToAddress']['Email'];
@@ -487,7 +487,7 @@ class GenericReportsController extends DashboardController
                     if (!empty($memo['ShipToAddress']['Address2'])) {
                         $ship_to_content['StreetAddress2'] = $memo['ShipToAddress']['Address2'];
                     }
-                    $ship_to_content['City,State,Zip'] = $memo['ShipToAddress']['State']. ', ' . $memo['ShipToAddress']['ZIP'];
+                    $ship_to_content['City,State,Zip'] = ($memo['ShipToAddress']['City'] ? $memo['ShipToAddress']['City']. ', ' : null) . ($memo['ShipToAddress']['State'] ? $memo['ShipToAddress']['State']. ', ' : null) . $memo['ShipToAddress']['ZIP'];
                     $ship_to_content['Country'] = $memo['ShipToAddress']['Country'];
                     $ship_to_content['PhoneNumber'] = $memo['ShipToAddress']['Phone1'];
                     $ship_to_content['Email'] = $memo['ShipToAddress']['Email'];
@@ -680,6 +680,18 @@ class GenericReportsController extends DashboardController
                     ];
                 }
 
+                if ( $request->has( 'draw' ) && $request->draw )
+                {
+                    die( json_encode(
+                        [
+                            'recordsFiltered' => $memos['TotalRows'],
+                            'recordsTotal'    => $memos['TotalRows'],
+                            'draw'            => $request->draw + 1,
+                            'data'            => $table['tbody']
+                        ]
+                    ) );
+                }
+
             }
 
             $return['memos'] = $memos;
@@ -816,7 +828,7 @@ class GenericReportsController extends DashboardController
                         'name' => $invoice['BillToAddress']['FirstName'] . ($invoice['BillToAddress']['LastName'] ? ' ' . $invoice['BillToAddress']['LastName'] : ''),
                         'address1' => $invoice['BillToAddress']['Address1'],
                         'address2' => $invoice['BillToAddress']['Address2'] !== 'N/A' && $invoice['BillToAddress']['Address2'] ? $invoice['BillToAddress']['Address2'] : '',
-                        'city_address' => $invoice['BillToAddress']['City'] . ', ' . $invoice['BillToAddress']['State'] . ' ' .$invoice['BillToAddress']['ZIP'],
+                        'city_address' => ($invoice['BillToAddress']['City'] ? $invoice['BillToAddress']['City'] . ', ' : null) . ($invoice['BillToAddress']['State'] ? $invoice['BillToAddress']['State'] . ', ' : null) .$invoice['BillToAddress']['ZIP'],
                         'country' => $invoice['BillToAddress']['Country'],
                         'phone' => $invoice['BillToAddress']['Phone1'] ? $invoice['BillToAddress']['Phone1'] : ''
                     ];
@@ -825,7 +837,7 @@ class GenericReportsController extends DashboardController
                         'name' => $invoice['ShipToAddress']['FirstName'] . ($invoice['ShipToAddress']['LastName'] ? ' ' . $invoice['ShipToAddress']['LastName'] : ''),
                         'address1' => $invoice['ShipToAddress']['Address1'],
                         'address2' => $invoice['ShipToAddress']['Address2'] !== 'N/A' && $invoice['ShipToAddress']['Address2'] ? $invoice['ShipToAddress']['Address2'] : '',
-                        'city_address' => $invoice['ShipToAddress']['City'] . ', ' . $invoice['ShipToAddress']['State'] . ' ' .$invoice['ShipToAddress']['ZIP'],
+                        'city_address' => ($invoice['ShipToAddress']['City'] ? $invoice['ShipToAddress']['City'] . ', ' : null) . ($invoice['ShipToAddress']['State'] ? $invoice['ShipToAddress']['State'] . ', ' : null) .$invoice['ShipToAddress']['ZIP'],
                         'country' => $invoice['ShipToAddress']['Country'],
                         'phone' => $invoice['ShipToAddress']['Phone1'] ? $invoice['ShipToAddress']['Phone1'] : ''
                     ];
