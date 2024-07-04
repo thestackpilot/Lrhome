@@ -16,7 +16,7 @@ use App\Http\Controllers\CommonController;
     <div class="hero-box-area mt-md-0 ">
 
         <div class="z-index-3">
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLScV-1ubFifm4-pzsGPfnPJTLSH_1E9etsaPyOF5cq-X4me7aA/viewform" target="_blank">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScV-1ubFifm4-pzsGPfnPJTLSH_1E9etsaPyOF5cq-X4me7aA/viewform" target="_blank" style="width:100%">
                 <img src="{{ asset('LR/images/banners/atlanta-appointment.jpeg') }}" class="img-fluid">
             </a>
         </div>
@@ -32,7 +32,7 @@ use App\Http\Controllers\CommonController;
         </div>
     </div>
     <div class="product-wrapper section-space--ptb_60">
-        <div class="container-fluid">
+        <div class="home-key-container">
             <div class="set-lr-pad">
                 <div class="row">
                     <div class="col-lg-12">
