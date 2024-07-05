@@ -3538,11 +3538,14 @@ DASHBOARD OF LR
     margin-right: auto;
     margin-left: auto;
 }
-@media (max-width: 1400px) {
+@media (max-width: 1400px) and (min-width: 1200px) {
     .home-key-container{
         max-width: 1170px;
     }
+
+
 }
+
 
 @media (max-width: 420px) {
     .account-content .card.bg-success {
