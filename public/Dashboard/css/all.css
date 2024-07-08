@@ -3531,6 +3531,22 @@ DASHBOARD OF LR
     }
 }
 
+.home-key-container{
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+@media (max-width: 1400px) and (min-width: 1200px) {
+    .home-key-container{
+        max-width: 1170px;
+    }
+
+
+}
+
+
 @media (max-width: 420px) {
     .account-content .card.bg-success {
         width: 100% !important;
