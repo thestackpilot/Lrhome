@@ -146,7 +146,7 @@ class LoginController extends AuthController
                 {
                     $user = $this->model->get_user( '', '', ['customer_id' => $credentials['email'], 'parent_id' => null] );
                 }
-                
+
                 $data = [
                     'customer_id'         => $response['UserDetails']['UserID'],
                     'spars_id'            => $response['UserDetails']['SparsID'],
@@ -154,6 +154,7 @@ class LoginController extends AuthController
                     'is_customer'         => $response['UserDetails']['IsCustomer'],
                     'is_sale_rep'         => $response['UserDetails']['IsSalesRep'],
                     'password'            => Hash::make( $credentials['password'] ),
+                    'company'        => $response['UserDetails']['Company'],
                 ];
 
                 if ( isset($response['UserDetails']['ResetPassword']) && $response['UserDetails']['ResetPassword'] )
@@ -243,7 +244,7 @@ class LoginController extends AuthController
         {
             Session::forget( 'ResetPassword' );
         }
-        
+
         Auth::logout();
 
         return redirect()->back(); // Redirect::route( 'auth.login' );
