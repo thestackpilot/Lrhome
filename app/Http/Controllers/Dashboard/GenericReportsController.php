@@ -266,6 +266,32 @@ class GenericReportsController extends DashboardController
 
                     $transaction_number = $transaction['SalesInvoiceNo'] ? $transaction['SalesInvoiceNo'] : ( $transaction['CashReceiptNo'] ? $transaction['CashReceiptNo'] : 'N/A' );
 
+                    $bill_to_content = [];
+                    $bill_to_content = [
+                        'First &LastName' => $transaction['BillToAddress']['FirstName'] . ' ' . $transaction['BillToAddress']['LastName'],
+                        'StreetAddress1' => $transaction['BillToAddress']['Address1']
+                    ];
+                    if (!empty($transaction['BillToAddress']['Address2'])) {
+                        $bill_to_content['StreetAddress2'] = $transaction['BillToAddress']['Address2'];
+                    }
+                    $bill_to_content['City,State,Zip'] = ($transaction['BillToAddress']['City'] ? $transaction['BillToAddress']['City']. ', ' : null) . ($transaction['BillToAddress']['State'] ? $transaction['BillToAddress']['State']. ', ' : null) . $transaction['BillToAddress']['ZIP'];
+                    $bill_to_content['Country'] = $transaction['BillToAddress']['Country'];
+                    $bill_to_content['PhoneNumber'] = $transaction['BillToAddress']['Phone1'];
+                    $bill_to_content['Email'] = $transaction['BillToAddress']['Email'];
+
+                    $ship_to_content = [];
+                    $ship_to_content = [
+                        'First &LastName' => $transaction['ShipToAddress']['FirstName'] . ' ' . $transaction['ShipToAddress']['LastName'],
+                        'StreetAddress1' => $transaction['ShipToAddress']['Address1']
+                    ];
+                    if (!empty($transaction['ShipToAddress']['Address2'])) {
+                        $ship_to_content['StreetAddress2'] = $transaction['ShipToAddress']['Address2'];
+                    }
+                    $ship_to_content['City,State,Zip'] = ($transaction['ShipToAddress']['City'] ? $transaction['ShipToAddress']['City']. ', ' : null) . ($transaction['ShipToAddress']['State'] ? $transaction['ShipToAddress']['State']. ', ' : null) . $transaction['ShipToAddress']['ZIP'];
+                    $ship_to_content['Country'] = $transaction['ShipToAddress']['Country'];
+                    $ship_to_content['PhoneNumber'] = $transaction['ShipToAddress']['Phone1'];
+                    $ship_to_content['Email'] = $transaction['ShipToAddress']['Email'];
+
                     $table['tbody'][] = [
                         'transaction_number' => $transaction['SalesInvoiceNo'] ? $transaction['SalesInvoiceNo'] : ( $transaction['CashReceiptNo'] ? $transaction['CashReceiptNo'] : 'N/A' ),
                         'transaction_date'   => isset( $transaction['TransactionDate'] ) ? CommonController::get_date_format( $transaction['TransactionDate'] ) : 'N/A',
@@ -298,13 +324,13 @@ class GenericReportsController extends DashboardController
                                     ],
                                     [
                                         'title'   => 'Billing Details',
-                                        'content' => $transaction['BillToAddress'],
+                                        'content' => $bill_to_content,
                                         'cols' => 6,
                                         'hide_labels' => 1
                                     ],
                                     [
                                         'title'   => 'Shipping Details',
-                                        'content' => $transaction['ShipToAddress'],
+                                        'content' => $ship_to_content,
                                         'cols' => 6,
                                         'hide_labels' => 1
                                     ],
