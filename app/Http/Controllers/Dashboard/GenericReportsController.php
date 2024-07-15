@@ -239,7 +239,10 @@ class GenericReportsController extends DashboardController
                 $page_size = 25;
             }
 
-            $transactions = $this->ApiObj->Get_FinancialTransactions( $request->customer, $request->sales_rep, $request->from_date, $request->to_date, $request->po_number, $request->invoice_number, $request->cash_receipt_number, $page, $page_size );
+            $from_d = Carbon::parse($request->from_date)->format('Y-m-d');
+            $to_d  =  Carbon::parse( $request->to_date)->format('Y-m-d');
+
+            $transactions = $this->ApiObj->Get_FinancialTransactions( $request->customer, $request->sales_rep, $from_d, $to_d, $request->po_number, $request->invoice_number, $request->cash_receipt_number, $page, $page_size );
             $table        = array( 'thead' => [
                 'transaction_number' => 'Transaction Number',
                 'transaction_date'   => 'Transaction Date',
@@ -445,7 +448,10 @@ class GenericReportsController extends DashboardController
                 $page_size = 25;
             }
 
-            $memos = $this->ApiObj->Get_CreditMemos( $request->customer, $request->sales_rep, $request->from_date, $request->to_date, $request->invoice_number, $request->po_number, $page, $page_size );
+            $from_d = Carbon::parse($request->from_date)->format('Y-m-d');
+            $to_d  =  Carbon::parse( $request->to_date)->format('Y-m-d');
+
+            $memos = $this->ApiObj->Get_CreditMemos( $request->customer, $request->sales_rep,  $from_d, $to_d, $request->invoice_number, $request->po_number, $page, $page_size );
             $table = array( 'thead' => [
                 'memo_number'    => 'Credit Number',
                 'customer_id'    => 'Customer ID',
@@ -648,8 +654,10 @@ class GenericReportsController extends DashboardController
 
         if ( count( $request->all() ) > 0 && isset( $request->submit ) )
         {
+            $from_d = Carbon::parse($request->from_date)->format('Y-m-d');
+            $to_d  =  Carbon::parse( $request->to_date)->format('Y-m-d');
            // $memos = $this->ApiObj->Get_DebitMemos( $request->customer, $request->from_date, $request->to_date, $request->invoice_number, $request->vendor );
-           $memos = $this->ApiObj->Get_DebitMemos( Auth::user()->is_customer ? Auth::user()->customer_id : null, $request->from_date, $request->to_date, $request->invoice_number, Auth::user()->is_sale_rep ? Auth::user()->customer_id : null);
+           $memos = $this->ApiObj->Get_DebitMemos( Auth::user()->is_customer ? Auth::user()->customer_id : null, $from_d, $to_d, $request->invoice_number, Auth::user()->is_sale_rep ? Auth::user()->customer_id : null);
 
             $table = array( 'thead' => [
                 'memo_number'    => 'Memo Number',
@@ -792,7 +800,10 @@ class GenericReportsController extends DashboardController
                 $page_size = 25;
             }
 
-            $invoices = $this->ApiObj->Get_Invoices( $request->customer, $request->sales_rep, $request->invoice_number, $request->po_number, $request->from_date, $request->to_date, $page, $page_size );
+            $from_d = Carbon::parse($request->from_date)->format('Y-m-d');
+            $to_d  =  Carbon::parse( $request->to_date)->format('Y-m-d');
+
+            $invoices = $this->ApiObj->Get_Invoices( $request->customer, $request->sales_rep, $request->invoice_number, $request->po_number, $from_d, $to_d, $page, $page_size );
             $table    = array( 'thead' => [
                 'invoice_no'     => 'Sale Invoice Number',
                 'invoice_date'   => 'Sale Invoice Date',
@@ -1032,7 +1043,10 @@ class GenericReportsController extends DashboardController
                 $page_size = 25;
             }
 
-            $view_orders = $this->ApiObj->View_Order( $request->customer, $request->external_number, $request->from_date, $request->to_date, $request->sales_rep, $page, $page_size, $request->status );
+            $from_d = Carbon::parse($request->from_date)->format('Y-m-d');
+            $to_d  =  Carbon::parse( $request->to_date)->format('Y-m-d');
+
+            $view_orders = $this->ApiObj->View_Order( $request->customer, $request->external_number, $from_d, $to_d, $request->sales_rep, $page, $page_size, $request->status );
             $table       = array( 'thead' => [
                 'order_no'     => 'Order Number',
                 'customer_id'  => 'Customer ID',
@@ -1270,7 +1284,10 @@ class GenericReportsController extends DashboardController
                 $page_size = 25;
             }
 
-            $rmas = $this->ApiObj->Get_View_Return( $request->customer, $request->sales_rep, $request->from_date, $request->to_date, $request->rma_number, $request->invoice_number, $request->packing_slip_number, $request->order_number, $page, $page_size );
+            $from_d = Carbon::parse($request->from_date)->format('Y-m-d');
+            $to_d  =  Carbon::parse( $request->to_date)->format('Y-m-d');
+
+            $rmas = $this->ApiObj->Get_View_Return( $request->customer, $request->sales_rep, $from_d, $to_d, $request->rma_number, $request->invoice_number, $request->packing_slip_number, $request->order_number, $page, $page_size );
 
             $table = array( 'thead' => [
                 'rma_no'                 => 'RMA Number',
