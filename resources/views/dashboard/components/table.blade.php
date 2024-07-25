@@ -42,7 +42,7 @@ function get_table( $table, $tab = '' ) {
                     $table_body .= '<td>';
                     foreach($row['actions'] as $action) {
                         if($action['type'] == 'modal' ) {
-                            if (isset($row['transaction_type']) && $row['transaction_type'] === 'Cash Receipt') {
+                            if (isset($row['other_actions_details']) || (isset($row['transaction_type']) && $row['transaction_type'] === 'Cash Receipt')) {
                                  $table_body .= '
                                  <button class="btn btn-sm btn-primary other-details" type="button">'.$action['label'].'</button>
                                  <span class="other-row-details" style="display: none !important;">'.json_encode($row['other_actions_details']).'</span>
@@ -412,10 +412,10 @@ function get_table( $table, $tab = '' ) {
             const url = "/dashboard/order_report";
             {{--const url = "{{ route('dashboard.orderreport') }}";--}}
             var data = JSON.parse($('span.other-row-details', $(this).parent()).html());
-            //console.log('Data', data);
+            console.log('Data', data);
             let SalesRepId = '';
             let CustomerId = '';
-            let MenuTag = 'ViewCashReceipt';
+            let MenuTag = data.MenuTag;
             let DocumentNo =  data.OrderNo;
             const fullUrl = `${url}?MenuTag=${MenuTag}&DocumentNo=${DocumentNo}`;
             // console.log('full URL', fullUrl);

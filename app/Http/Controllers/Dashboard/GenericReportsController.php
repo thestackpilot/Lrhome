@@ -304,6 +304,7 @@ class GenericReportsController extends DashboardController
 //                        'other_actions' => [['type' => 'modal', 'label' => 'View Reports']],
                         'other_actions_details' => [
                             'OrderNo'   => $transaction_number,
+                            'MenuTag'   => 'ViewCashReceipt'
                         ],
                         'details'            => [
                             'heading' => $transaction['SalesInvoiceNo'] ? $transaction['SalesInvoiceNo'] : ( $transaction['CashReceiptNo'] ? $transaction['CashReceiptNo'] : 'N/A' ),
@@ -665,6 +666,7 @@ class GenericReportsController extends DashboardController
 
                 foreach ( $memos['DebitMemos'] as $memo )
                 {
+                    \Log::info($memo);
                     $bill_to_content = [
                         'First &LastName' => $memo['BillToAddress']['FirstName'] . ' ' . $memo['BillToAddress']['LastName'],
                         'StreetAddress1' => $memo['BillToAddress']['Address1']
@@ -685,7 +687,12 @@ class GenericReportsController extends DashboardController
                         'total_quantity' => isset( $memo['TotalQty'] ) ? $memo['TotalQty'] : 'N/A',
                         'total_amount'   => ConstantsController::CURRENCY.number_format( $memo['TotalAmount'], ConstantsController::ALLOWED_DECIMALS ),
                         'status'         => $memo['Status'] ?? 'N/A',
-                        'actions'        => [['type' => 'modal', 'label' => 'View Details']],
+                        'transaction_type'   => 'Cash Receipt',
+                        'actions'        => [['type' => 'modal', 'label' => 'View Reports']],
+                        'other_actions_details' => [
+                            'OrderNo'   => $memo['SalesInvoiceNo'],
+                            'MenuTag'   => 'ViewDebitMemo'
+                        ],
                         'details'        => [
                             // 'heading' => $memo['PayableInvoiceNo'].' : '.$memo['CustomerID'],
                            'heading' => $memo['SalesInvoiceNo'],
