@@ -153,10 +153,11 @@ class AccountController extends DashboardController
             'order_no'     => 'Order Number',
             'customer_id'  => 'Customer ID',
             'customer_po'  => 'Customer PO',
-            'total_Amount' => 'Amount',
+            'total_Amount' => 'Total Amount',
+            'total_qty'    => 'Total Quantity',
             'status'       => 'Status',
             'order_date'   => 'Order Date',
-            'actions'      => 'Actions'
+            'actions'      => 'Actions',
         ], 'tbody' => [] );
 
         if ( isset( $view_orders['Orders'] ) )
@@ -164,17 +165,18 @@ class AccountController extends DashboardController
 
             foreach ( $view_orders['Orders'] as $view_order )
             {
-
-                if ( isset( $this->active_theme_json->theme_slug ) && $this->active_theme_json->theme_slug === 'lr' )
+                if ( isset($this->active_theme_json->theme_slug) && $this->active_theme_json->theme_slug === 'lr' )
                 {
-                    foreach ( $view_order['Detail'] as $index => $view )
+                    foreach($view_order['Detail'] as $index => $view)
                     {
-                        $column = CommonController::get_selected_columns( $view, [
+                        $column = CommonController::get_selected_columns($view, [
                             'ImageName', 'ItemID', 'ItemDescription', 'UnitPrice', 'OrderQty', 'Status', 'ShippedQty', 'ExtPrice', 'SideMark'
-                        ] );
-                        $column['href']               = route( 'frontend.item', [$view['Collection'], $view['DesignID']] );
-                        $column['BackOrderQty']       = isset( $view['BackOrder'] ) && CommonController::check_bit_field( $view, 'BackOrder' ) ? (  ( isset( $view['ETADate'] ) ? $view['ETADate'] : '' ).( isset( $view['ETAQty'] ) ? $view['ETAQty'] : '' ) ) : '';
+                        ]);
+                        $column['href'] = route('frontend.item', [$view['Collection'], $view['DesignID']]);
+                        $column['BackOrderQty'] = isset($view['BackOrder']) && CommonController::check_bit_field($view, 'BackOrder' ) ? ( (isset($view['ETADate']) ? $view['ETADate'] : '') . (isset($view['ETAQty']) ? $view['ETAQty'] : '')) : '';
                         $view_order['Detail'][$index] = $column;
+                        $view_order['Detail'][$index]['UnitPrice'] = number_format($view['UnitPrice'], 2);
+                        $view_order['Detail'][$index]['ExtPrice'] = number_format($view['ExtPrice'], 2);
                     }
 
                     foreach($view_order['OrderTrackingDetail'] as $index => $view)
@@ -182,69 +184,103 @@ class AccountController extends DashboardController
                         $column = CommonController::get_selected_columns($view, [
                             'ImageName', 'ItemID', 'SalesOrderNo', 'DateCreated', 'SalesInvoiceNo', 'TrackingNo'
                         ]);
+                        $column['DateCreated'] = Carbon::parse($column['DateCreated'])->format('M-d-Y');
                         $view_order['OrderTrackingDetail'][$index] = $column;
                     }
+
+                    foreach ($view_order['OrderInvoiceDetail'] as $index => $view) {
+                        $view_order['OrderInvoiceDetail'][$index]['InvoiceDate'] = Carbon::parse($view['InvoiceDate'])->format('M-d-Y');
+                        $view_order['OrderInvoiceDetail'][$index]['TotalAmount'] = number_format($view['TotalAmount'], 2);
+                    }
                 }
+
+                $customer_content =  [
+                    'PO#'   => $view_order['Header']['CustomerPO'],
+                    'ShipVia'       => $view_order['Header']['ShipViaCode'],
+                    'OrderPlacedBy'   => $view_order['Header']['OrderTakenBy'],
+                    'Rep' => $view_order['Header']['SalesRepID'] . ' ' . $view_order['Header']['AgentCompany'],
+                    'CreatedBy' => $view_order['Header']['CreatedBy']
+                ];
+
+                if (!empty($view_order['Header']['SalesRepID'])) {
+                    $customer_content['SpecialInstructions'] = $view_order['Header']['SpecialInstructions'];
+                }
+
+                if (!empty($view_order['Header']['SalesRepID'])) {
+                    $customer_content['Notes'] = $view_order['Header']['Instructions'];
+                }
+
+                $bill_to_content = [
+                    'First &LastName' => $view_order['Header']['BillingFirstName'] . ' ' . $view_order['Header']['BillingLastName'],
+                    'StreetAddress1' => $view_order['Header']['BillingFirstName']
+                ];
+
+                if (!empty($view_order['Header']['BillingAddress2'])) {
+                    $bill_to_content['StreetAddress2'] = $view_order['Header']['BillingAddress1'];
+                }
+                $bill_to_content['City,State,Zip'] = $view_order['Header']['BillingCity'] . ', ' . $view_order['Header']['BillingState']. ', ' . $view_order['Header']['BillingZipCode'];
+                $bill_to_content['Country'] = $view_order['Header']['BillingCountry'];
+                $bill_to_content['PhoneNumber'] = $view_order['Header']['BillingPhone1'];
+                $bill_to_content['Email'] = $view_order['Header']['BillingEmail'];
+
+                $ship_to_content = [
+                    'First &LastName' => $view_order['Header']['ShippingFirstName'] . ' ' . $view_order['Header']['ShippingLastName'],
+                    'StreetAddress1' => $view_order['Header']['ShippingAddress1']
+                ];
+
+                if (!empty($view_order['Header']['ShippingAddress2'])) {
+                    $ship_to_content['StreetAddress2'] = $view_order['Header']['ShippingAddress2'];
+                }
+                $ship_to_content['City,State,Zip'] = $view_order['Header']['ShippingState']. ', ' . $view_order['Header']['ShippingZipCode'];
+                $ship_to_content['Country'] = $view_order['Header']['ShippingCountry'];
+                $ship_to_content['PhoneNumber'] = $view_order['Header']['ShippingPhone'];
+                $ship_to_content['Email'] = $view_order['Header']['ShippingEmail'];
 
                 $table['tbody'][] = [
                     'order_no'     => $view_order['Header']['OrderNo'],
                     'customer_id'  => $view_order['Header']['CustomerID'],
                     'customer_po'  => $view_order['Header']['CustomerPO'],
                     'total_Amount' => ConstantsController::CURRENCY.number_format( $view_order['Header']['TotalAmount'], ConstantsController::ALLOWED_DECIMALS ),
+                    'total_qty'    => $view_order['Header']['TotalQty'],
                     'status'       => $view_order['Header']['Status'],
-                    'order_date'   => isset( $view_order['Header']['OrderDate'] ) ? Carbon::parse($view_order['Header']['OrderDate'])->format('M-d-Y') : 'N/A',
-                    // 'tab'          => isset( $view_order['Header']['TabStatusDescription'] ) ? $view_order['Header']['TabStatusDescription'] : '',
+                    'tab'          => isset( $view_order['Header']['TabStatusDescription'] ) ? $view_order['Header']['TabStatusDescription'] : '',
+                    'order_date'   => isset( $view_order['Header']['OrderDate'] ) ? CommonController::get_date_format( $view_order['Header']['OrderDate'] ) : 'N/A',
                     'actions'      => [['type' => 'modal', 'label' => 'View Details']],
                     'details'      => [
                         'heading' => $view_order['Header']['OrderNo'].' : '.$view_order['Header']['CustomerID'],
                         'body'    => [
                             'sections' => [
                                 [
-                                    'title'   => 'General',
+                                    'title'   => $view_order['Header']['CustomerID'] . ' ' . $view_order['Header']['CustomerName'],
+                                    'content' => $customer_content,
+                                    'cols' => 6
+                                ],
+                                [
+                                    'title'   => preg_replace('/([a-z])([A-Z])/', '$1 $2', $view_order['Header']['TransactionType']) . '#: ' . $view_order['Header']['TransactionNo'],
                                     'content' => [
-                                        'OrderNo'     => $view_order['Header']['OrderNo'],
-                                        'Customer ID' => $view_order['Header']['CustomerID'],
-                                        'Customer PO' => $view_order['Header']['CustomerPO'],
-                                        'Status'      => $view_order['Header']['Status'],
-                                        'PaymentTerm' => $view_order['Header']['PaymentTerm'],
-                                        'OrderDate'   => $view_order['Header']['OrderDate'],
-                                        'TotalAmount' => ConstantsController::CURRENCY.number_format( $view_order['Header']['TotalAmount'], ConstantsController::ALLOWED_DECIMALS )
+                                        'Status ' => $view_order['Header']['Status'],
+                                        'OrderDate ' => Carbon::parse($view_order['Header']['OrderDate'])->format('M d, Y'),
+                                        'ShipDate' => Carbon::parse($view_order['Header']['ShippingDate'])->format('M d, Y'),
+                                        'Terms' => $view_order['Header']['PaymentTerm'],
+                                        'TotalQty' => $view_order['Header']['TotalQty'],
+                                        'MerchandiseTotal' => number_format(floatval($view_order['Header']['TotalMerchandise']), 2)
                                     ],
                                     'cols' => 6
                                 ],
                                 [
-                                    'title'   => 'Billing Details',
-                                    'content' => [
-                                        'FirstName' => $view_order['Header']['BillingFirstName'],
-                                        'LastName'  => $view_order['Header']['BillingLastName'],
-                                        'Phone'     => $view_order['Header']['BillingPhone1'],
-                                        'Email'     => $view_order['Header']['BillingEmail'],
-                                        'Address 1' => $view_order['Header']['BillingAddress1'],
-                                        'Address 2' => $view_order['Header']['BillingAddress2'],
-                                        'City'      => $view_order['Header']['BillingCity'],
-                                        'State'     => $view_order['Header']['BillingState'],
-                                        'ZipCode'   => $view_order['Header']['BillingZipCode'],
-                                        'Country'   => $view_order['Header']['BillingCountry']
-                                    ],
-                                    'cols' => 6
+                                    'title'   => 'Bill To:',
+                                    'content' => $bill_to_content,
+                                    'cols' => 6,
+                                    'hide_labels' => 1
                                 ],
                                 [
-                                    'title'   => 'Shipping Details',
-                                    'content' => [
-                                        'FirstName'    => $view_order['Header']['ShippingFirstName'],
-                                        'LastName'     => $view_order['Header']['ShippingLastName'],
-                                        'Address 1'    => $view_order['Header']['ShippingAddress1'],
-                                        'Address 2'    => $view_order['Header']['ShippingAddress2'],
-                                        'State'        => $view_order['Header']['ShippingState'],
-                                        'ZipCode'      => $view_order['Header']['ShippingZipCode'],
-                                        'ShipViaCode'  => $view_order['Header']['ShipViaCode'],
-                                        'ShippingCost' => $view_order['Header']['ShippingCost'],
-                                        'ShippingDate' => $view_order['Header']['ShippingDate']
-                                    ],
-                                    'cols' => 6
+                                    'title'   => 'Ship To: ',
+                                    'content' => $ship_to_content,
+                                    'cols' => 6,
+                                    'hide_labels' => 1
                                 ],
                                 [
-                                    'title'   => 'Items List',
+                                    'title'   => 'Detail',
                                     'cols' => 12,
                                     'content' => isset( $view_order['Header']['TabStatusDescription'] ) ? [
                                         'tabs' => [

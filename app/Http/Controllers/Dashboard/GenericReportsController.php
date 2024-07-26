@@ -240,6 +240,7 @@ class GenericReportsController extends DashboardController
             }
 
             $transactions = $this->ApiObj->Get_FinancialTransactions( $request->customer, $request->sales_rep, $request->from_date, $request->to_date, $request->po_number, $request->invoice_number, $request->cash_receipt_number, $page, $page_size );
+            \Log::info($transactions);
             $table        = array( 'thead' => [
                 'transaction_number' => 'Transaction Number',
                 'transaction_date'   => 'Transaction Date',
@@ -319,7 +320,9 @@ class GenericReportsController extends DashboardController
                                             'total_amount'       => ConstantsController::CURRENCY.number_format( $transaction['TotalAmount'], ConstantsController::ALLOWED_DECIMALS ),
                                             'transaction_type'   => $transaction['TransactionType'],
                                             'customer_id'        => isset( $transaction['CustomerID'] ) ? $transaction['CustomerID'] : 'N/A',
-                                            'status'             => isset( $transaction['Status'] ) ? $transaction['Status'] : 'N/A'
+                                            'status'             => isset( $transaction['Status'] ) ? $transaction['Status'] : 'N/A',
+                                            'rep'                => $transaction['SalesRepID'].' '. $transaction['AgentCompany'],
+                                            'created by'         => $transaction['CreatedBy']
                                         ],
                                         'cols' => 6
                                     ],
@@ -447,6 +450,7 @@ class GenericReportsController extends DashboardController
             }
 
             $memos = $this->ApiObj->Get_CreditMemos( $request->customer, $request->sales_rep, $request->from_date, $request->to_date, $request->invoice_number, $request->po_number, $page, $page_size );
+            \Log::info($memos);
             $table = array( 'thead' => [
                 'memo_number'    => 'Credit Number',
                 'customer_id'    => 'Customer ID',
@@ -477,15 +481,14 @@ class GenericReportsController extends DashboardController
                             'Ref Invoice#'          => $memo['SalesInvoiceNo'],
                             'Customer ID'           => $memo['CustomerID'],
                             'Ship Via'              => $memo['ShipVia'],
+                            'Rep' => $memo['SalesRepID'] . ' ' . isset($memo['AgentCompany']) ? $memo['AgentCompany'] : '',
+                            'Created By' =>  isset($memo['CreatedBy']) ? $memo['CreatedBy'] : 'N/A'
                         ];
 
                         if(!empty($memo['RMANo'])){
                             $contents['RMA#'] = $memo['RMANo'];
                         }
-                        if(!empty($memo['SalesRepID']) && Auth::user()->is_sale_rep){
-                            $contents['Rep'] = $memo['SalesRepID'] . ' ' . Auth::user()->firstname . ' ' . Auth::user()->lastname;
-                            $contents['Created By'] = Auth::user()->firstname . ' ' . Auth::user()->lastname;
-                        }
+                        
                         if(!empty($memo['SpecialInstructions'])){
                             $contents['Special Instructions'] = $memo['SpecialInstructions'];
                         }
@@ -651,7 +654,7 @@ class GenericReportsController extends DashboardController
         {
            // $memos = $this->ApiObj->Get_DebitMemos( $request->customer, $request->from_date, $request->to_date, $request->invoice_number, $request->vendor );
            $memos = $this->ApiObj->Get_DebitMemos( Auth::user()->is_customer ? Auth::user()->customer_id : null, $request->from_date, $request->to_date, $request->invoice_number, Auth::user()->is_sale_rep ? Auth::user()->customer_id : null);
-
+            // \Log::info($memo);
             $table = array( 'thead' => [
                 'memo_number'    => 'Memo Number',
                 'vendor'         => 'Vendor ID',
@@ -814,6 +817,7 @@ class GenericReportsController extends DashboardController
             }
 
             $invoices = $this->ApiObj->Get_Invoices( $request->customer, $request->sales_rep, $request->invoice_number, $request->po_number, $request->from_date, $request->to_date, $page, $page_size );
+            \Log::info($invoices);
             $table    = array( 'thead' => [
                 'invoice_no'     => 'Sale Invoice Number',
                 'invoice_date'   => 'Sale Invoice Date',
@@ -852,7 +856,9 @@ class GenericReportsController extends DashboardController
                     $customer_content = [
                         'PO#' => $invoice['CustomerPO'],
                         'SO#' => $invoice['SalesOrderNo'],
-                        'OrderPlacedBy' => $invoice['OrderPlacedBy']
+                        'OrderPlacedBy' => $invoice['OrderPlacedBy'],
+                        'Rep'   =>  $invoice['SalesRepID'] . ' ' . isset($invoice['AgentCompany']) ? $invoice['AgentCompany'] : '',
+                        'CreatedBy'=> $invoice['CreatedBy']
                     ];
 
                     if (!empty($invoice['SalesRepID']) && Auth::user()->is_sale_rep) {
@@ -1102,12 +1108,10 @@ class GenericReportsController extends DashboardController
                     $customer_content =  [
                         'PO#'   => $view_order['Header']['CustomerPO'],
                         'ShipVia'       => $view_order['Header']['ShipViaCode'],
-                        'OrderPlacedBy'   => $view_order['Header']['OrderTakenBy']
+                        'OrderPlacedBy'   => $view_order['Header']['OrderTakenBy'],
+                        'Rep' => $view_order['Header']['SalesRepID'] . ' ' . $view_order['Header']['AgentCompany'],
+                        'CreatedBy' => $view_order['Header']['CreatedBy']
                     ];
-
-                    if (!empty($view_order['Header']['SalesRepID']) && Auth::user()->is_sale_rep) {
-                        $customer_content['Rep'] = $view_order['Header']['SalesRepID'] . ' ' . Auth::user()->firstname . ' ' . Auth::user()->lastname;
-                    }
 
                     if (!empty($view_order['Header']['SalesRepID'])) {
                         $customer_content['SpecialInstructions'] = $view_order['Header']['SpecialInstructions'];
@@ -1292,7 +1296,7 @@ class GenericReportsController extends DashboardController
             }
 
             $rmas = $this->ApiObj->Get_View_Return( $request->customer, $request->sales_rep, $request->from_date, $request->to_date, $request->rma_number, $request->invoice_number, $request->packing_slip_number, $request->order_number, $page, $page_size );
-
+            \Log::info($rmas);
             $table = array( 'thead' => [
                 'rma_no'                 => 'RMA Number',
                 'customer_return_number' => 'Customer Return #',
@@ -1338,6 +1342,7 @@ class GenericReportsController extends DashboardController
                                             'Customer ID'   => $rma['CustomerID'],
                                             'Customer Name' => $rma['CustomerName'],
                                             'Sales Order #' => $rma['SalesOrderNo'],
+                                            'Created By' => $rma['CreatedBy'],
                                             'Total Amount'  => ConstantsController::CURRENCY.number_format( $rma['TotalAmount'], ConstantsController::ALLOWED_DECIMALS )
                                         ]
                                     ],
