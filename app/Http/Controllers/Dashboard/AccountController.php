@@ -231,7 +231,7 @@ class AccountController extends DashboardController
                 if (!empty($view_order['Header']['ShippingAddress2'])) {
                     $ship_to_content['StreetAddress2'] = $view_order['Header']['ShippingAddress2'];
                 }
-                $ship_to_content['City,State,Zip'] = $view_order['Header']['ShippingState']. ', ' . $view_order['Header']['ShippingZipCode'];
+                $ship_to_content['City,State,Zip'] = ($view_order['Header']['ShippingCity'] ? $view_order['Header']['ShippingCity'] .', ': null) .$view_order['Header']['ShippingState']. ', ' . $view_order['Header']['ShippingZipCode'];
                 $ship_to_content['Country'] = $view_order['Header']['ShippingCountry'];
                 $ship_to_content['PhoneNumber'] = $view_order['Header']['ShippingPhone'];
                 $ship_to_content['Email'] = $view_order['Header']['ShippingEmail'];

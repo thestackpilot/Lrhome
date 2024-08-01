@@ -1142,7 +1142,7 @@ class GenericReportsController extends DashboardController
                     if (!empty($view_order['Header']['ShippingAddress2'])) {
                         $ship_to_content['StreetAddress2'] = $view_order['Header']['ShippingAddress2'];
                     }
-                    $ship_to_content['City,State,Zip'] = $view_order['Header']['ShippingState']. ', ' . $view_order['Header']['ShippingZipCode'];
+                    $ship_to_content['City,State,Zip'] = ($view_order['Header']['ShippingCity'] ? $view_order['Header']['ShippingCity'] .', ': null) .$view_order['Header']['ShippingState']. ', ' . $view_order['Header']['ShippingZipCode'];
                     $ship_to_content['Country'] = $view_order['Header']['ShippingCountry'];
                     $ship_to_content['PhoneNumber'] = $view_order['Header']['ShippingPhone'];
                     $ship_to_content['Email'] = $view_order['Header']['ShippingEmail'];
@@ -1170,8 +1170,8 @@ class GenericReportsController extends DashboardController
                                         'title'   => preg_replace('/([a-z])([A-Z])/', '$1 $2', $view_order['Header']['TransactionType']) . '#: ' . $view_order['Header']['TransactionNo'],
                                         'content' => [
                                             'Status ' => $view_order['Header']['Status'],
-                                            'OrderDate ' => Carbon::parse($view_order['Header']['OrderDate'])->format('M d, Y'),
-                                            'ShipDate' => Carbon::parse($view_order['Header']['ShippingDate'])->format('M d, Y'),
+                                            'OrderDate ' => Carbon::parse($view_order['Header']['OrderDate'])->format('M-d-Y'),
+                                            'ShipDate' => Carbon::parse($view_order['Header']['ShippingDate'])->format('M-d-Y'),
                                             'Terms' => $view_order['Header']['PaymentTerm'],
                                             'TotalQty' => $view_order['Header']['TotalQty'],
                                             'MerchandiseTotal' => number_format(floatval($view_order['Header']['TotalMerchandise']), 2)
