@@ -234,7 +234,7 @@ if (
                                        <p class="font-nexa-light m-0"> Color: {{$item -> item_color}}</p>
                                     </div>
                                     <div class="row">
-                                       <p class="font-nexa-light m-0"> Backorder/ETA: {{date('Y-m-d', strtotime($item -> item_eta))}}</p>
+                                       <p class="font-nexa-light m-0 d-none"> Backorder/ETA: {{date('Y-m-d', strtotime($item -> item_eta))}}</p>
                                     </div>
                                     <div class="row">
                                        <p class="font-nexa-light m-0"> Size: {{$item -> item_size}}</p>
