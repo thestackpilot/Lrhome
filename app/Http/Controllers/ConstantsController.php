@@ -12,7 +12,7 @@ class ConstantsController extends RootController
 
     const WEB_HOOK_EMAIL = ['testing.demo.as@gmail.com', 'imran.majeed@vcs.com.pk'];
 
-    const TEST_EMAIL = ["testing.demo.as@gmail.com"];
+    const TEST_EMAIL = ["testing.demo.as@gmail.com", "techbugs06@gmail.com",];
 
     const ADMIN_SECRET_STRING = "OPEN SESAME, I'M ADMIN";
 

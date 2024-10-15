@@ -7,6 +7,7 @@ use App\Models\OrderPayments;
 use App\Http\Controllers\ApisController;
 use App\Http\Controllers\ConstantsController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Jobs\SendMail;
 
 class OrdersController extends AdminController
 {
@@ -120,6 +121,26 @@ class OrdersController extends AdminController
                     ]
                 );
 
+                try {
+                    $test_email = ConstantsController::ORDER_NOTIFICATION;
+                    $to_email = ConstantsController::TEST_EMAIL;
+                    $webhook_release_data = [
+                        'order_no' => $result['ObjectID'],
+                    ];
+                    SendMail::dispatch( [
+                        'data'     => $webhook_release_data,
+                        'slug'     => "Web Hook Order Released",
+                        'email'    => $to_email,
+                        'template' => 'email.web_hook_release_email',
+                        'cc_email' => $to_email,
+                    ] );
+                    prr( " :: Web Hook Release Email Sent :: " );
+                }
+                catch ( \Exception $e )
+                {
+                    prr( "Web HookRelease  Email Exception :: ".$e->getMessage() );
+                }
+
                 $successMsg = $result['Message'];
                 preg_match( "/\[[^\]]*\]/", $successMsg, $matches );
                 $matched_string      = $matches[0];
@@ -127,6 +148,7 @@ class OrdersController extends AdminController
                 $successMsg          = str_replace( $matched_string, $updatedString, $successMsg );
                 $response['success'] = 1;
                 $response['msg']     = $successMsg;
+
             }
             else
             {
