@@ -243,6 +243,7 @@ class GenericReportsController extends DashboardController
             $to_d  =  Carbon::parse( $request->to_date)->format('Y-m-d');
 
             $transactions = $this->ApiObj->Get_FinancialTransactions( $request->customer, $request->sales_rep, $from_d, $to_d, $request->po_number, $request->invoice_number, $request->cash_receipt_number, $page, $page_size );
+
             $table        = array( 'thead' => [
                 'transaction_number' => 'Transaction Number',
                 'transaction_date'   => 'Transaction Date',
@@ -256,17 +257,8 @@ class GenericReportsController extends DashboardController
 
             if ( isset( $transactions['FinancialTransactions'] ) )
             {
-
                 foreach ( $transactions['FinancialTransactions'] as $transaction )
                 {
-                    foreach($transaction['Details'] as $index => $view)
-                    {
-                        $column = CommonController::get_selected_columns($view, [
-                            'ImageName', 'ItemID', 'ItemDescription', 'Price', 'OrderQuantity', 'ExtPrice', 'LineNo', 'InvoicedQuantity', 'OpenQuantity'
-                        ]);
-                        $transaction['Details'][$index] = $column;
-                    }
-
                     $transaction_number = $transaction['SalesInvoiceNo'] ? $transaction['SalesInvoiceNo'] : ( $transaction['CashReceiptNo'] ? $transaction['CashReceiptNo'] : 'N/A' );
 
                     $bill_to_content = [];
@@ -295,59 +287,297 @@ class GenericReportsController extends DashboardController
                     $ship_to_content['PhoneNumber'] = $transaction['ShipToAddress']['Phone1'];
                     $ship_to_content['Email'] = $transaction['ShipToAddress']['Email'];
 
-                    $table['tbody'][] = [
-                        'transaction_number' => $transaction['SalesInvoiceNo'] ? $transaction['SalesInvoiceNo'] : ( $transaction['CashReceiptNo'] ? $transaction['CashReceiptNo'] : 'N/A' ),
-                        'transaction_date'   => isset( $transaction['TransactionDate'] ) ? CommonController::get_date_format( $transaction['TransactionDate'] ) : 'N/A',
-                        'total_quantity'     => isset( $transaction['TotalQty'] ) ? $transaction['TotalQty'] : 'N/A',
-                        'total_amount'       => ConstantsController::CURRENCY.number_format( $transaction['TotalAmount'], ConstantsController::ALLOWED_DECIMALS ),
-                        'transaction_type'   => $transaction['TransactionType'],
-                        'customer_id'        => isset( $transaction['CustomerID'] ) ? $transaction['CustomerID'] : 'N/A',
-                        'status'             => isset( $transaction['Status'] ) ? $transaction['Status'] : 'N/A',
-                        'actions'            => $transaction['TransactionType'] === 'Cash Receipt' ? [['type' => 'modal', 'label' => 'View Reports']] : [['type' => 'modal', 'label' => 'View Details']],
-//                        'other_actions' => [['type' => 'modal', 'label' => 'View Reports']],
-                        'other_actions_details' => [
-                            'OrderNo'   => $transaction_number,
-                        ],
-                        'details'            => [
-                            'heading' => $transaction['SalesInvoiceNo'] ? $transaction['SalesInvoiceNo'] : ( $transaction['CashReceiptNo'] ? $transaction['CashReceiptNo'] : 'N/A' ),
-                            'body'    => [
-                                'sections' => [
-                                    [
-                                        'title'   => 'General',
-                                        'content' => [
-                                            'transaction_number' => $transaction_number,
-                                            'transaction_date'   => isset( $transaction['TransactionDate'] ) ? CommonController::get_date_format( $transaction['TransactionDate'] ) : 'N/A',
-                                            'total_quantity'     => isset( $transaction['TotalQty'] ) ? $transaction['TotalQty'] : 'N/A',
-                                            'total_amount'       => ConstantsController::CURRENCY.number_format( $transaction['TotalAmount'], ConstantsController::ALLOWED_DECIMALS ),
-                                            'transaction_type'   => $transaction['TransactionType'],
-                                            'customer_id'        => isset( $transaction['CustomerID'] ) ? $transaction['CustomerID'] : 'N/A',
-                                            'status'             => isset( $transaction['Status'] ) ? $transaction['Status'] : 'N/A'
-                                        ],
-                                        'cols' => 6
-                                    ],
-                                    [
-                                        'title'   => 'Billing Details',
-                                        'content' => $bill_to_content,
-                                        'cols' => 6,
-                                        'hide_labels' => 1
-                                    ],
-                                    [
-                                        'title'   => 'Shipping Details',
-                                        'content' => $ship_to_content,
-                                        'cols' => 6,
-                                        'hide_labels' => 1
-                                    ],
-                                    [
-                                        'title'   => 'Detail',
-                                        'content' => $transaction['Details'],
-                                        'cols' => 12
-                                    ]
 
+                    if($transaction['TransactionType'] == 'Credit Memo'){
+                        foreach($transaction['Details'] as $index => $view)
+                        {
+                            $column = CommonController::get_selected_columns($view, [
+                                'ImageName', 'ItemID', 'ItemDescription', 'OrderQuantity', 'InvoicedQuantity', 'Price'
+                            ]);
+                            $transaction['Details'][$index] = $column;
+                        }
+
+                        $contents = [
+                            'PO#'                   => $transaction['CustomerPO'],
+                            'Ref Invoice#'          => $transaction['SalesInvoiceNo'],
+                            'Customer ID'           => $transaction['CustomerID'],
+                            'Ship Via'              => isset($transaction['ShipVia']) ? $transaction['ShipVia'] : '',
+                        ];
+                        if(!empty($transaction['RMANo'])){
+                            $contents[] = $transaction['RMANo'];
+                        }
+                        if(!empty($transaction['SalesRepID']) && Auth::user()->is_sale_rep){
+                            $contents['Rep'] = $transaction['SalesRepID'] . ' ' . Auth::user()->firstname . ' ' . Auth::user()->lastname;
+                            $contents['Created By'] = Auth::user()->firstname . ' ' . Auth::user()->lastname;
+                        }
+                        if(!empty($transaction['SpecialInstructions'])){
+                            $contents['Special Instructions'] = $transaction['SpecialInstructions'];
+                        }
+                        if(!empty($transaction['Notes'])){
+                            $contents['Notes'] = $transaction['Notes'];
+                        }
+
+                        $table['tbody'][] = [
+                            'transaction_number' => $transaction['SalesInvoiceNo'] ? $transaction['SalesInvoiceNo'] : ( $transaction['CashReceiptNo'] ? $transaction['CashReceiptNo'] : 'N/A' ),
+                            'transaction_date'   => isset( $transaction['TransactionDate'] ) ? CommonController::get_date_format( $transaction['TransactionDate'] ) : 'N/A',
+                            'total_quantity'     => isset( $transaction['TotalQty'] ) ? $transaction['TotalQty'] : 'N/A',
+                            'total_amount'       => ConstantsController::CURRENCY.number_format( $transaction['TotalAmount'], ConstantsController::ALLOWED_DECIMALS ),
+                            'transaction_type'   => $transaction['TransactionType'],
+                            'customer_id'        => isset( $transaction['CustomerID'] ) ? $transaction['CustomerID'] : 'N/A',
+                            'status'             => isset( $transaction['Status'] ) ? $transaction['Status'] : 'N/A',
+                            'actions'            => $transaction['TransactionType'] === 'Cash Receipt' ? [['type' => 'modal', 'label' => 'View Reports']] : [['type' => 'modal', 'label' => 'View Details']],
+                            'other_actions_details' => [
+                                'OrderNo'   => $transaction_number,
+                            ],
+                            'details'            => [
+                                'heading' => $transaction['SalesInvoiceNo'] ? $transaction['SalesInvoiceNo'] : ( $transaction['CashReceiptNo'] ? $transaction['CashReceiptNo'] : 'N/A' ),
+                                'body'    => [
+                                    'sections' => [
+                                        [
+                                            'title'   => $transaction['CustomerID'].' '.$transaction['CustomerName'],
+                                            'content' =>  $contents,
+                                            'cols'    => 6
+                                        ],
+                                        [
+                                            'title'   => preg_replace('/([a-z])([A-Z])/', '$1 $2', $transaction['TransactionType']) . '# '.$transaction['SalesInvoiceNo'],
+                                            'content' => [
+                                                'Status'                => $transaction['Status'],
+                                                'Date'                  => Carbon::parse($transaction['InvoiceDate'])->format('M-d-Y'),
+                                                'Terms'                 => $transaction['Terms'],
+                                                'Total Quantity'        => $transaction['TotalQty'],
+                                                'Merchandise Amount' => number_format(is_numeric($transaction['TotalMerchandise']) ? (float) $transaction['TotalMerchandise'] : 0.0, 2),
+                                                'Discount'              => $transaction['Discount'],
+                                                'Tax % and Amount'      => $transaction['TaxRate']."%; ". number_format($transaction['TaxAmount'], 2),
+                                                'Total Amount'          => $transaction['TotalAmount'],
+                                            ],
+                                            'cols'                 => 6
+                                        ],
+                                        [
+                                            'title'   => 'Bill To',
+                                            'content' => $bill_to_content,
+                                            'cols' => 6,
+                                            'hide_labels' => 1
+                                        ],
+                                        [
+                                            'title'   => 'Ship To',
+                                            'content' => $ship_to_content,
+                                            'cols' => 6,
+                                            'hide_labels' => 1
+                                        ],
+                                        [
+                                            'title'   => 'Detail',
+                                            'content' => $transaction['Details'],
+                                            'cols' => 12
+                                        ]
+
+                                    ]
                                 ]
                             ]
-                        ]
 
-                    ];
+                        ];
+                    }
+                    else if($transaction['TransactionType'] == 'Sales Invoice'){
+                        foreach($transaction['Details'] as $index => $view)
+                        {
+                            $column = CommonController::get_selected_columns($view, [
+                                'ImageName', 'ItemID', 'LineNo', 'ItemDescription', 'OrderQuantity', 'InvoicedQuantity', 'Price', 'ExtPrice', 'OpenQuantity'
+                            ]);
+                            $transaction['Details'][$index] = $column;
+                            $transaction['Details'][$index]['Price'] = number_format($view['Price'], 2);
+                            $transaction['Details'][$index]['ExtPrice'] = number_format($view['ExtPrice'], 2);
+                        }
+
+                        $customer_content = [
+                            'PO#' => $transaction['CustomerPO'],
+                            'SO#' => $transaction['SalesOrderNo'],
+                            'OrderPlacedBy' => $transaction['OrderPlacedBy']
+                        ];
+
+                        if (!empty($transaction['SalesRepID']) && Auth::user()->is_sale_rep) {
+                            $customer_content['Rep'] = $transaction['SalesRepID'] . ' ' . Auth::user()->firstname . ' ' . Auth::user()->lastname;
+                        }
+
+                        if (!empty($transaction['ShipVia'])) {
+                            $customer_content['ShipVia'] = $transaction['ShipVia'];
+                        }
+
+                        if (!empty($transaction['SpecialInstructions'])) {
+                            $customer_content['SpecialInstructions'] = $transaction['SpecialInstructions'];
+                        }
+
+                        if (!empty($transaction['Notes'])) {
+                            $customer_content['Notes'] = $transaction['Notes'];
+                        }
+                        $table['tbody'][] = [
+                            'transaction_number' => $transaction['SalesInvoiceNo'] ? $transaction['SalesInvoiceNo'] : ( $transaction['CashReceiptNo'] ? $transaction['CashReceiptNo'] : 'N/A' ),
+                            'transaction_date'   => isset( $transaction['TransactionDate'] ) ? CommonController::get_date_format( $transaction['TransactionDate'] ) : 'N/A',
+                            'total_quantity'     => isset( $transaction['TotalQty'] ) ? $transaction['TotalQty'] : 'N/A',
+                            'total_amount'       => ConstantsController::CURRENCY.number_format( $transaction['TotalAmount'], ConstantsController::ALLOWED_DECIMALS ),
+                            'transaction_type'   => $transaction['TransactionType'],
+                            'customer_id'        => isset( $transaction['CustomerID'] ) ? $transaction['CustomerID'] : 'N/A',
+                            'status'             => isset( $transaction['Status'] ) ? $transaction['Status'] : 'N/A',
+                            'actions'            => $transaction['TransactionType'] === 'Cash Receipt' ? [['type' => 'modal', 'label' => 'View Reports']] : [['type' => 'modal', 'label' => 'View Details']],
+                            'other_actions_details' => [
+                                'OrderNo'   => $transaction_number,
+                            ],
+                            'details'            => [
+                                'heading' => $transaction['SalesInvoiceNo'] ? $transaction['SalesInvoiceNo'] : ( $transaction['CashReceiptNo'] ? $transaction['CashReceiptNo'] : 'N/A' ),
+                                'body'    => [
+                                    'sections' => [
+                                        [
+                                            'title'   => $transaction['CustomerID'] . ' ' . $transaction['CustomerName'],
+                                            'content' => $customer_content,
+                                            'cols'    => 6
+                                        ],
+                                        [
+                                            'title'   => 'Sales Invoice#: ' . $transaction['SalesInvoiceNo'],
+                                            'content' => [
+                                                'Status ' => $transaction['Status'],
+                                                'Date ' => Carbon::parse($transaction['InvoiceDate'])->format('M-d-Y'),
+                                                'Terms' => $transaction['Terms'],
+                                                'TotalQty' => $transaction['TotalQty'],
+                                                'MerchandiseAmount' => number_format((float)$transaction['TotalMerchandise'], ConstantsController::ALLOWED_DECIMALS),
+                                                'Discount' => ($transaction['Discount'] == 'N/A' ? number_format("0.00", ConstantsController::ALLOWED_DECIMALS) : $transaction['Discount']),
+                                                'Tax % &Amount' => number_format( $transaction['TaxRate'], ConstantsController::ALLOWED_DECIMALS ) . '%; ' . number_format($transaction['TaxAmount'], ConstantsController::ALLOWED_DECIMALS),
+                                                'Shipping &Handling' => number_format($transaction['ShippingCharges'] + $transaction['HandlingCharges'], ConstantsController::ALLOWED_DECIMALS),
+                                                'TotalAmount' => number_format($transaction['TotalAmount'], ConstantsController::ALLOWED_DECIMALS),
+                                            ],
+                                            'cols' => 6
+                                        ],
+                                        [
+                                            'title'   => 'Bill To',
+                                            'content' => $bill_to_content,
+                                            'cols' => 6,
+                                            'hide_labels' => 1
+                                        ],
+                                        [
+                                            'title'   => 'Ship To',
+                                            'content' => $ship_to_content,
+                                            'cols' => 6,
+                                            'hide_labels' => 1
+                                        ],
+                                        [
+                                            'title'   => 'Detail',
+                                            'content' => $transaction['Details'],
+                                            'cols' => 12
+                                        ]
+
+                                    ]
+                                ]
+                            ]
+
+                        ];
+                    }
+                    else if($transaction['TransactionType'] == 'Customer Debit'){
+                        $table['tbody'][] = [
+                            'transaction_number' => $transaction['SalesInvoiceNo'] ? $transaction['SalesInvoiceNo'] : ( $transaction['CashReceiptNo'] ? $transaction['CashReceiptNo'] : 'N/A' ),
+                            'transaction_date'   => isset( $transaction['TransactionDate'] ) ? CommonController::get_date_format( $transaction['TransactionDate'] ) : 'N/A',
+                            'total_quantity'     => isset( $transaction['TotalQty'] ) ? $transaction['TotalQty'] : 'N/A',
+                            'total_amount'       => ConstantsController::CURRENCY.number_format( $transaction['TotalAmount'], ConstantsController::ALLOWED_DECIMALS ),
+                            'transaction_type'   => $transaction['TransactionType'],
+                            'customer_id'        => isset( $transaction['CustomerID'] ) ? $transaction['CustomerID'] : 'N/A',
+                            'status'             => isset( $transaction['Status'] ) ? $transaction['Status'] : 'N/A',
+                            'actions'            => $transaction['TransactionType'] === 'Cash Receipt' ? [['type' => 'modal', 'label' => 'View Reports']] : [['type' => 'modal', 'label' => 'View Details']],
+                            'other_actions_details' => [
+                                'OrderNo'   => $transaction_number,
+                            ],
+                            'details'            => [
+                                'heading' => $transaction['SalesInvoiceNo'] ? $transaction['SalesInvoiceNo'] : ( $transaction['CashReceiptNo'] ? $transaction['CashReceiptNo'] : 'N/A' ),
+                                'body'    => [
+                                    'sections' => [
+                                        [
+                                            'title'   => 'General',
+                                            'content' => [
+                                                'Invoice Number'   => $transaction['SalesInvoiceNo'],
+                                                'Customer ID'      => $transaction['CustomerID'],
+                                                'Vendor ID'        => $transaction['CustomerID'],
+                                                'Sales Order #'    => $transaction['SalesOrderNo'],
+                                                'Total Amount'     => number_format($transaction['TotalAmount'], 2),
+                                                //'Payment Due Date' => CommonController::get_date_format( $transaction['PaymentDueDate'] )
+                                            ],
+                                            'cols' => 6
+                                        ],
+                                        [
+                                            'title'   => 'Billing Details',
+                                            'content' => $bill_to_content,
+                                            'cols' => 6,
+                                            'hide_labels' => 1
+                                        ],
+                                        [
+                                            'title'   => 'Detail',
+                                            'content' => $transaction['Details'],
+                                            'cols' => 12
+                                        ]
+
+                                    ]
+                                ]
+                            ]
+
+                        ];
+                    }
+                    else{
+                        foreach($transaction['Details'] as $index => $view)
+                        {
+                            $column = CommonController::get_selected_columns($view, [
+                                'ImageName', 'ItemID', 'ItemDescription', 'Price', 'OrderQuantity', 'ExtPrice', 'LineNo', 'InvoicedQuantity', 'OpenQuantity'
+                            ]);
+                            $transaction['Details'][$index] = $column;
+                        }
+
+                        $table['tbody'][] = [
+                                'transaction_number' => $transaction['SalesInvoiceNo'] ? $transaction['SalesInvoiceNo'] : ( $transaction['CashReceiptNo'] ? $transaction['CashReceiptNo'] : 'N/A' ),
+                                'transaction_date'   => isset( $transaction['TransactionDate'] ) ? CommonController::get_date_format( $transaction['TransactionDate'] ) : 'N/A',
+                                'total_quantity'     => isset( $transaction['TotalQty'] ) ? $transaction['TotalQty'] : 'N/A',
+                                'total_amount'       => ConstantsController::CURRENCY.number_format( $transaction['TotalAmount'], ConstantsController::ALLOWED_DECIMALS ),
+                                'transaction_type'   => $transaction['TransactionType'],
+                                'customer_id'        => isset( $transaction['CustomerID'] ) ? $transaction['CustomerID'] : 'N/A',
+                                'status'             => isset( $transaction['Status'] ) ? $transaction['Status'] : 'N/A',
+                                'actions'            => $transaction['TransactionType'] === 'Cash Receipt' ? [['type' => 'modal', 'label' => 'View Reports']] : [['type' => 'modal', 'label' => 'View Details']],
+                                'other_actions_details' => [
+                                    'OrderNo'   => $transaction_number,
+                                ],
+                                'details'            => [
+                                    'heading' => $transaction['SalesInvoiceNo'] ? $transaction['SalesInvoiceNo'] : ( $transaction['CashReceiptNo'] ? $transaction['CashReceiptNo'] : 'N/A' ),
+                                    'body'    => [
+                                        'sections' => [
+                                                [
+                                                    'title'   => 'General',
+                                                    'content' => [
+                                                        'transaction_number' => $transaction_number,
+                                                        'transaction_date'   => isset( $transaction['TransactionDate'] ) ? CommonController::get_date_format( $transaction['TransactionDate'] ) : 'N/A',
+                                                        'total_quantity'     => isset( $transaction['TotalQty'] ) ? $transaction['TotalQty'] : 'N/A',
+                                                        'total_amount'       => ConstantsController::CURRENCY.number_format( $transaction['TotalAmount'], ConstantsController::ALLOWED_DECIMALS ),
+                                                        'transaction_type'   => $transaction['TransactionType'],
+                                                        'customer_id'        => isset( $transaction['CustomerID'] ) ? $transaction['CustomerID'] : 'N/A',
+                                                        'status'             => isset( $transaction['Status'] ) ? $transaction['Status'] : 'N/A'
+                                                    ],
+                                                    'cols' => 6
+                                                ],
+
+                                            [
+                                                'title'   => 'Billing Details',
+                                                'content' => $bill_to_content,
+                                                'cols' => 6,
+                                                'hide_labels' => 1
+                                            ],
+                                            [
+                                                'title'   => 'Shipping Details',
+                                                'content' => $ship_to_content,
+                                                'cols' => 6,
+                                                'hide_labels' => 1
+                                            ],
+                                            [
+                                                'title'   => 'Detail',
+                                                'content' => $transaction['Details'],
+                                                'cols' => 12
+                                            ]
+
+                                        ]
+                                    ]
+                                ]
+
+                        ];
+                    }
                 }
 
                 if ( $request->has( 'draw' ) && $request->draw )
