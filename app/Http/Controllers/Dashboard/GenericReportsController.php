@@ -288,7 +288,7 @@ class GenericReportsController extends DashboardController
                     $ship_to_content['Email'] = $transaction['ShipToAddress']['Email'];
 
 
-                    if($transaction['TransactionType'] == 'Credit Memo'){
+                    if($transaction['TransactionType'] == 'Credit Memo' || $transaction['TransactionType'] == 'Customer Credit'){
                         foreach($transaction['Details'] as $index => $view)
                         {
                             $column = CommonController::get_selected_columns($view, [
@@ -397,6 +397,7 @@ class GenericReportsController extends DashboardController
 
                         if (!empty($transaction['SalesRepID']) && Auth::user()->is_sale_rep) {
                             $customer_content['Rep'] = $transaction['SalesRepID'] . ' ' . Auth::user()->firstname . ' ' . Auth::user()->lastname;
+                            $contents['Created By'] = Auth::user()->firstname . ' ' . Auth::user()->lastname;
                         }
 
                         if (!empty($transaction['ShipVia'])) {
