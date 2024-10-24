@@ -302,6 +302,8 @@ class GenericReportsController extends DashboardController
                             'Ref Invoice#'          => $transaction['SalesInvoiceNo'],
                             'Customer ID'           => $transaction['CustomerID'],
                             'Ship Via'              => isset($transaction['ShipVia']) ? $transaction['ShipVia'] : '',
+                            'Rep' => $transaction['SalesRepID'] . ' ' . Auth::user()->firstname . ' ' . Auth::user()->lastname,
+                            'Created By' => Auth::user()->firstname . ' ' . Auth::user()->lastname,
                         ];
                         if(!empty($transaction['RMANo'])){
                             $contents[] = $transaction['RMANo'];
@@ -477,9 +479,10 @@ class GenericReportsController extends DashboardController
                             'transaction_type'   => $transaction['TransactionType'],
                             'customer_id'        => isset( $transaction['CustomerID'] ) ? $transaction['CustomerID'] : 'N/A',
                             'status'             => isset( $transaction['Status'] ) ? $transaction['Status'] : 'N/A',
-                            'actions'            => $transaction['TransactionType'] === 'Cash Receipt' ? [['type' => 'modal', 'label' => 'View Reports']] : [['type' => 'modal', 'label' => 'View Details']],
+                            'actions'            => [['type' => 'modal', 'label' => 'View Reports']],
                             'other_actions_details' => [
                                 'OrderNo'   => $transaction_number,
+                                'MenuTag'   => 'ViewDebitMemo'
                             ],
                             'details'            => [
                                 'heading' => $transaction['SalesInvoiceNo'] ? $transaction['SalesInvoiceNo'] : ( $transaction['CashReceiptNo'] ? $transaction['CashReceiptNo'] : 'N/A' ),
@@ -493,7 +496,6 @@ class GenericReportsController extends DashboardController
                                                 'Vendor ID'        => $transaction['CustomerID'],
                                                 'Sales Order #'    => $transaction['SalesOrderNo'],
                                                 'Total Amount'     => number_format($transaction['TotalAmount'], 2),
-                                                //'Payment Due Date' => CommonController::get_date_format( $transaction['PaymentDueDate'] )
                                             ],
                                             'cols' => 6
                                         ],
@@ -514,6 +516,50 @@ class GenericReportsController extends DashboardController
                             ]
 
                         ];
+
+                        // $table['tbody'][] = [
+                        //     'transaction_number' => $transaction['SalesInvoiceNo'] ? $transaction['SalesInvoiceNo'] : ( $transaction['CashReceiptNo'] ? $transaction['CashReceiptNo'] : 'N/A' ),
+                        //     'transaction_date'   => isset( $transaction['TransactionDate'] ) ? CommonController::get_date_format( $transaction['TransactionDate'] ) : 'N/A',
+                        //     'total_quantity'     => isset( $transaction['TotalQty'] ) ? $transaction['TotalQty'] : 'N/A',
+                        //     'total_amount'       => ConstantsController::CURRENCY.number_format( $transaction['TotalAmount'], ConstantsController::ALLOWED_DECIMALS ),
+                        //     'transaction_type'   => $transaction['TransactionType'],
+                        //     'customer_id'        => isset( $transaction['CustomerID'] ) ? $transaction['CustomerID'] : 'N/A',
+                        //     'status'             => isset( $transaction['Status'] ) ? $transaction['Status'] : 'N/A',
+                        //     'actions'            => $transaction['TransactionType'] === 'Cash Receipt' ? [['type' => 'modal', 'label' => 'View Reports']] : [['type' => 'modal', 'label' => 'View Details']],
+                        //     'other_actions_details' => [
+                        //         'OrderNo'   => $transaction['SalesInvoiceNo'],
+                        //     ],
+                        //     'details'        => [
+                        //         'heading' => $transaction['SalesInvoiceNo'],
+                        //         'body'    => [
+                        //             'sections' => [
+                        //                 [
+                        //                     'title'   => 'General',
+                        //                     'content' => [
+                        //                         'Invoice Number'   => $transaction['SalesInvoiceNo'],
+                        //                         'Customer ID'      => $transaction['CustomerID'],
+                        //                         'Vendor ID'        => $transaction['CustomerID'],
+                        //                         'Sales Order #'    => $transaction['SalesOrderNo'],
+                        //                         'Total Amount'     => number_format($transaction['TotalAmount'], 2),
+                        //                         'Payment Due Date' => CommonController::get_date_format( $transaction['PaymentDueDate'] )
+                        //                     ],
+                        //                     'cols' => 6
+                        //                 ],
+                        //                 [
+                        //                     'title'   => 'Billing Details',
+                        //                     'content' => $bill_to_content,
+                        //                     'cols' => 6,
+                        //                     'hide_labels' => 1
+                        //                 ],
+                        //                 [
+                        //                     'title'   => 'Details',
+                        //                     'content' => $transaction['Details'],
+                        //                     'cols' => 12
+                        //                 ]
+                        //             ]
+                        //         ]
+                        //     ]
+                        // ];
                     }
                     else{
                         foreach($transaction['Details'] as $index => $view)

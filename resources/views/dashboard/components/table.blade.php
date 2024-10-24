@@ -42,7 +42,7 @@ function get_table( $table, $tab = '' ) {
                     $table_body .= '<td>';
                     foreach($row['actions'] as $action) {
                         if($action['type'] == 'modal' ) {
-                            if (isset($row['other_actions_details']) || (isset($row['transaction_type']) && $row['transaction_type'] === 'Cash Receipt')) {
+                            if (isset($row['other_actions_details']) || (isset($row['transaction_type']) && ($row['transaction_type'] === 'Cash Receipt' || $row['transaction_type'] === 'Customer Debit'))) {
                                  $table_body .= '
                                  <button class="btn btn-sm btn-primary other-details" type="button">'.$action['label'].'</button>
                                  <span class="other-row-details" style="display: none !important;">'.json_encode($row['other_actions_details']).'</span>
@@ -308,7 +308,7 @@ function get_table( $table, $tab = '' ) {
                                     console.log(json.data)
 
                                     if (json.data[i]['actions'][0]['type'] == 'modal') {
-                                        if (typeof json.data[i]['transaction_type'] != 'undefined' && json.data[i]['transaction_type'] === 'Cash Receipt') {
+                                        if (typeof json.data[i]['transaction_type'] != 'undefined' && (json.data[i]['transaction_type'] === 'Cash Receipt' || json.data[i]['transaction_type'] === 'Customer Debit')) {
                                             json.data[i]['actions'] = `
                                             <button class="btn btn-sm btn-primary other-details" type="button">${json.data[i]['actions'][0]['label']}</button>
                                             <span class="other-row-details" style="display: none !important;">${JSON.stringify(json.data[i]['other_actions_details'])}</span>
