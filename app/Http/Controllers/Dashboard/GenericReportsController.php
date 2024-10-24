@@ -392,13 +392,10 @@ class GenericReportsController extends DashboardController
                         $customer_content = [
                             'PO#' => $transaction['CustomerPO'],
                             'SO#' => $transaction['SalesOrderNo'],
-                            'OrderPlacedBy' => $transaction['OrderPlacedBy']
+                            'OrderPlacedBy' => $transaction['OrderPlacedBy'],
+                            'Rep'  => $transaction['SalesRepID'] . ' ' . Auth::user()->firstname . ' ' . Auth::user()->lastname,
+                            'Created By' => Auth::user()->firstname . ' ' . Auth::user()->lastname,
                         ];
-
-                        if (!empty($transaction['SalesRepID']) && Auth::user()->is_sale_rep) {
-                            $customer_content['Rep'] = $transaction['SalesRepID'] . ' ' . Auth::user()->firstname . ' ' . Auth::user()->lastname;
-                            $contents['Created By'] = Auth::user()->firstname . ' ' . Auth::user()->lastname;
-                        }
 
                         if (!empty($transaction['ShipVia'])) {
                             $customer_content['ShipVia'] = $transaction['ShipVia'];
