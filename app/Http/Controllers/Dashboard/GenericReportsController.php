@@ -348,7 +348,7 @@ class GenericReportsController extends DashboardController
                                                 'Merchandise Amount' => number_format(is_numeric($transaction['TotalMerchandise']) ? (float) $transaction['TotalMerchandise'] : 0.0, 2),
                                                 'Discount'              => $transaction['Discount'],
                                                 'Tax % and Amount'      => $transaction['TaxRate']."%; ". number_format($transaction['TaxAmount'], 2),
-                                                'Total Amount'          => $transaction['TotalAmount'],
+                                                'Total Amount'          => number_format($transaction['TotalAmount'], 2),
                                             ],
                                             'cols'                 => 6
                                         ],
@@ -536,6 +536,7 @@ class GenericReportsController extends DashboardController
                                 'actions'            => $transaction['TransactionType'] === 'Cash Receipt' ? [['type' => 'modal', 'label' => 'View Reports']] : [['type' => 'modal', 'label' => 'View Details']],
                                 'other_actions_details' => [
                                     'OrderNo'   => $transaction_number,
+                                    'MenuTag'   => 'ViewCashReceipt',
                                 ],
                                 'details'            => [
                                     'heading' => $transaction['SalesInvoiceNo'] ? $transaction['SalesInvoiceNo'] : ( $transaction['CashReceiptNo'] ? $transaction['CashReceiptNo'] : 'N/A' ),
