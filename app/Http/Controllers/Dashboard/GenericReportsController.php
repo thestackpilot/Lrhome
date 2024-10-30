@@ -302,8 +302,8 @@ class GenericReportsController extends DashboardController
                             'Ref Invoice#'          => $transaction['SalesInvoiceNo'],
                             'Customer ID'           => $transaction['CustomerID'],
                             'Ship Via'              => isset($transaction['ShipVia']) ? $transaction['ShipVia'] : '',
-                            'Rep' => $transaction['SalesRepID'] . ' ' . Auth::user()->firstname . ' ' . Auth::user()->lastname,
-                            'Created By' => Auth::user()->firstname . ' ' . Auth::user()->lastname,
+                            'Rep' => $transaction['SalesRepID'] . ' ' . isset($transaction['AgentCompany']) ? $transaction['AgentCompany'] : '',
+                            'Created By' => $transaction['CreatedBy'],
                         ];
                         if(!empty($transaction['RMANo'])){
                             $contents[] = $transaction['RMANo'];
@@ -393,8 +393,8 @@ class GenericReportsController extends DashboardController
                             'PO#' => $transaction['CustomerPO'],
                             'SO#' => $transaction['SalesOrderNo'],
                             'OrderPlacedBy' => $transaction['OrderPlacedBy'],
-                            'Rep'  => $transaction['SalesRepID'] . ' ' . Auth::user()->firstname . ' ' . Auth::user()->lastname,
-                            'Created By' => Auth::user()->firstname . ' ' . Auth::user()->lastname,
+                            'Rep' => $transaction['SalesRepID'] . ' ' . isset($transaction['AgentCompany']) ? $transaction['AgentCompany'] : '',
+                            'Created By' => $transaction['CreatedBy'],
                         ];
 
                         if (!empty($transaction['ShipVia'])) {
@@ -826,8 +826,8 @@ class GenericReportsController extends DashboardController
                                             'Merchandise Amount' => number_format(is_numeric($memo['TotalMerchandise']) ? (float) $memo['TotalMerchandise'] : 0.0, 2),
                                             'Discount'              => $memo['Discount'],
                                             'Tax % and Amount'      => $memo['TaxRate']."%; ". number_format($memo['TaxAmount'], 2),
-                                            'Other Charges'         => $memo['OtherCharges'],
-                                            'Total Amount'          => $memo['TotalAmount'],
+                                            'Other Charges'         => number_format($memo['OtherCharges'], 2),
+                                            'Total Amount'          => number_format($memo['TotalAmount'], 2),
                                         ],
                                         'cols'                 => 6
                                     ],
