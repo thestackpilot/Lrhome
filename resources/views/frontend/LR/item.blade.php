@@ -529,7 +529,7 @@ foreach ($items['Items'] as $item) {
                 var exists = false;
                 $('#item_color input[name=color]').each(function(){
                     // console.log(`${$(this).text().trim()} | ${$(this).text().trim()} == ${item.ItemColor} && ${$(this).attr('data-design')} == ${item.ItemColorDesign}`);
-                    if ( $(this).text().trim() == item.ItemColor && $(this).attr('data-design') == item.ItemColorDesign ) exists = true;
+                    if ( $(this).text().trim() == item.ItemColor.trim() && $(this).attr('data-design') == item.ItemColorDesign.trim() ) exists = true;
                 });
 
                 if ( !exists ) {
