@@ -473,7 +473,7 @@ class GenericReportsController extends DashboardController
                     else if($transaction['TransactionType'] == 'Customer Debit'){
                         $table['tbody'][] = [
                             'transaction_number' => $transaction['SalesInvoiceNo'] ? $transaction['SalesInvoiceNo'] : ( $transaction['CashReceiptNo'] ? $transaction['CashReceiptNo'] : 'N/A' ),
-                            'transaction_date'   => isset( $transaction['TransactionDate'] ) ? CommonController::get_date_format( $transaction['TransactionDate'] ) : 'N/A',
+                            'transaction_date'   => isset( $transaction['TransactionDate'] ) ? Carbon::parse($transaction['TransactionDate'])->format('M-d-Y') : 'N/A',
                             'total_quantity'     => isset( $transaction['TotalQty'] ) ? $transaction['TotalQty'] : 'N/A',
                             'total_amount'       => ConstantsController::CURRENCY.number_format( $transaction['TotalAmount'], ConstantsController::ALLOWED_DECIMALS ),
                             'transaction_type'   => $transaction['TransactionType'],
@@ -562,17 +562,19 @@ class GenericReportsController extends DashboardController
                         // ];
                     }
                     else{
-                        foreach($transaction['Details'] as $index => $view)
-                        {
+                        foreach ($transaction['Details'] as $index => $view) {
                             $column = CommonController::get_selected_columns($view, [
                                 'ImageName', 'ItemID', 'ItemDescription', 'Price', 'OrderQuantity', 'ExtPrice', 'LineNo', 'InvoicedQuantity', 'OpenQuantity'
                             ]);
+
                             $transaction['Details'][$index] = $column;
+                            $transaction['Details'][$index]['Price'] = ConstantsController::CURRENCY.number_format( (float)$view['Price'], ConstantsController::ALLOWED_DECIMALS );
+                            $transaction['Details'][$index]['ExtPrice'] = ConstantsController::CURRENCY.number_format( (float)$view['ExtPrice'], ConstantsController::ALLOWED_DECIMALS );
                         }
 
                         $table['tbody'][] = [
                                 'transaction_number' => $transaction['SalesInvoiceNo'] ? $transaction['SalesInvoiceNo'] : ( $transaction['CashReceiptNo'] ? $transaction['CashReceiptNo'] : 'N/A' ),
-                                'transaction_date'   => isset( $transaction['TransactionDate'] ) ? CommonController::get_date_format( $transaction['TransactionDate'] ) : 'N/A',
+                                'transaction_date'   => isset( $transaction['TransactionDate'] ) ? Carbon::parse($transaction['TransactionDate'])->format('M-d-Y') : 'N/A',
                                 'total_quantity'     => isset( $transaction['TotalQty'] ) ? $transaction['TotalQty'] : 'N/A',
                                 'total_amount'       => ConstantsController::CURRENCY.number_format( $transaction['TotalAmount'], ConstantsController::ALLOWED_DECIMALS ),
                                 'transaction_type'   => $transaction['TransactionType'],
@@ -626,7 +628,6 @@ class GenericReportsController extends DashboardController
                         ];
                     }
                 }
-
                 if ( $request->has( 'draw' ) && $request->draw )
                 {
                     die( json_encode(
@@ -640,7 +641,6 @@ class GenericReportsController extends DashboardController
                 }
 
             }
-
             View::share( 'transactions', $transactions );
             View::share( 'table', $table );
         }

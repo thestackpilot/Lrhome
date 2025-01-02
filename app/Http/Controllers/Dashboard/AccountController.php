@@ -173,7 +173,12 @@ class AccountController extends DashboardController
                             'ImageName', 'ItemID', 'ItemDescription', 'UnitPrice', 'OrderQty', 'Status', 'ShippedQty', 'ExtPrice', 'SideMark'
                         ]);
                         $column['href'] = route('frontend.item', [$view['Collection'], $view['DesignID']]);
-                        $column['BackOrderQty'] = isset($view['BackOrder']) && CommonController::check_bit_field($view, 'BackOrder' ) ? ( (isset($view['ETADate']) ? 'ETA: ' . Carbon::parse($view['ETADate'])->format('M-d-Y') : '') . (isset($view['ETAQty']) ? ' <br>Qty: '. $view['ETAQty'] : '')) : '';
+                      //  $column['BackOrderQty'] = isset($view['BackOrder']) && CommonController::check_bit_field($view, 'BackOrder' ) ? ( (isset($view['ETADate']) ? 'ETA: ' . Carbon::parse($view['ETADate'])->format('M-d-Y') : '') . (isset($view['ETAQty']) ? 'Qty: '. $view['ETAQty'] : '')) : '';
+                        $column['BackOrderQty'] = isset($view['BackOrder']) && CommonController::check_bit_field($view, 'BackOrder')
+                        ? ((isset($view['ETADate']) ? 'ETA: ' . Carbon::parse($view['ETADate'])->format('M-d-Y') : '') .
+                            (isset($view['ETAQty']) ? "  Qty: " . $view['ETAQty'] : ''))
+                        : '';
+
                         $view_order['Detail'][$index] = $column;
                         $view_order['Detail'][$index]['UnitPrice'] = ConstantsController::CURRENCY.number_format( $view['UnitPrice'], ConstantsController::ALLOWED_DECIMALS );
                         $view_order['Detail'][$index]['ExtPrice'] = ConstantsController::CURRENCY.number_format( $view['ExtPrice'], ConstantsController::ALLOWED_DECIMALS );
