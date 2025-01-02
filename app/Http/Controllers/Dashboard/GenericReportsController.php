@@ -1400,7 +1400,7 @@ class GenericReportsController extends DashboardController
                         'ShipVia'       => $view_order['Header']['ShipViaCode'],
                         'OrderPlacedBy'   => $view_order['Header']['OrderTakenBy'],
                         'Rep' => $view_order['Header']['SalesRepID'] . ' ' . $view_order['Header']['AgentCompany'],
-                        'CreatedBy' => $view_order['Header']['CreatedBy']
+                       // 'CreatedBy' => $view_order['Header']['CreatedBy']
                     ];
 
                     if (!empty($view_order['Header']['SalesRepID'])) {
@@ -1445,7 +1445,7 @@ class GenericReportsController extends DashboardController
                         'total_qty'    => $view_order['Header']['TotalQty'],
                         'status'       => $view_order['Header']['Status'],
                         'tab'          => isset( $view_order['Header']['TabStatusDescription'] ) ? $view_order['Header']['TabStatusDescription'] : '',
-                        'order_date'   => isset( $view_order['Header']['OrderDate'] ) ? CommonController::get_date_format( $view_order['Header']['OrderDate'] ) : 'N/A',
+                        'order_date'   => isset( $view_order['Header']['OrderDate'] ) ? Carbon::parse($view_order['Header']['OrderDate'])->format('M-d-Y')  : 'N/A',
                         'actions'      => [['type' => 'modal', 'label' => 'View Details']],
                         'details'      => [
                             'heading' => $view_order['Header']['OrderNo'].' : '.$view_order['Header']['CustomerID'],
@@ -1464,7 +1464,7 @@ class GenericReportsController extends DashboardController
                                             'ShipDate' => Carbon::parse($view_order['Header']['ShippingDate'])->format('M-d-Y'),
                                             'Terms' => $view_order['Header']['PaymentTerm'],
                                             'TotalQty' => $view_order['Header']['TotalQty'],
-                                            'MerchandiseTotal' => number_format(floatval($view_order['Header']['TotalMerchandise']), 2)
+                                            'MerchandiseTotal' => ConstantsController::CURRENCY.number_format((float)$view_order['Header']['TotalMerchandise'], ConstantsController::ALLOWED_DECIMALS ),
                                         ],
                                         'cols' => 6
                                     ],
