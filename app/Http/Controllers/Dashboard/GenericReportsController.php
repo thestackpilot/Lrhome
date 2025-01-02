@@ -568,7 +568,7 @@ class GenericReportsController extends DashboardController
                             ]);
 
                             $transaction['Details'][$index] = $column;
-                            $transaction['Details'][$index]['Price'] = ConstantsController::CURRENCY.number_format( (float)$view['Price'], ConstantsController::ALLOWED_DECIMALS );
+                            $transaction['Details'][$index]['Price'] = $view['Price'];
                             $transaction['Details'][$index]['ExtPrice'] = ConstantsController::CURRENCY.number_format( (float)$view['ExtPrice'], ConstantsController::ALLOWED_DECIMALS );
                         }
 
