@@ -263,7 +263,7 @@ class AccountController extends DashboardController
                                         'ShipDate' => Carbon::parse($view_order['Header']['ShippingDate'])->format('M d, Y'),
                                         'Terms' => $view_order['Header']['PaymentTerm'],
                                         'TotalQty' => $view_order['Header']['TotalQty'],
-                                        'MerchandiseTotal' => number_format(floatval($view_order['Header']['TotalMerchandise']), 2)
+                                        'MerchandiseTotal' =>  ConstantsController::CURRENCY.number_format( (float)$view_order['Header']['TotalMerchandise'] , ConstantsController::ALLOWED_DECIMALS ),
                                     ],
                                     'cols' => 6
                                 ],
