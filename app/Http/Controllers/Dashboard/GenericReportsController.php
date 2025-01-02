@@ -385,8 +385,8 @@ class GenericReportsController extends DashboardController
                                 'ImageName', 'ItemID', 'LineNo', 'ItemDescription', 'OrderQuantity', 'InvoicedQuantity', 'Price', 'ExtPrice', 'OpenQuantity'
                             ]);
                             $transaction['Details'][$index] = $column;
-                            $transaction['Details'][$index]['Price'] = number_format($view['Price'], 2);
-                            $transaction['Details'][$index]['ExtPrice'] = number_format($view['ExtPrice'], 2);
+                            $transaction['Details'][$index]['Price'] = ConstantsController::CURRENCY.number_format( $view['Price'], ConstantsController::ALLOWED_DECIMALS );
+                            $transaction['Details'][$index]['ExtPrice'] = ConstantsController::CURRENCY.number_format( $view['ExtPrice'], ConstantsController::ALLOWED_DECIMALS );
                         }
 
                         $customer_content = [
@@ -823,11 +823,13 @@ class GenericReportsController extends DashboardController
                                             'Terms'                 => $memo['Terms'],
                                             'Total Quantity'        => $memo['TotalQty'],
                                             // 'Merchandise Amount'    => number_format($memo['TotalMerchandise'], 2),
-                                            'Merchandise Amount' => number_format(is_numeric($memo['TotalMerchandise']) ? (float) $memo['TotalMerchandise'] : 0.0, 2),
+                                           'Merchandise Amount' => is_numeric($memo['TotalMerchandise'])
+                                                    ? ConstantsController::CURRENCY . number_format((float) $memo['TotalMerchandise'], ConstantsController::ALLOWED_DECIMALS)
+                                                    : ConstantsController::CURRENCY . number_format(0.0, ConstantsController::ALLOWED_DECIMALS),
                                             'Discount'              => $memo['Discount'],
                                             'Tax % and Amount'      => $memo['TaxRate']."%; ". number_format($memo['TaxAmount'], 2),
-                                            'Other Charges'         => number_format($memo['OtherCharges'], 2),
-                                            'Total Amount'          => number_format($memo['TotalAmount'], 2),
+                                            'Other Charges'         => ConstantsController::CURRENCY.number_format( $memo['OtherCharges'], ConstantsController::ALLOWED_DECIMALS ),
+                                            'Total Amount'          => ConstantsController::CURRENCY.number_format( $memo['TotalAmount'], ConstantsController::ALLOWED_DECIMALS ),
                                         ],
                                         'cols'                 => 6
                                     ],
@@ -1120,8 +1122,8 @@ class GenericReportsController extends DashboardController
                             'ImageName', 'ItemID', 'LineNo', 'ItemDescription', 'OrderQuantity', 'InvoicedQuantity', 'Price', 'ExtPrice', 'OpenQuantity'
                         ]);
                         $invoice['Details'][$index] = $column;
-                        $invoice['Details'][$index]['Price'] = number_format($view['Price'], 2);
-                        $invoice['Details'][$index]['ExtPrice'] = number_format($view['ExtPrice'], 2);
+                        $invoice['Details'][$index]['Price'] = $view['Price'];
+                        $invoice['Details'][$index]['ExtPrice'] = ConstantsController::CURRENCY.number_format( (float)$view['ExtPrice'], ConstantsController::ALLOWED_DECIMALS );
                     }
 
                     foreach($invoice['OrderTrackingDetail'] as $index => $view)
@@ -1200,11 +1202,11 @@ class GenericReportsController extends DashboardController
                                             'Terms' => $invoice['Terms'],
                                             'TotalQty' => $invoice['TotalQty'],
                                            // 'MerchandiseAmount' => number_format($invoice['TotalMerchandise'], ConstantsController::ALLOWED_DECIMALS),
-                                            'MerchandiseAmount' => number_format((float)$invoice['TotalMerchandise'], ConstantsController::ALLOWED_DECIMALS),
+                                            'MerchandiseAmount' => ConstantsController::CURRENCY.number_format( (float)$invoice['TotalMerchandise'], ConstantsController::ALLOWED_DECIMALS ),
                                             'Discount' => ($invoice['Discount'] == 'N/A' ? number_format("0.00", ConstantsController::ALLOWED_DECIMALS) : $invoice['Discount']),
-                                            'Tax % &Amount' => number_format( $invoice['TaxRate'], ConstantsController::ALLOWED_DECIMALS ) . '%; ' . number_format($invoice['TaxAmount'], ConstantsController::ALLOWED_DECIMALS),
-                                            'Shipping &Handling' => number_format($invoice['ShippingCharges'] + $invoice['HandlingCharges'], ConstantsController::ALLOWED_DECIMALS),
-                                            'TotalAmount' => number_format($invoice['TotalAmount'], ConstantsController::ALLOWED_DECIMALS),
+                                            'Tax % &Amount' => number_format( $invoice['TaxRate'], ConstantsController::ALLOWED_DECIMALS ) . '%; ' . ConstantsController::CURRENCY.number_format( number_format($invoice['TaxAmount']), ConstantsController::ALLOWED_DECIMALS ),
+                                            'Shipping &Handling' => ConstantsController::CURRENCY.number_format( number_format($invoice['ShippingCharges'] + $invoice['HandlingCharges'], ConstantsController::ALLOWED_DECIMALS )),
+                                            'TotalAmount' => ConstantsController::CURRENCY.number_format($invoice['TotalAmount'], ConstantsController::ALLOWED_DECIMALS ),
                                         ],
                                         'cols' => 6
                                     ],
@@ -1369,8 +1371,8 @@ class GenericReportsController extends DashboardController
                             $column['href'] = route('frontend.item', [$view['Collection'], $view['DesignID']]);
                             $column['BackOrderQty'] = isset($view['BackOrder']) && CommonController::check_bit_field($view, 'BackOrder' ) ? ( (isset($view['ETADate']) ? $view['ETADate'] : '') . (isset($view['ETAQty']) ? $view['ETAQty'] : '')) : '';
                             $view_order['Detail'][$index] = $column;
-                            $view_order['Detail'][$index]['UnitPrice'] = number_format($view['UnitPrice'], 2);
-                            $view_order['Detail'][$index]['ExtPrice'] = number_format($view['ExtPrice'], 2);
+                            $view_order['Detail'][$index]['UnitPrice'] = ConstantsController::CURRENCY.number_format( $view['UnitPrice'], ConstantsController::ALLOWED_DECIMALS );
+                            $view_order['Detail'][$index]['ExtPrice'] = ConstantsController::CURRENCY.number_format( $view['ExtPrice'], ConstantsController::ALLOWED_DECIMALS );
                         }
 
                         foreach($view_order['OrderTrackingDetail'] as $index => $view)
@@ -1612,7 +1614,7 @@ class GenericReportsController extends DashboardController
                         'rma_no'                 => $rma['RMANo'],
                         'customer_return_number' => isset( $rma['CustomerReturnNo'] ) ? $rma['CustomerReturnNo'] : 'N/A',
                         'credit_memo_number'     => isset( $rma['CreditMemoNo'] ) ? $rma['CreditMemoNo'] : 'N/A',
-                        'return_date'            => isset( $rma['RMADate'] ) ? CommonController::get_date_format( $rma['RMADate'] ) : 'N/A',
+                        'return_date'            => isset( $rma['RMADate'] ) ? Carbon::parse($rma['RMADate'])->format('M-d-Y') : 'N/A',
                         'quantity'               => $rma['TotalQuantity'],
                         'amount'                 => ConstantsController::CURRENCY.number_format( $rma['TotalAmount'], ConstantsController::ALLOWED_DECIMALS ),
                         'status'                 => isset( $rma['Status'] ) ? $rma['Status'] : 'N/A',

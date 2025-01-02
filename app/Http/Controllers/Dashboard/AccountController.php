@@ -173,10 +173,10 @@ class AccountController extends DashboardController
                             'ImageName', 'ItemID', 'ItemDescription', 'UnitPrice', 'OrderQty', 'Status', 'ShippedQty', 'ExtPrice', 'SideMark'
                         ]);
                         $column['href'] = route('frontend.item', [$view['Collection'], $view['DesignID']]);
-                        $column['BackOrderQty'] = isset($view['BackOrder']) && CommonController::check_bit_field($view, 'BackOrder' ) ? ( (isset($view['ETADate']) ? $view['ETADate'] : '') . (isset($view['ETAQty']) ? $view['ETAQty'] : '')) : '';
+                        $column['BackOrderQty'] = isset($view['BackOrder']) && CommonController::check_bit_field($view, 'BackOrder' ) ? ( (isset($view['ETADate']) ? 'ETA: ' . Carbon::parse($view['ETADate'])->format('M-d-Y') : '') . (isset($view['ETAQty']) ? ' <br>Qty: '. $view['ETAQty'] : '')) : '';
                         $view_order['Detail'][$index] = $column;
-                        $view_order['Detail'][$index]['UnitPrice'] = number_format($view['UnitPrice'], 2);
-                        $view_order['Detail'][$index]['ExtPrice'] = number_format($view['ExtPrice'], 2);
+                        $view_order['Detail'][$index]['UnitPrice'] = ConstantsController::CURRENCY.number_format( $view['UnitPrice'], ConstantsController::ALLOWED_DECIMALS );
+                        $view_order['Detail'][$index]['ExtPrice'] = ConstantsController::CURRENCY.number_format( $view['ExtPrice'], ConstantsController::ALLOWED_DECIMALS );
                     }
 
                     foreach($view_order['OrderTrackingDetail'] as $index => $view)
@@ -190,7 +190,7 @@ class AccountController extends DashboardController
 
                     foreach ($view_order['OrderInvoiceDetail'] as $index => $view) {
                         $view_order['OrderInvoiceDetail'][$index]['InvoiceDate'] = Carbon::parse($view['InvoiceDate'])->format('M-d-Y');
-                        $view_order['OrderInvoiceDetail'][$index]['TotalAmount'] = number_format($view['TotalAmount'], 2);
+                        $view_order['OrderInvoiceDetail'][$index]['TotalAmount'] = ConstantsController::CURRENCY.number_format( $view['TotalAmount'], ConstantsController::ALLOWED_DECIMALS );
                     }
                 }
 
@@ -212,11 +212,11 @@ class AccountController extends DashboardController
 
                 $bill_to_content = [
                     'First &LastName' => $view_order['Header']['BillingFirstName'] . ' ' . $view_order['Header']['BillingLastName'],
-                    'StreetAddress1' => $view_order['Header']['BillingFirstName']
+                    'StreetAddress1' => $view_order['Header']['BillingAddress1']
                 ];
 
                 if (!empty($view_order['Header']['BillingAddress2'])) {
-                    $bill_to_content['StreetAddress2'] = $view_order['Header']['BillingAddress1'];
+                    $bill_to_content['StreetAddress2'] = $view_order['Header']['BillingAddress2'];
                 }
                 $bill_to_content['City,State,Zip'] = $view_order['Header']['BillingCity'] . ', ' . $view_order['Header']['BillingState']. ', ' . $view_order['Header']['BillingZipCode'];
                 $bill_to_content['Country'] = $view_order['Header']['BillingCountry'];
@@ -244,7 +244,7 @@ class AccountController extends DashboardController
                     'total_qty'    => $view_order['Header']['TotalQty'],
                     'status'       => $view_order['Header']['Status'],
                     'tab'          => isset( $view_order['Header']['TabStatusDescription'] ) ? $view_order['Header']['TabStatusDescription'] : '',
-                    'order_date'   => isset( $view_order['Header']['OrderDate'] ) ? CommonController::get_date_format( $view_order['Header']['OrderDate'] ) : 'N/A',
+                    'order_date'   => isset( $view_order['Header']['OrderDate'] ) ?  Carbon::parse($view_order['Header']['OrderDate'])->format('M d, Y') : 'N/A',
                     'actions'      => [['type' => 'modal', 'label' => 'View Details']],
                     'details'      => [
                         'heading' => $view_order['Header']['OrderNo'].' : '.$view_order['Header']['CustomerID'],
