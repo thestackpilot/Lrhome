@@ -212,7 +212,7 @@ class AccountController extends DashboardController
                 }
 
                 if (!empty($view_order['Header']['SalesRepID'])) {
-                    $customer_content['Notes'] = $view_order['Header']['Instructions'];
+                    $customer_content['Notes'] = $view_order['Header']['Notes'];
                 }
 
                 $bill_to_content = [

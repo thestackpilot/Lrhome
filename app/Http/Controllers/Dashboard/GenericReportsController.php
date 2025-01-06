@@ -243,7 +243,6 @@ class GenericReportsController extends DashboardController
             $to_d  =  Carbon::parse( $request->to_date)->format('Y-m-d');
 
             $transactions = $this->ApiObj->Get_FinancialTransactions( $request->customer, $request->sales_rep, $from_d, $to_d, $request->po_number, $request->invoice_number, $request->cash_receipt_number, $page, $page_size );
-
             $table        = array( 'thead' => [
                 'transaction_number' => 'Transaction Number',
                 'transaction_date'   => 'Transaction Date',
@@ -439,7 +438,7 @@ class GenericReportsController extends DashboardController
                                                 'Terms' => $transaction['Terms'],
                                                 'TotalQty' => $transaction['TotalQty'],
                                                 'MerchandiseAmount' => ConstantsController::CURRENCY.number_format( (float)$transaction['TotalMerchandise'],ConstantsController::ALLOWED_DECIMALS),
-                                                'Discount' => ($transaction['Discount'] == 'N/A' ? number_format("0.00", ConstantsController::ALLOWED_DECIMALS) : ConstantsController::CURRENCY.number_format( (float)$transaction['Discount'],ConstantsController::ALLOWED_DECIMALS)),
+                                                'Discount' => ($transaction['Discount'] == 'N/A' ? ConstantsController::CURRENCY.number_format("0.00", ConstantsController::ALLOWED_DECIMALS) : ConstantsController::CURRENCY.number_format( (float)$transaction['Discount'],ConstantsController::ALLOWED_DECIMALS)),
                                                 'Tax % &Amount' => number_format( $transaction['TaxRate'], ConstantsController::ALLOWED_DECIMALS ) . '%; ' . ConstantsController::CURRENCY.number_format( (float)$transaction['TaxAmount'],ConstantsController::ALLOWED_DECIMALS),
                                                 'Shipping &Handling' => ConstantsController::CURRENCY.number_format($transaction['ShippingCharges'] + $transaction['HandlingCharges'], ConstantsController::ALLOWED_DECIMALS),
                                                 'TotalAmount' => ConstantsController::CURRENCY.number_format( (float)$transaction['TotalAmount'],ConstantsController::ALLOWED_DECIMALS),
@@ -1205,7 +1204,7 @@ class GenericReportsController extends DashboardController
                                             'TotalQty' => $invoice['TotalQty'],
                                            // 'MerchandiseAmount' => number_format($invoice['TotalMerchandise'], ConstantsController::ALLOWED_DECIMALS),
                                             'MerchandiseAmount' => ConstantsController::CURRENCY.number_format( (float)$invoice['TotalMerchandise'], ConstantsController::ALLOWED_DECIMALS ),
-                                            'Discount' => ($invoice['Discount'] == 'N/A' ? number_format("0.00", ConstantsController::ALLOWED_DECIMALS) :  ConstantsController::CURRENCY.number_format($invoice['Discount'], ConstantsController::ALLOWED_DECIMALS )),
+                                            'Discount' => ($invoice['Discount'] == 'N/A' ? ConstantsController::CURRENCY.number_format("0.00", ConstantsController::ALLOWED_DECIMALS) :  ConstantsController::CURRENCY.number_format($invoice['Discount'], ConstantsController::ALLOWED_DECIMALS )),
                                             'Tax % &Amount' => number_format( $invoice['TaxRate'], ConstantsController::ALLOWED_DECIMALS ) . '%; ' . ConstantsController::CURRENCY.number_format( $invoice['TaxAmount'], ConstantsController::ALLOWED_DECIMALS ),
                                             'Shipping & Handling' => ConstantsController::CURRENCY . number_format(
                                                                         (float) ($invoice['ShippingCharges'] + $invoice['HandlingCharges']),
@@ -1374,7 +1373,12 @@ class GenericReportsController extends DashboardController
                                 'ImageName', 'ItemID', 'ItemDescription', 'UnitPrice', 'OrderQty', 'Status', 'ShippedQty', 'ExtPrice', 'SideMark'
                             ]);
                             $column['href'] = route('frontend.item', [$view['Collection'], $view['DesignID']]);
-                            $column['BackOrderQty'] = isset($view['BackOrder']) && CommonController::check_bit_field($view, 'BackOrder' ) ? ( (isset($view['ETADate']) ? $view['ETADate'] : '') . (isset($view['ETAQty']) ? $view['ETAQty'] : '')) : '';
+                         //   $column['BackOrderQty'] = isset($view['BackOrder']) && CommonController::check_bit_field($view, 'BackOrder' ) ? ( (isset($view['ETADate']) ? $view['ETADate'] : '') . (isset($view['ETAQty']) ? $view['ETAQty'] : '')) : '';
+                            $column['BackOrderQty'] = isset($view['BackOrder']) && CommonController::check_bit_field($view, 'BackOrder')
+                            ? ((isset($view['ETADate']) ? 'ETA: ' . Carbon::parse($view['ETADate'])->format('M-d-Y') : '') .
+                                (isset($view['ETAQty']) ? "  Qty: " . $view['ETAQty'] : ''))
+                            : '';
+
                             $view_order['Detail'][$index] = $column;
                             $view_order['Detail'][$index]['UnitPrice'] = ConstantsController::CURRENCY.number_format( $view['UnitPrice'], ConstantsController::ALLOWED_DECIMALS );
                             $view_order['Detail'][$index]['ExtPrice'] = ConstantsController::CURRENCY.number_format( $view['ExtPrice'], ConstantsController::ALLOWED_DECIMALS );
@@ -1391,7 +1395,7 @@ class GenericReportsController extends DashboardController
 
                         foreach ($view_order['OrderInvoiceDetail'] as $index => $view) {
                             $view_order['OrderInvoiceDetail'][$index]['InvoiceDate'] = Carbon::parse($view['InvoiceDate'])->format('M-d-Y');
-                            $view_order['OrderInvoiceDetail'][$index]['TotalAmount'] = number_format($view['TotalAmount'], 2);
+                            $view_order['OrderInvoiceDetail'][$index]['TotalAmount'] = ConstantsController::CURRENCY.number_format($view['TotalAmount'], ConstantsController::ALLOWED_DECIMALS );
                         }
                     }
 
