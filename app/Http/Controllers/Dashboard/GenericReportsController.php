@@ -1412,16 +1412,16 @@ class GenericReportsController extends DashboardController
                     }
 
                     if (!empty($view_order['Header']['SalesRepID'])) {
-                        $customer_content['Notes'] = $view_order['Header']['Instructions'];
+                        $customer_content['Notes'] = $view_order['Header']['Notes'];
                     }
 
                     $bill_to_content = [
                         'First &LastName' => $view_order['Header']['BillingFirstName'] . ' ' . $view_order['Header']['BillingLastName'],
-                        'StreetAddress1' => $view_order['Header']['BillingFirstName']
+                        'StreetAddress1' => $view_order['Header']['BillingAddress1']
                     ];
 
                     if (!empty($view_order['Header']['BillingAddress2'])) {
-                        $bill_to_content['StreetAddress2'] = $view_order['Header']['BillingAddress1'];
+                        $bill_to_content['StreetAddress2'] = $view_order['Header']['BillingAddress2'];
                     }
                     $bill_to_content['City,State,Zip'] = $view_order['Header']['BillingCity'] . ', ' . $view_order['Header']['BillingState']. ', ' . $view_order['Header']['BillingZipCode'];
                     $bill_to_content['Country'] = $view_order['Header']['BillingCountry'];

@@ -171,7 +171,7 @@ if (
                                     <div class="row">
                                        <p class="font-nexa-light m-0 sidemark-section">
                                           <a href="javascript:void(0);" style="font-size: 12px;" class="btn--border-bottom m-0 mt-1 mb-1 add-sidemark"> Add Sidemark </a>
-                                          <textarea class="form-control d-none" maxlength="35" name="sidemark[{{$item -> item_id}}]"></textarea>
+                                          <textarea class="form-control d-none sidemark-textarea" maxlength="35" name="sidemark[{{$item -> item_id}}]"></textarea>
                                        </p>
                                     </div>
                                  </div>
@@ -304,8 +304,8 @@ if (
                                  </div>
                               </div>
                               <div class="d-flex flex-column justify-content-between column-gap-20 mb-4">
-                                    <label class="p-0 m-0 mb-3">Email <span class="color-red">*</span></label>
-                                 <input type="email" data-required="true" class="form-control bg-white" name="Email" maxlength="60" aria-describedby="Email" placeholder="Email*">
+                                    <label class="p-0 m-0 mb-3">Email</label>
+                                 <input type="email" class="form-control bg-white" name="Email" maxlength="60" aria-describedby="Email" placeholder="Email*">
                               </div>
                               <div class="d-flex flex-column mb-4">
                                  <!--                                            <input type="text" class="form-control bg-white mb-3" name="Company" aria-describedby="Company" placeholder="Company (optional)">-->
@@ -853,8 +853,7 @@ if (
             var address_data = JSON.parse($('input[name="shipping-address-data"]', $(`.${$('.select-address').val()}`)).val());
             for(const key in address_data) {
                if (['address_id', 'address1', 'address2','firstname','lastname','city','zip','state','email'].includes(key.toLocaleLowerCase()))
-                  shipping_address += `<p class="m-0 mb-3"><b>${key}: </b> ${address_data[key]}</p>`;
-            }
+                shipping_address += `<p class="m-0 mb-3"><b>${key}: </b> ${address_data[key]}</p>`;            }
          }
 
          var allOk = true;
@@ -944,6 +943,7 @@ if (
          $('#existing-address').click();
 
          var address = JSON.parse($('input[name="shipping-address-data"]', $(`.${$(this).val()}`)).val());
+         console.log(address);
          for(key in address)
             $( `input[name="${key}"]`, $('.other-address')).val(address[key]);
          // $(`.address-card.${$(this).val()}`).removeClass('d-none');
@@ -1031,7 +1031,7 @@ if (
             }
 
             $('.sidemark-section textarea').each(function() {
-               _formData[$(this).attr('name')] = $(this).val();
+               _formData[$(this).attr('name')] = $('.sidemark-textarea').val();
             });
 
             {{--$.post("{{route('frontend.checkout.place_order')}}", _formData, function(data) {--}}
