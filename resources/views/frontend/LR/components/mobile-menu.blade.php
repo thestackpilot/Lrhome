@@ -80,6 +80,20 @@ use App\Http\Controllers\CommonController;
                             </ul>
                         </li>
 
+                         <li class="has-children">
+                            <a class="nav-link" href="#">
+                                {{$pages -> all_pages -> sections -> main_top_menu -> menu_6_caption}}
+                            </a>
+                            <ul class="sub-menu">
+                                <li> <a href="{{$pages -> all_pages -> sections -> main_top_menu -> menu_6_url}}">VIEW ALL</a></li>
+                                @foreach($menus -> floor_header -> metas as $meta)
+                                    <li>
+                                        <a href="{{ $meta -> meta_url }}">{{ $meta -> meta_title }}</a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </li>
+
                         <li class="has-children"> <a class="nav-link" href="#">{{$pages -> all_pages -> sections -> main_top_menu -> menu_4_caption}}</a>
                             <ul class="sub-menu">
                                 <li> <a href="{{$pages -> all_pages -> sections -> main_top_menu -> menu_4_url}}"> VIEW ALL</a></li>
@@ -93,19 +107,6 @@ use App\Http\Controllers\CommonController;
                         <li class="has-children"> <a class="nav-link" href="#">{{$pages -> all_pages -> sections -> main_top_menu -> menu_5_caption}}</a>
                             <ul class="sub-menu">
                                 @foreach($menus -> aboutus_header -> metas as $k => $meta)
-                                    <li>
-                                        <a href="{{ $meta -> meta_url }}">{{ $meta -> meta_title }}</a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </li>
-                        <li class="has-children">
-                            <a class="nav-link" href="#">
-                                {{$pages -> all_pages -> sections -> main_top_menu -> menu_6_caption}}
-                            </a>
-                            <ul class="sub-menu">
-                                <li> <a href="{{$pages -> all_pages -> sections -> main_top_menu -> menu_6_url}}">VIEW ALL</a></li>
-                                @foreach($menus -> floor_header -> metas as $meta)
                                     <li>
                                         <a href="{{ $meta -> meta_url }}">{{ $meta -> meta_title }}</a>
                                     </li>

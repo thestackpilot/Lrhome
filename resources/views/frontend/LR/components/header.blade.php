@@ -19,7 +19,7 @@ use App\Http\Controllers\CommonController;
                 @include('frontend.'.$active_theme -> theme_abrv.'.components.menu')
 
                 <div class="col-lg-3 col-md-5  col-sm-10">
-                    <div class="header-right-side text-right mobile-serch-box">
+                    <div class="header-right-side mobile-serch-box">
                         <div class="header-left-search" id="search_text_container">
                             <div class="header-search-box">
                                 <input type="text" name="searchText" class="search-field" id="formGroupExampleInput" placeholder="Search" value="">

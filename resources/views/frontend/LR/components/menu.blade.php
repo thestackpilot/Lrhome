@@ -89,6 +89,20 @@ use App\Http\Controllers\CommonController;
                 </div>
             </div>
         </li>
+        <li class="parant"> <a href="{{$pages -> all_pages -> sections -> main_top_menu -> menu_6_url}}" class="main-item">{{$pages -> all_pages -> sections -> main_top_menu -> menu_6_caption}}<i class="icon-chevron-down"></i></a>
+            <div class="drop-down-item">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-2 sub-menu-item">
+                            <h5>{{ $menus -> floor_header -> name }} </h5>
+                            @foreach($menus -> floor_header -> metas as $meta)
+                                <a href="{{ $meta -> meta_url }}">{{ $meta -> meta_title }}</a>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
         <li class="parant"> <a href="{{$pages -> all_pages -> sections -> main_top_menu -> menu_4_url}}" class="main-item">{{$pages -> all_pages -> sections -> main_top_menu -> menu_4_caption}} <i class="icon-chevron-down"></i></a>
             <div class="drop-down-item">
                 <div class="container">
@@ -123,20 +137,6 @@ use App\Http\Controllers\CommonController;
                             </a>
                         </div>
                         @endforeach
-                    </div>
-                </div>
-            </div>
-        </li>
-        <li class="parant"> <a href="{{$pages -> all_pages -> sections -> main_top_menu -> menu_6_url}}" class="main-item">{{$pages -> all_pages -> sections -> main_top_menu -> menu_6_caption}}<i class="icon-chevron-down"></i></a>
-            <div class="drop-down-item">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-2 sub-menu-item">
-                            <h5>{{ $menus -> floor_header -> name }} </h5>
-                            @foreach($menus -> floor_header -> metas as $meta)
-                                <a href="{{ $meta -> meta_url }}">{{ $meta -> meta_title }}</a>
-                            @endforeach
-                        </div>
                     </div>
                 </div>
             </div>
