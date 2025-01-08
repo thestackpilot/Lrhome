@@ -5,7 +5,7 @@
 use App\Http\Controllers\ConstantsController;
 use App\Http\Controllers\CommonController;
 
-@endphp 
+@endphp
 <div class="header-area header-area--default">
     <header class="header-area header_absolute header_height-90 header-sticky">
         <div class="container-fluid menu-container">
@@ -18,7 +18,7 @@ use App\Http\Controllers\CommonController;
                 </div>
                 @include('frontend.'.$active_theme -> theme_abrv.'.components.menu')
 
-                <div class="col-lg-4 col-md-5  col-sm-10">
+                <div class="col-lg-3 col-md-5  col-sm-10">
                     <div class="header-right-side text-right mobile-serch-box">
                         <div class="header-left-search" id="search_text_container">
                             <div class="header-search-box">

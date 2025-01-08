@@ -5,9 +5,9 @@
 use App\Http\Controllers\ConstantsController;
 use App\Http\Controllers\CommonController;
 
-@endphp 
+@endphp
 
-<div class="col-lg-6 col-md-5 header-menu navbar-show justify-content-lg-end align-items-center">
+<div class="col-lg-7 col-md-5 header-menu navbar-show justify-content-center  align-items-center">
     <ul class="menu text-left mb-0" style="float: unset;">
         <li class="parant"> <a href="{{$pages -> all_pages -> sections -> main_top_menu -> menu_1_url}}" class="main-item">{{$pages -> all_pages -> sections -> main_top_menu -> menu_1_caption}} <i class="icon-chevron-down"></i></a>
             <div class="drop-down-item">
@@ -123,6 +123,20 @@ use App\Http\Controllers\CommonController;
                             </a>
                         </div>
                         @endforeach
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="parant"> <a href="{{$pages -> all_pages -> sections -> main_top_menu -> menu_6_url}}" class="main-item">{{$pages -> all_pages -> sections -> main_top_menu -> menu_6_caption}}<i class="icon-chevron-down"></i></a>
+            <div class="drop-down-item">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-2 sub-menu-item">
+                            <h5>{{ $menus -> floor_header -> name }} </h5>
+                            @foreach($menus -> floor_header -> metas as $meta)
+                                <a href="{{ $meta -> meta_url }}">{{ $meta -> meta_title }}</a>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>

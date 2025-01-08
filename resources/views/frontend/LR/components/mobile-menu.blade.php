@@ -5,7 +5,7 @@
 use App\Http\Controllers\ConstantsController;
 use App\Http\Controllers\CommonController;
 
-@endphp 
+@endphp
 <div class="mobile-menu-overlay" id="mobile-menu-overlay">
         <div class="mobile-menu-overlay__inner">
             <div class="mobile-menu-close-box text-right"> <span class="mobile-navigation-close-icon" id="mobile-menu-close-trigger"> <i class="icon-cross2"></i></span> </div>
@@ -93,6 +93,19 @@ use App\Http\Controllers\CommonController;
                         <li class="has-children"> <a class="nav-link" href="#">{{$pages -> all_pages -> sections -> main_top_menu -> menu_5_caption}}</a>
                             <ul class="sub-menu">
                                 @foreach($menus -> aboutus_header -> metas as $k => $meta)
+                                    <li>
+                                        <a href="{{ $meta -> meta_url }}">{{ $meta -> meta_title }}</a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a class="nav-link" href="#">
+                                {{$pages -> all_pages -> sections -> main_top_menu -> menu_6_caption}}
+                            </a>
+                            <ul class="sub-menu">
+                                <li> <a href="{{$pages -> all_pages -> sections -> main_top_menu -> menu_6_url}}">VIEW ALL</a></li>
+                                @foreach($menus -> floor_header -> metas as $meta)
                                     <li>
                                         <a href="{{ $meta -> meta_url }}">{{ $meta -> meta_title }}</a>
                                     </li>
