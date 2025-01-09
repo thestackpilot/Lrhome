@@ -411,7 +411,7 @@ class GenericReportsController extends DashboardController
                         }
                         $table['tbody'][] = [
                             'transaction_number' => $transaction['SalesInvoiceNo'] ? $transaction['SalesInvoiceNo'] : ( $transaction['CashReceiptNo'] ? $transaction['CashReceiptNo'] : 'N/A' ),
-                            'transaction_date'   => isset( $transaction['TransactionDate'] ) ? CommonController::get_date_format( $transaction['TransactionDate'] ) : 'N/A',
+                            'transaction_date'   => isset( $transaction['TransactionDate'] ) ? Carbon::parse($transaction['TransactionDate'])->format('M-d-Y') : 'N/A',
                             'total_quantity'     => isset( $transaction['TotalQty'] ) ? $transaction['TotalQty'] : 'N/A',
                             'total_amount'       => ConstantsController::CURRENCY.number_format( $transaction['TotalAmount'], ConstantsController::ALLOWED_DECIMALS ),
                             'transaction_type'   => $transaction['TransactionType'],
