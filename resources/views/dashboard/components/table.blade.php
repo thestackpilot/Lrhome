@@ -180,10 +180,12 @@ function get_table( $table, $tab = '' ) {
             var modal_body = '';
             modal_body += '<div class="row mt-5">';
             data.body.sections.forEach((section, i) => {
-                //console.log('section check', section, i);
+                // console.log('section check', section, i);
                 modal_body += '<div class="mb-3 col-md-' + section.cols + '">';
 
                 if (Array.isArray(section.content) && typeof section.content.length !== 'undefined') {
+                    console.log('section.content', section.content);
+
                     modal_body += getDetails(section.content);
                 } else if (typeof section.content.tabs !== 'undefined') {
                      modal_body += '<ul class="nav nav-tabs" id="myTab" role="tablist">';
@@ -207,9 +209,11 @@ function get_table( $table, $tab = '' ) {
                     modal_body += '</div>';
                 } else {
                     // modal_body += '<div class="col-12">';
-                      //  console.log('section.title', section.title);
+                    // console.log('section.title', section.title);
                     modal_body += '<h4>' + section.title + '</h3>';
                     Object.keys(section.content).forEach(function(key) {
+                        console.log('key', key);
+                        console.log('section.content[key]', section.content[key]);
                         var value = section.content[key] == 0 || section.content[key] == '' ? 'N/A' : section.content[key];
                         if ((value !== 'N/A' && value) || key === 'Discount') {
                             if (key === 'Discount') {

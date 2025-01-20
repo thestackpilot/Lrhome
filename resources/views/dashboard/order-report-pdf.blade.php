@@ -111,7 +111,8 @@
                                             @if($key === 'Discount')
                                                 {{--                                                    @if($content === 'N/A')--}}
                                                 @php
-                                                    $content = number_format($content, ConstantsController::ALLOWED_DECIMALS)
+                                                    // $content = number_format($content, ConstantsController::ALLOWED_DECIMALS)
+                                                    $content = is_numeric($content) ? number_format((float) $content, ConstantsController::ALLOWED_DECIMALS) : $content;
                                                 @endphp
                                                 {{--                                                    @endif--}}
                                             @endif

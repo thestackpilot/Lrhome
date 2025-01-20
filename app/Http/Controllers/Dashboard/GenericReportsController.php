@@ -390,6 +390,15 @@ class GenericReportsController extends DashboardController
                             $transaction['Details'][$index]['ExtPrice'] = ConstantsController::CURRENCY.number_format( $view['ExtPrice'], ConstantsController::ALLOWED_DECIMALS );
                         }
 
+                        foreach($transaction['OrderTrackingDetail'] as $index => $view)
+                        {
+                            $column = CommonController::get_selected_columns($view, [
+                                'ImageName', 'ItemID', 'SalesOrderNo', 'DateCreated', 'SalesInvoiceNo', 'TrackingNo'
+                            ]);
+                            $column['DateCreated'] = Carbon::parse($column['DateCreated'])->format('M-d-Y');
+                            $transaction['OrderTrackingDetail'][$index] = $column;
+                        }
+
                         $customer_content = [
                             'PO#' => $transaction['CustomerPO'],
                             'SO#' => $transaction['SalesOrderNo'],
@@ -457,11 +466,21 @@ class GenericReportsController extends DashboardController
                                             'cols' => 6,
                                             'hide_labels' => 1
                                         ],
+                                        // [
+                                        //     'title'   => 'Detail',
+                                        //     'content' => $transaction['Details'],
+                                        //     'cols' => 12
+                                        // ],
                                         [
-                                            'title'   => 'Detail',
-                                            'content' => $transaction['Details'],
-                                            'cols' => 12
-                                        ]
+                                            'title'   => 'Details',
+                                            'cols' => 12,
+                                            'content' => isset( $transaction['OrderTrackingDetail'] ) ? [
+                                                'tabs' => [
+                                                    'products' => $transaction['Details'],
+                                                    'tracks'   => isset( $transaction['OrderTrackingDetail'] ) ? $transaction['OrderTrackingDetail'] : []
+                                                ]
+                                            ] : $transaction['Details']
+                                                ],
 
                                     ]
                                 ]
@@ -599,7 +618,7 @@ class GenericReportsController extends DashboardController
                                                         'customer_id'        => isset( $transaction['CustomerID'] ) ? $transaction['CustomerID'] : 'N/A',
                                                         'status'             => isset( $transaction['Status'] ) ? $transaction['Status'] : 'N/A'
                                                     ],
-                                                    'cols' => 6
+                                                    'cols' => 12
                                                 ],
 
                                             [
@@ -799,6 +818,16 @@ class GenericReportsController extends DashboardController
                     $ship_to_content['PhoneNumber'] = $memo['ShipToAddress']['Phone1'];
                     $ship_to_content['Email'] = $memo['ShipToAddress']['Email'];
 
+
+                    $all_empty = true;
+                    foreach ($memo['ShipToAddress'] as $key => $value) {
+                        if (!empty($value)) {
+                            $all_empty = false;
+                            break;
+                        }
+                    }
+                    $ship_title = $all_empty ? '' : "Ship To: ";
+
                     $table['tbody'][] = [
                         'memo_number'    => isset( $memo['SalesInvoiceNo'] ) ? $memo['SalesInvoiceNo'] : 'N/A',
                         'customer_id'    => $memo['CustomerID'],
@@ -841,7 +870,7 @@ class GenericReportsController extends DashboardController
                                         'cols'    => 6
                                     ],
                                     [
-                                        'title'   => 'Ship To:',
+                                        'title'   => $ship_title,
                                         'content' => $ship_to_content,
                                         'hide_labels' => true,
                                         'cols'    => 6
