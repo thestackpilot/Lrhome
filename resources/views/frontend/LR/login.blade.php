@@ -591,7 +591,7 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
                 <div class="col-md-12">
                     <div class="captcha-container" style="width: 40%">
                         <!-- CAPTCHA Image -->
-                        <div id="captcha_image_form_partner" class="captcha_image">
+                        <div id="captcha_image_form_partner" class="captcha_image" style="width: 30%">
                             {!! captcha_img('form_partner') !!}
                         </div>
                         <div class="d-flex flex-col">

@@ -80,7 +80,7 @@ use App\Http\Controllers\CommonController;
                             <input type="email" name="email" value="" required placeholder="Email Address">
                             <div class="captcha-container mt-2" style="min-width: 70%">
                                 <!-- CAPTCHA Image -->
-                                <div id="captcha_image_footer">
+                                <div id="captcha_image_footer" style="width: 20%;">
                                     {!! captcha_img('news_letter') !!}
                                 </div>
                                 <div class="d-flex flex-col">
