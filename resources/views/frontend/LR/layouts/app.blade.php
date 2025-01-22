@@ -508,6 +508,11 @@ use App\Http\Controllers\CommonController;
 
     $(document).ready(function() {
         refreshCaptcha();
+        $('form input, form textarea').on('focus', function () {
+            var parentForm = $(this).closest('form');
+            $('.captcha-container').hide();
+            parentForm.find('.captcha-container').show();
+        });
     });
     function refreshCaptcha() {
         $.ajax({

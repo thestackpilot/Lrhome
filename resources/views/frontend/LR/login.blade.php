@@ -62,10 +62,11 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
               {{Session::get('message')['body']}}
             </div>
             @endif
-            @if ($errors->any())
+            @if ($errors->any() && $errors->has('PartnerForm'))
             <div class="alert alert-danger">
               <ul>
-                @foreach ($errors->all() as $error)
+                {{-- @foreach ($errors->all() as $error) --}}
+                @foreach ($errors->get('PartnerForm') as $error)
                 <li>{{ $error }}</li>
                 @endforeach
               </ul>

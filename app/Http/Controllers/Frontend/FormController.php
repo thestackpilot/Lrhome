@@ -77,14 +77,14 @@ class FormController extends FrontendController
                 $validated = $request->validate([
                     'captcha_contact' => 'required|captcha',
                 ], $customMessages);
-            } elseif ($slug == 'newsletter') {
+            } else if ($slug == 'newsletter') {
                 $validated = $request->validate([
                     'captcha_newsletter' => 'required|captcha',
                 ], $customMessages);
-            } elseif ($slug == 'partner_requests') {
+            } else if ($slug == 'partner_requests') {
                 $validated = $request->validate([
                     'captcha_partner' => 'required|captcha',
-                ], $customMessages);
+                ], $customMessages, 'PartnerForm');
             }
 
             $data = $request->all();
