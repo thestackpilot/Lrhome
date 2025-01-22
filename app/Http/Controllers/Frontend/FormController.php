@@ -62,7 +62,6 @@ class FormController extends FrontendController
 
     public function submission_request( Request $request, $slug )
     {
-        dd($slug);
         if ( $request->all() )
         {
             // $request->validate([

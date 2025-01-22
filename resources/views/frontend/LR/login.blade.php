@@ -592,7 +592,7 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
                     <div class="captcha-container" style="width: 40%">
                         <!-- CAPTCHA Image -->
                         <div id="captcha_image_form_partner" class="captcha_image" style="width: 30%">
-                            {!! captcha_img('form_partner') !!}
+                            {!! captcha_img('partner_requests') !!}
                         </div>
                         <div class="d-flex flex-col">
                             <button type="button" id="refresh-captcha" class="btn btn-secondary btn--md ms-2" onclick="refreshCaptcha()">Refresh</button>
@@ -773,8 +773,6 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
     if (valid) {
       document.getElementsByClassName("step")[currentTab].className += " finish";
     }
-    alert('valid');
-    alert(valid);
     return valid; // return the valid status
   }
 
@@ -968,7 +966,6 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
     }
 
     $('form.partner-form').on('submit', function() {
-        alert('submit click');
       var allOk = true;
       /*
       $('input[data-required="true"], select[data-required="true"]').each(function() {
@@ -994,8 +991,6 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
         allOk = false;
       }
 
-      alert('all ok');
-      alert(allOk);
       return allOk;
     });
   });
