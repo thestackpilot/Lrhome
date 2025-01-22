@@ -507,7 +507,19 @@ use App\Http\Controllers\CommonController;
     }
 
     $(document).ready(function() {
+        // CAPTCHA WORK
         refreshCaptcha();
+        $('.captcha-container').hide();
+
+        if($('.captcha_newsletter').length > 0){
+            $('.captcha_newsletter_container').show();
+        }
+        if($('.captcha_contact').length > 0){
+            $('.captcha_contact_container').show();
+        }
+        if($('.captcha_partner').length > 0){
+            $('.captcha_partner_container').show();
+        }
         $('form input, form textarea').on('focus', function () {
             var parentForm = $(this).closest('form');
             $('.captcha-container').hide();

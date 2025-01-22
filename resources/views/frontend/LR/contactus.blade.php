@@ -148,18 +148,18 @@ use App\Http\Controllers\CommonController;
                       <div class="contact-inner contact-message">
                         <textarea name="message" placeholder="Please type a message here" data-required="true" required></textarea>
                       </div>
-                      <div class="captcha-container" style="width: 70%">
+                      <div class="captcha-container captcha_contact_container" style="width: 70%">
                         <!-- CAPTCHA Image -->
                         <div id="captcha_image" class="captcha_image">
                             {!! captcha_img('contact_us') !!}
                         </div>
                         <div class="d-flex flex-col">
                             <button type="button" id="refresh-captcha" class="btn btn-secondary btn--md ms-2" onclick="refreshCaptcha()">Refresh</button>
-                            <input type="text" name="captcha_contact" id="captcha_contact" placeholder="Enter CAPTCHA"  class="form-control captcha_contact" required>
+                            <input type="text" name="captcha_contact" id="captcha_contact" placeholder="Enter CAPTCHA"  class="form-control captcha-input" required>
                         </div>
                         <div>
                             @error('captcha_contact')
-                                <div class="text-danger">The CAPTCHA entered is incorrect. Please try again.</div>
+                                <div class="text-danger captcha_contact">The CAPTCHA entered is incorrect. Please try again.</div>
                             @enderror
                         </div>
                       </div>

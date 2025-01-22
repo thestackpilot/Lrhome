@@ -78,7 +78,7 @@ use App\Http\Controllers\CommonController;
                         @csrf
                         <div class="footer-widget__newsletter position-relative">
                             <input type="email" name="email" value="" required placeholder="Email Address">
-                            <div class="captcha-container mt-2" style="min-width: 70%">
+                            <div class="captcha-container captcha_newsletter_container mt-2" style="min-width: 70%">
                                 <!-- CAPTCHA Image -->
                                 <div id="captcha_image_footer" style="width: 20%;">
                                     {!! captcha_img('news_letter') !!}
@@ -90,7 +90,7 @@ use App\Http\Controllers\CommonController;
                                 </div>
                                 <div>
                                     @error('captcha_newsletter')
-                                        <div class="text-danger">The CAPTCHA entered is incorrect. Please try again.</div>
+                                        <div class="text-danger captcha_newsletter">The CAPTCHA entered is incorrect. Please try again.</div>
                                     @enderror
                                 </div>
                             </div>
