@@ -106,7 +106,7 @@ use App\Http\Controllers\CommonController;
               <div class="col-lg-7">
                 <div class="contact-form-wrap  section-space--mt_60">
                   <h5 class="mb-10">Get in touch</h5>
-                  <form action="{{route('form.submission', ['contact_us'])}}" method="post" id="contact-form">
+                  <form action="{{route('form.submission', ['contact_us'])}}" method="post" id="contact-form-chnage">
                     @if (Session::has('message') && isset(Session::get('message')['referrer']) && Session::get('message')['referrer'] == 'contact_us')
                     <div class="alert alert-{{Session::get('message')['type']}}">
                       {{Session::get('message')['body']}}
@@ -125,7 +125,7 @@ use App\Http\Controllers\CommonController;
 
                       <div class="contact-input">
                         <div class="contact-inner">
-                          <input name="email" type="email" placeholder="Email *" data-required="true" required>
+                          <input name="email" class="email" type="email" placeholder="Email *" data-required="true" required>
                         </div>
                         <div class="contact-inner">
                           <input name="phone" type="number" placeholder="Phone *" data-required="true" required>
@@ -148,13 +148,28 @@ use App\Http\Controllers\CommonController;
                       <div class="contact-inner contact-message">
                         <textarea name="message" placeholder="Please type a message here" data-required="true" required></textarea>
                       </div>
+                      <div class="captcha-container" style="width: 70%">
+                        <!-- CAPTCHA Image -->
+                        <div id="captcha_image" class="captcha_image">
+                            {!! captcha_img('contact_us') !!}
+                        </div>
+                        <div class="d-flex flex-col">
+                            <button type="button" id="refresh-captcha" class="btn btn-secondary btn--md ms-2" onclick="refreshCaptcha()">Refresh</button>
+                            <input type="text" name="captcha_contact" id="captcha_contact" placeholder="Enter CAPTCHA"  class="form-control captcha_contact" required>
+                        </div>
+                        <div>
+                            @error('captcha_contact')
+                                <div class="text-danger">The CAPTCHA entered is incorrect. Please try again.</div>
+                            @enderror
+                        </div>
+                      </div>
                       <div class="submit-btn mt-20">
                         {{-- <input type="submit" class="btn btn--black btn--md"> --}}
-                        {{-- <button class="btn btn--black btn--md" type="submit">Submit</button> --}}
-                          <button class="g-recaptcha btn btn--black btn--md"
+                        <button class="btn btn--black btn--md" type="submit" id="submitBtn">Submit</button>
+                          {{-- <button class="g-recaptcha btn btn--black btn--md"
                                   data-sitekey="{{ config('services.recaptcha.key') }}"
                                   data-callback='onSubmitContactUs'
-                                  data-action='submit'>Submit</button>
+                                  data-action='submit'>Submit</button> --}}
                         <!--<p class="form-messege"></p>-->
                       </div>
                     </div>
@@ -193,6 +208,21 @@ use App\Http\Controllers\CommonController;
 @endsection
 @section('scripts')
 <script>
+
+    $('input[type="email"]').on('input', function() {
+        var email = $(this).val(); // Get the current value of the email input
+        var isValid = validateEmail(email); // Validate the email
+
+        // Enable or disable the submit button based on the validity of the email
+        if (isValid) {
+            $('#submitBtn').prop('disabled', false); // Enable submit button if valid
+            $(this).css('border', ''); // Remove red border if email is valid
+        } else {
+            $('#submitBtn').prop('disabled', true); // Disable submit button if invalid
+            $(this).css('border', '1px solid red'); // Add red border if email is invalid
+        }
+    });
+
   function onSubmitContactUs(token) {
     // console.log("token: ", token);
     var allOk = true;
@@ -211,6 +241,11 @@ use App\Http\Controllers\CommonController;
     if (allOk && !validateEmail($('input[type="email"]').val())) {
       $('input[type="email"]').addClass('is-invalid');
       allOk = false;
+    }
+
+    if (allOk && $('#captcha').val() != captchNo) {
+        $('#captcha').addClass('is-invalid');
+        allOk = false;
     }
 
     if(allOk) {
@@ -232,6 +267,13 @@ use App\Http\Controllers\CommonController;
 
   .grid-item--width2 {
     width: 50%;
+  }
+
+  .captcha_image img{
+    min-width: 40% !important;
+  }
+  .captcha_image{
+    min-width: 40% !important;
   }
 </style>
 @endsection

@@ -505,6 +505,21 @@ use App\Http\Controllers\CommonController;
             }
         }, 3000);
     }
+
+    $(document).ready(function() {
+        refreshCaptcha();
+    });
+    function refreshCaptcha() {
+        $.ajax({
+            url: '{{ route('captcha.refresh') }}',
+            type: 'GET',
+            success: function(data) {
+                $('#captcha_image').html(data);
+                $('#captcha_image_footer').html(data);
+                $('#captcha_image_form_partner').html(data);
+            }
+        });
+    }
     </script>
     @yield('scripts')
     <script src="{{asset('/LR/js/main.js')}}?v={{time()}}"> </script>

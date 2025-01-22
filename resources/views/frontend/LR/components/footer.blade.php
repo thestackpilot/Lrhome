@@ -78,11 +78,27 @@ use App\Http\Controllers\CommonController;
                         @csrf
                         <div class="footer-widget__newsletter position-relative">
                             <input type="email" name="email" value="" required placeholder="Email Address">
-                            {{-- <button type="submit" class="submit-button">Join</button> --}}
-                            <button class="submit-button g-recaptcha" 
-                                data-sitekey="{{config('services.recaptcha.key')}}" 
-                                data-callback='onSubmitNewsletter' 
-                                data-action='submit'>Join</button>
+                            <div class="captcha-container mt-2" style="min-width: 70%">
+                                <!-- CAPTCHA Image -->
+                                <div id="captcha_image_footer">
+                                    {!! captcha_img('news_letter') !!}
+                                </div>
+                                <div class="d-flex flex-col">
+                                    <button type="button" id="refresh-captcha-footer" class="btn btn-secondary btn-sm ms-2" onclick="refreshCaptcha()">Refresh</button>
+                                    <input type="text" name="captcha_newsletter" id="captcha_newsletter" placeholder="Enter CAPTCHA"  class="form-control captcha-input" required
+                                    style="padding: 23px 0px !important;">
+                                </div>
+                                <div>
+                                    @error('captcha_newsletter')
+                                        <div class="text-danger">The CAPTCHA entered is incorrect. Please try again.</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <button type="submit" class="submit-button">Join</button>
+                            {{-- <button class="submit-button g-recaptcha"
+                                data-sitekey="{{config('services.recaptcha.key')}}"
+                                data-callback='onSubmitNewsletter'
+                                data-action='submit'>Join</button> --}}
                         </div>
                     </form>
                 </div>
@@ -93,3 +109,18 @@ use App\Http\Controllers\CommonController;
 @include('frontend.'.$active_theme -> theme_abrv.'.components.mobile-menu')
 <a href="#" class="scroll-top" id="scroll-top"> <i class="arrow-top icon-arrow-up"></i> <i class="arrow-bottom icon-arrow-up"></i> </a>
 <a href="/static/contactus#contact-us" class="askus-floating-btn" id="ask-us"> <img src="{{url('/')}}/LR/images/askus-icon.png" alt="Ask Us" /> </a>
+
+{{-- @section('scripts')
+<script>
+function refreshCaptcha() {
+    $.ajax({
+        url: '{{ route('captcha.refresh') }}',
+        type: 'GET',
+        success: function(data) {
+            $('#captcha_image').html(data);
+            $('#captcha_image_footer').html(data);
+        }
+    });
+}
+</script>
+@endsection --}}

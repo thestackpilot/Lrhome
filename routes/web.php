@@ -32,7 +32,9 @@ use App\Http\Controllers\Frontend\MainCollectionController;
 use App\Http\Controllers\Dashboard\GenericReportsController;
 use App\Http\Controllers\Admin\DealerRegistrationsController;
 use App\Http\Controllers\Admin\ApiContentManagementController;
+use App\Http\Controllers\Frontend\CaptchaController;
 use App\Http\Controllers\Admin\FormController as AdminFormController;
+use Mews\Captcha\Facades\Captcha;
 
 //Auth Routes
 Auth::routes();
@@ -99,6 +101,7 @@ Route::post( '/forms/store/{slug}', 'Frontend\FormController@store' )->name( 'fo
 
 //Static pages routes (showrooms, faqs, aboutus)
 Route::get( '/static/{type}', 'Frontend\StaticController@index' )->name( 'static.show' );
+Route::get( '/captcha', [CaptchaController::class, 'generateCaptcha'] )->name( 'captcha' );
 
 //Admin Routes
 Route::redirect( '/admin', '/admin/themes' );
@@ -220,3 +223,7 @@ Route::group( ['prefix' => 'dashboard', 'middleware' => ['auth']], function ()
     Route::post( '/view-order/print-download', [GenericReportsController::class, 'download_print_orders'] )->name( 'dashboard.orders-print-download' );
 
 } );
+
+Route::get('/captcha-refresh', function () {
+    return Captcha::img();
+})->name('captcha.refresh');

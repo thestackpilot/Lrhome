@@ -588,6 +588,23 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
                       Authorization/ I agree to all the terms &amp; conditions of L R Home as per their company policy</label>
                   </div>
                 </div>
+                <div class="col-md-12">
+                    <div class="captcha-container" style="width: 40%">
+                        <!-- CAPTCHA Image -->
+                        <div id="captcha_image_form_partner" class="captcha_image">
+                            {!! captcha_img('form_partner') !!}
+                        </div>
+                        <div class="d-flex flex-col">
+                            <button type="button" id="refresh-captcha" class="btn btn-secondary btn--md ms-2" onclick="refreshCaptcha()">Refresh</button>
+                            <input type="text" name="captcha_partner" id="captcha_partner" placeholder="Enter CAPTCHA"  class="form-control ccaptcha_partner" required>
+                        </div>
+                        <div>
+                            @error('captcha_contact')
+                                <div class="text-danger">The CAPTCHA entered is incorrect. Please try again.</div>
+                            @enderror
+                        </div>
+                      </div>
+                  </div>
                 <!-- <a href="#" class="btn btn--md btn--border_1"> Make Payment Now </a> -->
               </div>
               <div>

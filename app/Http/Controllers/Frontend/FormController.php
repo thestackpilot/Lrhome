@@ -65,6 +65,28 @@ class FormController extends FrontendController
 
         if ( $request->all() )
         {
+            // $request->validate([
+            //     'captcha' => 'required|captcha',
+            // ]);
+
+            $customMessages = [
+                'captcha.required' => 'Please solve the CAPTCHA to proceed.',
+                'captcha.captcha' => 'The CAPTCHA entered is incorrect. Please try again.',
+            ];
+
+            if ($slug == 'contact_us') {
+                $validated = $request->validate([
+                    'captcha_contact' => 'required|captcha',
+                ], $customMessages);
+            } elseif ($slug == 'newsletter') {
+                $validated = $request->validate([
+                    'captcha_newsletter' => 'required|captcha',
+                ], $customMessages);
+            } elseif ($slug == 'partner_requests') {
+                $validated = $request->validate([
+                    'captcha_partner' => 'required|captcha',
+                ], $customMessages);
+            }
 
             $data = $request->all();
 
@@ -101,7 +123,7 @@ class FormController extends FrontendController
                         'email'    => ConstantsController::ADMIN_EMAIL,
                         'template' => 'email.email'
                     ] );
-                    
+
                 }
                 catch ( \Exception $e )
                 {
