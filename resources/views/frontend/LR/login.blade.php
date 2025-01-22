@@ -252,7 +252,7 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
                   </div>
                   <div class="col-md-3">
                     <div class="form-group" id="div_billing_city">
-                      <select required class="form-control" id="billing_city" name="billing_city">
+                      <select class="form-control" id="billing_city" name="billing_city">
                         <option value="">Select City</option>
                       </select>
                     </div>
@@ -316,7 +316,7 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
                   </div>
                   <div class="col-md-3">
                     <div class="form-group" id="div_shipping_city">
-                      <select required class="form-control" name="shipping_city" id="shipping_city">Select City</select>
+                      <select class="form-control" name="shipping_city" id="shipping_city">Select City</select>
                     </div>
                   </div>
                   <div class="col-md-3">
@@ -596,10 +596,10 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
                         </div>
                         <div class="d-flex flex-col">
                             <button type="button" id="refresh-captcha" class="btn btn-secondary btn--md ms-2" onclick="refreshCaptcha()">Refresh</button>
-                            <input type="text" name="captcha_partner" id="captcha_partner" placeholder="Enter CAPTCHA"  class="form-control ccaptcha_partner" required>
+                            <input type="text" name="captcha_partner" id="captcha_partner" placeholder="Enter CAPTCHA"  class="form-control captcha_partner" required>
                         </div>
                         <div>
-                            @error('captcha_contact')
+                            @error('captcha_partner')
                                 <div class="text-danger">The CAPTCHA entered is incorrect. Please try again.</div>
                             @enderror
                         </div>
@@ -613,10 +613,12 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
                   <button type="button" id="nextBtn" onclick="nextPrev(1)" class="btn btn--md btn--border_1">Next</button>
                   <button type="button" id="review" class="btn btn--md btn--border_1 d-none">Review Details</button>
                   <button type="submit" id="submitForm" class="btn btn--md btn--border_1 d-none">Submit</button>
-                  <button type="button" id="submit" class="g-recaptcha btn btn--md btn--border_1 d-none"
+                  {{-- <button type="button" id="submit" class="g-recaptcha btn btn--md btn--border_1 d-none"
                           data-sitekey="{{config('services.recaptcha.key')}}"
                           data-callback='onSubmitPartnerRequest'
-                          data-action='submit'>Submit</button>
+                          data-action='submit'>Submit</button> --}}
+                          <button type="submit" id="submit" class="btn btn--md btn--border_1 d-none">Submit</button>
+
                 </div>
               </div>
               <!-- Circles which indicates the steps of the form: -->
@@ -645,7 +647,7 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
   var currentTab = 0; // Current tab is set to be the first tab (0)
   showTab(currentTab); // Display the current tab
   function nextPrev(n) {
-    // This function will figure out which tab to display
+    //This function will figure out which tab to display
     var x = document.getElementsByClassName("tab");
     // Exit the function if any field in the current tab is invalid:
 
@@ -771,6 +773,8 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
     if (valid) {
       document.getElementsByClassName("step")[currentTab].className += " finish";
     }
+    alert('valid');
+    alert(valid);
     return valid; // return the valid status
   }
 
@@ -964,6 +968,7 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
     }
 
     $('form.partner-form').on('submit', function() {
+        alert('submit click');
       var allOk = true;
       /*
       $('input[data-required="true"], select[data-required="true"]').each(function() {
@@ -989,6 +994,8 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
         allOk = false;
       }
 
+      alert('all ok');
+      alert(allOk);
       return allOk;
     });
   });
