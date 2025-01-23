@@ -77,7 +77,7 @@ use App\Http\Controllers\CommonController;
                         @endif
                         @csrf
                         <div class="footer-widget__newsletter position-relative">
-                            <input type="email" name="email" value="" required placeholder="Email Address">
+                            <input type="email" name="email" id="email" value="" required placeholder="Email Address">
 
                             {{-- <div class="captcha-container captcha_newsletter_container mt-2" style="min-width: 70%">
                                 <!-- CAPTCHA Image -->
@@ -112,7 +112,7 @@ use App\Http\Controllers\CommonController;
                                     @enderror
                                 </div>
                             </div>
-                            <button type="submit" class="submit-button">Join</button>
+                            <button type="submit" class="submit-button" id="newsletter-submit-button">Join</button>
                             {{-- <button class="submit-button g-recaptcha"
                                 data-sitekey="{{config('services.recaptcha.key')}}"
                                 data-callback='onSubmitNewsletter'
@@ -127,18 +127,3 @@ use App\Http\Controllers\CommonController;
 @include('frontend.'.$active_theme -> theme_abrv.'.components.mobile-menu')
 <a href="#" class="scroll-top" id="scroll-top"> <i class="arrow-top icon-arrow-up"></i> <i class="arrow-bottom icon-arrow-up"></i> </a>
 <a href="/static/contactus#contact-us" class="askus-floating-btn" id="ask-us"> <img src="{{url('/')}}/LR/images/askus-icon.png" alt="Ask Us" /> </a>
-
-{{-- @section('scripts')
-<script>
-function refreshCaptcha() {
-    $.ajax({
-        url: '{{ route('captcha.refresh') }}',
-        type: 'GET',
-        success: function(data) {
-            $('#captcha_image').html(data);
-            $('#captcha_image_footer').html(data);
-        }
-    });
-}
-</script>
-@endsection --}}
