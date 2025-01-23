@@ -605,7 +605,7 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
                             alt="refresh" id="refresh-captcha"  style="width:46px; height:38px; min-width: 0% !important" onclick="refreshCaptcha()">
 
                         </div>
-                        <input type="text" name="captcha_partner" id="captcha_partner" placeholder="Enter CAPTCHA"  class="form-control captcha-input" required>
+                        <input type="text" name="captcha_partner" id="captcha_partner" placeholder="Enter CAPTCHA"  class="form-control captcha-input mt-2" required>
                         <div>
                             @error('captcha_partner')
                                 <div class="text-danger captcha_partner">The CAPTCHA entered is incorrect. Please try again.</div>
