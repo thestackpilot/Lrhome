@@ -89,28 +89,27 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
                     <div class="form-group">
                       <select required class="form-control" id="sel1" name="business_type">
                         <option value="">Select a Type of Business</option>
-                        <option value="E-commerce Only">E-Commerce Only</option>
-                        <option value="Furniture Store">Furniture Store</option>
-                        <option value="Gift Store">Gift Store</option>
-                        <option value="Home Decor Store"> Home Décor Store</option>
-                        <option value="Interior Designer"> Interior Designer</option>
-                        <option value="Rug Store"> Rug Store</option>
+                        <option value="E-commerce Only" @if(old('business_type') == 'E-commerce Only')selected @endif>E-Commerce Only</option>
+                        <option value="Furniture Store" @if(old('business_type') == 'Furniture Store')selected @endif>Furniture Store</option>
+                        <option value="Gift Store" @if(old('business_type') == 'Gift Store')selected @endif>Gift Store</option>
+                        <option value="Home Decor Store" @if(old('business_type') == 'Home Decor Store')selected @endif> Home Décor Store</option>
+                        <option value="Interior Designer" @if(old('business_type') == 'Interior Designer')selected @endif> Interior Designer</option>
+                        <option value="Rug Store" @if(old('business_type') == 'Rug Store')selected @endif> Rug Store</option>
                       </select>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-
                       <select required class="form-control" id="sel1" name="entity_type">
                         <option value="">Select a Type of Entity</option>
-                        <option value="Proprietorship">Proprietorship</option>
-                        <option value="Partnership">Partnership</option>
-                        <option value="Limited Partnership">Limited Partnership</option>
-                        <option value="Corporation">Corporation</option>
-                        <option value="Limited Liability Company (LLC)">Limited Liability Company (LLC)</option>
-                        <option value="Nonprofit Organization">Nonprofit Organization</option>
-                        <option value="Corporation">Cooperative</option>
-                        <option value="Others">Others</option>
+                        <option value="Proprietorship" @if(old('entity_type') == 'Proprietorship')selected @endif>Proprietorship</option>
+                        <option value="Partnership" @if(old('entity_type') == 'Partnership')selected @endif>Partnership</option>
+                        <option value="Limited Partnership" @if(old('entity_type') == 'Limited Partnership')selected @endif>Limited Partnership</option>
+                        <option value="Corporation" @if(old('entity_type') == 'Corporation')selected @endif>Corporation</option>
+                        <option value="Limited Liability Company (LLC)" @if(old('entity_type') == 'Limited Liability Company (LLC)')selected @endif>Limited Liability Company (LLC)</option>
+                        <option value="Nonprofit Organization" @if(old('entity_type') == 'Nonprofit Organization')selected @endif>Nonprofit Organization</option>
+                        <option value="Corporation" @if(old('entity_type') == 'Corporation')selected @endif>Cooperative</option>
+                        <option value="Others" @if(old('entity_type') == 'Others')selected @endif>Others</option>
                       </select>
                     </div>
                   </div>
