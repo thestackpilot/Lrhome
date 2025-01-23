@@ -78,7 +78,8 @@ use App\Http\Controllers\CommonController;
                         @csrf
                         <div class="footer-widget__newsletter position-relative">
                             <input type="email" name="email" value="" required placeholder="Email Address">
-                            <div class="captcha-container captcha_newsletter_container mt-2" style="min-width: 70%">
+
+                            {{-- <div class="captcha-container captcha_newsletter_container mt-2" style="min-width: 70%">
                                 <!-- CAPTCHA Image -->
                                 <div id="captcha_image_footer" style="width: 20%;">
                                     {!! captcha_img('news_letter') !!}
@@ -91,6 +92,23 @@ use App\Http\Controllers\CommonController;
                                 <div>
                                     @error('captcha_newsletter')
                                         <div class="text-danger captcha_newsletter">The CAPTCHA entered is incorrect. Please try again.</div>
+                                    @enderror
+                                </div>
+                            </div> --}}
+                            <div class="captcha-container captcha_newsletter_container mt-2" style="width: 70%">
+                                <div class="d-flex">
+                                    <div id="captcha_image_footer" class="captcha_image">
+                                        {!! captcha_img('news_letter') !!}
+                                    </div>
+                                    <div id="captcha_image_footer" class="captcha_image">
+                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQi64Rl_oZ-ygLyFWlgIUfRer0v21agZtQg0y_EKFjs31fqJ6aLmv5Aqjx6ySbw60enZ0U&usqp=CAU"
+                                        alt="refresg"  style="width:46px; height:38px;" onclick="refreshCaptcha()">
+                                    </div>
+                                </div>
+                                <input type="text" name="captcha_newsletter" id="captcha_newsletter" class="form-control captcha-input" required>
+                                <div>
+                                    @error('captcha_newsletter')
+                                        <div class="text-danger captcha_contact">The CAPTCHA entered is incorrect. Please try again.</div>
                                     @enderror
                                 </div>
                             </div>

@@ -62,16 +62,21 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
               {{Session::get('message')['body']}}
             </div>
             @endif
-            @if ($errors->any() && $errors->has('PartnerForm'))
+            @if ($errors->any() && $errors->has('captcha_partner'))
             <div class="alert alert-danger">
               <ul>
                 {{-- @foreach ($errors->all() as $error) --}}
-                @foreach ($errors->get('PartnerForm') as $error)
-                <li>{{ $error }}</li>
+                @foreach ($errors->get('captcha_partner') as $error)
+                    @if($error == "validation.captcha")
+                    <li>The CAPTCHA entered is incorrect. Please try again.</li>
+                    @else
+                    <li>{{ $error }}</li>
+                    @endif
                 @endforeach
               </ul>
             </div>
             @endif
+
             <form id="regForm" class="partner-form" action="{{route('form.submission', ['partner_requests'])}}" method="post" enctype="multipart/form-data">
               @csrf
               <div class="all-step"> <span class="step active"> Step 1</span> <span class="step"> Step 2</span> <span class="step"> Step 3</span> </div>
@@ -592,20 +597,22 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
                 <div class="col-md-12">
                     <div class="captcha-container captcha_partner_container" style="width: 40%">
                         <!-- CAPTCHA Image -->
-                        <div id="captcha_image_form_partner" class="captcha_image" style="width: 30%">
-                            {!! captcha_img('partner_requests') !!}
-                        </div>
                         <div class="d-flex flex-col">
-                            <button type="button" id="refresh-captcha" class="btn btn-secondary btn--md ms-2" onclick="refreshCaptcha()">Refresh</button>
-                            <input type="text" name="captcha_partner" id="captcha_partner" placeholder="Enter CAPTCHA"  class="form-control captcha-input" required>
+                            <div id="captcha_image_form_partner" class="captcha_image" style="width: 30%">
+                                {!! captcha_img('partner_requests') !!}
+                            </div>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQi64Rl_oZ-ygLyFWlgIUfRer0v21agZtQg0y_EKFjs31fqJ6aLmv5Aqjx6ySbw60enZ0U&usqp=CAU"
+                            alt="refresh" id="refresh-captcha"  style="width:46px; height:38px; min-width: 0% !important" onclick="refreshCaptcha()">
+
                         </div>
+                        <input type="text" name="captcha_partner" id="captcha_partner" placeholder="Enter CAPTCHA"  class="form-control captcha-input" required>
                         <div>
                             @error('captcha_partner')
                                 <div class="text-danger captcha_partner">The CAPTCHA entered is incorrect. Please try again.</div>
                             @enderror
                         </div>
                       </div>
-                  </div>
+                    </div>
                 <!-- <a href="#" class="btn btn--md btn--border_1"> Make Payment Now </a> -->
               </div>
               <div>

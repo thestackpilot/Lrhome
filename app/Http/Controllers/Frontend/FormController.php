@@ -65,10 +65,6 @@ class FormController extends FrontendController
 
         if ( $request->all() )
         {
-            // $request->validate([
-            //     'captcha' => 'required|captcha',
-            // ]);
-
             $customMessages = [
                 'captcha.required' => 'Please solve the CAPTCHA to proceed.',
                 'captcha.captcha' => 'The CAPTCHA entered is incorrect. Please try again.',
@@ -85,7 +81,9 @@ class FormController extends FrontendController
             } else if ($slug == 'partner_requests') {
                 $validated = $request->validate([
                     'captcha_partner' => 'required|captcha',
-                ], $customMessages, 'PartnerForm');
+                ], $customMessages, [
+                    'captcha_partner' => 'PartnerForm'
+                ]);
             }
 
             $data = $request->all();
