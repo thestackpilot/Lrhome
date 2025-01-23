@@ -116,37 +116,37 @@ use App\Http\Controllers\CommonController;
                     <div>
                       <div class="contact-input">
                         <div class="contact-inner">
-                          <input name="name" type="text" placeholder="Name *" data-required="true" required>
+                          <input name="name" type="text"  placeholder="Name *" data-required="true" required value={{old('name')}}>
                         </div>
                         <div class="contact-inner">
-                          <input name="subject" type="text" placeholder="Subject *" data-required="true" required>
-                        </div>
-                      </div>
-
-                      <div class="contact-input">
-                        <div class="contact-inner">
-                          <input name="email" class="email" type="email" placeholder="Email *" data-required="true" required>
-                        </div>
-                        <div class="contact-inner">
-                          <input name="phone" type="number" placeholder="Phone *" data-required="true" required>
+                          <input name="subject"  type="text" placeholder="Subject *" data-required="true" required value={{old('subject')}}>
                         </div>
                       </div>
 
                       <div class="contact-input">
                         <div class="contact-inner">
-                          <input name="company" type="text" placeholder="Company *" data-required="true" required>
+                          <input name="email" class="email" type="email" placeholder="Email *" data-required="true" required value={{old('email')}}>
                         </div>
                         <div class="contact-inner">
-                          <input name="city" type="text" placeholder="City *" data-required="true" required>
+                          <input name="phone" type="number" placeholder="Phone *" data-required="true" required value={{old('phone')}}>
+                        </div>
+                      </div>
+
+                      <div class="contact-input">
+                        <div class="contact-inner">
+                          <input name="company" type="text" placeholder="Company *" data-required="true" required value={{old('company')}}>
+                        </div>
+                        <div class="contact-inner">
+                          <input name="city" type="text" placeholder="City *" data-required="true" required value={{old('city')}}>
                         </div>
                       </div>
 
                       <div class="contact-inner">
-                        <input name="state" type="text" placeholder="State *" data-required="true" required>
+                        <input name="state" type="text" placeholder="State *" data-required="true" required value={{old('state')}}>
                       </div>
 
                       <div class="contact-inner contact-message">
-                        <textarea name="message" placeholder="Please type a message here" data-required="true" required></textarea>
+                        <textarea name="message" placeholder="Please type a message here" data-required="true" required>{{old('message')}}</textarea>
                       </div>
                       <div class="captcha-container captcha_contact_container" style="width: 70%">
                         <div class="d-flex flex-col">
