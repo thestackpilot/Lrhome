@@ -126,12 +126,12 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <input placeholder="Owner/Business Email" type="email" oninput="this.className = ''" name="business_email" id="business_email" class="form-control">
+                      <input placeholder="Owner/Business Email" type="email" value="{{ old('business_email') }}" oninput="this.className = ''" name="business_email" id="business_email" class="form-control">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <input placeholder="Owner/Business Contact No." oninput="this.className = ''" name="business_contact" id="business_contact" class="form-control">
+                      <input placeholder="Owner/Business Contact No." value="{{ old('business_contact') }}" oninput="this.className = ''" name="business_contact" id="business_contact" class="form-control">
                     </div>
                   </div>
                   <!--
@@ -163,32 +163,32 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
                   </div>
                   <div class="col-md-4">
                     <div class="form-group">
-                      <input placeholder="SO Acknowledgement Recipient Contact Name" oninput="this.className = ''" name="acknowledgement_recipient_contact_name" id="ack_contname" class="form-control">
+                      <input placeholder="SO Acknowledgement Recipient Contact Name" value="{{ old('acknowledgement_recipient_contact_name') }}"  oninput="this.className = ''" name="acknowledgement_recipient_contact_name" id="ack_contname" class="form-control">
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="form-group">
-                      <input placeholder="SO Acknowledgement Recipient Email" type="email" oninput="this.className = ''" name="acknowledgement_recipient_email" id="ack_rec_email" class="form-control">
+                      <input placeholder="SO Acknowledgement Recipient Email" value="{{ old('acknowledgement_recipient_email') }}" type="email" oninput="this.className = ''" name="acknowledgement_recipient_email" id="ack_rec_email" class="form-control">
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="form-group">
-                      <input placeholder="SO Acknowledgement Recipient Contact No." oninput="this.className = ''" name="acknowledgement_recipient_contact" id="ack_rec_contact" class="form-control">
+                      <input placeholder="SO Acknowledgement Recipient Contact No." oninput="this.className = ''" name="acknowledgement_recipient_contact" value="{{ old('acknowledgement_recipient_contact') }}" id="ack_rec_contact" class="form-control">
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="form-group">
-                      <input placeholder="Accounts Payable Name" oninput="this.className = ''" name="accounts_payable_name" id="accnts_payable_name" class="form-control">
+                      <input placeholder="Accounts Payable Name" oninput="this.className = ''" name="accounts_payable_name" value="{{ old('accounts_payable_name') }}" id="accnts_payable_name" class="form-control">
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="form-group">
-                      <input placeholder="Accounts Payable Email" type="email" oninput="this.className = ''" name="accounts_payable_email" id="accnts_payable_email" class="form-control">
+                      <input placeholder="Accounts Payable Email" type="email" oninput="this.className = ''" name="accounts_payable_email" value="{{ old('accounts_payable_email') }}" id="accnts_payable_email" class="form-control">
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="form-group">
-                      <input placeholder="Accounts Payable Contact No." oninput="this.className = ''" name="accounts_payable_phone" id="accnts_payable_phone" class="form-control">
+                      <input placeholder="Accounts Payable Contact No." oninput="this.className = ''" name="accounts_payable_phone" value="{{ old('accounts_payable_phone') }}" id="accnts_payable_phone" class="form-control">
                     </div>
                   </div>
                   <div class="col-md-6">
@@ -198,7 +198,7 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <input placeholder="Tax ID / EIN / Federal tax ID" oninput="this.className = ''" name="tax_id" id="tax_id" class="form-control">
+                      <input placeholder="Tax ID / EIN / Federal tax ID" oninput="this.className = ''" name="tax_id" value="{{ old('tax_id') }}" id="tax_id" class="form-control">
                     </div>
                   </div>
                 </div>
@@ -225,7 +225,7 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
 
                   <div class="col-md-6">
                     <div class="form-group">
-                      <input placeholder="Business Name" oninput="this.className = ''" name="billing_buisname" id="billing_buisname" class="form-control">
+                      <input placeholder="Business Name" oninput="this.className = ''" name="billing_buisname" value="{{ old('billing_buisname') }}" id="billing_buisname" class="form-control">
                     </div>
                   </div>
                   <div class="col-md-6">
@@ -235,7 +235,7 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <input placeholder="Billing Address Line 1" oninput="this.className = ''" name="billing_address" id="billing_address" class="form-control">
+                      <input placeholder="Billing Address Line 1" oninput="this.className = ''" name="billing_address" value="{{ old('billing_address') }}" id="billing_address" class="form-control">
                     </div>
                   </div>
                   <div class="col-md-6">
@@ -265,17 +265,17 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
                   </div>
                   <div class="col-md-3">
                     <div class="form-group">
-                      <input placeholder="Zip" oninput="this.className = ''" name="billing_zip" id="billing_zip" class="form-control">
+                      <input placeholder="Zip" oninput="this.className = ''" name="billing_zip" id="billing_zip" value="{{ old('billing_zip') }}" class="form-control">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <input placeholder="Phone No." oninput="this.className = ''" name="billing_phone" id="billing_phone" class="form-control">
+                      <input placeholder="Phone No." oninput="this.className = ''" name="billing_phone" id="billing_phone" value="{{ old('billing_phone') }}"  class="form-control">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <input placeholder="Email Id" oninput="this.className = ''" name="billing_email" id="billing_email" class="form-control">
+                      <input placeholder="Email Id" oninput="this.className = ''" name="billing_email" id="billing_email" value="{{ old('billing_email') }}" class="form-control">
                     </div>
                   </div>
                 </div>
@@ -289,7 +289,7 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <input placeholder="Business Name" oninput="this.className = ''" name="shipping_buisname" id="shipping_buisname" class="form-control">
+                      <input placeholder="Business Name" oninput="this.className = ''" name="shipping_buisname" value="{{ old('shipping_buisname') }}" id="shipping_buisname" class="form-control">
                     </div>
                   </div>
                   <div class="col-md-6">
@@ -299,7 +299,7 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <input placeholder="Shipping Address Line 1" oninput="this.className = ''" name="shipping_address" id="shipping_address" class="form-control">
+                      <input placeholder="Shipping Address Line 1" oninput="this.className = ''" name="shipping_address" value="{{ old('shipping_address') }}" id="shipping_address" class="form-control">
                     </div>
                   </div>
                   <div class="col-md-6">
@@ -327,17 +327,17 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
                   </div>
                   <div class="col-md-3">
                     <div class="form-group">
-                      <input placeholder="Zip" oninput="this.className = ''" name="shipping_zip" id="shipping_zip" class="form-control">
+                      <input placeholder="Zip" oninput="this.className = ''" name="shipping_zip" id="shipping_zip" value="{{ old('shipping_zip') }}" class="form-control">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <input placeholder="Phone No." oninput="this.className = ''" name="shipping_phone" id="shipping_phone" class="form-control">
+                      <input placeholder="Phone No." oninput="this.className = ''" name="shipping_phone" id="shipping_phone" value="{{ old('shipping_phone') }}" class="form-control">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <input placeholder="Email Id" oninput="this.className = ''" name="shipping_email" id="shipping_email" class="form-control">
+                      <input placeholder="Email Id" oninput="this.className = ''" name="shipping_email" id="shipping_email" value="{{ old('shipping_email') }}"  class="form-control">
                     </div>
                   </div>
                 </div>

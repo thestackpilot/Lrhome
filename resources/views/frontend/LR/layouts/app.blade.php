@@ -57,6 +57,14 @@ use App\Http\Controllers\CommonController;
     <link rel="stylesheet" href="{{asset('/LR/css/toastr.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <style>
+        .footer-widget__newsletter .submit-button.red {
+                background: #ef9000 !important;
+        }
+        .footer-widget__newsletter .submit-button.green {
+            background: #c3c3c3 !important;
+        }
+    </style>
 
     @yield('head_scripts')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -537,6 +545,27 @@ use App\Http\Controllers\CommonController;
             }
         });
     }
+
+    function updateButtonStateFooter() {
+        let email = $("#newsletter-form #email").val().trim();
+    let other = $("#newsletter-form #captcha_newsletter").val().trim();
+
+    if (email !== "" && other !== "") {
+        $(".footer-widget__newsletter .submit-button")
+            .removeClass("green")
+            .addClass("red")
+            .prop("disabled", false);
+    } else {
+        $(".footer-widget__newsletter .submit-button")
+            .removeClass("red")
+            .addClass("green")
+            .prop("disabled", true);
+    }
+    }
+    $("#newsletter-form #email, #newsletter-form #captcha_newsletter").on(
+        "input",
+        updateButtonStateFooter
+    );
     </script>
     @yield('scripts')
     <script src="{{asset('/LR/js/main.js')}}?v={{time()}}"> </script>
