@@ -149,14 +149,16 @@ use App\Http\Controllers\CommonController;
                         <textarea name="message" placeholder="Please type a message here" data-required="true" required></textarea>
                       </div>
                       <div class="captcha-container captcha_contact_container" style="width: 70%">
-                        <!-- CAPTCHA Image -->
-                        <div id="captcha_image" class="captcha_image">
-                            {!! captcha_img('contact_us') !!}
-                        </div>
                         <div class="d-flex flex-col">
-                            <button type="button" id="refresh-captcha" class="btn btn-secondary btn--md ms-2" onclick="refreshCaptcha()">Refresh</button>
-                            <input type="text" name="captcha_contact" id="captcha_contact" placeholder="Enter CAPTCHA"  class="form-control captcha-input" required>
+                            <div id="captcha_image" class="captcha_image">
+                                {!! captcha_img('contact_us') !!}
+                            </div>
+                            <div id="captcha_image" class="captcha_image">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQi64Rl_oZ-ygLyFWlgIUfRer0v21agZtQg0y_EKFjs31fqJ6aLmv5Aqjx6ySbw60enZ0U&usqp=CAU"
+                                alt="refresg"  style="width:46px; height:38px;" onclick="refreshCaptcha()">
+                            </div>
                         </div>
+                        <input type="text" name="captcha_contact" id="captcha_contact" placeholder="Enter CAPTCHA"  class="form-control captcha-input" required>
                         <div>
                             @error('captcha_contact')
                                 <div class="text-danger captcha_contact">The CAPTCHA entered is incorrect. Please try again.</div>
@@ -270,9 +272,6 @@ use App\Http\Controllers\CommonController;
   }
 
   .captcha_image img{
-    min-width: 40% !important;
-  }
-  .captcha_image{
     min-width: 40% !important;
   }
 </style>
