@@ -100,15 +100,15 @@ use App\Http\Controllers\CommonController;
                                     <div id="captcha_image_footer" class="captcha_image">
                                         {!! captcha_img('news_letter') !!}
                                     </div>
-                                    <div id="captcha_image_footer" class="captcha_image">
+                                    <div id="captcha_image_footer" class="captcha_image mx-1">
                                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQi64Rl_oZ-ygLyFWlgIUfRer0v21agZtQg0y_EKFjs31fqJ6aLmv5Aqjx6ySbw60enZ0U&usqp=CAU"
                                         alt="refresg"  style="width:46px; height:38px;" onclick="refreshCaptcha()">
                                     </div>
                                 </div>
-                                <input type="text" name="captcha_newsletter" id="captcha_newsletter" class="form-control captcha-input" required>
+                                <input type="text" name="captcha_newsletter" id="captcha_newsletter" class="form-control captcha-input mt-1" required>
                                 <div>
                                     @error('captcha_newsletter')
-                                        <div class="text-danger captcha_contact">The CAPTCHA entered is incorrect. Please try again.</div>
+                                        <div class="text-danger captcha_newsletter">The CAPTCHA entered is incorrect. Please try again.</div>
                                     @enderror
                                 </div>
                             </div>
