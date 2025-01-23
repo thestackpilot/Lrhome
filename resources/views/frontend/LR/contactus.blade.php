@@ -158,7 +158,7 @@ use App\Http\Controllers\CommonController;
                                 alt="refresg"  style="width:46px; height:38px;" onclick="refreshCaptcha()">
                             </div>
                         </div>
-                        <input type="text" name="captcha_contact" id="captcha_contact" placeholder="Enter CAPTCHA"  class="form-control captcha-input" required>
+                        <input type="text" name="captcha_contact" id="captcha_contact" placeholder="Enter CAPTCHA"  class="form-control captcha-input mt-1" required>
                         <div>
                             @error('captcha_contact')
                                 <div class="text-danger captcha_contact">The CAPTCHA entered is incorrect. Please try again.</div>

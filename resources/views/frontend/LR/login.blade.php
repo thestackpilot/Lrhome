@@ -601,10 +601,10 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
                                 {!! captcha_img('partner_requests') !!}
                             </div>
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQi64Rl_oZ-ygLyFWlgIUfRer0v21agZtQg0y_EKFjs31fqJ6aLmv5Aqjx6ySbw60enZ0U&usqp=CAU"
-                            alt="refresh" id="refresh-captcha"  style="width:46px; height:38px; min-width: 0% !important" onclick="refreshCaptcha()">
+                            alt="refresh" id="refresh-captcha" class="mx-1"  style="width:46px; height:38px; min-width: 0% !important" onclick="refreshCaptcha()">
 
                         </div>
-                        <input type="text" name="captcha_partner" id="captcha_partner" placeholder="Enter CAPTCHA"  class="form-control captcha-input mt-2" required>
+                        <input type="text" name="captcha_partner" id="captcha_partner" placeholder="Enter CAPTCHA"  class="form-control captcha-input mt-1" required>
                         <div>
                             @error('captcha_partner')
                                 <div class="text-danger captcha_partner">The CAPTCHA entered is incorrect. Please try again.</div>

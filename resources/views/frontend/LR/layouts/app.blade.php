@@ -521,9 +521,15 @@ use App\Http\Controllers\CommonController;
 
         if($('.captcha_newsletter').length > 0){
             $('.captcha_newsletter_container').show();
+            $('html, body').animate({
+                scrollTop: $('#newsletter-form').offset().top // Scroll to the top of the newsletter-form section
+            }, 1000);
         }
         if($('.captcha_contact').length > 0){
             $('.captcha_contact_container').show();
+            $('html, body').animate({
+                scrollTop: $('#contact-form-chnage').offset().top // Scroll to the top of the newsletter-form section
+            }, 1000);
         }
         if($('.captcha_partner').length > 0){
             $('.captcha_partner_container').show();
