@@ -1,0 +1,24 @@
+# Laravel-specific files
+/vendor/
+/node_modules/
+/public/hot
+/public/storage
+/storage/*.key
+/.env
+/.env.*
+
+# Laravel logs and caches
+/storage/app/
+/public/media/
+/storage/framework/cache
+/storage/framework/sessions
+/storage/framework/testing
+/storage/framework/views
+/storage/logs
+/bootstrap/cache
+
+
+# Node.js dependencies and build files
+/node_modules/
+/dist/
+/build/

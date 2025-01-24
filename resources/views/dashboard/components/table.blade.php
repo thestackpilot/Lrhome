@@ -42,34 +42,14 @@ function get_table( $table, $tab = '' ) {
                     $table_body .= '<td>';
                     foreach($row['actions'] as $action) {
                         if($action['type'] == 'modal' ) {
-                            if (isset($row['other_actions_details']) || (isset($row['transaction_type']) && ($row['transaction_type'] === 'Cash Receipt' || $row['transaction_type'] === 'Customer Debit'))) {
-                                 $table_body .= '
-                                 <button class="btn btn-sm btn-primary other-details" type="button">'.$action['label'].'</button>
-                                 <span class="other-row-details" style="display: none !important;">'.json_encode($row['other_actions_details']).'</span>
-                                 ';
-                            } else {
-                                $table_body .= '
-                                <button class="btn btn-sm btn-primary view-details" type="button">'.$action['label'].'</button>
-                                <span class="row-details" style="display: none !important;">'.json_encode($row['details']).'</span>
-                                ';
-                            }
-                        }
-                    }
-                    $table_body .= '</td>';
-                }
-                 else if ($key == 'other_actions') {
-                    $table_body .= '<td>';
-                    foreach($row['other_actions'] as $other_actions) {
-                        if($other_actions['type'] == 'modal') {
                             $table_body .= '
-                            <button class="btn btn-sm btn-primary other-details" type="button">'.$other_actions['label'].'</button>
-                            <span class="other-row-details" style="display: none !important;">'.json_encode($row['other_actions_details']).'</span>
+                            <button class="btn btn-sm btn-primary view-details" type="button">'.$action['label'].'</button>
+                            <span class="row-details" style="display: none !important;">'.json_encode($row['details']).'</span>
                             ';
                         }
                     }
                     $table_body .= '</td>';
-                }
-                else {
+                } else {
                     $table_body .= '<td>'.$row[$key].'</td>';
                 }
             }
@@ -120,27 +100,6 @@ function get_table( $table, $tab = '' ) {
         </div>
     </div>
 </div>
-<div class="modal fade other-detail-modal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-xl">
-        <div class="modal-content">
-            <div class="modal-header other-detail-modal-header text-center">
-                <h4 style='float: left;'>Report Details</h4>
-                <button type="button" class="close other-detail-modal-close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true" style="font-size: 40px;">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body other-detail-modal-body p-5" id="section-details" style="background: #fff;">
-            </div>
-            <div class="modal-footer">
-                {{-- <button type="button" class="btn btn-secondary close-modal other-detail-modal-close" data-dismiss="modal">Close</button> --}}
-            </div>
-        </div>
-    </div>
-</div>
-<div class="loader-container" id="loader-container" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999;">
-    <div class="loader" style="border: 50px solid #f3f3f3; border-top: 50px solid #660000; border-radius: 50%; width: 100px; height: 100px; animation: spin 1s linear infinite;">
-    </div>
-</div>
 @section('styles')
 @parent
 <link href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css" rel="stylesheet" />
@@ -149,10 +108,6 @@ function get_table( $table, $tab = '' ) {
     table.dataTable thead .sorting_asc {
         background: none;
         background-image: none !important;
-    }
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
     }
 </style>
 @endsection
@@ -178,24 +133,18 @@ function get_table( $table, $tab = '' ) {
             // console.log('Details Clicked');
             var data = JSON.parse($('span.row-details', $(this).parent()).html());
             var modal_body = '';
-            modal_body += '<div class="row mt-5">';
             data.body.sections.forEach((section, i) => {
-                // console.log('section check', section, i);
-                modal_body += '<div class="mb-3 col-md-' + section.cols + '">';
-
+                modal_body += '<div class="row ' + (i == 0 ? '' : 'mt-5') + '">';
+                modal_body += '<div class="col-md-12">';
+                modal_body += '<h3>' + section.title + '</h3>';
+                modal_body += '<div class="row">';
                 if (Array.isArray(section.content) && typeof section.content.length !== 'undefined') {
-                    console.log('section.content', section.content);
-
                     modal_body += getDetails(section.content);
                 } else if (typeof section.content.tabs !== 'undefined') {
-                     modal_body += '<ul class="nav nav-tabs" id="myTab" role="tablist">';
+                    modal_body += '<ul class="nav nav-tabs" id="myTab" role="tablist">';
                     Object.keys(section.content.tabs).forEach(function(tab, i) {
-                        let title = tab;
-                        if (tab === 'tracks') {
-                            title = 'Tracking Info';
-                        }
                         modal_body += '<li class="nav-item" role="presentation">';
-                        modal_body += `<button data-type="modal" class="nav-link ${i == 0 ? 'active': ''}" id="${tab}-tab" data-bs-toggle="tab" data-bs-target="#${tab}" type="button" role="tab" aria-controls="${tab}" aria-selected="true">${title}</button>`;
+                        modal_body += `<button data-type="modal" class="nav-link ${i == 0 ? 'active': ''}" id="${tab}-tab" data-bs-toggle="tab" data-bs-target="#${tab}" type="button" role="tab" aria-controls="${tab}" aria-selected="true">${tab}</button>`;
                         modal_body += '</li>';
                     });
                     modal_body += '</ul>';
@@ -208,43 +157,25 @@ function get_table( $table, $tab = '' ) {
                     });
                     modal_body += '</div>';
                 } else {
-                    // modal_body += '<div class="col-12">';
-                    // console.log('section.title', section.title);
-                    modal_body += '<h4>' + section.title + '</h3>';
                     Object.keys(section.content).forEach(function(key) {
-                        console.log('key', key);
-                        console.log('section.content[key]', section.content[key]);
                         var value = section.content[key] == 0 || section.content[key] == '' ? 'N/A' : section.content[key];
-                        if ((value !== 'N/A' && value) || key === 'Discount') {
-                            if (key === 'Discount') {
-                                if (value === 'N/A') {
-                                    value = "0.00"
-                                }
-                            }
-                            if (!section.hide_labels) {
-                                modal_body += '<p class="m-0"><strong>' + ((key.replace(/([A-Z|0-9])/g, ' $1').trim()).replace('_', ' ').replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())).replace(/([A-Z])\s(?=[A-Z])/g, '$1') + ' :</strong> ' + value + '</p>'
-                            } else {
-                                if(value != ", "){
-                                    modal_body += '<p class="m-0">' + value + '</p>'
-                                }else{
-                                    modal_body += '<p class="m-0"></p>'
-                                }
-
-                            }
-                        }
-                        // modal_body += '<div class="col-md-4">' + ((key.replace(/([A-Z|0-9])/g, ' $1').trim()).replace('_', ' ').replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())).replace(/([A-Z])\s(?=[A-Z])/g, '$1') + ' : ' + value + '</div>';
+                        modal_body += '<div class="col-md-4">' + ((key.replace(/([A-Z|0-9])/g, ' $1').trim()).replace('_', ' ').replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())).replace(/([A-Z])\s(?=[A-Z])/g, '$1') + ' : ' + value + '</div>';
                     });
-                    // modal_body += '</div>';
                 }
                 modal_body += '</div>';
+                modal_body += '</div>';
+                modal_body += '</div>';
             });
-            modal_body += '</div>';
             $('.details-modal .modal-header').html(`
-                <form action="{{ route('dashboard.orders-print-download') }}" class="w-100" method="POST" target="_blank">
-                @csrf
-                    <button type="submit" class="btn btn-secondary" style="float: right;">Print</button>
-                    <textarea style="display: none;" name="report_data">${JSON.stringify(data.body)}</textarea>
-                </form>
+                <h1 class="col-md-12 text-center">
+                    ${data.heading}
+                    <form action="{{ route('dashboard.orders-print-download') }}" method="POST" target="_blank">
+                        @csrf
+                        <button type="submit" class="btn btn-secondary" style="float: right;">Print</button>
+                        <textarea style="display: none;" name="report_data">${JSON.stringify(data.body)}</textarea>
+                    </form>
+
+                </h1>
             `);
             $('.details-modal .modal-body').html(modal_body);
             $('.details-modal').modal('show');
@@ -308,37 +239,21 @@ function get_table( $table, $tab = '' ) {
                                         $('.table.data-table:visible').attr('data-tab-name') != json.data[i]['tab'] &&
                                         $('.table.data-table:visible').attr('data-tab-name') != 'All'
                                     ) continue;
-
-                                    console.log(json.data)
-
-                                    if (json.data[i]['actions'][0]['type'] == 'modal') {
-                                        if (typeof json.data[i]['transaction_type'] != 'undefined' && (json.data[i]['transaction_type'] === 'Cash Receipt' || json.data[i]['transaction_type'] === 'Customer Debit')) {
-                                            json.data[i]['actions'] = `
-                                            <button class="btn btn-sm btn-primary other-details" type="button">${json.data[i]['actions'][0]['label']}</button>
-                                            <span class="other-row-details" style="display: none !important;">${JSON.stringify(json.data[i]['other_actions_details'])}</span>
-                                            `;
-                                        } else {
-                                            json.data[i]['actions'] = `
+                                    
+                                    if (json.data[i]['actions'][0]['type'] == 'modal')
+                                        json.data[i]['actions'] = `
                                             <button class="btn btn-sm btn-primary view-details" type="button">${json.data[i]['actions'][0]['label']}</button>
                                             <span class="row-details" style="display: none !important;">${JSON.stringify(json.data[i]['details'])}</span>
-                                            `;
-                                        }
-                                        data.push(json.data[i]);
-                                    }
-                                    if (typeof json.data[i]['other_actions'] !== 'undefined' && json.data[i]['other_actions'][0]['type'] == 'modal') {
-                                        json.data[i]['other_actions'] = `
-                                            <button class="btn btn-sm btn-primary other-details" type="button">${json.data[i]['other_actions'][0]['label']}</button>
-                                            <span class="other-row-details" style="display: none !important;">${JSON.stringify(json.data[i]['other_actions_details'])}</span>
                                         `;
-                                        data.push(json.data[i]);
-                                    }
+
+                                    data.push(json.data[i]);
                                 }
 
                                 if (data.length != json.data.length) {
                                     json.recordsFiltered = data.length;
                                     json.recordsTotal = data.length;
                                 }
-
+                                
                                 return data;
                             }
                         },
@@ -354,18 +269,19 @@ function get_table( $table, $tab = '' ) {
         }
 
         initTable('');
-
+        
         function getDetails(section) {
             var modal_body = '';
-            if (section.length != 0) {
+            if (section.length < 1) {
+                modal_body += '<div class="col-md-12">';
+                modal_body += '<h5>N/A</h5>';
+                modal_body += '</div>';
+            } else {
                 modal_body += '<div class="col-md-12">';
                 modal_body += '<table class="table mt-2 text-center details">';
                 modal_body += '<thead>';
                 modal_body += '<tr>';
                 Object.keys(section[0]).forEach(function(key) {
-                    if (key === 'ImageName') {
-                        key = 'Image';
-                    }
                     if ( key !== 'href' ) modal_body += "<th>" + ((key.replace(/([A-Z|0-9])/g, ' $1').trim()).replace('_', ' ')).replace(/([A-Z])\s(?=[A-Z])/g, '$1') + "</th>";
                 });
                 modal_body += '</tr>';
@@ -374,12 +290,10 @@ function get_table( $table, $tab = '' ) {
                 section.forEach(row => {
                     modal_body += '<tr>';
                     Object.keys(row).forEach(function(index) {
-                        // console.log('index', index);
-                        // console.log(' row[index]',  row[index]);
                         if ( index == 'href' )
                         {
                             // continue;
-                        }
+                        } 
                         else
                         {
                             if( index == 'ImageName' && row[index] !== '')
@@ -388,16 +302,7 @@ function get_table( $table, $tab = '' ) {
                             }
                             else
                             {
-                               // modal_body += "<td>" + (row[index] == null || row[index] == '' ? ((index == 'ImageName') ? 'No Image' : '-') : row[index]) + "</td>";
-                               modal_body += "<td>" +
-                                            (row[index] == null || row[index] == ''
-                                                ? ((index == 'ImageName') ? 'No Image' : '-')
-                                                : (index == 'Price'
-                                                ? '$' + parseFloat(row[index]).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,')
-                                                : row[index]))
-                                            + "</td>";
-
-
+                                modal_body += "<td>" + (row[index] == null || row[index] == '' ? ((index == 'ImageName') ? 'No Image' : '-') : row[index]) + "</td>";
                             }
                         }
                     });
@@ -410,59 +315,6 @@ function get_table( $table, $tab = '' ) {
 
             return modal_body;
         }
-
-        $(document).on('click', '.other-details', function(){
-            $('#loader-container').css('display', 'block');
-            const url = "/dashboard/order_report";
-            {{--const url = "{{ route('dashboard.orderreport') }}";--}}
-            var data = JSON.parse($('span.other-row-details', $(this).parent()).html());
-            console.log('Data', data);
-            let SalesRepId = '';
-            let CustomerId = '';
-            let MenuTag = data.MenuTag;
-            let DocumentNo =  data.OrderNo;
-            const fullUrl = `${url}?MenuTag=${MenuTag}&DocumentNo=${DocumentNo}`;
-            // console.log('full URL', fullUrl);
-            $.ajax({
-                url: url,
-                url: fullUrl,
-                type: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json",
-                    "Access-Control-Allow-Origin": "*",
-                },
-                success: function(response) {
-                    $('#loader-container').css('display', 'none');
-                    //  console.log('Response', response);
-                    $(".other-detail-modal").modal("show");
-                    var modalBody = $(".modal-body");
-                    $(".other-detail-modal-header").html("<h4>Report Details</h4>");
-                    $(".other-detail-modal-body").empty();
-                    var obj = document.createElement('object');
-                    obj.style.width = '100%';
-                    obj.style.height = '842pt';
-                    obj.type = 'application/pdf';
-                    obj.data = 'data:application/pdf;base64,' + response;
-                    document.body.appendChild(obj);
-                    console.log(obj);
-                    //   console.log(obj);
-                    $(".other-detail-modal-body").append(obj);
-                    var link = document.createElement('a');
-                    link.innerHTML = 'Download Report';
-                    link.className = 'btn btn-primary my-3 py-3';
-                    link.download = 'Report.pdf';
-                    link.href = 'data:application/octet-stream;base64,' + response;
-                    document.body.appendChild(link);
-                    //$(".other-detail-modal-body").append(link);
-                },
-                error: function( error) {
-                    console.error("Error fetching", error);
-                    $('#loader-container').css('display', 'none');
-                    //  console.error("Error fetching", error);
-                }
-            });
-        });
     });
 </script>
 @endsection

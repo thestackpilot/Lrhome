@@ -53,7 +53,7 @@ use App\Http\Controllers\CommonController;
     <link rel="stylesheet" href="{{asset('/LR/css/vendor/vendor.min.css')}}">
     <link rel="stylesheet" href="{{asset('/LR/css/plugins/plugins.min.css')}}?v=0.01">
     @yield('styles')
-    <link rel="stylesheet" href="{{asset('/LR/css/style.css')}}?v=0.03">
+    <link rel="stylesheet" href="{{asset('/LR/css/style.css')}}?v={{time()}}">
     <link rel="stylesheet" href="{{asset('/LR/css/toastr.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
@@ -266,13 +266,11 @@ use App\Http\Controllers\CommonController;
         var url = '';
         if(type == 'quick-cart')
         {
-            {{--url = '{{route('frontend.cart.refresh',['quick-cart'])}}';--}}
-            url = '/cart/refresh/quick-cart';
+            url = '{{route('frontend.cart.refresh',['quick-cart'])}}';
         }
         else if(type == 'profile')
         {
-            {{--url = '{{route('frontend.cart.refresh',['profile'])}}';--}}
-            url = '/cart/refresh/profile';
+            url = '{{route('frontend.cart.refresh',['profile'])}}';
         }
         else
         {
@@ -359,8 +357,7 @@ use App\Http\Controllers\CommonController;
         $.ajax(
         {
             method: "POST",
-            {{--url: "{{route('frontend.cart.update')}}",--}}
-            url: "/cart/update",
+            url: "{{route('frontend.cart.update')}}",
             data: formData
         })
         .done(function (response)
@@ -435,8 +432,7 @@ use App\Http\Controllers\CommonController;
             $.ajax(
             {
                 method: "POST",
-                {{--url: "{{route('frontend.cart.remove')}}",--}}
-                url: "/cart/remove",
+                url: "{{route('frontend.cart.remove')}}",
                 data: formData
             })
             .done(function (response)

@@ -37,7 +37,7 @@ class SendMail implements ShouldQueue
         prr( " :: In handle() :: " );
         try {
 
-            if ( env('APP_ENV') != 'live' && env('APP_ENV') && 'production' && env('APP_ENV') != 'prod' )
+            if ( env('APP_ENV') != 'live' && env('APP_ENV') != 'production' && env('APP_ENV') != 'prod' )
             {
                 $this->details['email'] = isset($this->details['email']) && $this->details['email'] ? ConstantsController::TEST_EMAIL : '';
                 $this->details['cc_email'] = isset($this->details['cc_email']) && $this->details['cc_email'] ? ConstantsController::TEST_EMAIL : '';

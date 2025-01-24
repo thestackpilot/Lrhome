@@ -62,6 +62,7 @@ class FormController extends FrontendController
 
     public function submission_request( Request $request, $slug )
     {
+
         if ( $request->all() )
         {
             $customMessages = [
@@ -113,13 +114,15 @@ class FormController extends FrontendController
             if ( isset( $this->active_theme_json->general->allow_emails ) && $this->active_theme_json->general->allow_emails )
             {
                 try {
-
-                    SendMail::dispatch( [
-                        'data'     => $data,
-                        'slug'     => ucwords( str_replace( '_', ' ', $slug ) ),
-                        'email'    => ConstantsController::ADMIN_EMAIL,
-                        'template' => 'email.email'
-                    ] );
+                    // if ( $slug !== 'newsletter' && $slug !== 'contact_us')
+                    // {
+                        SendMail::dispatch( [
+                            'data'     => $data,
+                            'slug'     => ucwords( str_replace( '_', ' ', $slug ) ),
+                            'email'    => ConstantsController::ADMIN_EMAIL,
+                            'template' => 'email.email'
+                        ] );
+                    // }
 
                 }
                 catch ( \Exception $e )

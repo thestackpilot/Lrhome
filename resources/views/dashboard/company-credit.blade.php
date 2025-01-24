@@ -22,20 +22,18 @@ use App\Http\Controllers\CommonController;
                         <span>Company Credit</span>
                      </h3>
                      <div class="row font-ropa">
-                         @if(Auth::user()->is_sale_rep)
-                             <form class="row credit-details">
-                                 <div class="col-md-6 mb-5">
-                                     <label class="text-lg">Active Customer: </label>
-                                     <select name="customer" class="form-control">
-                                         @foreach($customers as $customer)
-                                             <option value="{{$customer['value']}}" {{$active_customer && $active_customer == $customer['value'] ? 'selected' : '' }}>
-                                                 {{$customer['label']}}
-                                             </option>
-                                         @endforeach
-                                     </select>
-                                 </div>
-                             </form>
-                         @endif
+                        <form class="row credit-details">
+                           <div class="col-md-6 mb-5">
+                              <label class="text-lg">Active Customer: </label>
+                              <select name="customer" class="form-control">
+                                 @foreach($customers as $customer)
+                                 <option value="{{$customer['value']}}" {{$active_customer && $active_customer == $customer['value'] ? 'selected' : '' }}>
+                                    {{$customer['label']}}
+                                 </option>
+                                 @endforeach
+                              </select>
+                           </div>
+                        </form>
                         <div class="col-md-12">
                            <label class=" text-lg">Net Terms: </label>
                            <span class=" text-lg">{{$company_credit['PaymentTerms']}}</span>

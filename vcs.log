@@ -1,0 +1,993 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <title>Error</title>
+
+    <meta charset="utf-8">
+    <meta name="description" content="">
+
+    <!-- Google / Search Engine Tags -->
+    <meta itemprop="name" content="Error">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="">
+
+    <meta property="og:url" content="" />
+    <meta property="og:title" content="Error" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" itemprop="image" content="" />
+    <meta property="og:image:secure_url" itemprop="image" content="" />
+    <meta property="og:description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="9Nzoy3OMAJaFFJVNqhYPWEszXxfUDLNwM2JIqZVJ">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="icon" type="image/x-icon" href="https://www.lrhome.us/LR/favicon.ico">
+    <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png"><meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://www.lrhome.us/LR/css/vendor/vendor.min.css">
+    <link rel="stylesheet" href="https://www.lrhome.us/LR/css/plugins/plugins.min.css?v=0.01">
+        <link rel="stylesheet" href="https://www.lrhome.us/LR/css/style.css?v=1712294619">
+    <link rel="stylesheet" href="https://www.lrhome.us/LR/css/toastr.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <script src="https://www.lrhome.us/LR/js/plugins/plugins.js"> </script>
+    <script src="https://www.lrhome.us/LR/js/vendor/modernizr-2.8.3.min.js"></script>
+
+    <script src="https://www.lrhome.us/LR/js/toastr.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="https://img1.wsimg.com/tcc/tcc_l.combined.1.0.6.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LdXhXkpAAAAALWzbIDqVMuf2pnaL9uDhu2q-Eb9"></script>
+
+        <!-- Google tag (gtag.js) -->
+    <script async src=https://www.googletagmanager.com/gtag/js?id=G-NRS85ZK87F></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-NRS85ZK87F');
+    </script>
+    <!--End Google tag (gtag.js) -->
+    </head>
+<body>
+        <div class="wrapper">
+        <div class="header-area header-area--default">
+    <header class="header-area header_absolute header_height-90 header-sticky">
+        <div class="container-fluid menu-container">
+            <div class="row align-items-center">
+                <!-- <div class="col-lg-2 col-md-2 col-sm-12 d-none d-md-block">-->
+                <div class="col-lg-2 col-md-2 col-sm-2 d-md-block">
+                    <div class="logo text-md-left">
+                        <a href="/" class="img-fluid"><img src="https://www.lrhome.us/storage/egjYsxTWGa6i22Bp7LeMnOwRmJ3PFRGd3TCk59SC.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-5 header-menu navbar-show justify-content-lg-end align-items-center">
+    <ul class="menu text-left mb-0" style="float: unset;">
+        <li class="parant"> <a href="http://www.lrhome.us/favourites/Rugs" class="main-item">RUGS <i class="icon-chevron-down"></i></a>
+            <div class="drop-down-item">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-2 sub-menu-item">
+                            <h5>RUGS </h5>
+                                                            <a href="https://www.lrhome.us/collections/Rugs/Collections/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiTmV3X0Fycml2YWxzIiwiVmFsdWVzIjogWyJOZXdfQXJyaXZhbHMiXX1dfQ==">NEW ADDITIONS</a>
+                                                            <a href="https://www.lrhome.us/collections/Rugs/Collections/eyJGaWx0ZXJzIjpbeyJGaWx0ZXJJRCI6IlJ1Z3MiLCJWYWx1ZXMiOlsiUnVncyJdfV19">VIEW COLLECTIONS</a>
+                                                            <a href="https://www.lrhome.us/collections/Rugs/Collections/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiTkFUVVJBTFMiLCJWYWx1ZXMiOiBbIk5BVFVSQUxTIl19XX0=">NATURALS</a>
+                                                            <a href="https://www.lrhome.us/collections/Rugs/Collections/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiSW5kb29yX091dGRvb3IiLCJWYWx1ZXMiOiBbIkluZG9vcl9PdXRkb29yIl19XX0=">INDOOR/OUTDOOR</a>
+                                                            <a href="https://www.lrhome.us/designs/Rugs/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiRGlzY29udGludWVkIiwiVmFsdWVzIjogWyJEaXNjb250aW51ZWQiXX1dfQ==/0">DISCONTINUED</a>
+                                                    </div>
+
+                                                <div class="col-md-3">
+                            <a class="menu-img-box" href="https://www.lrhome.us/collections/Rugs/Collections/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiTkFUVVJBTFMiLCJWYWx1ZXMiOiBbIk5BVFVSQUxTIl19XX0="><img src="https://lrhome.us/media/images/NATURALS.jpg" class="img-fluid" alt="Featured Image">
+                                <div><span>SHOP NATURALS </span></div>
+                            </a>
+                        </div>
+                                                <div class="col-md-3">
+                            <a class="menu-img-box" href="https://www.lrhome.us/collections/Rugs/Collections/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiQ29uc3RydWN0aW9uIiwiVmFsdWVzIjogWyJNYWNoaW5lIE1hZGUiXX1dfQ=="><img src="https://lrhome.us/media/images/MACHINE-MADE.jpg" class="img-fluid" alt="Featured Image">
+                                <div><span>SHOP MACHINE MADE </span></div>
+                            </a>
+                        </div>
+                                                <div class="col-md-3">
+                            <a class="menu-img-box" href="https://www.lrhome.us/collections/Rugs/Collections/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiSW5kb29yX091dGRvb3IiLCJWYWx1ZXMiOiBbIkluZG9vcl9PdXRkb29yIl19XX0="><img src="https://lrhome.us/media/images/INDOOROU-DOOR.jpg" class="img-fluid" alt="Featured Image">
+                                <div><span>SHOP INDOOR/OUTDOOR </span></div>
+                            </a>
+                        </div>
+                                            </div>
+                </div>
+            </div>
+        </li>
+        <li class="parant"> <a href="http://www.lrhome.us/favourites/Pillows%20&amp;%20Decor" class="main-item">PILLOWS &amp; DECOR <i class="icon-chevron-down"></i></a>
+            <div class="drop-down-item">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-2 sub-menu-item">
+                            <h5>HOME DECOR </h5>
+                                                            <a href="https://www.lrhome.us/designs/Pillows &amp; Decor/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiUElMTE9XUyIsIlZhbHVlcyI6IFsiUElMTE9XUyJdfV19/0">PILLOWS</a>
+                                                            <a href="https://www.lrhome.us/designs/Pillows &amp; Decor/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiUE9VRlMiLCJWYWx1ZXMiOiBbIlBPVUZTIl19XX0=/0">POUFS</a>
+                                                            <a href="https://www.lrhome.us/designs/Pillows &amp; Decor/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiVGhyb3dzIiwiVmFsdWVzIjogWyJUaHJvd3MiXX1dfQ==/0">THROWS</a>
+                                                            <a href="https://www.lrhome.us/designs/Pillows &amp; Decor/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiQmFza2V0cyIsIlZhbHVlcyI6IFsiQmFza2V0cyJdfV19/0">BASKETS</a>
+                                                            <a href="https://www.lrhome.us/designs/Pillows &amp; Decor/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiQ2hhaXJfUGFkcyIsIlZhbHVlcyI6IFsiQ2hhaXJfUGFkcyJdfV19/0">CHAIR PADS</a>
+                                                            <a href="https://www.lrhome.us/designs/Pillows &amp; Decor/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiVEFCTEVfVE9QUyIsIlZhbHVlcyI6IFsiVEFCTEVfVE9QUyJdfV19/0">TABLE TOPS</a>
+                                                            <a href="https://www.lrhome.us/designs/Pillows &amp; Decor/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiQ09WRVJMRVRTIiwiVmFsdWVzIjogWyJDT1ZFUkxFVFMiXX1dfQ==/0">COVERLETS</a>
+                                                            <a href="https://www.lrhome.us/designs/Pillows &amp; Decor/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiV2FsbF9IYW5naW5ncyIsIlZhbHVlcyI6IFsiV2FsbF9IYW5naW5ncyJdfV19/0">WALL HANGINGS</a>
+                                                            <a href="https://www.lrhome.us/designs/Pillows%20&amp;%20Decor/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiRGlzY29udGludWVkIiwiVmFsdWVzIjogWyJEaXNjb250aW51ZWQiXX1dfQ==/0">DISCONTINUED</a>
+                                                    </div>
+
+                        <div class="col-md-2 sub-menu-item">
+                            <h5>PETS </h5>
+                                                            <a href="https://www.lrhome.us/designs/Pillows%20&amp;%20Decor/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiUGV0X0Jvd2xzIiwiVmFsdWVzIjogWyJQZXRfQm93bHMiXX1dfQ==/0">PET BOWLS</a>
+                                                            <a href="https://www.lrhome.us/designs/Pillows%20&amp;%20Decor/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiUGV0X0JlZHMiLCJWYWx1ZXMiOiBbIlBldF9CZWRzIl19XX0=/0">PET BEDS</a>
+                                                    </div>
+
+                                                <div class="col-md-3">
+                            <a class="menu-img-box" href="https://www.lrhome.us/designs/Pillows &amp; Decor/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiUElMTE9XUyIsIlZhbHVlcyI6IFsiUElMTE9XUyJdfV19/0"><img src="https://lrhome.us/media/images/pillows.jpg" class="img-fluid" alt="Featured Image">
+                                <div><span>SHOP PILLOWS </span></div>
+                            </a>
+                        </div>
+                                                <div class="col-md-3">
+                            <a class="menu-img-box" href="https://www.lrhome.us/designs/Pillows &amp; Decor/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiVGhyb3dzIiwiVmFsdWVzIjogWyJUaHJvd3MiXX1dfQ==/0"><img src="https://lrhome.us/media/images/Throws.jpg" class="img-fluid" alt="Featured Image">
+                                <div><span>SHOP THROWS </span></div>
+                            </a>
+                        </div>
+                                            </div>
+                </div>
+            </div>
+        </li>
+        <li class="parant"> <a href="http://www.lrhome.us/favourites/Furniture" class="main-item">FURNITURE <i class="icon-chevron-down"></i></a>
+            <div class="drop-down-item">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-2 sub-menu-item">
+                            <h5>LIVING ROOM </h5>
+                                                            <a href="https://www.lrhome.us/designs/Furniture/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiQ2hhaXJzIiwiVmFsdWVzIjogWyJDaGFpcnMiXX1dfQ==/0">ACCENT CHAIRS</a>
+                                                            <a href="https://www.lrhome.us/designs/Furniture/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiQkVOQ0hFUyIsIlZhbHVlcyI6IFsiQkVOQ0hFUyJdfV19/0">ACCENT BENCHES</a>
+                                                            <a href="https://www.lrhome.us/designs/Furniture/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiQ2FiaW5ldHMiLCJWYWx1ZXMiOiBbIkNhYmluZXRzIl19XX0=/0">CABINETS</a>
+                                                            <a href="https://www.lrhome.us/designs/Furniture/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiY29mZmVlX3RhYmxlcyIsIlZhbHVlcyI6IFsiY29mZmVlX3RhYmxlcyJdfV19/0">COFFEE TABLES</a>
+                                                            <a href="https://www.lrhome.us/designs/Furniture/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiQ29uc29sZXMiLCJWYWx1ZXMiOiBbIkNvbnNvbGVzIl19XX0=/0">CONSOLES</a>
+                                                            <a href="https://www.lrhome.us/designs/Furniture/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiU2lkZV9UYWJsZXMiLCJWYWx1ZXMiOiBbIlNpZGVfVGFibGVzIl19XX0=/0">SIDE TABLES</a>
+                                                            <a href="https://www.lrhome.us/designs/Furniture/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAic2lkZWJvYXJkcyIsIlZhbHVlcyI6IFsic2lkZWJvYXJkcyJdfV19/0">SIDE BOARDS</a>
+                                                            <a href="https://www.lrhome.us/designs/Furniture/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAic3Rvb2xzX290dG9tYW4iLCJWYWx1ZXMiOiBbInN0b29sc19vdHRvbWFuIl19XX0=/0">STOOLS &amp; OTTOMAN</a>
+                                                            <a href="https://www.lrhome.us/designs/Furniture/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiQmFyX1RhYmxlIiwiVmFsdWVzIjogWyJCYXJfVGFibGUiXX1dfQ==/0">BAR TABLE</a>
+                                                            <a href="https://www.lrhome.us/designs/Furniture/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiTWlycm9ycyIsIlZhbHVlcyI6IFsiTWlycm9ycyJdfV19/0">MIRRORS</a>
+                                                    </div>
+
+                        <div class="col-md-2 sub-menu-item">
+                            <h5>DINING ROOM </h5>
+                                                            <a href="https://www.lrhome.us/designs/Furniture/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiRGluaW5nX1RhYmxlcyIsIlZhbHVlcyI6IFsiRGluaW5nX1RhYmxlcyJdfV19/0">DINING TABLES</a>
+                                                            <a href="https://www.lrhome.us/designs/Furniture/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiRGluaW5nX0JlbmNoZXMiLCJWYWx1ZXMiOiBbIkRpbmluZ19CZW5jaGVzIl19XX0=/0">DINING BENCHES</a>
+                                                            <a href="https://www.lrhome.us/designs/Furniture/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiRGluaW5nX0NoYWlycyIsIlZhbHVlcyI6IFsiRGluaW5nX0NoYWlycyJdfV19/0">DINING CHAIRS</a>
+                                                            <a href="https://www.lrhome.us/designs/Furniture/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiRGlzY29udGludWVkIiwiVmFsdWVzIjogWyJEaXNjb250aW51ZWQiXX1dfQ==/0">DISCONTINUED</a>
+                                                    </div>
+
+                                                <div class="col-md-3">
+                            <a class="menu-img-box" href="https://www.lrhome.us/designs/Furniture/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiQ2hhaXJzIiwiVmFsdWVzIjogWyJDaGFpcnMiXX1dfQ==/0"><img src="https://lrhome.us/media/images/coffee-table.jpg" class="img-fluid" alt="Featured Image">
+                                <div><span>CHAIRS </span></div>
+                            </a>
+                        </div>
+                                                <div class="col-md-3">
+                            <a class="menu-img-box" href="https://www.lrhome.us/designs/Furniture/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiQkVOQ0hFUyIsIlZhbHVlcyI6IFsiQkVOQ0hFUyJdfV19/0"><img src="https://lrhome.us/media/images/side-table.jpg" class="img-fluid" alt="Featured Image">
+                                <div><span>BENCHES </span></div>
+                            </a>
+                        </div>
+                                            </div>
+                </div>
+            </div>
+        </li>
+        <li class="parant"> <a href="https://www.lrhome.us/favourites/static/outdoor" class="main-item">OUTDOOR <i class="icon-chevron-down"></i></a>
+            <div class="drop-down-item">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-2 sub-menu-item">
+                            <h5>OUTDOOR </h5>
+                                                            <a href="https://www.lrhome.us/collections/Rugs/Collections/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiSW5kb29yX091dGRvb3IiLCJWYWx1ZXMiOiBbIkluZG9vcl9PdXRkb29yIl19XX0=">RUGS</a>
+                                                            <a href="https://www.lrhome.us/designs/Pillows%20&amp;%20Decor/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiUElMTE9XUyIsIlZhbHVlcyI6IFsiUElMTE9XUyJdfSx7IkZpbHRlcklEIjogIkluZG9vcl9PdXRkb29yIiwiVmFsdWVzIjogWyJJbmRvb3JfT3V0ZG9vciJdfV19/0">PILLOWS</a>
+                                                            <a href="https://www.lrhome.us/designs/Pillows%20&amp;%20Decor/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiUE9VRlMiLCJWYWx1ZXMiOiBbIlBPVUZTIl19LHsiRmlsdGVySUQiOiAiSW5kb29yX091dGRvb3IiLCJWYWx1ZXMiOiBbIkluZG9vcl9PdXRkb29yIl19XX0=/0">POUFS</a>
+                                                            <a href="https://www.lrhome.us/designs/Pillows%20&amp;%20Decor/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiQmFza2V0cyIsIlZhbHVlcyI6IFsiQmFza2V0cyJdfSx7IkZpbHRlcklEIjogIkluZG9vcl9PdXRkb29yIiwiVmFsdWVzIjogWyJJbmRvb3JfT3V0ZG9vciJdfV19/0">BASKETS</a>
+                                                            <a href="https://www.lrhome.us/designs/Pillows%20&amp;%20Decor/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiRGlzY29udGludWVkIiwiVmFsdWVzIjogWyJEaXNjb250aW51ZWQiXX1dfQ==/0">DISCONTINUED</a>
+                                                    </div>
+
+                                                <div class="col-md-3">
+                            <a class="menu-img-box" href="https://www.lrhome.us/collections/Rugs/Collections/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiSW5kb29yX091dGRvb3IiLCJWYWx1ZXMiOiBbIkluZG9vcl9PdXRkb29yIl19XX0="><img src="https://lrhome.us/media/images/outdoor-rug.jpg" class="img-fluid" alt="Featured Image">
+                                <div><span>SHOP RUGS </span></div>
+                            </a>
+                        </div>
+                                                <div class="col-md-3">
+                            <a class="menu-img-box" href="https://www.lrhome.us/designs/Pillows%20&amp;%20Decor/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiUElMTE9XUyIsIlZhbHVlcyI6IFsiUElMTE9XUyJdfSx7IkZpbHRlcklEIjogIkluZG9vcl9PdXRkb29yIiwiVmFsdWVzIjogWyJJbmRvb3JfT3V0ZG9vciJdfV19/0"><img src="https://lrhome.us/media/images/outdoor-pillow.jpg" class="img-fluid" alt="Featured Image">
+                                <div><span>SHOP PILLOWS </span></div>
+                            </a>
+                        </div>
+                                                <div class="col-md-3">
+                            <a class="menu-img-box" href="https://www.lrhome.us/designs/Pillows%20&amp;%20Decor/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiUE9VRlMiLCJWYWx1ZXMiOiBbIlBPVUZTIl19LHsiRmlsdGVySUQiOiAiSW5kb29yX091dGRvb3IiLCJWYWx1ZXMiOiBbIkluZG9vcl9PdXRkb29yIl19XX0=/0"><img src="https://lrhome.us/media/images/outdoor-poofs.jpg" class="img-fluid" alt="Featured Image">
+                                <div><span>SHOP POUFS </span></div>
+                            </a>
+                        </div>
+                                            </div>
+                </div>
+            </div>
+        </li>
+        <li class="parant"> <a href="http://www.lrhome.us/static/aboutus" class="main-item">ABOUT US <i class="icon-chevron-down"></i></a>
+            <div class="drop-down-item">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-2"> </div>
+                                                <div class="col-md-4">
+                            <a class="menu-img-box" href="https://www.lrhome.us/static/ourstory"><img src="https://lrhome.us/media/images/our-story.jpg" class="img-fluid" alt="Featured Image">
+                                <div><span>OUR STORY </span></div>
+                            </a>
+                        </div>
+                                                <div class="col-md-4">
+                            <a class="menu-img-box" href="https://www.lrhome.us/static/ourpurpose"><img src="https://lrhome.us/media/images/our-poups.jpg" class="img-fluid" alt="Featured Image">
+                                <div><span>OUR PURPOSE </span></div>
+                            </a>
+                        </div>
+                                            </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+
+                <div class="col-lg-4 col-md-5  col-sm-10">
+                    <div class="header-right-side text-right mobile-serch-box">
+                        <div class="header-left-search" id="search_text_container">
+                            <div class="header-search-box">
+                                <input type="text" name="searchText" class="search-field" id="formGroupExampleInput" placeholder="Search" value="">
+                                <button class="search_text_button search-icon"><i class="icon-magnifier"></i></button>
+                            </div>
+                        </div>
+                        <div class="header-right-items mobile-hide">
+                                                        <span> <a href="https://www.lrhome.us/register"> Become a Partner</a></span>
+                                                        <span class="container-checker" id="cart-parent">
+                                <i class="headericons icon-cart quickCart-opener position-relative">
+            </i>
+        <div class="quickCart position-absolute d-none" style="min-height: 130px;padding-bottom: 0;">
+        <div class="align-items-center col-md-12 d-flex justify-content-center p-5 px-5 py-1">
+            <i class="close-icon icon-cross position-absolute quickcart-closer"> </i>
+            <div class="col-md-12 px-5 py-1">
+                <h3 class="d-flex footer-widget__title justify-content-center m-0 mb-2 specs">
+                    <strong class="font-crimson cart-is-empty"> Cart is Empty </strong>
+                </h3>
+            </div>
+        </div>
+    </div>
+                                </span>
+                            <span class="container-checker" id="profile-parent">
+                                <a href="https://www.lrhome.us/login"> 
+        <i class="headericons icon-user quickProfile-opener"></i> 
+    </a>
+                                    </span>
+                        </div>
+                    </div>
+                    <div class="mobile-menu">
+                        <a href="#" class="mobile-navigation-icon" id="mobile-menu-trigger"> <i class="icon-menu"></i> </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+</div>
+<div class="cartoverlay"> </div>
+        <main class="main-content">
+
+            <section class="about-lrhome mt-130 pb-0 pt-10">
+                <div class="container">
+                                        <h1 class="section-title text-center mb-5">OOPS! NOTHING WAS FOUND</h1>
+                    <div class="col-md-12 flex-column flex-sm-column mt-5 mb-5 d-flex align-items-center justify-content-between flex-dir-col" style="min-height: 10vh;">
+                        <p>
+                            The page you are looking for might have been removed or temprarily unavailable. <a href="https://www.lrhome.us">Return To Homepage</a>
+                        </p>
+                    </div>
+                                    </div>
+            </section>
+
+        </main>
+        <div class="footer-area-wrapper">
+    <div class="footer-area section-space--ptb_60">
+        <div class="container-fluid">
+            <div class="row footer-widget-wrapper">
+                <div class="col-lg col-md col-sm-6 col-6 footer-widget">
+                    <h6 class="footer-widget__title mb-20">ABOUT US</h6>
+                    <ul class="footer-widget__list">
+                                                <li><a href=https://www.lrhome.us/register class="hover-style-link">Become A Partner</a></li>
+                                                <li><a href=https://www.lrhome.us/static/ourstory class="hover-style-link">Our Story</a></li>
+                                                <li><a href=https://www.lrhome.us/static/ourpurpose class="hover-style-link">Our Purpose</a></li>
+                        
+                    </ul>
+                </div>
+                <div class="col-lg col-md col-sm-6 col-6 footer-widget">
+                    <h6 class="footer-widget__title mb-20">PRODUCT CATEGORY</h6>
+                    <ul class="footer-widget__list">
+                                                <li><a href="https://www.lrhome.us/favourites/Rugs" class="hover-style-link">Rugs</a></li>
+                                                <li><a href="https://www.lrhome.us/favourites/Pillows%20&amp;%20Decor" class="hover-style-link">Pillows &amp; Decor</a></li>
+                                                <li><a href="https://www.lrhome.us/favourites/Furniture" class="hover-style-link">Furniture</a></li>
+                                                <li><a href="https://www.lrhome.us/designs/Rugs/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiSW5kb29yX091dGRvb3IiLCJWYWx1ZXMiOiBbIkluZG9vcl9PdXRkb29yIl19XX0=/0" class="hover-style-link">Outdoor</a></li>
+                        
+                    </ul>
+                </div>
+
+                <div class="col-lg col-md col-sm-6 col-6 footer-widget">
+                    <h6 class="footer-widget__title mb-20">RESOURCES</h6>
+                    <ul class="footer-widget__list">
+                                                <li><a href="https://online.flippingbook.com/view/577077791/" class="hover-style-link">Textiles Catalog 2023</a></li>
+                                                <li><a href="https://online.flippingbook.com/view/260144638/" class="hover-style-link">Furniture Catalog 2023</a></li>
+                                            </ul>
+                </div>
+                <div class="col-lg col-md col-sm-6 col-6 footer-widget">
+                    <h6 class="footer-widget__title mb-20">CONTACT US</h6>
+                    <ul class="footer-widget__list">
+                                                <li><a href="https://www.lrhome.us/static/contactus#contact-us" class="hover-style-link">Contact Us</a></li>
+                                                <li><a href="https://www.lrhome.us/static/contactus#Service" class="hover-style-link">Customer Service</a></li>
+                                                <li><a href="https://www.lrhome.us/static/contactus" class="hover-style-link">Showrooms &amp; Markets</a></li>
+                        
+                    </ul>
+                </div>
+                <div class="col-lg col-md col-sm-12 footer-widget">
+                    <h6 class="footer-widget__title mb-20">GET INSPIRED</h6>
+                    <div class="footer-bottom-social">
+                        <ul class="list footer-social-networks ">
+                            <li class="item">
+                                <a href="https://www.instagram.com/lrhomeus/" target="_blank" aria-label="Twitter"> <i class="social social_instagram"></i> </a>
+                            </li>
+                            <li class="item">
+                                <a href="https://www.facebook.com/lrhomeus" target="_blank" aria-label="Facebook"> <i class="social social_facebook"></i> </a>
+                            </li>
+                            <li class="item">
+                                <a href="https://www.pinterest.com/lrhomeus" target="_blank" aria-label="Pintrest"> <i class="social social_pinterest"></i> </a>
+                            </li>
+                            <li class="item">
+                                <a href="https://twitter.com/lrhomeus" target="_blank" aria-label="Twitter"> <i class="social social_twitter"></i> </a>
+                            </li>
+                            <li class="item">
+                                <a href="https://linkedin.com/company/lrhomeus/" target="_blank" aria-label="LinkedIn"> <i class="social social_linkedin"></i> </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <p>&nbsp; </p>
+                    <p class="news-tile">Subscribe for alerts, promotions &amp; inspiration</p>
+                    <form action="https://www.lrhome.us/forms/newsletter" method="POST" id="newsletter-form">
+                                                <input type="hidden" name="_token" value="9Nzoy3OMAJaFFJVNqhYPWEszXxfUDLNwM2JIqZVJ">                        <div class="footer-widget__newsletter position-relative">
+                            <input type="email" name="email" value="" required placeholder="Email Address">
+                            
+                            <button class="submit-button g-recaptcha" 
+                                data-sitekey="6LdfenkpAAAAAGk5F2l3bPW3bfYVxoOvfhWUWh0V" 
+                                data-callback='onSubmitNewsletter' 
+                                data-action='submit'>Join</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mobile-menu-overlay" id="mobile-menu-overlay">
+        <div class="mobile-menu-overlay__inner">
+            <div class="mobile-menu-close-box text-right"> <span class="mobile-navigation-close-icon" id="mobile-menu-close-trigger"> <i class="icon-cross2"></i></span> </div>
+            <div class="mobile-menu-overlay__body">
+                <nav class="offcanvas-navigation">
+                    <ul>
+                        <li class="has-children">
+                            <a class="nav-link" href="#">
+                                RUGS
+                            </a>
+                            <ul class="sub-menu">
+                                <li> <a href="http://www.lrhome.us/favourites/Rugs">VIEW ALL</a></li>
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/collections/Rugs/Collections/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiTmV3X0Fycml2YWxzIiwiVmFsdWVzIjogWyJOZXdfQXJyaXZhbHMiXX1dfQ==">NEW ADDITIONS</a>
+                                    </li>
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/collections/Rugs/Collections/eyJGaWx0ZXJzIjpbeyJGaWx0ZXJJRCI6IlJ1Z3MiLCJWYWx1ZXMiOlsiUnVncyJdfV19">VIEW COLLECTIONS</a>
+                                    </li>
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/collections/Rugs/Collections/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiTkFUVVJBTFMiLCJWYWx1ZXMiOiBbIk5BVFVSQUxTIl19XX0=">NATURALS</a>
+                                    </li>
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/collections/Rugs/Collections/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiSW5kb29yX091dGRvb3IiLCJWYWx1ZXMiOiBbIkluZG9vcl9PdXRkb29yIl19XX0=">INDOOR/OUTDOOR</a>
+                                    </li>
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/designs/Rugs/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiRGlzY29udGludWVkIiwiVmFsdWVzIjogWyJEaXNjb250aW51ZWQiXX1dfQ==/0">DISCONTINUED</a>
+                                    </li>
+                                                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a class="nav-link" href="#">
+                                PILLOWS &amp; DECOR
+                            </a>
+                            <ul class="sub-menu">
+                                <li> <a href="http://www.lrhome.us/favourites/Pillows%20&amp;%20Decor"> VIEW ALL</a></li>
+                                <li>
+                                    <a href="#">
+                                        <h3 style="font-weight: 600;font-size: 17px;">HOME DECOR</h3>
+                                    </a>
+                                </li>
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/designs/Pillows &amp; Decor/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiUElMTE9XUyIsIlZhbHVlcyI6IFsiUElMTE9XUyJdfV19/0">PILLOWS</a>
+                                    </li>
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/designs/Pillows &amp; Decor/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiUE9VRlMiLCJWYWx1ZXMiOiBbIlBPVUZTIl19XX0=/0">POUFS</a>
+                                    </li>
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/designs/Pillows &amp; Decor/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiVGhyb3dzIiwiVmFsdWVzIjogWyJUaHJvd3MiXX1dfQ==/0">THROWS</a>
+                                    </li>
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/designs/Pillows &amp; Decor/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiQmFza2V0cyIsIlZhbHVlcyI6IFsiQmFza2V0cyJdfV19/0">BASKETS</a>
+                                    </li>
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/designs/Pillows &amp; Decor/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiQ2hhaXJfUGFkcyIsIlZhbHVlcyI6IFsiQ2hhaXJfUGFkcyJdfV19/0">CHAIR PADS</a>
+                                    </li>
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/designs/Pillows &amp; Decor/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiVEFCTEVfVE9QUyIsIlZhbHVlcyI6IFsiVEFCTEVfVE9QUyJdfV19/0">TABLE TOPS</a>
+                                    </li>
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/designs/Pillows &amp; Decor/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiQ09WRVJMRVRTIiwiVmFsdWVzIjogWyJDT1ZFUkxFVFMiXX1dfQ==/0">COVERLETS</a>
+                                    </li>
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/designs/Pillows &amp; Decor/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiV2FsbF9IYW5naW5ncyIsIlZhbHVlcyI6IFsiV2FsbF9IYW5naW5ncyJdfV19/0">WALL HANGINGS</a>
+                                    </li>
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/designs/Pillows%20&amp;%20Decor/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiRGlzY29udGludWVkIiwiVmFsdWVzIjogWyJEaXNjb250aW51ZWQiXX1dfQ==/0">DISCONTINUED</a>
+                                    </li>
+                                
+                                <li>
+                                    <a href="#">
+                                        <h3 style="font-weight: 600;font-size: 17px;">PETS</h3>
+                                    </a>
+                                </li>
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/designs/Pillows%20&amp;%20Decor/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiUGV0X0Jvd2xzIiwiVmFsdWVzIjogWyJQZXRfQm93bHMiXX1dfQ==/0">PET BOWLS</a>
+                                    </li>
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/designs/Pillows%20&amp;%20Decor/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiUGV0X0JlZHMiLCJWYWx1ZXMiOiBbIlBldF9CZWRzIl19XX0=/0">PET BEDS</a>
+                                    </li>
+                                                            </ul>
+                        </li>
+                        <li class="has-children"> <a class="nav-link" href="#">FURNITURE</a>
+                            <ul class="sub-menu">
+                                <li> <a href="http://www.lrhome.us/favourites/Furniture"> VIEW ALL</a></li>
+                                <li>
+                                    <a href="#">
+                                        <h3 style="font-weight: 600;font-size: 17px;">LIVING ROOM</h3>
+                                    </a>
+                                </li>
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/designs/Furniture/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiQ2hhaXJzIiwiVmFsdWVzIjogWyJDaGFpcnMiXX1dfQ==/0">ACCENT CHAIRS</a>
+                                    </li>
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/designs/Furniture/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiQkVOQ0hFUyIsIlZhbHVlcyI6IFsiQkVOQ0hFUyJdfV19/0">ACCENT BENCHES</a>
+                                    </li>
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/designs/Furniture/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiQ2FiaW5ldHMiLCJWYWx1ZXMiOiBbIkNhYmluZXRzIl19XX0=/0">CABINETS</a>
+                                    </li>
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/designs/Furniture/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiY29mZmVlX3RhYmxlcyIsIlZhbHVlcyI6IFsiY29mZmVlX3RhYmxlcyJdfV19/0">COFFEE TABLES</a>
+                                    </li>
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/designs/Furniture/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiQ29uc29sZXMiLCJWYWx1ZXMiOiBbIkNvbnNvbGVzIl19XX0=/0">CONSOLES</a>
+                                    </li>
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/designs/Furniture/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiU2lkZV9UYWJsZXMiLCJWYWx1ZXMiOiBbIlNpZGVfVGFibGVzIl19XX0=/0">SIDE TABLES</a>
+                                    </li>
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/designs/Furniture/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAic2lkZWJvYXJkcyIsIlZhbHVlcyI6IFsic2lkZWJvYXJkcyJdfV19/0">SIDE BOARDS</a>
+                                    </li>
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/designs/Furniture/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAic3Rvb2xzX290dG9tYW4iLCJWYWx1ZXMiOiBbInN0b29sc19vdHRvbWFuIl19XX0=/0">STOOLS &amp; OTTOMAN</a>
+                                    </li>
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/designs/Furniture/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiQmFyX1RhYmxlIiwiVmFsdWVzIjogWyJCYXJfVGFibGUiXX1dfQ==/0">BAR TABLE</a>
+                                    </li>
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/designs/Furniture/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiTWlycm9ycyIsIlZhbHVlcyI6IFsiTWlycm9ycyJdfV19/0">MIRRORS</a>
+                                    </li>
+                                                                <li>
+                                    <a href="#">
+                                        <h3 style="font-weight: 600;font-size: 17px;">DINING ROOM</h3>
+                                    </a>
+                                </li>
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/designs/Furniture/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiRGluaW5nX1RhYmxlcyIsIlZhbHVlcyI6IFsiRGluaW5nX1RhYmxlcyJdfV19/0">DINING TABLES</a>
+                                    </li>
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/designs/Furniture/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiRGluaW5nX0JlbmNoZXMiLCJWYWx1ZXMiOiBbIkRpbmluZ19CZW5jaGVzIl19XX0=/0">DINING BENCHES</a>
+                                    </li>
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/designs/Furniture/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiRGluaW5nX0NoYWlycyIsIlZhbHVlcyI6IFsiRGluaW5nX0NoYWlycyJdfV19/0">DINING CHAIRS</a>
+                                    </li>
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/designs/Furniture/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiRGlzY29udGludWVkIiwiVmFsdWVzIjogWyJEaXNjb250aW51ZWQiXX1dfQ==/0">DISCONTINUED</a>
+                                    </li>
+                                                            </ul>
+                        </li>
+
+                        <li class="has-children"> <a class="nav-link" href="#">OUTDOOR</a>
+                            <ul class="sub-menu">
+                                <li> <a href="https://www.lrhome.us/favourites/static/outdoor"> VIEW ALL</a></li>
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/collections/Rugs/Collections/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiSW5kb29yX091dGRvb3IiLCJWYWx1ZXMiOiBbIkluZG9vcl9PdXRkb29yIl19XX0=">RUGS</a>
+                                    </li>
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/designs/Pillows%20&amp;%20Decor/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiUElMTE9XUyIsIlZhbHVlcyI6IFsiUElMTE9XUyJdfSx7IkZpbHRlcklEIjogIkluZG9vcl9PdXRkb29yIiwiVmFsdWVzIjogWyJJbmRvb3JfT3V0ZG9vciJdfV19/0">PILLOWS</a>
+                                    </li>
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/designs/Pillows%20&amp;%20Decor/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiUE9VRlMiLCJWYWx1ZXMiOiBbIlBPVUZTIl19LHsiRmlsdGVySUQiOiAiSW5kb29yX091dGRvb3IiLCJWYWx1ZXMiOiBbIkluZG9vcl9PdXRkb29yIl19XX0=/0">POUFS</a>
+                                    </li>
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/designs/Pillows%20&amp;%20Decor/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiQmFza2V0cyIsIlZhbHVlcyI6IFsiQmFza2V0cyJdfSx7IkZpbHRlcklEIjogIkluZG9vcl9PdXRkb29yIiwiVmFsdWVzIjogWyJJbmRvb3JfT3V0ZG9vciJdfV19/0">BASKETS</a>
+                                    </li>
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/designs/Pillows%20&amp;%20Decor/eyJGaWx0ZXJzIjogW3siRmlsdGVySUQiOiAiRGlzY29udGludWVkIiwiVmFsdWVzIjogWyJEaXNjb250aW51ZWQiXX1dfQ==/0">DISCONTINUED</a>
+                                    </li>
+                                                            </ul>
+                        </li>
+                        <li class="has-children"> <a class="nav-link" href="#">ABOUT US</a>
+                            <ul class="sub-menu">
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/static/ourstory">OUR STORY</a>
+                                    </li>
+                                                                    <li>
+                                        <a href="https://www.lrhome.us/static/ourpurpose">OUR PURPOSE</a>
+                                    </li>
+                                                            </ul>
+                        </li>
+                        <li class="has-children">
+                                                        <a class="nav-link" href="https://www.lrhome.us/register"> Become a Partner</a>
+                                                    </li>
+                        <li class="has-children mb-icons ">
+                            <span class="container-checker" id="cart-parent">
+                                <a href="https://www.lrhome.us/checkout">
+                                    <i class="headericons icon-cart quickCart-opener position-relative">
+                                                                            </i>
+                                </a>
+                            </span>
+                            <span class="container-checker" id="profile-parent">
+                                <a href="https://www.lrhome.us/dashboard/home"><i class="headericons icon-user"></i></a>
+                            </span>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+<a href="#" class="scroll-top" id="scroll-top"> <i class="arrow-top icon-arrow-up"></i> <i class="arrow-bottom icon-arrow-up"></i> </a>
+<a href="/static/contactus#contact-us" class="askus-floating-btn" id="ask-us"> <img src="https://www.lrhome.us/LR/images/askus-icon.png" alt="Ask Us" /> </a>
+    </div>
+    <script>
+    // TODO : The page loads with a jerk and white screen shows - Asfand needs to look into this
+    $(document).mouseup(function(e)
+    {
+        var container = $(".container-checker");
+        if (!container.is(e.target) && container.has(e.target).length === 0)
+        {
+            $(".quickCart").addClass("d-none");
+            $(".quick-profile").addClass("d-none");
+        }
+    });
+
+    function onSubmitNewsletter(token) {
+        document.getElementById("newsletter-form").submit();
+    }
+
+    function onSubmitPartnerRequest(token) {
+        $('button#submitForm').trigger('click');
+        // document.getElementById("regForm").submit();
+    }
+
+    $(document).ready(function()
+    {
+        toastr.options = {
+            "closeButton": true,
+            "preventDuplicates": true,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+        }
+        // $('[data-toggle="tooltip"]').tooltip();
+
+        $("body").on("click", ".quickCart-opener", function()
+        {
+            $(".quickCart").toggleClass("d-none");
+            if ( typeof window.localStorage.getItem('ap') !==  window.location.href && typeof window.localStorage.getItem('ccc') !== "undefined" && window.localStorage.getItem('ccc') !== null && window.localStorage.getItem('ccc') !== localStorage.getItem('occ')) {
+                $(".cartLoader").removeClass("d-none");
+                refreshUser('quick-cart', function () {
+                    $(".cartLoader").addClass("d-none");
+                    window.localStorage.setItem('ccc', parseInt($('.quickCart-opener .cartCount').html()));
+                    window.localStorage.setItem('occ', parseInt($('.quickCart-opener .cartCount').html()));
+                    setTimeout(function(){
+                        $(".quickCart").removeClass("d-none");
+                    }, 100);
+                });
+            } else
+                $(".cartLoader").addClass("d-none");
+        });
+
+        $("body").on("click", ".close-icon", function()
+        {
+            $(".quickCart").addClass("d-none");
+        });
+
+        $("body").on("click", ".quickProfile-opener", function()
+        {
+            $(".quick-profile").toggleClass("d-none");
+        });
+
+        $("body").on("click", ".closeProfile", function()
+        {
+            $(".quick-profile").addClass("d-none");
+            $(".cost-type").addClass("d-none");
+        });
+
+        $("body").on("click", ".search_text_button", function()
+        {
+            var searchText = $("#search_text_container input[name=searchText]").val();
+            var trimedText = btoa($.trim(searchText));
+            if (trimedText !== '')
+            {
+                window.location.href = window.location.origin + "/search/" + trimedText;
+            }
+        });
+
+        $("body").on('keyup', "#search_text_container", function(e)
+        {
+            if (e.key === 'Enter' || e.keyCode === 13)
+            {
+                var searchText = $("#search_text_container input[name=searchText]").val();
+                var trimedText = btoa($.trim(searchText));
+                if (trimedText !== '')
+                {
+                    window.location.href = window.location.origin + "/search/" + trimedText;
+                }
+            }
+        });
+
+        $('.carousel').carousel(
+        {
+            interval: false,
+        });
+
+        $('[data-masonry]').imagesLoaded(function () {
+            $('.loader-section').remove();
+            $('[data-masonry]').removeClass('d-none');
+            $('[data-masonry]').masonry();
+        });
+
+        $('.page-content-div').imagesLoaded(function () {
+            $('.page-loader-section').remove();
+            $('.page-content-div').removeClass('d-none');
+        });
+
+        $(document).on('click', 'input[type="number"]', function(e) {
+            if (typeof $(this).attr('max') !== 'undefined' && $(this).attr('max') < 0) {
+                $(this).val(0);
+            }
+        });
+
+        // hide alert message on cross btn click
+        $(document).on('click','.btn-close',function(){
+            $('.alert').hide();
+        });
+
+        $(document).on('keyup', 'input[type="number"]', function(e) {
+            if ( typeof $(this).attr('data-double') !== 'undefined' && $(this).attr('data-double') ) {
+                if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57) && (event.which < 96 || event.which > 106)) {
+                    event.preventDefault();
+                }
+            } else {
+                if ( !checkNumberInput(e) )
+                {
+                    this.value = this.value.replace(/\D/g, '');
+                    return false;
+                }
+            }
+
+            if ( typeof $(this).attr('maxlength') !== "undefined" && this.value.length > $(this).attr('maxlength')) {
+                this.value = this.value.slice(0, (this.value.indexOf('.') > -1) ? parseFloat($(this).attr('maxlength')) + 1 : $(this).attr('maxlength'));
+            }
+
+            if ( typeof $(this).attr('max') !== 'undefined' && parseFloat($(this).attr('max')) < parseFloat(this.value) ) {
+                $(this).val($(this).attr('max') >= 0 ? $(this).attr('max') : 0);
+            }
+        });
+
+        $('#custom_cost').click(function(){
+            $('.quick-profile').addClass("d-none");
+            $('.cost-type').removeClass("d-none");
+        });
+
+        $('select[name="cost-type"]').change(function() {
+            if ($(this).val() != 'msrp') {
+                $('.my-msrp').addClass('d-none');
+            } else {
+                $('.my-msrp').removeClass('d-none');
+            }
+        }).change();
+
+        if($('select[name="cost-type"]').val() != 'msrp') {
+            $('.my-msrp').addClass('d-none');
+        } else {
+            $('.my-msrp').removeClass('d-none');
+        }
+        // homepage popup
+        $(".overlay-home-popup, .close-home-popup").click(function() {
+            $(".home-popup").hide();
+            // document.cookie = "homepage_popup=true;expires=" + new Date(new Date().getTime() + 1 * 24 * 60 * 60 * 1000).toUTCString();
+        });
+
+    });
+
+    function refreshUser(type,callback) //cart,profile
+    {
+        var url = '';
+        if(type == 'quick-cart')
+        {
+            url = 'https://www.lrhome.us/cart/refresh/quick-cart';
+        }
+        else if(type == 'profile')
+        {
+            url = 'https://www.lrhome.us/cart/refresh/profile';
+        }
+        else
+        {
+            return;
+        }
+        $.ajax(
+        {
+            method:'POST',
+            url:url,
+            data:
+            {
+                '_token' : '9Nzoy3OMAJaFFJVNqhYPWEszXxfUDLNwM2JIqZVJ',
+            },
+            success:function(response)
+            {
+                if(callback)
+                {
+                    callback();
+                }
+                if(type == 'quick-cart')
+                {
+                    $('#cart-parent').html(response);
+                }
+                else if(type == 'profile')
+                {
+                    $('#profile-parent').html(response);
+                }
+                else
+                {
+                    return;
+                }
+            }
+        });
+    }
+
+    function showUpdateCartButton(itemId)
+    {
+        $('#'+itemId+' .update-cart-button').show();
+    }
+
+    function updateCart(itemId,token,customerId,hideQuantity,isMobile)
+    {
+        var itemNode = typeof isMobile !== "undefined" && isMobile ? "#mob_"+itemId+"__"+customerId : "#"+itemId+"__"+customerId;
+        var quantity = $(itemNode+" input").val();
+
+        $(itemNode+" .update-cart-button").hide();
+        if (typeof hideQuantity !== "undefined" && hideQuantity)
+            $(itemNode+" .cart-actions .qty-styles").removeClass('d-flex').hide();
+
+        $(itemNode+" #updating-cart").removeClass('d-none');
+
+        if( ! (/^\+?[1-9]\d*/).test(parseInt(quantity)) || parseInt(quantity) < 1 )
+        {
+            toastr.warning("Please enter a valid quantity.",
+            {
+                hideDuration: 10000,
+                closeButton: true,
+            });
+
+            $(itemNode+" #updating-cart").addClass('d-none');
+            if (typeof hideQuantity !== "undefined" && hideQuantity) {
+                $(itemNode+" .cart-actions .qty-styles").addClass('d-flex').show();
+                $(itemNode+" .cart-actions input").show();
+            }
+            return;
+        }
+
+        var is_on_checkout = 0;
+        if (window.location.origin+window.location.pathname == 'https://www.lrhome.us/checkout')
+        {
+            is_on_checkout = 1;
+        }
+
+        var formData =
+        {
+            itemId:itemId,
+            customerId:customerId,
+            newQuantity:quantity,
+            _token:token
+        };
+
+        // console.log(`is_on_checkout: ${is_on_checkout}`);
+
+        $.ajax(
+        {
+            method: "POST",
+            url: "https://www.lrhome.us/cart/update",
+            data: formData
+        })
+        .done(function (response)
+        {
+            if(response.success == 1)
+            {
+                if (is_on_checkout)
+                {
+                    location.reload();
+                }
+                else
+                {
+                    if($('#item_json').length)
+                    {
+                        refreshItemJson(function ()
+                        {
+                            $(itemNode+" #updating-cart").addClass('d-none');
+                            if (typeof hideQuantity !== "undefined" && hideQuantity)
+                                $(itemNode+" .cart-actions input").show();
+                            window.localStorage.setItem('ccc', parseInt($('.quickCart-opener .cartCount').html()));
+                        });
+                    }
+                    else
+                    {
+                        refreshUser('quick-cart', function ()
+                        {
+                            refreshUser('profile', function ()
+                            {
+                                $(itemNode+" #updating-cart").addClass('d-none');
+                                if (typeof hideQuantity !== "undefined" && hideQuantity)
+                                    $(itemNode+" .cart-actions input").show();
+                                window.localStorage.setItem('ccc', parseInt($('.quickCart-opener .cartCount').html()));
+                            });
+                        });
+                    }
+                }
+            }
+            else
+            {
+                toastr.error(response.message,
+                {
+                    hideDuration: 10000,
+                    closeButton: true,
+                });
+            }
+        });
+    }
+
+    function removeItemFromCart(itemId,token,customerId,hideQuantity,isMobile)
+    {
+        if (confirm("Are you sure to remove this Item?"))
+        {
+            var itemNode = typeof isMobile !== "undefined" && isMobile ? "#mob_"+itemId+"__"+customerId : "#"+itemId+"__"+customerId;
+            $(itemNode).addClass('all-muted');
+            $(itemNode+" #updating-cart").removeClass('d-none');
+            if (typeof hideQuantity !== "undefined" && hideQuantity)
+                $(itemNode+" .cart-actions input").hide();
+
+            var is_on_checkout = 0;
+            if (window.location.origin+window.location.pathname == 'https://www.lrhome.us/checkout')
+            {
+                is_on_checkout = 1;
+            }
+
+            var formData =
+            {
+                itemId:itemId,
+                customerId:customerId,
+                _token:token
+            };
+
+            $.ajax(
+            {
+                method: "POST",
+                url: "https://www.lrhome.us/cart/remove",
+                data: formData
+            })
+            .done(function (response)
+            {
+                if(response.success == 1)
+                {
+                    if (is_on_checkout)
+                    {
+                        location.reload();
+                    }
+                    else
+                    {
+                        if($('#item_json').length)
+                        {
+                            refreshItemJson(function ()
+                            {
+                                $(itemNode+" #updating-cart").addClass('d-none');
+                                $(itemNode).next("hr").remove();
+                                $(itemNode).remove();
+                                if (typeof hideQuantity !== "undefined" && hideQuantity)
+                                    $(itemNode+" .cart-actions input").show();
+                                window.localStorage.setItem('ccc', parseInt($('.quickCart-opener .cartCount').html()));
+                            });
+                        }
+                        else
+                        {
+                            refreshUser('quick-cart', function ()
+                            {
+                                refreshUser('profile', function ()
+                                {
+                                    $(itemNode+" #updating-cart").addClass('d-none');
+                                    $(itemNode).next("hr").remove();
+                                    $(itemNode).remove();
+                                    if (typeof hideQuantity !== "undefined" && hideQuantity)
+                                        $(itemNode+" .cart-actions input").show();
+                                    window.localStorage.setItem('ccc', parseInt($('.quickCart-opener .cartCount').html()));
+                                });
+                            });
+                        }
+                    }
+                }
+                else
+                {
+                    toastr.error(response.message,
+                    {
+                        hideDuration: 10000,
+                        closeButton: true,
+                    });
+                    $(itemNode).removeClass('all-muted');
+                    if (typeof hideQuantity !== "undefined" && hideQuantity)
+                        $(itemNode+" .cart-actions input").show();
+                }
+            });
+        }
+    }
+
+    function checkNumberInput(evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57) && (charCode < 96 || charCode > 106))
+            return false;
+        return true;
+    }
+    window.localStorage.setItem('ap', window.location.href);
+    $(window).blur(function() {
+        // console.log('Tab Switched');
+        window.localStorage.setItem('ap', window.location.href);
+    });
+    if (typeof $('.quickCart-opener .cartCount').length !== "undefined" && $('.quickCart-opener .cartCount').length > 0) {
+        window.localStorage.setItem('occ', parseInt($('.quickCart-opener .cartCount').html()));
+        setInterval(function() {
+            if ( typeof window.localStorage.getItem('ap') !==  window.location.href && typeof window.localStorage.getItem('ccc') !== "undefined" && window.localStorage.getItem('ccc') !== null && window.localStorage.getItem('ccc') !== localStorage.getItem('occ')) {
+                // console.log(`${window.localStorage.getItem('ccc')} VS ${window.localStorage.getItem('occ')}`);
+                $('.quickCart-opener .cartCount').html(window.localStorage.getItem('ccc')).text(window.localStorage.getItem('ccc'));
+            }
+        }, 3000);
+    }
+    </script>
+        <script src="https://www.lrhome.us/LR/js/main.js?v=1712294619"> </script>
+</body>
+</html>

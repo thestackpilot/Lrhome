@@ -32,7 +32,6 @@ use App\Http\Controllers\Frontend\MainCollectionController;
 use App\Http\Controllers\Dashboard\GenericReportsController;
 use App\Http\Controllers\Admin\DealerRegistrationsController;
 use App\Http\Controllers\Admin\ApiContentManagementController;
-use App\Http\Controllers\Frontend\CaptchaController;
 use App\Http\Controllers\Admin\FormController as AdminFormController;
 use Mews\Captcha\Facades\Captcha;
 
@@ -73,7 +72,7 @@ Route::post( '/designs/{id}/{filter}/{type}/{page}', [DesignController::class, '
 Route::post( '/designs/{id}/{filter}/{type}/{with_title}/{page}', [DesignController::class, 'get_paginated_designs'] )->name( 'frontend.designs_page' );
 //Item Routes
 Route::get( '/item/{id}/{designId}/{colorId?}', [ItemController::class, 'index'] )->name( 'frontend.item' );
-Route::post( '/item/ats', [ItemController::class, 'get_item_ats'] )->name( 'frontend.item.ats' )->secure();
+Route::post( '/item/ats', [ItemController::class, 'get_item_ats'] )->name( 'frontend.item.ats' );
 //Search Routes
 Route::get( '/search/{string}/{type?}', [SearchController::class, 'index'] )->name( 'frontend.search' );
 
@@ -101,7 +100,6 @@ Route::post( '/forms/store/{slug}', 'Frontend\FormController@store' )->name( 'fo
 
 //Static pages routes (showrooms, faqs, aboutus)
 Route::get( '/static/{type}', 'Frontend\StaticController@index' )->name( 'static.show' );
-Route::get( '/captcha', [CaptchaController::class, 'generateCaptcha'] )->name( 'captcha' );
 
 //Admin Routes
 Route::redirect( '/admin', '/admin/themes' );
@@ -203,7 +201,6 @@ Route::group( ['prefix' => 'dashboard', 'middleware' => ['auth']], function ()
     Route::post( '/place-order', [ShopController::class, 'place_order'] )->name( 'dashboard.placeorder' );
     Route::post( '/get-customer-addresses', [ShopController::class, 'get_customer_addresses'] )->name( 'dashboard.customeraddresses' );
     Route::get( '/view-order', [GenericReportsController::class, 'view_order'] )->name( 'dashboard.vieworder' );
-    Route::get( '/order_report', [GenericReportsController::class, 'order_report'] )->name( 'dashboard.orderreport' );
     Route::get( '/initiate-return', [ShopController::class, 'init_return'] )->name( 'dashboard.initreturn' );
     Route::get( '/view-return', [GenericReportsController::class, 'view_return'] )->name( 'dashboard.viewreturn' );
     Route::get( '/hangtags', [HangtagsController::class, 'index'] )->name( 'dashboard.hangtags' );

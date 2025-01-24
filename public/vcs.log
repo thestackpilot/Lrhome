@@ -1,0 +1,4428 @@
+[24/Jan/2025:07:03:59] (index) Fetching Token...
+[24/Jan/2025:07:04:00] (index) Array
+(
+    [status] => Token Received
+    [response] => Array
+        (
+            [Code] => 140
+            [Description] => API key authorized successfully.
+            [Token] => eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJVc2VyVGljayI6IjYzODczMjk4ODAzNjMwMTcyMSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvdXNlcmRhdGEiOiIxIiwiQWNjVGtuIjoiYTRkNTRiMTAtNWU3ZC00M2Q0LTliOWMtZDExNjdmODJhMjFhIiwiaXNzIjoiaHR0cDovL3d3dy5zcGFyc3VzLmNvbS8iLCJhdWQiOiJodHRwOi8vd3d3LnNwYXJzdXMuY29tLyIsImV4cCI6MTczNzczODAwMywibmJmIjoxNzM3NzAyMDAzfQ.NUVw34hcNtC80Iohl6atvaWdTuWySPlTfc5tbt6i9nQ
+        )
+
+)
+
+[24/Jan/2025:07:07:31] (contact_us) Fetching Token...
+[24/Jan/2025:07:07:31] (contact_us) Array
+(
+    [status] => Token Received
+    [response] => Array
+        (
+            [Code] => 140
+            [Description] => API key authorized successfully.
+            [Token] => eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJVc2VyVGljayI6IjYzODczMjk5MDE0NzkxNzE0NiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvdXNlcmRhdGEiOiIxIiwiQWNjVGtuIjoiZDA4ZmQxMGUtZTIwNS00MmI4LWI2Y2YtMjk2YWFjMjJiMjliIiwiaXNzIjoiaHR0cDovL3d3dy5zcGFyc3VzLmNvbS8iLCJhdWQiOiJodHRwOi8vd3d3LnNwYXJzdXMuY29tLyIsImV4cCI6MTczNzczODIxNCwibmJmIjoxNzM3NzAyMjE0fQ.YqW0-pKuH8leOg58_hEuBexpnD1W9vmRpmnXBj4WYdY
+        )
+
+)
+
+[24/Jan/2025:07:07:50] (contact_us)  :: In handle() :: 
+[24/Jan/2025:07:07:50] (contact_us) Array
+(
+    [DETAILS] => Array
+        (
+            [slug] => Thank You!
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                )
+
+            [body] => Thanks for reaching out to us, our team will be in touch with you soon.
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:07:08:01] (contact_us)  :: Mail Sent :: 
+[24/Jan/2025:07:08:31] (newsletter)  :: In handle() :: 
+[24/Jan/2025:07:08:31] (newsletter) Array
+(
+    [DETAILS] => Array
+        (
+            [slug] => Thank You!
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                )
+
+            [body] => Thanks for reaching out to us, our team will be in touch with you soon.
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:07:08:38] (newsletter)  :: Mail Sent :: 
+[24/Jan/2025:07:10:19] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:07:10:19] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Gift Store
+                    [entity_type] => Limited Partnership
+                    [DUNS] => 
+                    [company] => DirectFN Pvt Ltd
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => d4a4n
+                    [attachment] => http://localhost:8001/storage/6pKWq8pwKIaXME3eBHPbWERzUc0VZqNSJypjczk1.pdf
+                )
+
+            [slug] => Partner Requests
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                )
+
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:07:11:57] (partner_requests) Array
+(
+    [SendMail::Exception] => Unable to open file for reading [http://localhost:8001/storage/6pKWq8pwKIaXME3eBHPbWERzUc0VZqNSJypjczk1.pdf]
+)
+
+[24/Jan/2025:07:11:59] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:07:11:59] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Gift Store
+                    [entity_type] => Limited Partnership
+                    [DUNS] => 
+                    [company] => DirectFN Pvt Ltd
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => d4a4n
+                    [attachment] => http://localhost:8001/storage/6pKWq8pwKIaXME3eBHPbWERzUc0VZqNSJypjczk1.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:07:12:59] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:07:13:00] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:07:13:00] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Gift Store
+                    [entity_type] => Limited Partnership
+                    [DUNS] => 
+                    [company] => DirectFN Pvt Ltd
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => d4a4n
+                    [attachment] => http://localhost:8001/storage/6pKWq8pwKIaXME3eBHPbWERzUc0VZqNSJypjczk1.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:07:14:00] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:07:14:02] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:07:14:02] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Gift Store
+                    [entity_type] => Limited Partnership
+                    [DUNS] => 
+                    [company] => DirectFN Pvt Ltd
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => d4a4n
+                    [attachment] => http://localhost:8001/storage/6pKWq8pwKIaXME3eBHPbWERzUc0VZqNSJypjczk1.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:07:15:02] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:07:15:04] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:07:15:04] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Gift Store
+                    [entity_type] => Limited Partnership
+                    [DUNS] => 
+                    [company] => DirectFN Pvt Ltd
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => d4a4n
+                    [attachment] => http://localhost:8001/storage/6pKWq8pwKIaXME3eBHPbWERzUc0VZqNSJypjczk1.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:07:16:05] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:07:16:06] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:07:16:06] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Gift Store
+                    [entity_type] => Limited Partnership
+                    [DUNS] => 
+                    [company] => DirectFN Pvt Ltd
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => d4a4n
+                    [attachment] => http://localhost:8001/storage/6pKWq8pwKIaXME3eBHPbWERzUc0VZqNSJypjczk1.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:07:17:06] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:07:17:09] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:07:17:09] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Gift Store
+                    [entity_type] => Limited Partnership
+                    [DUNS] => 
+                    [company] => DirectFN Pvt Ltd
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => d4a4n
+                    [attachment] => http://localhost:8001/storage/6pKWq8pwKIaXME3eBHPbWERzUc0VZqNSJypjczk1.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:07:18:09] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:07:18:11] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:07:18:11] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Gift Store
+                    [entity_type] => Limited Partnership
+                    [DUNS] => 
+                    [company] => DirectFN Pvt Ltd
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => d4a4n
+                    [attachment] => http://localhost:8001/storage/6pKWq8pwKIaXME3eBHPbWERzUc0VZqNSJypjczk1.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:07:19:12] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:07:19:14] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:07:19:14] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Gift Store
+                    [entity_type] => Limited Partnership
+                    [DUNS] => 
+                    [company] => DirectFN Pvt Ltd
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => d4a4n
+                    [attachment] => http://localhost:8001/storage/6pKWq8pwKIaXME3eBHPbWERzUc0VZqNSJypjczk1.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:07:20:14] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:07:20:16] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:07:20:16] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Gift Store
+                    [entity_type] => Limited Partnership
+                    [DUNS] => 
+                    [company] => DirectFN Pvt Ltd
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => d4a4n
+                    [attachment] => http://localhost:8001/storage/6pKWq8pwKIaXME3eBHPbWERzUc0VZqNSJypjczk1.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:07:21:17] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:07:21:18] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:07:21:18] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Gift Store
+                    [entity_type] => Limited Partnership
+                    [DUNS] => 
+                    [company] => DirectFN Pvt Ltd
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => d4a4n
+                    [attachment] => http://localhost:8001/storage/6pKWq8pwKIaXME3eBHPbWERzUc0VZqNSJypjczk1.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:07:22:18] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:07:22:20] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:07:22:20] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Gift Store
+                    [entity_type] => Limited Partnership
+                    [DUNS] => 
+                    [company] => DirectFN Pvt Ltd
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => d4a4n
+                    [attachment] => http://localhost:8001/storage/6pKWq8pwKIaXME3eBHPbWERzUc0VZqNSJypjczk1.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:07:23:21] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:07:23:23] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:07:23:23] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Gift Store
+                    [entity_type] => Limited Partnership
+                    [DUNS] => 
+                    [company] => DirectFN Pvt Ltd
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => d4a4n
+                    [attachment] => http://localhost:8001/storage/6pKWq8pwKIaXME3eBHPbWERzUc0VZqNSJypjczk1.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:07:24:23] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:07:24:26] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:07:24:26] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Gift Store
+                    [entity_type] => Limited Partnership
+                    [DUNS] => 
+                    [company] => DirectFN Pvt Ltd
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => d4a4n
+                    [attachment] => http://localhost:8001/storage/6pKWq8pwKIaXME3eBHPbWERzUc0VZqNSJypjczk1.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:07:25:26] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:07:25:28] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:07:25:28] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Gift Store
+                    [entity_type] => Limited Partnership
+                    [DUNS] => 
+                    [company] => DirectFN Pvt Ltd
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => d4a4n
+                    [attachment] => http://localhost:8001/storage/6pKWq8pwKIaXME3eBHPbWERzUc0VZqNSJypjczk1.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:07:26:51] (partner_requests) Fetching Token...
+[24/Jan/2025:07:26:51] (partner_requests) Array
+(
+    [status] => Token Received
+    [response] => Array
+        (
+            [Code] => 140
+            [Description] => API key authorized successfully.
+            [Token] => eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJVc2VyVGljayI6IjYzODczMzAwMTc0NzY1NDEwMiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvdXNlcmRhdGEiOiIxIiwiQWNjVGtuIjoiOGUxYmNlMTktNDgxOC00ZmNkLTg0Y2MtNzI2YzFiYTI3NDg1IiwiaXNzIjoiaHR0cDovL3d3dy5zcGFyc3VzLmNvbS8iLCJhdWQiOiJodHRwOi8vd3d3LnNwYXJzdXMuY29tLyIsImV4cCI6MTczNzczOTM3NCwibmJmIjoxNzM3NzAzMzc0fQ.9Mn4PrnZSTQYCLffPighywCf6Irz5AE-eFijBWCRmd4
+        )
+
+)
+
+[24/Jan/2025:07:28:05] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:07:28:05] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Furniture Store
+                    [entity_type] => Partnership
+                    [DUNS] => 
+                    [company] => DirectFN Pvt Ltd
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => a8ynt
+                    [attachment] => http://localhost:8001/storage/7eOApF13pa27bmr7YUU3wIsijMb2ZHnYLQeZdA9i.pdf
+                )
+
+            [slug] => Partner Requests
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                )
+
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:07:29:45] (partner_requests) Array
+(
+    [SendMail::Exception] => Unable to open file for reading [http://localhost:8001/storage/7eOApF13pa27bmr7YUU3wIsijMb2ZHnYLQeZdA9i.pdf]
+)
+
+[24/Jan/2025:07:29:47] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:07:29:47] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Furniture Store
+                    [entity_type] => Partnership
+                    [DUNS] => 
+                    [company] => DirectFN Pvt Ltd
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => a8ynt
+                    [attachment] => http://localhost:8001/storage/7eOApF13pa27bmr7YUU3wIsijMb2ZHnYLQeZdA9i.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:07:30:47] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:07:30:48] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:07:30:48] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Furniture Store
+                    [entity_type] => Partnership
+                    [DUNS] => 
+                    [company] => DirectFN Pvt Ltd
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => a8ynt
+                    [attachment] => http://localhost:8001/storage/7eOApF13pa27bmr7YUU3wIsijMb2ZHnYLQeZdA9i.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:07:31:49] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:07:31:50] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:07:31:50] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Furniture Store
+                    [entity_type] => Partnership
+                    [DUNS] => 
+                    [company] => DirectFN Pvt Ltd
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => a8ynt
+                    [attachment] => http://localhost:8001/storage/7eOApF13pa27bmr7YUU3wIsijMb2ZHnYLQeZdA9i.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:07:32:50] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:07:32:52] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:07:32:52] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Furniture Store
+                    [entity_type] => Partnership
+                    [DUNS] => 
+                    [company] => DirectFN Pvt Ltd
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => a8ynt
+                    [attachment] => http://localhost:8001/storage/7eOApF13pa27bmr7YUU3wIsijMb2ZHnYLQeZdA9i.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:07:33:53] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:07:33:54] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:07:33:54] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Furniture Store
+                    [entity_type] => Partnership
+                    [DUNS] => 
+                    [company] => DirectFN Pvt Ltd
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => a8ynt
+                    [attachment] => http://localhost:8001/storage/7eOApF13pa27bmr7YUU3wIsijMb2ZHnYLQeZdA9i.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:07:34:54] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:07:34:55] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:07:34:55] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Furniture Store
+                    [entity_type] => Partnership
+                    [DUNS] => 
+                    [company] => DirectFN Pvt Ltd
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => a8ynt
+                    [attachment] => http://localhost:8001/storage/7eOApF13pa27bmr7YUU3wIsijMb2ZHnYLQeZdA9i.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:07:35:55] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:07:35:58] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:07:35:58] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Furniture Store
+                    [entity_type] => Partnership
+                    [DUNS] => 
+                    [company] => DirectFN Pvt Ltd
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => a8ynt
+                    [attachment] => http://localhost:8001/storage/7eOApF13pa27bmr7YUU3wIsijMb2ZHnYLQeZdA9i.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:07:36:58] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:07:36:59] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:07:36:59] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Furniture Store
+                    [entity_type] => Partnership
+                    [DUNS] => 
+                    [company] => DirectFN Pvt Ltd
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => a8ynt
+                    [attachment] => http://localhost:8001/storage/7eOApF13pa27bmr7YUU3wIsijMb2ZHnYLQeZdA9i.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:07:37:59] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:07:38:00] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:07:38:00] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Furniture Store
+                    [entity_type] => Partnership
+                    [DUNS] => 
+                    [company] => DirectFN Pvt Ltd
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => a8ynt
+                    [attachment] => http://localhost:8001/storage/7eOApF13pa27bmr7YUU3wIsijMb2ZHnYLQeZdA9i.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:07:39:01] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:07:39:03] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:07:39:03] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Furniture Store
+                    [entity_type] => Partnership
+                    [DUNS] => 
+                    [company] => DirectFN Pvt Ltd
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => a8ynt
+                    [attachment] => http://localhost:8001/storage/7eOApF13pa27bmr7YUU3wIsijMb2ZHnYLQeZdA9i.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:07:40:03] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:07:40:04] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:07:40:04] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Furniture Store
+                    [entity_type] => Partnership
+                    [DUNS] => 
+                    [company] => DirectFN Pvt Ltd
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => a8ynt
+                    [attachment] => http://localhost:8001/storage/7eOApF13pa27bmr7YUU3wIsijMb2ZHnYLQeZdA9i.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:07:41:16] (index) Fetching Token...
+[24/Jan/2025:07:41:16] (index) Array
+(
+    [status] => Token Received
+    [response] => Array
+        (
+            [Code] => 140
+            [Description] => API key authorized successfully.
+            [Token] => eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJVc2VyVGljayI6IjYzODczMzAxMDM5ODY0MTMyMiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvdXNlcmRhdGEiOiIxIiwiQWNjVGtuIjoiMmFkYTYwYjUtOGFkOS00ZjQ4LTk1ZjctNDA4Nzg0YjMxYzc2IiwiaXNzIjoiaHR0cDovL3d3dy5zcGFyc3VzLmNvbS8iLCJhdWQiOiJodHRwOi8vd3d3LnNwYXJzdXMuY29tLyIsImV4cCI6MTczNzc0MDIzOSwibmJmIjoxNzM3NzA0MjM5fQ.EL7LeT0kxi7soz3gHFnuJHmErYA_4-JDqBmcGGybHkE
+        )
+
+)
+
+[24/Jan/2025:07:41:38] (newsletter)  :: In handle() :: 
+[24/Jan/2025:07:41:38] (newsletter) Array
+(
+    [DETAILS] => Array
+        (
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [email] => admin@gmail.com
+                    [captcha_newsletter] => zq3ur
+                )
+
+            [slug] => Newsletter
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                    [1] => sheikhammar568@gmail.com
+                )
+
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:07:41:45] (newsletter)  :: Mail Sent :: 
+[24/Jan/2025:07:41:45] (newsletter)  :: In handle() :: 
+[24/Jan/2025:07:41:45] (newsletter) Array
+(
+    [DETAILS] => Array
+        (
+            [slug] => Thank You!
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                    [1] => sheikhammar568@gmail.com
+                )
+
+            [body] => Thanks for reaching out to us, our team will be in touch with you soon.
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:07:41:53] (newsletter)  :: Mail Sent :: 
+[24/Jan/2025:07:55:43] (register) Fetching Token...
+[24/Jan/2025:07:55:43] (register) Array
+(
+    [status] => Token Received
+    [response] => Array
+        (
+            [Code] => 140
+            [Description] => API key authorized successfully.
+            [Token] => eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJVc2VyVGljayI6IjYzODczMzAxOTA2OTg4MjkwOCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvdXNlcmRhdGEiOiIxIiwiQWNjVGtuIjoiMzZjMDNhNTctMjQwMi00MDA0LThiMGMtM2QxNWMyYjQ5N2IwIiwiaXNzIjoiaHR0cDovL3d3dy5zcGFyc3VzLmNvbS8iLCJhdWQiOiJodHRwOi8vd3d3LnNwYXJzdXMuY29tLyIsImV4cCI6MTczNzc0MTEwNiwibmJmIjoxNzM3NzA1MTA2fQ.ca1QM1yLi4TspSZFc0t-kmx1xcrxbT6kbBF4MvC3Wdw
+        )
+
+)
+
+[24/Jan/2025:07:56:34] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:07:56:34] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Furniture Store
+                    [entity_type] => Limited Partnership
+                    [DUNS] => 
+                    [company] => test@gmail.com
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => ebrfa
+                    [attachment] => http://localhost:8001/storage/UMWxMT2qzOismZ2ORRPjH6zQdsua3Rr3xz5tdSt3.pdf
+                )
+
+            [slug] => Partner Requests
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                    [1] => sheikhammar568@gmail.com
+                )
+
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:07:58:11] (partner_requests) Array
+(
+    [SendMail::Exception] => Unable to open file for reading [http://localhost:8001/storage/UMWxMT2qzOismZ2ORRPjH6zQdsua3Rr3xz5tdSt3.pdf]
+)
+
+[24/Jan/2025:07:58:14] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:07:58:14] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                    [1] => sheikhammar568@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Furniture Store
+                    [entity_type] => Limited Partnership
+                    [DUNS] => 
+                    [company] => test@gmail.com
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => ebrfa
+                    [attachment] => http://localhost:8001/storage/UMWxMT2qzOismZ2ORRPjH6zQdsua3Rr3xz5tdSt3.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:07:59:15] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:07:59:18] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:07:59:18] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                    [1] => sheikhammar568@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Furniture Store
+                    [entity_type] => Limited Partnership
+                    [DUNS] => 
+                    [company] => test@gmail.com
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => ebrfa
+                    [attachment] => http://localhost:8001/storage/UMWxMT2qzOismZ2ORRPjH6zQdsua3Rr3xz5tdSt3.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:08:00:18] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:08:00:20] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:08:00:20] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                    [1] => sheikhammar568@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Furniture Store
+                    [entity_type] => Limited Partnership
+                    [DUNS] => 
+                    [company] => test@gmail.com
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => ebrfa
+                    [attachment] => http://localhost:8001/storage/UMWxMT2qzOismZ2ORRPjH6zQdsua3Rr3xz5tdSt3.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:08:01:20] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:08:01:23] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:08:01:23] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                    [1] => sheikhammar568@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Furniture Store
+                    [entity_type] => Limited Partnership
+                    [DUNS] => 
+                    [company] => test@gmail.com
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => ebrfa
+                    [attachment] => http://localhost:8001/storage/UMWxMT2qzOismZ2ORRPjH6zQdsua3Rr3xz5tdSt3.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:08:02:23] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:08:02:25] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:08:02:25] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                    [1] => sheikhammar568@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Furniture Store
+                    [entity_type] => Limited Partnership
+                    [DUNS] => 
+                    [company] => test@gmail.com
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => ebrfa
+                    [attachment] => http://localhost:8001/storage/UMWxMT2qzOismZ2ORRPjH6zQdsua3Rr3xz5tdSt3.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:08:03:26] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:08:03:27] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:08:03:27] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                    [1] => sheikhammar568@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Furniture Store
+                    [entity_type] => Limited Partnership
+                    [DUNS] => 
+                    [company] => test@gmail.com
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => ebrfa
+                    [attachment] => http://localhost:8001/storage/UMWxMT2qzOismZ2ORRPjH6zQdsua3Rr3xz5tdSt3.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:08:04:27] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:08:04:29] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:08:04:29] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                    [1] => sheikhammar568@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Furniture Store
+                    [entity_type] => Limited Partnership
+                    [DUNS] => 
+                    [company] => test@gmail.com
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => ebrfa
+                    [attachment] => http://localhost:8001/storage/UMWxMT2qzOismZ2ORRPjH6zQdsua3Rr3xz5tdSt3.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:08:05:30] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:08:05:33] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:08:05:33] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                    [1] => sheikhammar568@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Furniture Store
+                    [entity_type] => Limited Partnership
+                    [DUNS] => 
+                    [company] => test@gmail.com
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => ebrfa
+                    [attachment] => http://localhost:8001/storage/UMWxMT2qzOismZ2ORRPjH6zQdsua3Rr3xz5tdSt3.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:08:06:33] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:08:06:35] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:08:06:35] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                    [1] => sheikhammar568@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Furniture Store
+                    [entity_type] => Limited Partnership
+                    [DUNS] => 
+                    [company] => test@gmail.com
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => ebrfa
+                    [attachment] => http://localhost:8001/storage/UMWxMT2qzOismZ2ORRPjH6zQdsua3Rr3xz5tdSt3.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:08:07:35] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:08:07:37] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:08:07:37] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                    [1] => sheikhammar568@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Furniture Store
+                    [entity_type] => Limited Partnership
+                    [DUNS] => 
+                    [company] => test@gmail.com
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => ebrfa
+                    [attachment] => http://localhost:8001/storage/UMWxMT2qzOismZ2ORRPjH6zQdsua3Rr3xz5tdSt3.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:08:08:38] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:08:08:40] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:08:08:40] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                    [1] => sheikhammar568@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Furniture Store
+                    [entity_type] => Limited Partnership
+                    [DUNS] => 
+                    [company] => test@gmail.com
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => ebrfa
+                    [attachment] => http://localhost:8001/storage/UMWxMT2qzOismZ2ORRPjH6zQdsua3Rr3xz5tdSt3.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:08:09:40] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:08:09:43] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:08:09:43] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                    [1] => sheikhammar568@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Furniture Store
+                    [entity_type] => Limited Partnership
+                    [DUNS] => 
+                    [company] => test@gmail.com
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => ebrfa
+                    [attachment] => http://localhost:8001/storage/UMWxMT2qzOismZ2ORRPjH6zQdsua3Rr3xz5tdSt3.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:08:10:43] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:08:10:44] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:08:10:44] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                    [1] => sheikhammar568@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Furniture Store
+                    [entity_type] => Limited Partnership
+                    [DUNS] => 
+                    [company] => test@gmail.com
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => ebrfa
+                    [attachment] => http://localhost:8001/storage/UMWxMT2qzOismZ2ORRPjH6zQdsua3Rr3xz5tdSt3.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:08:11:44] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:08:11:47] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:08:11:47] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                    [1] => sheikhammar568@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Furniture Store
+                    [entity_type] => Limited Partnership
+                    [DUNS] => 
+                    [company] => test@gmail.com
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => ebrfa
+                    [attachment] => http://localhost:8001/storage/UMWxMT2qzOismZ2ORRPjH6zQdsua3Rr3xz5tdSt3.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:08:12:47] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:08:12:48] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:08:12:48] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                    [1] => sheikhammar568@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Furniture Store
+                    [entity_type] => Limited Partnership
+                    [DUNS] => 
+                    [company] => test@gmail.com
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => ebrfa
+                    [attachment] => http://localhost:8001/storage/UMWxMT2qzOismZ2ORRPjH6zQdsua3Rr3xz5tdSt3.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:08:13:49] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:08:13:50] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:08:13:50] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                    [1] => sheikhammar568@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Furniture Store
+                    [entity_type] => Limited Partnership
+                    [DUNS] => 
+                    [company] => test@gmail.com
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => ebrfa
+                    [attachment] => http://localhost:8001/storage/UMWxMT2qzOismZ2ORRPjH6zQdsua3Rr3xz5tdSt3.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:08:14:50] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:08:14:51] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:08:14:51] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                    [1] => sheikhammar568@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Furniture Store
+                    [entity_type] => Limited Partnership
+                    [DUNS] => 
+                    [company] => test@gmail.com
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => ebrfa
+                    [attachment] => http://localhost:8001/storage/UMWxMT2qzOismZ2ORRPjH6zQdsua3Rr3xz5tdSt3.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+
+[24/Jan/2025:08:15:51] (partner_requests) Array
+(
+    [SendMail::Exception] => Connection to tcp://smtp.office365.com:587 Timed Out
+)
+
+[24/Jan/2025:08:15:54] (partner_requests)  :: In handle() :: 
+[24/Jan/2025:08:15:54] (partner_requests) Array
+(
+    [DETAILS] => Array
+        (
+            [email] => Array
+                (
+                    [0] => testing.demo.as@gmail.com
+                    [1] => sheikhammar568@gmail.com
+                )
+
+            [data] => Array
+                (
+                    [_token] => a9O3MAvXOcMAN66QgAG4oRBecXLTFa26wofVeFv4
+                    [business_type] => Furniture Store
+                    [entity_type] => Limited Partnership
+                    [DUNS] => 
+                    [company] => test@gmail.com
+                    [business_email] => test@gmail.com
+                    [business_contact] => test@gmail.com
+                    [firstname] => test@gmail.com
+                    [reg-email] => test@gmail.com
+                    [phone] => test@gmail.com
+                    [acknowledgement_recipient_contact_name] => test@gmail.com
+                    [acknowledgement_recipient_email] => test@gmail.com
+                    [acknowledgement_recipient_contact] => test@gmail.com
+                    [accounts_payable_name] => test@gmail.com
+                    [accounts_payable_email] => test@gmail.com
+                    [accounts_payable_phone] => test@gmail.com
+                    [sales_rep] => 
+                    [tax_id] => test@gmail.com
+                    [dba_certificate] => dba certificate
+                    [duns_certificate] => duns certificate
+                    [billing_buisname] => test@gmail.com
+                    [billing_dba] => 
+                    [billing_address] => test@gmail.com
+                    [billing_address_two] => 
+                    [billing_cntry] => United States
+                    [billing_state] => Select State
+                    [billing_city] => 
+                    [billing_zip] => test@gmail.com
+                    [billing_phone] => test@gmail.com
+                    [billing_email] => test@gmail.com
+                    [shipping_buisname] => test@gmail.com
+                    [shipping_dba] => 
+                    [shipping_address] => test@gmail.com
+                    [shipping_address_two] => 
+                    [shipping_cntry] => United States
+                    [shipping_state] => Select State
+                    [shipping_zip] => test@gmail.com
+                    [shipping_phone] => test@gmail.com
+                    [shipping_email] => test@gmail.com
+                    [payment_method] => Payment on Terms
+                    [bank_name] => 
+                    [bank_type] => 
+                    [bank_address] => 
+                    [bank_phone] => 
+                    [bank_accnt_number] => 
+                    [bank_routing_number] => routing numebr
+                    [cdt_refname_one] => 
+                    [cdt_refaddress_one] => 
+                    [cdt_refphne_one] => 
+                    [cdt_refemail_one] => 
+                    [cdt_refname_two] => 
+                    [cdt_refaddress_two] => 
+                    [cdt_refphne_two] => 
+                    [cdt_refemail_two] => 
+                    [cdt_refname_three] => 
+                    [cdt_refaddress_three] => 
+                    [cdt_refphne_three] => 
+                    [cdt_refemail_three] => 
+                    [cdt_billing_address] => 
+                    [cdt_billing_address_two] => 
+                    [cdt_cntry] => United States
+                    [cdt_state] => Select State
+                    [cdt_phone] => 
+                    [cdt_email] => 
+                    [chk_terms] => form-name
+                    [captcha_partner] => ebrfa
+                    [attachment] => http://localhost:8001/storage/UMWxMT2qzOismZ2ORRPjH6zQdsua3Rr3xz5tdSt3.pdf
+                )
+
+            [slug] => Partner Requests
+            [template] => email.email
+            [cc_email] => 
+        )
+
+)
+

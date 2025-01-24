@@ -123,16 +123,15 @@ class OrdersController extends AdminController
 
                 try {
                     $test_email = ConstantsController::ORDER_NOTIFICATION;
-                    $to_email = ConstantsController::TEST_EMAIL;
                     $webhook_release_data = [
                         'order_no' => $result['ObjectID'],
                     ];
                     SendMail::dispatch( [
                         'data'     => $webhook_release_data,
                         'slug'     => "Web Hook Order Released",
-                        'email'    => $to_email,
+                        'email'    => $test_email,
                         'template' => 'email.web_hook_release_email',
-                        'cc_email' => $to_email,
+                        'cc_email' => $test_email,
                     ] );
                     prr( " :: Web Hook Release Email Sent :: " );
                 }
@@ -148,7 +147,6 @@ class OrdersController extends AdminController
                 $successMsg          = str_replace( $matched_string, $updatedString, $successMsg );
                 $response['success'] = 1;
                 $response['msg']     = $successMsg;
-
             }
             else
             {

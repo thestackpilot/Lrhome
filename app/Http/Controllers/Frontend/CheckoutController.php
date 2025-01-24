@@ -248,7 +248,7 @@ $states = $this->ApiObj->Get_CountryStates( $country_id );
         }
 
         $this->append_breadcrumbs( 'Checkout', route( 'frontend.checkout' ) );
-       // dd($shipping_addresses);
+
         return view( 'frontend.'.$this->active_theme->theme_abrv.'.checkout', [
             'countries'           => $countries,
             'states'              => $states,
@@ -380,6 +380,7 @@ $states = $this->ApiObj->Get_CountryStates( $country_id );
             {
                 return response()->json( $payment_response );
             }
+
             $result = $this->ApiObj->Place_Order(
                 $headers,
                 $itemDetail

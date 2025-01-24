@@ -76,7 +76,6 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
               </ul>
             </div>
             @endif
-
             <form id="regForm" class="partner-form" action="{{route('form.submission', ['partner_requests'])}}" method="post" enctype="multipart/form-data">
               @csrf
               <div class="all-step"> <span class="step active"> Step 1</span> <span class="step"> Step 2</span> <span class="step"> Step 3</span> </div>
@@ -100,6 +99,7 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
+
                       <select required class="form-control" id="sel1" name="entity_type">
                         <option value="">Select a Type of Entity</option>
                         <option value="Proprietorship" @if(old('entity_type') == 'Proprietorship')selected @endif>Proprietorship</option>
@@ -654,7 +654,7 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
   var currentTab = 0; // Current tab is set to be the first tab (0)
   showTab(currentTab); // Display the current tab
   function nextPrev(n) {
-    //This function will figure out which tab to display
+    // This function will figure out which tab to display
     var x = document.getElementsByClassName("tab");
     // Exit the function if any field in the current tab is invalid:
 

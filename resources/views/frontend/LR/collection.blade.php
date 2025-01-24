@@ -86,7 +86,7 @@ use App\Http\Controllers\CommonController;
     <script type="text/javascript">
         $(document).ready(function(){
             $('.carousel').carousel({interval: false,});
-            $("[id^=carousel-selector-]").hover(function()
+            $("[id^=carousel-selector-]").hover(function() 
             {
                 /*
                 var id_selector = $(this).attr("id");
@@ -105,9 +105,9 @@ use App\Http\Controllers\CommonController;
                 var slide_to_show = parseInt($(this).attr('data-slide'));
                 var current_slide = parseInt($('.item.active', _parent).attr('data-slide'));
                 if (slide_to_show != current_slide ) {
-                    console.log(`${current_slide} > ${slide_to_show} : ${current_slide > slide_to_show}`);
-                    console.log(`CURRENT: .item.slide-${current_slide}`);
-                    console.log(`TO SHOW: .item.slide-${slide_to_show}`);
+                    // console.log(`${current_slide} > ${slide_to_show} : ${current_slide > slide_to_show}`);
+                    // console.log(`CURRENT: .item.slide-${current_slide}`);
+                    // console.log(`TO SHOW: .item.slide-${slide_to_show}`);
                     if ( current_slide > slide_to_show ) {
                         $(`.item.slide-${current_slide}`, _parent).addClass( 'right' );
                         setTimeout(function() {
@@ -161,7 +161,7 @@ use App\Http\Controllers\CommonController;
             display: block !important;
             border: 0px solid black;
         }
-
+    
         .owl-next {
             width: 15px;
             height: 100px;
@@ -171,14 +171,14 @@ use App\Http\Controllers\CommonController;
             display: block !important;
             border: 0px solid black;
         }
-
+    
         .owl-nav button {
             background: #fff !important;
             height: 25px;
             width: 25px;
             border-radius: 50% !important;
         }
-
+    
         /* .owl-nav button span {
             font-size: 33px;
             position: relative;
@@ -196,7 +196,7 @@ use App\Http\Controllers\CommonController;
             float: none;
             width: 100%;
         }
-
+    
         .owl-theme .owl-nav [class*=owl-]:hover {
             color: #000 !important;
         }

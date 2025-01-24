@@ -46,26 +46,25 @@ use App\Http\Controllers\CommonController;
     </div>
 </div>
 <script>
-function LoginUser()
+function LoginUser() 
 {
     if($('#InputEmail1').val().length && $('#InputPassword1').val().length)
     {
         $('#popup_login_form').addClass('d-none');
         $('#loading_msg').removeClass('d-none');
         $('#close-checkout').addClass('d-none');
-
+        
         $.ajax(
         {
             method:'POST',
-            url:"/ajax/login",
-            {{--url:"{{route('auth.ajax.login')}}",--}}
+            url:"{{route('auth.ajax.login')}}",
             data:
             {
                 '_token' : '{{csrf_token()}}',
                 'email' : $('#InputEmail1').val(),
                 'password' : $('#InputPassword1').val()
             },
-            success:function(response)
+            success:function(response) 
             {
                 if(response.success)
                 {
@@ -75,7 +74,7 @@ function LoginUser()
                     else {
                         if($('#item_json').length)
                         {
-                            refreshItemJson(function ()
+                            refreshItemJson(function () 
                             {
                                 //Close Checkout Popup
                                 $("#checkOut_popup").hide();
@@ -91,9 +90,9 @@ function LoginUser()
                         }
                         else
                         {
-                            refreshUser('quick-cart', function ()
+                            refreshUser('quick-cart', function () 
                             {
-                                refreshUser('profile', function ()
+                                refreshUser('profile', function () 
                                 {
                                     //Close Checkout Popup
                                     $("#checkOut_popup").hide();
@@ -108,7 +107,7 @@ function LoginUser()
                             });
                         }
                     }
-
+                    
                 }
                 else
                 {
@@ -136,13 +135,13 @@ function LoginUser()
         $('#popup_login_form').removeClass('d-none');
     }
 }
-$(document).ready(function()
+$(document).ready(function() 
 {
     // TODO : The validation for the ajax login form needs to work - Adil
     /*
     $('#popup_login_form').validate(
     {
-        rules:
+        rules: 
         {
             email:
             {
@@ -155,7 +154,7 @@ $(document).ready(function()
         }
     });*/
 
-    $('.closePopup, .backdrop, #close-modal' ).on('click', function (e)
+    $('.closePopup, .backdrop, #close-modal' ).on('click', function (e) 
     {
         //Close Checkout Popup
         $("#checkOut_popup").hide();
@@ -165,15 +164,15 @@ $(document).ready(function()
         $(".backdrop").removeClass("zindex-4");
     });
 
-    $('#login_by_popup').on('click', function (e)
+    $('#login_by_popup').on('click', function (e) 
     {
         $("#checkOut_popup").show();
         $("#checkOut_popup").addClass("show");
         $(".backdrop").show();
         $(".backdrop").addClass("zindex-4");
     });
-
-    $('#popup_login_form').on('submit', function(e)
+    
+    $('#popup_login_form').on('submit', function(e) 
     {
         LoginUser();
         return false;

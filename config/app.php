@@ -230,7 +230,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
 
-
     ],
 
 ];

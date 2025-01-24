@@ -5,15 +5,15 @@
 use App\Http\Controllers\ConstantsController;
 use App\Http\Controllers\CommonController;
 
-@endphp
+@endphp 
 
     @guest()
-    <a href="{{route('auth.login')}}">
-        <i class="headericons icon-user quickProfile-opener"></i>
+    <a href="{{route('auth.login')}}"> 
+        <i class="headericons icon-user quickProfile-opener"></i> 
     </a>
     @endguest()
     @auth()
-    <i class="headericons icon-user quickProfile-opener"></i>
+    <i class="headericons icon-user quickProfile-opener"></i> 
     <div class="quick-profile col-sm-12 m-md-2 bg-white checkout-balance col-12 d-none">
         <i class="icon-cross position-absolute closeProfile"> </i>
         <div class="d-flex flex-column">
@@ -24,19 +24,7 @@ use App\Http\Controllers\CommonController;
             </div>
             <div class="text-center inner-user-settings">
                 <div class="user-information p-0 border-0">
-                    {{-- <h6 class="user-name">{{Auth::user()->firstname.' '.Auth::user()->lastname}}</h6> --}}
-                    @php
-                        $user = Auth::user();
-                        $firstname = Auth::user()->firstname;
-                        $lastname = Auth::user()->lastname;
-                    @endphp
-                    <h6 class="user-name">
-                        @if (empty($firstname) || empty($lastname) || is_numeric($firstname) || is_numeric($lastname))
-                            {{ Auth::user()->company }}
-                        @else
-                            {{ $firstname . ' ' . $lastname }}
-                        @endif
-                    </h6>
+                    <h6 class="user-name">{{Auth::user()->firstname.' '.Auth::user()->lastname}}</h6>
                     <h6 class="user-email">{{Auth::user()->email}}</h6>
                 </div>
                 <div class="user-settings-block1 p-0">

@@ -35,6 +35,17 @@
       0 => 'Fruitcake\\Cors\\CorsServiceProvider',
     ),
   ),
+  'intervention/image' => 
+  array (
+    'aliases' => 
+    array (
+      'Image' => 'Intervention\\Image\\Facades\\Image',
+    ),
+    'providers' => 
+    array (
+      0 => 'Intervention\\Image\\ImageServiceProvider',
+    ),
+  ),
   'laravel/tinker' => 
   array (
     'providers' => 
@@ -58,6 +69,17 @@
     'aliases' => 
     array (
       'Excel' => 'Maatwebsite\\Excel\\Facades\\Excel',
+    ),
+  ),
+  'mews/captcha' => 
+  array (
+    'aliases' => 
+    array (
+      'Captcha' => 'Mews\\Captcha\\Facades\\Captcha',
+    ),
+    'providers' => 
+    array (
+      0 => 'Mews\\Captcha\\CaptchaServiceProvider',
     ),
   ),
   'milon/barcode' => 

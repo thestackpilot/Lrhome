@@ -118,7 +118,7 @@ class FavouriteController extends FrontendController
                         'LinkTag'    => 'Get_Designs',
                         'LinkFilter' => '{"Filters": [{"FilterID": "POUFS","Values": ["POUFS"]},{"FilterID": "Indoor_Outdoor","Values": ["Indoor_Outdoor"]}]}',
                         'LinkPage'   => 'Designs',
-                        'Image'      => 'images/landing-img/outdoor/1.png',
+                        'Image'      => 'images/Outdoor_poufs.jpg',
                         'LinkUrl'    => url( '/designs/Pillows%20&%20Decor/'.base64_encode( '{"Filters": [{"FilterID": "POUFS","Values": ["POUFS"]},{"FilterID": "Indoor_Outdoor","Values": ["Indoor_Outdoor"]}]}' ).'/0' )
                     ],
                     [

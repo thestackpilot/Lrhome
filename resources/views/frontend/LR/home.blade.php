@@ -16,11 +16,11 @@ use App\Http\Controllers\CommonController;
 <div class="site-wrapper-reveal">
     <div class="hero-box-area mt-md-0 ">
 
-        <div class="z-index-3">
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLScV-1ubFifm4-pzsGPfnPJTLSH_1E9etsaPyOF5cq-X4me7aA/viewform" target="_blank" style="width:100%">
-                <img src="{{ asset('LR/images/banners/atlanta-appointment.jpeg') }}" class="img-fluid">
+        {{-- <div class="z-index-3">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScuOenaixQ0HmOzYESw9BWVyxQiAUualLQRy8BpjYe3YOXAhg/viewform" target="_blank" style="width:100%">
+                <img src="{{ asset('LR/images/banners/HP_Landing_page.jpg') }}" class="img-fluid">
             </a>
-        </div>
+        </div> --}}
 
         <div class="home-row hp-video" style="background-image: url({{$pages -> home -> sections -> banner -> image}}) !important;">
             <div class="hpmt-video-text">
