@@ -102,7 +102,8 @@ class FavouriteController extends FrontendController
                         'LinkTag'    => 'Get_Collections',
                         'LinkFilter' => '{"Filters": [{"FilterID": "Indoor_Outdoor","Values": ["Indoor_Outdoor"]}]}',
                         'LinkPage'   => 'Collections',
-                        'Image'      => 'images/landing-img/outdoor/1.png',
+                        //'Image'      => 'images/landing-img/outdoor/1.png',
+                        'Image'      =>  asset('LR/images/landing-img/outdoor/Outdoor-Rugs.jpg'),
                         'LinkUrl'    => url( '/collections/Rugs/Collections/'.base64_encode( '{"Filters": [{"FilterID": "Indoor_Outdoor","Values": ["Indoor_Outdoor"]}]}' ) )
                     ],
                     [
@@ -110,7 +111,8 @@ class FavouriteController extends FrontendController
                         'LinkTag'    => 'Get_Designs',
                         'LinkFilter' => '{"Filters": [{"FilterID": "PILLOWS","Values": ["PILLOWS"]},{"FilterID": "Indoor_Outdoor","Values": ["Indoor_Outdoor"]}]}',
                         'LinkPage'   => 'Designs',
-                        'Image'      => 'images/landing-img/outdoor/2.png',
+                        //'Image'      => 'images/landing-img/outdoor/2.png',
+                        'Image'      => asset('LR/images/landing-img/outdoor/Outdoor-Pillows.jpg'),
                         'LinkUrl'    => url( '/designs/Pillows%20&%20Decor/'.base64_encode( '{"Filters": [{"FilterID": "PILLOWS","Values": ["PILLOWS"]},{"FilterID": "Indoor_Outdoor","Values": ["Indoor_Outdoor"]}]}' ).'/0' )
                     ],
                     [
@@ -118,7 +120,8 @@ class FavouriteController extends FrontendController
                         'LinkTag'    => 'Get_Designs',
                         'LinkFilter' => '{"Filters": [{"FilterID": "POUFS","Values": ["POUFS"]},{"FilterID": "Indoor_Outdoor","Values": ["Indoor_Outdoor"]}]}',
                         'LinkPage'   => 'Designs',
-                        'Image'      => 'images/Outdoor_poufs.jpg',
+                        //'Image'      => 'images/Outdoor_poufs.jpg',
+                        'Image'      => asset('LR/images/landing-img/outdoor/Outdoor-Pouf.jpg'),
                         'LinkUrl'    => url( '/designs/Pillows%20&%20Decor/'.base64_encode( '{"Filters": [{"FilterID": "POUFS","Values": ["POUFS"]},{"FilterID": "Indoor_Outdoor","Values": ["Indoor_Outdoor"]}]}' ).'/0' )
                     ],
                     [
@@ -126,7 +129,8 @@ class FavouriteController extends FrontendController
                         'LinkTag'    => 'Get_Designs',
                         'LinkFilter' => '{"Filters": [{"FilterID": "Baskets","Values": ["Baskets"]},{"FilterID": "Indoor_Outdoor","Values": ["Indoor_Outdoor"]}]}',
                         'LinkPage'   => 'Designs',
-                        'Image'      => 'images/landing-img/outdoor/4.jpg',
+                        //'Image'      => 'images/landing-img/outdoor/4.jpg',
+                        'Image'      => asset('LR/images/landing-img/outdoor/Outdoor-Basket.jpg'),
                         'LinkUrl'    => url( '/designs/Pillows%20&%20Decor/'.base64_encode( '{"Filters": [{"FilterID": "Baskets","Values": ["Baskets"]},{"FilterID": "Indoor_Outdoor","Values": ["Indoor_Outdoor"]}]}' ).'/0' )
                     ]
                 ]];
