@@ -81,7 +81,10 @@ class HangtagsController extends DashboardController
                                     break;
                                 case '.99':
                                 case .99:
-                                    $products[$k]['sizes'][$i]['price'] = ConstantsController::CURRENCY.number_format( ceil( $products[$k]['sizes'][$i]['price'] / .99 ) * .99, 2 );
+                                    // $products[$k]['sizes'][$i]['price'] = ConstantsController::CURRENCY.number_format( ceil( $products[$k]['sizes'][$i]['price'] / .99 ) * .99, 2 );
+                                    $price = $products[$k]['sizes'][$i]['price'];
+                                    $roundedPrice = floor($price) - 0.01;
+                                    $products[$k]['sizes'][$i]['price'] = ConstantsController::CURRENCY . number_format($roundedPrice, 2);
                                     break;
                                 default:
                                     $products[$k]['sizes'][$i]['price'] = ConstantsController::CURRENCY.number_format( $products[$k]['sizes'][$i]['price'], 2 );
