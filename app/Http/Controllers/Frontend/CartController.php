@@ -115,4 +115,40 @@ class CartController extends FrontendController
 
     }
 
+    public function update_sidemark(Request $request)
+    {
+        try {
+            // Update the sidemark field for the matching record
+            $updated = Cart::where([
+                'user_id' => Auth::user()->id,
+                'customer_id' => $request->customerId,
+                'item_id' => $request->itemId
+            ])->update([
+                'sidemark' => $request->sidemark // Update the sidemark field
+            ]);
+
+            // Check if the update was successful
+            if ($updated) {
+                return response()->json([
+                    'success' => 1,
+                    'message' => "Cart is updated successfully"
+                ], 200);
+            } else {
+                return response()->json([
+                    'success' => 0,
+                    'message' => "No matching record found to update."
+                ], 400);
+            }
+        } catch (\Exception $e) {
+            // Log the error for debugging
+            \Log::error('Error updating cart: ' . $e->getMessage());
+
+            // Return error response
+            return response()->json([
+                'success' => 0,
+                'message' => "There is an error in updating your cart. Please try again."
+            ], 400);
+        }
+    }
+
 }

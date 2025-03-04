@@ -406,6 +406,47 @@ use App\Http\Controllers\CommonController;
         });
     }
 
+    function updateSideMark(itemId,token,customerId,hideQuantity,isMobile)
+    {
+        var itemNode = isMobile ? "#mob_"+itemId+"__"+customerId : "#"+itemId+"__"+customerId;
+        var sidemark = $(itemNode+" textarea").val();
+
+        $(itemNode+" .update-cart-button").hide();
+        if (typeof hideQuantity !== "undefined" && hideQuantity)
+            $(itemNode+" .cart-actions .qty-styles").removeClass('d-flex').hide();
+
+        $(itemNode+" #updating-cart").removeClass('d-none');
+
+        var formData =
+        {
+            itemId:itemId,
+            customerId:customerId,
+            sidemark:sidemark,
+            _token:token
+        };
+        $.ajax(
+        {
+            method: "POST",
+            url: "{{route('frontend.cart.update_sidemark')}}",
+            data: formData
+        })
+        .done(function (response)
+        {
+            if(response.success == 1)
+            {
+                location.reload();
+            }
+            else
+            {
+                toastr.error(response.message,
+                {
+                    hideDuration: 10000,
+                    closeButton: true,
+                });
+            }
+        });
+    }
+
     function removeItemFromCart(itemId,token,customerId,hideQuantity,isMobile)
     {
         if (confirm("Are you sure to remove this Item?"))
