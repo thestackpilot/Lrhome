@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\ConstantsController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use Illuminate\Validation\Rule;
 
 class StaffController extends DashboardController
 {
@@ -71,7 +72,8 @@ class StaffController extends DashboardController
         $validated_data = $request->validate( [
             'firstname' => 'required|max:255',
             'lastname'  => 'required|max:255',
-            'email'     => 'required|unique:users,email',
+            // 'email'     => 'required|unique:users,email',
+            'email' => ['required', Rule::unique('users')->whereNull('deleted_at')],
             'password'  => 'required|min:8|max:12',
             'cpassword' => 'required|min:8|max:12'
         ] );
