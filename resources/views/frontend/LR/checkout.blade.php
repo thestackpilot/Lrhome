@@ -171,7 +171,10 @@ if (
                                        <p class="font-nexa-light m-0 sidemark-section">
                                           <a href="javascript:void(0);" style="font-size: 12px;" class="btn--border-bottom m-0 mt-1 mb-1 add-sidemark"> Add Sidemark </a>
                                           <textarea class="form-control d-none" maxlength="35" name="sidemark[{{$item -> item_id}}]">{{$item->sidemark}}</textarea>
-                                          <a href="javascript:void(0);" style="font-size: 12px;" class="d-none sidemark-update-btn update-cart-button btn-secondary m-0 mt-1 p-1" onclick="updateSideMark('{{$item -> item_id}}','{{csrf_token()}}','{{$item -> item_customer_id}}','true', false)"> Update </a>
+                                          <a href="javascript:void(0);" style="font-size: 12px; background-color: #EF9000 !important;"
+                                          class="d-none sidemark-update-btn update-cart-button btn-secondary m-0 mt-1 p-1"
+                                          onclick="updateSideMark('{{$item -> item_id}}','{{csrf_token()}}','{{$item -> item_customer_id}}','true', false)"
+                                          > Update </a>
                                        </p>
                                     </div>
                                  </div>
@@ -243,7 +246,8 @@ if (
                                        <p class="font-nexa-light m-0 sidemark-section">
                                           <a href="javascript:void(0);" style="font-size: 12px;" class="btn--border-bottom m-0 mt-1 mb-1 add-sidemark"> Add Sidemark </a>
                                           <textarea class="form-control d-none" maxlength="35" name="sidemark[{{$item -> item_id}}]">{{$item->sidemark}}</textarea>
-                                          <a href="javascript:void(0);" style="font-size: 12px;" class="d-none sidemark-update-btn update-cart-button btn-secondary m-0 mt-1 p-1" onclick="updateSideMark('{{$item -> item_id}}','{{csrf_token()}}','{{$item -> item_customer_id}}','true', true)"> Update </a>
+                                          <a href="javascript:void(0);" style="font-size: 12px; background-color: #EF9000 !important;" class="d-none sidemark-update-btn update-cart-button btn-secondary m-0 mt-1 p-1"
+                                          onclick="updateSideMark('{{$item -> item_id}}','{{csrf_token()}}','{{$item -> item_customer_id}}','true', true)"> Update </a>
                                        </p>
                                     </div>
                                  </div>
