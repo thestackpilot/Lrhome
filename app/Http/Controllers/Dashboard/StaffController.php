@@ -132,7 +132,8 @@ class StaffController extends DashboardController
         $validated_data = $request->validate( [
             'firstname' => 'required|max:255',
             'lastname'  => 'required|max:255',
-            'email'     => 'required|unique:users,email,'.$id
+            //'email'     => 'required|unique:users,email,'.$id
+            'email'     => ['required', Rule::unique('users')->ignore($id)->whereNull('deleted_at')],
         ] );
 
         $data = [
