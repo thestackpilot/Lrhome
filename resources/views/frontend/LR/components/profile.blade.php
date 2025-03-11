@@ -5,18 +5,22 @@
 use App\Http\Controllers\ConstantsController;
 use App\Http\Controllers\CommonController;
 
-@endphp 
+@endphp
 
     @guest()
-    <a href="{{route('auth.login')}}"> 
-        <i class="headericons icon-user quickProfile-opener"></i> 
+    <a href="{{route('auth.login')}}">
+        <i class="headericons icon-user quickProfile-opener"></i>
     </a>
     @endguest()
     @auth()
-    <i class="headericons icon-user quickProfile-opener"></i> 
+    <i class="headericons icon-user quickProfile-opener"></i>
     <div class="quick-profile col-sm-12 m-md-2 bg-white checkout-balance col-12 d-none">
         <i class="icon-cross position-absolute closeProfile"> </i>
         <div class="d-flex flex-column">
+            @php
+                $hasManageOrdersPermission = !empty(Auth::user()->getPermissions()) && in_array('manage-orders', Auth::user()->getPermissions());
+                $hasManageClaimsPermission = !empty(Auth::user()->getPermissions()) && in_array('manage-claims', Auth::user()->getPermissions());
+            @endphp
             <div class="flex-row justify-content-center upperArea text-center">
                 <a href="{{route('dashboard.myaccount')}}" class="profile-img">
                     <h1 class="naming-initials"> {{Auth::user()->firstname ? strtoupper(Auth::user()->firstname)[0] : ''}}{{Auth::user()->lastname ? strtoupper(Auth::user()->lastname)[0] : ''}} </h1>
@@ -40,6 +44,7 @@ use App\Http\Controllers\CommonController;
                         <i class="icon-cog"></i>
                     </a>
                 </div>
+                @if($hasManageOrdersPermission || empty(Auth::user()->getPermissions()))
                 <div class="user-settings-block1 p-0">
                     <a href="{{route('dashboard.placeorder')}}" class="user-settings">
                         <div>Place Order</div>
@@ -58,12 +63,15 @@ use App\Http\Controllers\CommonController;
                         <i class="icon-credit-card"></i>
                     </a>
                 </div>
+                @endif
+                @if($hasManageClaimsPermission || empty(Auth::user()->getPermissions()))
                 <div class="user-settings-block1 p-0">
                     <a href="{{route('dashboard.viewreturn')}}" class="user-settings">
                         <div>View Returns</div>
                         <i class="icon-reply"></i>
                     </a>
                 </div>
+                @endif
                 @endif
                 <div class="user-settings-block1 p-0">
                     <a class="user-settings" href="{{route('auth.logout')}}">
