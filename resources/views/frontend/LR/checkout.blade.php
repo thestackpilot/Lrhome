@@ -170,7 +170,11 @@ if (
                                     <div class="row">
                                        <p class="font-nexa-light m-0 sidemark-section">
                                           <a href="javascript:void(0);" style="font-size: 12px;" class="btn--border-bottom m-0 mt-1 mb-1 add-sidemark"> Add Sidemark </a>
-                                          <textarea class="form-control d-none" maxlength="35" name="sidemark[{{$item -> item_id}}]"></textarea>
+                                          <textarea class="form-control d-none" maxlength="35" name="sidemark[{{$item -> item_id}}]">{{$item->sidemark}}</textarea>
+                                          <a href="javascript:void(0);" style="font-size: 12px; background-color: #EF9000 !important;"
+                                          class="d-none sidemark-update-btn update-cart-button btn-secondary m-0 mt-1 p-1"
+                                          onclick="updateSideMark('{{$item -> item_id}}','{{csrf_token()}}','{{$item -> item_customer_id}}','true', false)"
+                                          > Update </a>
                                        </p>
                                     </div>
                                  </div>
@@ -241,7 +245,9 @@ if (
                                     <div class="row">
                                        <p class="font-nexa-light m-0 sidemark-section">
                                           <a href="javascript:void(0);" style="font-size: 12px;" class="btn--border-bottom m-0 mt-1 mb-1 add-sidemark"> Add Sidemark </a>
-                                          <textarea class="form-control d-none" maxlength="35" name="sidemark[{{$item -> item_id}}]"></textarea>
+                                          <textarea class="form-control d-none" maxlength="35" name="sidemark[{{$item -> item_id}}]">{{$item->sidemark}}</textarea>
+                                          <a href="javascript:void(0);" style="font-size: 12px; background-color: #EF9000 !important;" class="d-none sidemark-update-btn update-cart-button btn-secondary m-0 mt-1 p-1"
+                                          onclick="updateSideMark('{{$item -> item_id}}','{{csrf_token()}}','{{$item -> item_customer_id}}','true', true)"> Update </a>
                                        </p>
                                     </div>
                                  </div>
@@ -355,7 +361,7 @@ if (
                                  </div>
                               </div>
                            </div>
-                           
+
                            <div class="d-flex flex-column justify-content-between column-gap-20 mb-3">
                               <label for="shipping_instructions" class="p-0 m-0 mb-3">Shipping Instructions</label>
                               <textarea maxlength="4000" name="shipping_instructions" class="form-control bg-white" placeholder="Shipping Instructions"></textarea>
@@ -378,8 +384,8 @@ if (
                               </div> --}}
                               <div id="" class="show" aria-labelledby="headingOne">
                                  @php
-                                    
-                                       
+
+
                                  @endphp
                                  <div class="card-body">
                                     <div class="new-cc-section">
@@ -475,7 +481,7 @@ if (
                               </div>
                            </div>
                         </div>
-                      
+
                         <div class="address-summery step-4 d-none mb-5">
                            <div class="d-flex column-gap-20 address-summery-inner">
                               <div class="d-flex flex-column fullwidth">
@@ -645,7 +651,7 @@ if (
 
          for(i = step; i > 0; i--)
             $(`#progressbar li[data-step="${i}"]`).removeClass('muted').addClass('active');
-         
+
          $(`#progressbar li[data-step="${step}"]`).addClass('current');
 
          $('html, body').animate({scrollTop:0}, 'slow');
@@ -691,7 +697,7 @@ if (
          $('.step-2').removeClass('d-none');
          $('.go-back').attr('data-step', 'step-1');
          $('[name="ship-pickup"]').change();
-        
+
          update_active_step( 2 );
       });
       $('.go-back').on('click', function() {
@@ -768,7 +774,7 @@ if (
                }
             });
          }
-         
+
          if ($('.same-billing-address').is(':checked')) {
             tryingToFill = true;
          }
@@ -800,7 +806,7 @@ if (
             if(card_required == "")
             {
                shipping_address = '';
-               $('.go-back').attr('data-step', 'step-2'); 
+               $('.go-back').attr('data-step', 'step-2');
                if (!$('.other-address').hasClass('muted-fields')) {
                $('.other-address input[type="text"]').each(function() {
                   shipping_address += `<p class="m-0 mb-3"><b>${$(this).attr('placeholder').replace('*', '')}: </b> ${$(this).val()}</p>`;
@@ -933,9 +939,22 @@ if (
             return true;
       });
 
-      $('.add-sidemark').click(function() {
-         $('textarea', $(this).closest('.sidemark-section')).toggleClass('d-none');
-      });
+    $('.add-sidemark').click(function() {
+        $('textarea', $(this).closest('.sidemark-section')).toggleClass('d-none');
+        $('.sidemark-update-btn', $(this).closest('.sidemark-section')).addClass('d-none');
+    });
+    $('.sidemark-section').each(function() {
+        var textarea = $('textarea', this);
+        if (textarea.val().trim() !== '') {
+            textarea.removeClass('d-none');
+        } else {
+            textarea.addClass('d-none');
+        }
+    });
+    $('.sidemark-section textarea').focus(function() {
+        $(this).closest('.sidemark-section').find('a').removeClass('d-none');
+    });
+
 
       $('.select-address').on('change', function() {
          $('.address-card').addClass('d-none');

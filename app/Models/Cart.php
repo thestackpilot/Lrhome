@@ -113,7 +113,8 @@ class Cart extends Model
                 "item_image"             => $cart_item->item_image,
                 "item_eta"               => $cart_item->item_eta,
                 "item_atsq"              => isset( $max_quantities[$cart_item->item_id] ) ? $max_quantities[$cart_item->item_id]['ATSQ'] : 9999,
-                "item_only_max_quantity" => isset( $max_quantities[$cart_item->item_id] ) ? $max_quantities[$cart_item->item_id]['OnlyMaxQuantity'] : false
+                "item_only_max_quantity" => isset( $max_quantities[$cart_item->item_id] ) ? $max_quantities[$cart_item->item_id]['OnlyMaxQuantity'] : false,
+                "sidemark"             => $cart_item->sidemark,
             );
             $cart_count += $cart_item->item_quantity;
             $cart_total += ( $cart_item->item_price * $cart_item->item_quantity );

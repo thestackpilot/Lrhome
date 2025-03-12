@@ -80,6 +80,7 @@ Route::get( '/search/{string}/{type?}', [SearchController::class, 'index'] )->na
 Route::post( '/cart/add/', [CartController::class, 'add'] )->name( 'frontend.cart.add' );
 Route::post( '/cart/refresh/{type}', [CartController::class, 'refresh'] )->name( 'frontend.cart.refresh' );
 Route::post( '/cart/update/', [CartController::class, 'update'] )->name( 'frontend.cart.update' );
+Route::post( '/cart/sidemark/update/', [CartController::class, 'update_sidemark'] )->name( 'frontend.cart.update_sidemark' );
 Route::post( '/cart/remove/', [CartController::class, 'remove'] )->name( 'frontend.cart.remove' );
 
 //TODO : Checkout Routes - THIS IS NOT WORKING
