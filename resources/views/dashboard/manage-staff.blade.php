@@ -81,7 +81,7 @@ use App\Http\Controllers\CommonController;
                                                 <td>{{$user->getDataAttribute('phone')}}</td>
                                                 <td>{{ucwords($user->getDataAttribute('status'))}}</td>
                                                 <td>
-                                                    <a href="{{route('dashboard.staff.fetch', ['id' => $user->id])}}" class="btn btn-primary btn-sm">Edit</a>
+                                                    <a href="{{route('dashboard.staff.fetch', ['id' => $user->id])}}" class="btn btn-primary btn-sm staff-edit-btn">Edit</a>
                                                     @if(Auth::user()->id != $user->id)
                                                     <form onsubmit="return confirm('Do you really want to delete this user?');" class="delete-form" action="{{route('dashboard.staff.delete', ['id' => $user->id])}}" method="POST" style="display: inline;">
                                                         @method('DELETE')
@@ -109,4 +109,14 @@ use App\Http\Controllers\CommonController;
     </main>
     @include('dashboard.components.footer')
 </div>
+@endsection
+@section('styles')
+<style>
+    .staff-edit-btn{
+        line-height: 39px !important;
+    }
+    table td{
+        line-height: 39px !important;
+    }
+</style>
 @endsection

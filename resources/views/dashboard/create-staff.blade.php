@@ -5,7 +5,7 @@
 use App\Http\Controllers\ConstantsController;
 use App\Http\Controllers\CommonController;
 
-@endphp 
+@endphp
 
 @extends('dashboard.layouts.app')
 @section('title','Dashboard | Staff')
@@ -114,6 +114,16 @@ use App\Http\Controllers\CommonController;
  @include('dashboard.components.footer')
 </div>
 @endsection
+@section('styles')
+<style>
+    input[type="checkbox"]{
+        border-width: 1px !important;
+    }
+    input[type="checkbox"], input[type="radio"] {
+        border-width: 1px !important;
+    }
+</style>
+@endsection
 @section('scripts')
 <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
 <script type="text/javascript">
@@ -131,10 +141,10 @@ use App\Http\Controllers\CommonController;
                 if (typeof $(this).val().length === 'undefined') {
                     $(this).addClass('is-invalid');
                     allOk = false;
-                } else if ($(this).val().trim().length < 1) {
+                }/* else if ($(this).val().trim().length < 1) {
                     $(this).addClass('is-invalid');
                     allOk = false;
-                } else {
+                } */else {
                     $(this).removeClass('is-invalid');
                 }
             });
