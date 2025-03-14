@@ -101,9 +101,7 @@ class StaffController extends DashboardController
             return redirect()->back()->withInput()->with( 'message', ['type' => 'danger', 'body' => 'New password and confirm password doesn\'t match.'] );
         }
 
-        $data = [
-            'password' => Hash::make( $validated_data['password'] )
-        ];
+        $data['password'] = Hash::make( $validated_data['password'] );
 
         $this->model->add_user( $data );
 
