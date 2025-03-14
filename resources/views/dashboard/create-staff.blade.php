@@ -28,7 +28,7 @@ use App\Http\Controllers\CommonController;
                         @endif
                         <div class="account-content p-5">
                             <h1 class="section-title text-center mb-3 mt-0 font-ropa">
-                                {{ $user ? "Create New Account" : "Edit Account" }}
+                                {{ !$user ? "Create New Account" : "Edit Account" }}
                             </h1>
                             @if ($errors->any())
                             <div class="alert alert-danger">
