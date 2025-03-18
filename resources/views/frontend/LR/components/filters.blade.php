@@ -102,7 +102,7 @@ function getCount( $subfilters, $filter ) {
                                 </ul>
                             </div>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
             </li>
             @endforeach
@@ -372,7 +372,8 @@ function getCount( $subfilters, $filter ) {
         .on('click', '.reset_filters, .clear_all_filters', function() {
             var FiltersArray = '{!!base64_encode(isset($default_filter) && $default_filter ? $default_filter : ConstantsController::NO_FILTER_FLAG)!!}';
             var noFiltersArray = '{!!base64_encode(ConstantsController::NO_FILTER_FLAG)!!}';
-            filterManager(initialLoad ? noFiltersArray : FiltersArray, true);
+            //filterManager(initialLoad ? noFiltersArray : FiltersArray, true);
+            filterManager(noFiltersArray, true);
             $('input:checkbox').removeAttr('checked');
         });
 
