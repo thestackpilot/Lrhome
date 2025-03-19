@@ -29,33 +29,35 @@ class OrdersController extends AdminController
         // TODO - Need to fix this ASAP
         if ( env( 'APP_URL', '' ) === 'http://staging.lrhome.us/' || env( 'APP_URL', '' ) === 'https://www.lrhome.us/' )
         {
-            $orders = $this->order_payment_model::query()
-                ->where( 'order_status', '=', 'failed' )
-                ->where( function ( $query ) use ( $range )
-            {
+            // $orders = $this->order_payment_model::query()
+            //     ->where( 'order_status', '=', 'failed' )
+            //     ->where( function ( $query ) use ( $range )
+            // {
 
-                    foreach ( $range as $value )
-                {
-                        $query->orWhere( 'order_response', 'LIKE', "%{$value}%" );
-                    }
+            //         foreach ( $range as $value )
+            //     {
+            //             $query->orWhere( 'order_response', 'LIKE', "%{$value}%" );
+            //         }
 
-                } )
-                ->orderBy( 'created_at', 'DESC' )
-                ->paginate( 50 );
+            //     } )
+            //     ->orderBy( 'created_at', 'DESC' )
+            //     ->paginate( 50 );
+            $orders = $this->order_payment_model::query()->where( 'order_status', '=', 'failed' )->where( 'webhook', '=', 1 )->orderBy( 'created_at', 'DESC' )->paginate( 50 );
         }
         else
         {
-            $orders = $this->order_payment_model::query()->where( function ( $query ) use ( $range )
-            {
+            // $orders = $this->order_payment_model::query()->where( function ( $query ) use ( $range )
+            // {
 
-                foreach ( $range as $value )
-                {
-                    $query->orWhereJsonContains( 'order_response', ['ObjectID' => "{$value}"] );
-                }
+            //     foreach ( $range as $value )
+            //     {
+            //         $query->orWhereJsonContains( 'order_response', ['ObjectID' => "{$value}"] );
+            //     }
 
-            } )
-                ->orderBy( 'created_at', 'DESC' )
-                ->paginate( 50 );
+            // } )
+            //     ->orderBy( 'created_at', 'DESC' )
+            //     ->paginate( 50 );
+            $orders = $this->order_payment_model::query()->where( 'order_status', '=', 'failed' )->where( 'webhook', '=', 1 )->orderBy( 'created_at', 'DESC' )->paginate( 50 );
         }
 
         return view( 'admin.orders', ['orders' => $orders, 'active_theme' => $this->active_theme_json] );

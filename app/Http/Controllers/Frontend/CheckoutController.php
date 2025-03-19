@@ -470,7 +470,8 @@ $states = $this->ApiObj->Get_CountryStates( $country_id );
                 $order_payment = $this->order_payment_model->updateOrCreate(
                     ['user_id' => Auth::user()->id, 'hash' => $order_payment_hash],
                     [
-                        'order_status' => ConstantsController::ORDER_STATUS['failed']
+                        'order_status' => ConstantsController::ORDER_STATUS['failed'],
+                        'webhook' => 1,
                     ]
                 );
 
