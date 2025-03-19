@@ -35,13 +35,19 @@ use App\Http\Controllers\CommonController;
                             </div>
                         @endif
                         <div class="d-flex flex-row flex-md-wrap flex-sm-wrap justify-content-between">
-                            <a href="{{route('dashboard.placeorder')}}" class="card text-white bg-success mb-3" style="max-width: 18rem;">
-                                <div class="card-body text-center">
-                                    <img src="{{asset('Dashboard/images/icon-dashboard-bag.svg')}}" class="icon-img" style="width:23.69px;" />
-                                    <h5 class="card-title font-ropa">Place An Order</h5>
-                                    <i class="bi bi-chevron-right d-none lr-theme-only"></i>
-                                </div>
-                            </a>
+                            @php
+                                $hasManageOrdersPermission = !empty(Auth::user()->getPermissions()) && in_array('manage-orders', Auth::user()->getPermissions());
+                                $hasManageFinacialPermission = !empty(Auth::user()->getPermissions()) && in_array('manage-financials', Auth::user()->getPermissions());
+                            @endphp
+                            @if($hasManageOrdersPermission || empty(Auth::user()->getPermissions()))
+                                <a href="{{ route('dashboard.placeorder') }}" class="card text-white bg-success mb-3" style="max-width: 18rem;">
+                                    <div class="card-body text-center">
+                                        <img src="{{ asset('Dashboard/images/icon-dashboard-bag.svg') }}" class="icon-img" style="width:23.69px;" />
+                                        <h5 class="card-title font-ropa">Place An Order</h5>
+                                        <i class="bi bi-chevron-right d-none lr-theme-only"></i>
+                                    </div>
+                                </a>
+                            @endif
                             <a href="{{url('/')}}" class="card text-white bg-success mb-3" style="max-width: 18rem;">
                                 <div class="card-body text-center">
                                     <img src="{{asset('Dashboard/images/icon-dashboard-box.svg')}}" class="icon-img" style="width:28.74px;" />
@@ -49,6 +55,7 @@ use App\Http\Controllers\CommonController;
                                     <i class="bi bi-chevron-right d-none lr-theme-only"></i>
                                 </div>
                             </a>
+                            @if($hasManageOrdersPermission || empty(Auth::user()->getPermissions()))
                             <a href="{{route('dashboard.vieworder')}}" class="card text-white bg-success mb-3" style="max-width: 18rem;">
                                 <div class="card-body text-center">
                                     <img src="{{asset('Dashboard/images/icon-dashboard-status.svg')}}" class="icon-img" style="width:26.87px;" />
@@ -56,6 +63,8 @@ use App\Http\Controllers\CommonController;
                                     <i class="bi bi-chevron-right d-none lr-theme-only"></i>
                                 </div>
                             </a>
+                            @endif
+                            @if($hasManageOrdersPermission || empty(Auth::user()->getPermissions()))
                             <a href="{{$active_theme_json->general->use_company_credit ? route('dashboard.companycredit', ['rtype' => 'invoices']) : route('dashboard.invoice')}}" class="card text-white bg-success mb-3" style="max-width: 18rem;">
                                 <div class="card-body text-center">
                                     <img src="{{asset('Dashboard/images/icon-dashboard-invoice.svg')}}" class="icon-img" style="width:26.44px;" />
@@ -63,10 +72,11 @@ use App\Http\Controllers\CommonController;
                                     <i class="bi bi-chevron-right d-none lr-theme-only"></i>
                                 </div>
                             </a>
+                            @endif
                         </div>
                         @if(count($client_address))
                         <div class="d-flex light-grey-bg p-4 mt-3 flex-column">
-                            {{-- 
+                            {{--
                             <h2 class="section-title text-center mb-3 font-ropa"> {{$client_address['CustomerAddress']['BillToAddresses'][0]['FirstName'].' '.$client_address['CustomerAddress']['BillToAddresses'][0]['LastName']}}</h2>
                             <div class="d-flex justify-content-between mb-5 flex-sm-wrap">
                                 <div class="d-flex flex-column bill-to mt-3 col-md-7">
@@ -88,7 +98,7 @@ use App\Http\Controllers\CommonController;
                         </div>
                         @endif
                     </div>
-                    @if($active_theme_json->general->show_recent_orders)
+                    @if($active_theme_json->general->show_recent_orders && ($hasManageOrdersPermission || empty(Auth::user()->getPermissions())))
                     <div class="card mt-4 p-4">
                         <h3 class="font-ropa">
                             <span>Recent Orders</span>
