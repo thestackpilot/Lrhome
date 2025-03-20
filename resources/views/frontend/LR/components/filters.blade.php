@@ -295,7 +295,43 @@ function getCount( $subfilters, $filter ) {
                 });
                 FiltersArray = btoa('{"Filters": [' + Filterarr + ']}');
             } else {
-                FiltersArray = Filterarr;
+                const FILTERS = {
+                    Rugs: 'Rugs',
+                    New_Arrivals: 'New_Arrivals',
+                    NATURALS: 'NATURALS',
+                    Indoor_Outdoor: 'Indoor_Outdoor',
+                    Discontinued: 'Discontinued',
+                    PILLOWS: 'PILLOWS',
+                    POUFS: 'POUFS',
+                    Throws: 'Throws',
+                    Baskets: 'Baskets',
+                    Chair_Pads: 'Chair_Pads',
+                    TABLE_TOPS: 'TABLE_TOPS',
+                    COVERLETS: 'COVERLETS',
+                    Pet_Bowls: 'Pet_Bowls',
+                    Pet_Beds: 'Pet_Beds',
+                    Chairs: 'Chairs',
+                    BENCHES: 'BENCHES',
+                    Cabinets: 'Cabinets',
+                    coffee_tables: 'coffee_tables',
+                    Consoles: 'Consoles',
+                    Side_Tables: 'Side_Tables',
+                    sideboards: 'sideboards',
+                    stools_ottoman: 'stools_ottoman',
+                    Bar_Table: 'Bar_Table',
+                    Mirrors: 'Mirrors',
+                    drink_tables: 'drink_tables',
+                    sofas: 'sofas',
+                    Dining_Tables: 'Dining_Tables',
+                    Dining_Benches: 'Dining_Benches',
+                    Dining_Chairs: 'Dining_Chairs',
+                };
+                const decodedString = atob(Filterarr);
+                const jsonData = JSON.parse(decodedString);
+                const filteredFilters = jsonData.Filters.filter((filter) => FILTERS.hasOwnProperty(filter.FilterID));
+                const result = { Filters: filteredFilters, };
+                FiltersArray = jsonToBase64(result);
+                // FiltersArray = Filterarr;
             }
         }
 
@@ -335,6 +371,12 @@ function getCount( $subfilters, $filter ) {
                 bindClicks();
             });
         }
+    }
+
+    function jsonToBase64(jsonData) {
+        const jsonString = JSON.stringify(jsonData);
+        const base64String = btoa(jsonString);
+        return base64String;
     }
 
     function applyFilterTrigger() {

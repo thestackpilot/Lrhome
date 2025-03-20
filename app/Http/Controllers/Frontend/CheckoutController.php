@@ -470,16 +470,18 @@ $states = $this->ApiObj->Get_CountryStates( $country_id );
                 $order_payment = $this->order_payment_model->updateOrCreate(
                     ['user_id' => Auth::user()->id, 'hash' => $order_payment_hash],
                     [
-                        'order_status' => ConstantsController::ORDER_STATUS['failed']
+                        'order_status' => ConstantsController::ORDER_STATUS['failed'],
                     ]
                 );
 
                 if ( isset( $result['Exception'] ) && $result['Exception'] || $result['ObjectID'] >= 900 )
                 {
+                    $order_payment->webhook  = 1;
+                    $order_payment->save();
 
-		    if ( 1 ) {
+		            if ( 1 ) {
                         try {
-			    $order_data = [
+			            $order_data = [
                 	            'hash'         => $order_payment_hash,
         	                    'order-detail' => serialize( [$headers, $itemDetail] )
 	                    ];
@@ -496,7 +498,7 @@ $states = $this->ApiObj->Get_CountryStates( $country_id );
                             prr( "Mail Exception: ".$e->getMessage() );
                         }
 
-		    }
+		            }
                     $this->cart_model->remove_cart_item( Auth::user()->id, ( new Cart() )->get_active_cart_customer(), 0, true );
                     $response['success'] = 1;
                     $response['msg']     = 'You order is processed and you will get the confirmation soon. <br> Your order reference is: '.$order_payment_hash;
