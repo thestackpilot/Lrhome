@@ -18,8 +18,8 @@ use App\Http\Controllers\CommonController;
         <i class="icon-cross position-absolute closeProfile"> </i>
         <div class="d-flex flex-column">
             @php
-                $hasManageOrdersPermission = !empty(Auth::user()->getPermissions()) && in_array('manage-orders', Auth::user()->getPermissions());
-                $hasManageClaimsPermission = !empty(Auth::user()->getPermissions()) && in_array('manage-claims', Auth::user()->getPermissions());
+                $hasManageOrdersPermission = in_array('manage-orders', Auth::user()->getPermissions());
+                $hasManageClaimsPermission = in_array('manage-claims', Auth::user()->getPermissions());
             @endphp
             <div class="flex-row justify-content-center upperArea text-center">
                 <a href="{{route('dashboard.myaccount')}}" class="profile-img">
@@ -44,7 +44,7 @@ use App\Http\Controllers\CommonController;
                         <i class="icon-cog"></i>
                     </a>
                 </div>
-                @if($hasManageOrdersPermission || empty(Auth::user()->getPermissions()))
+                @if($hasManageOrdersPermission)
                 <div class="user-settings-block1 p-0">
                     <a href="{{route('dashboard.placeorder')}}" class="user-settings">
                         <div>Place Order</div>
@@ -64,7 +64,7 @@ use App\Http\Controllers\CommonController;
                     </a>
                 </div>
                 @endif
-                @if($hasManageClaimsPermission || empty(Auth::user()->getPermissions()))
+                @if($hasManageClaimsPermission)
                 <div class="user-settings-block1 p-0">
                     <a href="{{route('dashboard.viewreturn')}}" class="user-settings">
                         <div>View Returns</div>
