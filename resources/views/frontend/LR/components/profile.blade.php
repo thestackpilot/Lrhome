@@ -18,8 +18,8 @@ use App\Http\Controllers\CommonController;
         <i class="icon-cross position-absolute closeProfile"> </i>
         <div class="d-flex flex-column">
             @php
-                $hasManageOrdersPermission = in_array('manage-orders', Auth::user()->getPermissions());
-                $hasManageClaimsPermission = in_array('manage-claims', Auth::user()->getPermissions());
+                $hasManageOrdersPermission = Auth::user()->parent_id == null || in_array('manage-orders', Auth::user()->getPermissions());
+                $hasManageClaimsPermission = Auth::user()->parent_id == null || in_array('manage-claims', Auth::user()->getPermissions());
             @endphp
             <div class="flex-row justify-content-center upperArea text-center">
                 <a href="{{route('dashboard.myaccount')}}" class="profile-img">
