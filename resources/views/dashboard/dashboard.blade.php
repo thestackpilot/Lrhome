@@ -98,7 +98,7 @@ use App\Http\Controllers\CommonController;
                         </div>
                         @endif
                     </div>
-                    @if($active_theme_json->general->show_recent_orders && ($hasManageOrdersPermission || empty(Auth::user()->getPermissions())))
+                    @if($active_theme_json->general->show_recent_orders && $hasManageOrdersPermission)
                     <div class="card mt-4 p-4">
                         <h3 class="font-ropa">
                             <span>Recent Orders</span>
