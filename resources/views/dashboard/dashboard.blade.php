@@ -36,8 +36,8 @@ use App\Http\Controllers\CommonController;
                         @endif
                         <div class="d-flex flex-row flex-md-wrap flex-sm-wrap justify-content-between">
                             @php
-                                $hasManageOrdersPermission = in_array('manage-orders', Auth::user()->getPermissions());
-                                $hasManageFinacialPermission = in_array('manage-financials', Auth::user()->getPermissions());
+                                $hasManageOrdersPermission = Auth::user()->parent_id == null || in_array('manage-orders', Auth::user()->getPermissions());
+                                $hasManageFinacialPermission = Auth::user()->parent_id == null || in_array('manage-financials', Auth::user()->getPermissions());
                             @endphp
                             @if($hasManageOrdersPermission)
                                 <a href="{{ route('dashboard.placeorder') }}" class="card text-white bg-success mb-3" style="max-width: 18rem;">
