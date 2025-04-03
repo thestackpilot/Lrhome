@@ -111,45 +111,45 @@ use App\Http\Controllers\CommonController;
                                 </div> -->
                                 <div class="mb-3 col-md-3 col-sm-12 pe-1 pe-lg-3">
                                     <label for="firstname" class="form-label">First Name*</label>
-                                    <input type="text" name="firstname" data-required="true" id="firstname" value="{{(old('firstname')) ? old('firstname') : Auth::user()->firstname}}" maxlength="35" class="form-control" placeholder="Oriental">
+                                    <input type="text" name="firstname" disabled data-required="true" id="firstname" value="{{(old('firstname')) ? old('firstname') : Auth::user()->firstname}}" maxlength="35" class="form-control" placeholder="First Name">
                                 </div>
                                 <!-- <div class="mb-3 col-md-3 col-sm-12 pe-1 pe-lg-3">
                                     <label for="PhoneNumber*" class="form-label">Middle Name</label>
-                                    <input type="text" class="form-control" placeholder="Rug Gallery">
+                                    <input type="text" class="form-control" disabled placeholder="Middle Name">
                                 </div> -->
                                 <div class="mb-3 col-md-3 col-sm-12 pe-1 pe-lg-3">
                                     <label for="lastname" class="form-label">Last Name*</label>
-                                    <input type="text" data-required="true" name="lastname" id="lastname" class="form-control" placeholder="L.P" value="{{(old('lastname')) ? old('lastname') : Auth::user()->lastname}}" maxlength="35">
+                                    <input type="text" data-required="true" disabled name="lastname" id="lastname" class="form-control" placeholder="Last Name" value="{{(old('lastname')) ? old('lastname') : Auth::user()->lastname}}" maxlength="35">
                                 </div>
                                 <div class="mb-3 col-md-3 col-sm-12 pe-1 pe-lg-3">
                                     <label for="email" class="form-label">Email*</label>
-                                    <input type="email" data-required="true" id="email" name="email" class="form-control" placeholder="oriental@example.com" value="{{(old('email')) ? old('email') : Auth::user()->email}}" maxlength="60">
+                                    <input disabled type="email" data-required="true" id="email" name="email" class="form-control" placeholder="Email" value="{{(old('email')) ? old('email') : Auth::user()->email}}" maxlength="60">
                                 </div>
                                 <div class="mb-3 col-md-3 col-sm-12 pe-1 pe-lg-3">
                                     <label for="company" class="form-label">Company*</label>
-                                    <input type="text" data-required="true" id="company" class="form-control" name="company" placeholder="XYZ & Co." value="{{(old('company')) ? old('company') : Auth::user()->company}}" maxlength="35">
+                                    <input disabled type="text" data-required="true" id="company" class="form-control" name="company" placeholder="Company" value="{{(old('company')) ? old('company') : Auth::user()->company}}" maxlength="35">
                                 </div>
                                 <div class="mb-3 col-md-3 col-sm-12 pe-1 pe-lg-3">
                                     <label for="phone" class="form-label">Office Phone</label>
-                                    <input type="text" id="phone" class="form-control" name="phone" placeholder="210-342-4362" maxlength="12" minlength="12" data-inputmask="'mask': '999-999-9999'" value="{{(old('phone')) ? old('phone') : Auth::user()->phone}}">
+                                    <input type="text" disabled id="phone" class="form-control" name="phone" placeholder="Phone" maxlength="12" minlength="12" data-inputmask="'mask': '999-999-9999'" value="{{(old('phone')) ? old('phone') : Auth::user()->phone}}">
                                 </div>
                                 <div class="mb-3 col-md-3 col-sm-12 pe-1 pe-lg-3">
                                     <label for="street_address" class="form-label">Address</label>
-                                    <input type="text" id="street_address" class="form-control" name="street_address" placeholder="Street # 123" value="{{(old('street_address')) ? old('street_address') : Auth::user()->street_address}}" maxlength="35">
+                                    <input type="text" disabled id="street_address" class="form-control" name="street_address" placeholder="Street Address" value="{{(old('street_address')) ? old('street_address') : Auth::user()->street_address}}" maxlength="35">
                                 </div>
                                 <div class="mb-3 col-md-3 col-sm-12 pe-1 pe-lg-3">
                                     <label for="postal_code" class="form-label">Postal Code</label>
-                                    <input type="text" id="postal_code" class="form-control" name="postal_code" placeholder="12345" value="{{(old('postal_code')) ? old('postal_code') : Auth::user()->postal_code}}" maxlength="10">
+                                    <input type="text" disabled id="postal_code" class="form-control" name="postal_code" placeholder="Postal Code" value="{{(old('postal_code')) ? old('postal_code') : Auth::user()->postal_code}}" maxlength="10">
                                 </div>
                                 <!-- <div class="mb-3 col-md-3 col-sm-12 pe-1 pe-lg-3">
                                     <label for="Inquiry" class="form-label">Account</label>
-                                    <input type="number" min="0" class="form-control" placeholder="Cust">
+                                    <input type="number" min="0" disabled class="form-control" placeholder="Customer">
                                 </div> -->
-                                <div class="mb-3 col-md-12 col-sm-12">
+                                <div class="mb-3 col-md-12 col-sm-12 d-none">
                                     <label for="description" class="form-label">Description</label>
                                     <textarea style="min-height: 100px;" class="form-control" rows="10" id="description" name="description" aria-describedby="Inquiry " placeholder="Details" maxlength="2000">{{(old('description')) ? old('description') : Auth::user()->getDataAttribute('description','')}}</textarea>
                                 </div>
-                                <div class="mb-3 justify-content-end pe-1 pe-lg-3 col-md-12 d-flex">
+                                <div class="mb-3 justify-content-end pe-1 pe-lg-3 col-md-12 d-flex d-none">
                                     <button type="submit" class="btn btn-primary text-uppercase mt-2" style="width: auto;background: #EA7410;color:#fff;">Save</button>
                                 </div>
                             </form>

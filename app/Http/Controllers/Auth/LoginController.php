@@ -155,7 +155,16 @@ class LoginController extends AuthController
                     'is_customer'         => $response['UserDetails']['IsCustomer'],
                     'is_sale_rep'         => $response['UserDetails']['IsSalesRep'],
                     'password'            => Hash::make( $credentials['password'] ),
-	             'email'          => $response['UserDetails']['Email'] ? $response['UserDetails']['Email'] : null,
+                    'firstname'           => $response['UserDetails']['FirstName'],
+                    'lastname'            => $response['UserDetails']['LastName'],
+                    'email'               => $response['UserDetails']['Email'] ? $response['UserDetails']['Email'] : null,
+                    'company'             => $response['UserDetails']['Company'],
+                    'street_address'      => $response['UserDetails']['StreetAddress'],
+                    'postal_code'         => $response['UserDetails']['PostalCode'],
+                    'city'                => $response['UserDetails']['City'],
+                    'country'             => $response['UserDetails']['Country'],
+                    'state'               => $response['UserDetails']['State'],
+                    'phone'               => $response['UserDetails']['PhoneNo']
                 ];
 
                 if ( isset($response['UserDetails']['ResetPassword']) && $response['UserDetails']['ResetPassword'] )

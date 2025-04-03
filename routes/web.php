@@ -202,6 +202,7 @@ Route::group( ['prefix' => 'dashboard', 'middleware' => ['auth']], function ()
     Route::post( '/place-order', [ShopController::class, 'place_order'] )->name( 'dashboard.placeorder' );
     Route::post( '/get-customer-addresses', [ShopController::class, 'get_customer_addresses'] )->name( 'dashboard.customeraddresses' );
     Route::get( '/view-order', [GenericReportsController::class, 'view_order'] )->name( 'dashboard.vieworder' );
+    Route::get( '/order_report', [GenericReportsController::class, 'order_report'] )->name( 'dashboard.orderreport' );
     Route::get( '/initiate-return', [ShopController::class, 'init_return'] )->name( 'dashboard.initreturn' );
     Route::get( '/view-return', [GenericReportsController::class, 'view_return'] )->name( 'dashboard.viewreturn' );
     Route::get( '/hangtags', [HangtagsController::class, 'index'] )->name( 'dashboard.hangtags' );

@@ -139,7 +139,8 @@ class ApisController extends RootController
 
     public function Get_DebitMemos( $customerId, $FromDate = '', $ToDate = '', $PayableInvoiceNo = '', $VendorID = '' )
     {
-        $post_array = array( 'CustomerID' => $customerId, 'FromDate' => $FromDate, 'ToDate' => $ToDate, 'PayableInvoiceNo' => $PayableInvoiceNo, 'VendorID' => $VendorID );
+//        $post_array = array( 'CustomerID' => $customerId, 'FromDate' => $FromDate, 'ToDate' => $ToDate, 'PayableInvoiceNo' => $PayableInvoiceNo, 'VendorID' => $VendorID );
+        $post_array = array( 'CustomerID' => $customerId, 'FromDate' => $FromDate, 'ToDate' => $ToDate, 'PayableInvoiceNo' => $PayableInvoiceNo, 'SalesRepID' => $VendorID );
 
         return $this->Post_API_Signature( 'Get_DebitMemos', 'Get Debit Memos', $post_array, ['DebitMemos'] );
     }
@@ -150,6 +151,13 @@ class ApisController extends RootController
         $post_array              = array( 'MainCollectionID' => $mainCollectionId, 'Filters' => $Filters, 'SearchText' => $SearchText, 'LifeStyleID' => $LifeStyleID, 'CollectionID' => $CollectionID, 'DesignID' => $DesignID, 'ColorID' => $ColorID, 'SizeID' => $SizeID, 'ShapeID' => $ShapeID, 'MaterialID' => $MaterialID, 'WeavingID' => $WeavingID, 'PageSize' => $PageSize, 'PageIndex' => $PageIndex, 'OrderBy' => $OrderBy );
 
         return $this->Post_API_Signature( 'Get_Designs', 'Get Design', $post_array, ['Designs', 'TotalRows'] );
+    }
+
+    public function Get_ViewDocumentsReport($SalesRepId = '', $CustomerId = '', $MenuTag = '', $DocumentNo = '')
+    {
+        $post_array    = array('SalesRepID' => $SalesRepId, 'CustomerID' => $CustomerId, 'MenuTag' => $MenuTag, 'DocumentNo' => $DocumentNo);
+        $responseArray = $this->Post_API_Signature('Get_ViewDocumentsReport', 'Get Document Report', $post_array);
+        return array("document" => $responseArray['OutPut']);
     }
 
     public function Get_Docuemnts()
