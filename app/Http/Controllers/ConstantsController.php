@@ -103,7 +103,7 @@ class ConstantsController extends RootController
             'integrator_id'                      => '888000002887', // '888000002887',
             'grant_type'                         => 'password',
             'user'                               => 'vladdha@lrresources.com', //'sumit@lrresources.com', // 'adil@ashtexsolutions.com',
-            'pass'                               =>  '@fridi8laster!', //'!HamilTon@519*', //'P@intAr7$', //'Ni@graFall#2',  // 'B0wlingm@st!', //'Alcr@z02N0vak', //'A@lcarazmast1', //'!LR@Home0531*', //'!LR@Home0502$', //'!LR@Home420$', //'Brav@Con2023', //'Ay$062022' // 'BDTeam!@#321'
+            'pass'                               => 'B0stonTulu', // '@fridi8laster!', //'!HamilTon@519*', //'P@intAr7$', //'Ni@graFall#2',  // 'B0wlingm@st!', //'Alcr@z02N0vak', //'A@lcarazmast1', //'!LR@Home0531*', //'!LR@Home0502$', //'!LR@Home420$', //'Brav@Con2023', //'Ay$062022' // 'BDTeam!@#321'
         ]
     ];
 

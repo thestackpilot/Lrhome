@@ -85,8 +85,10 @@ class AccountController extends DashboardController
 
         }
         else
-        {
+        {   prr( Auth::user()->email );
             prr( Auth::user()->customer_id );
+        prr($validated_data['existing-password']);
+             prr($validated_data['confirm-password']);
             if ( ! Auth::attempt( ['customer_id' => Auth::user()->customer_id, 'password' => $validated_data['existing-password']] ) )
             {
                 return redirect()->back()->withInput()->with( 'message', ['type' => 'danger', 'referer' => 'changepass', 'body' => 'Wrong details for existing password.'] );
