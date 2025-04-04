@@ -226,7 +226,7 @@ class GenericReportsController extends DashboardController
 
             $transactions = $this->ApiObj->Get_FinancialTransactions($request->customer, $request->sales_rep, $from_d, $to_d, $request->po_number, $request->invoice_number, $request->cash_receipt_number, $page, $page_size);
 
-         
+        //  dd($transactions);
             $table = array(
                 'thead' => [
                     'transaction_number' => 'Transaction Number',
@@ -291,7 +291,7 @@ class GenericReportsController extends DashboardController
                             'Ref Invoice#' => $transaction['SalesInvoiceNo'],
                             'Customer ID' => $transaction['CustomerID'],
                             'Ship Via' => isset($transaction['ShipVia']) ? $transaction['ShipVia'] : '',
-                            'Rep' => $transaction['SalesRepID'] . ' ' . isset($transaction['AgentCompany']) ? $transaction['AgentCompany'] : '',
+                            'Rep' => isset($transaction['AgentCompany']) ? $transaction['SalesRepID'] . ' ' . $transaction['AgentCompany'] : $transaction['SalesRepID'] ,
                             'Created By' => $transaction['CreatedBy'],
                             
                         ];
@@ -406,7 +406,7 @@ class GenericReportsController extends DashboardController
                             'PO#' => $transaction['CustomerPO'],
                             // 'SO#' => $transaction['SalesOrderNo'],
                             'OrderPlacedBy' => $transaction['OrderPlacedBy'],
-                            'Rep' => $transaction['SalesRepID'] . ' ' . isset($transaction['AgentCompany']) ? $transaction['AgentCompany'] : '',
+                            'Rep' => isset($transaction['AgentCompany']) ? $transaction['SalesRepID']." ". $transaction['AgentCompany'] : $transaction['SalesRepID'],
                             'Created By' => $transaction['CreatedBy'],
                         ];
 
@@ -786,7 +786,7 @@ class GenericReportsController extends DashboardController
                         'Ref Invoice#' => $memo['SalesInvoiceNo'],
                         'Customer ID' => $memo['CustomerID'],
                         'Ship Via' => $memo['ShipVia'],
-                        'Rep' => $memo['SalesRepID'] . ' ' . isset($memo['AgentCompany']) ? $memo['AgentCompany'] : '',
+                        'Rep' =>  isset($memo['AgentCompany']) ? $memo['SalesRepID'] . ' ' .$memo['AgentCompany'] :$memo['SalesRepID'],
                         'Created By' => isset($memo['CreatedBy']) ? $memo['CreatedBy'] : 'N/A'
                     ];
 
@@ -1186,13 +1186,13 @@ class GenericReportsController extends DashboardController
                         'PO#' => $invoice['CustomerPO'],
                         // 'SO#' => $invoice['SalesOrderNo'],
                         'OrderPlacedBy' => $invoice['OrderPlacedBy'],
-                        'Rep' => $invoice['SalesRepID'] . ' ' . isset($invoice['AgentCompany']) ? $invoice['AgentCompany'] : '',
+                        'Rep' =>  isset($invoice['AgentCompany'])? $invoice['SalesRepID'] . ' ' . $invoice['AgentCompany'] : $invoice['SalesRepID'],
                         'CreatedBy' => $invoice['CreatedBy']
                     ];
 
                     if (!empty($invoice['SalesRepID']) && Auth::user()->is_sale_rep) {
                         // $customer_content['Rep'] = $invoice['SalesRepID'] . ' ' . Auth::user()->firstname . ' ' . Auth::user()->lastname;
-                        $customer_content['Rep'] = Auth::user()->firstname . ' ' . Auth::user()->lastname;
+                       // $customer_content['Rep'] = Auth::user()->firstname . ' ' . Auth::user()->lastname;
                     }
 
                     if (!empty($invoice['ShipVia'])) {
@@ -1363,6 +1363,7 @@ class GenericReportsController extends DashboardController
     public function invoice(Request $request)
     {
         $data = $this->get_invoices($request);
+        dd($data['invoices']);
         View::share('invoices', $data['invoices']);
         View::share('table', $data['table']);
         View::share('filters', $data['filters']);
