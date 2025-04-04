@@ -226,7 +226,7 @@ class GenericReportsController extends DashboardController
 
             $transactions = $this->ApiObj->Get_FinancialTransactions($request->customer, $request->sales_rep, $from_d, $to_d, $request->po_number, $request->invoice_number, $request->cash_receipt_number, $page, $page_size);
 
-        //  dd($transactions);
+        // dd($transactions);
             $table = array(
                 'thead' => [
                     'transaction_number' => 'Transaction Number',
@@ -246,6 +246,7 @@ class GenericReportsController extends DashboardController
                     $transaction_number = $transaction['SalesInvoiceNo'] ? $transaction['SalesInvoiceNo'] : ($transaction['CashReceiptNo'] ? $transaction['CashReceiptNo'] : 'N/A');
 
                     $bill_to_content = [];
+                  
                     $bill_to_content = [
                         'First &LastName' => $transaction['BillToAddress']['FirstName'] . ' ' . $transaction['BillToAddress']['LastName'],
                         'StreetAddress1' => $transaction['BillToAddress']['Address1']
@@ -259,6 +260,7 @@ class GenericReportsController extends DashboardController
                     $bill_to_content['Email'] = $transaction['BillToAddress']['Email'];
 
                     $ship_to_content = [];
+                    if( $transaction['ShipToAddress']['FirstName']){
                     $ship_to_content = [
                         'First &LastName' => $transaction['ShipToAddress']['FirstName'] . ' ' . $transaction['ShipToAddress']['LastName'],
                         'StreetAddress1' => $transaction['ShipToAddress']['Address1']
@@ -269,9 +271,9 @@ class GenericReportsController extends DashboardController
                     $ship_to_content['City,State,Zip'] = ($transaction['ShipToAddress']['City'] ? $transaction['ShipToAddress']['City'] . ', ' : null) . ($transaction['ShipToAddress']['State'] ? $transaction['ShipToAddress']['State'] . ', ' : null) . $transaction['ShipToAddress']['ZIP'];
                     $ship_to_content['Country'] = $transaction['ShipToAddress']['Country'];
                     $ship_to_content['PhoneNumber'] = $transaction['ShipToAddress']['Phone1'];
-                    $ship_to_content['Email'] = $transaction['ShipToAddress']['Email'];
+                    $ship_to_content['Email'] = $transaction['ShipToAddress']['Email'];}
 
-
+//dd($ship_to_content);
                     if ($transaction['TransactionType'] == 'Credit Memo' || $transaction['TransactionType'] == 'Customer Credit') {
                         foreach ($transaction['Details'] as $index => $view) {
                             $column = CommonController::get_selected_columns($view, [
@@ -355,7 +357,7 @@ class GenericReportsController extends DashboardController
                                             'hide_labels' => 1
                                         ],
                                         [
-                                            'title' => 'Ship To',
+                                            'title' => (($ship_to_content)) ? 'Ship To' : '',
                                             'content' => $ship_to_content,
                                             'cols' => 6,
                                             'hide_labels' => 1
@@ -1363,7 +1365,6 @@ class GenericReportsController extends DashboardController
     public function invoice(Request $request)
     {
         $data = $this->get_invoices($request);
-        dd($data['invoices']);
         View::share('invoices', $data['invoices']);
         View::share('table', $data['table']);
         View::share('filters', $data['filters']);
@@ -1430,7 +1431,7 @@ class GenericReportsController extends DashboardController
                             $column['href'] = route('frontend.item', [$view['Collection'], $view['DesignID']]);
                             //   $column['BackOrderQty'] = isset($view['BackOrder']) && CommonController::check_bit_field($view, 'BackOrder' ) ? ( (isset($view['ETADate']) ? $view['ETADate'] : '') . (isset($view['ETAQty']) ? $view['ETAQty'] : '')) : '';
                             $column['BackOrderQty'] = isset($view['BackOrder']) && CommonController::check_bit_field($view, 'BackOrder')
-                                ? ((isset($view['ETADate']) ? 'ETA: ' . Carbon::parse($view['ETADate'])->format('M-d-Y') : '') .
+                                ? ((isset($view['ETADate']) ? 'ETA: ' . Carbon::parse($view['ETADate'])->format('M-d-Y') : '') . "\n".
                                     (isset($view['ETAQty']) ? "  Qty: " . $view['ETAQty'] : ''))
                                 : '';
 
