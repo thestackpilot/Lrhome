@@ -226,7 +226,7 @@ class GenericReportsController extends DashboardController
 
             $transactions = $this->ApiObj->Get_FinancialTransactions($request->customer, $request->sales_rep, $from_d, $to_d, $request->po_number, $request->invoice_number, $request->cash_receipt_number, $page, $page_size);
 
-        // dd($transactions);
+         //dd($transactions);
             $table = array(
                 'thead' => [
                     'transaction_number' => 'Transaction Number',
@@ -290,7 +290,7 @@ class GenericReportsController extends DashboardController
 
                         $contents = [
                             'PO#' => $transaction['CustomerPO'],
-                            'Ref Invoice#' => $transaction['SalesInvoiceNo'],
+                            'Ref Invoice#' => $transaction['RefInvoiceNo'], //change ref
                             'Customer ID' => $transaction['CustomerID'],
                             'Ship Via' => isset($transaction['ShipVia']) ? $transaction['ShipVia'] : '',
                             'Rep' => isset($transaction['AgentCompany']) ? $transaction['SalesRepID'] . ' ' . $transaction['AgentCompany'] : $transaction['SalesRepID'] ,
@@ -302,8 +302,8 @@ class GenericReportsController extends DashboardController
                             
                         }
                         if (!empty($transaction['SalesRepID']) && Auth::user()->is_sale_rep) {
-                            $contents['Rep'] = $transaction['SalesRepID'] . ' ' . Auth::user()->firstname . ' ' . Auth::user()->lastname;
-                            $contents['Created By'] = Auth::user()->firstname . ' ' . Auth::user()->lastname;
+                            // $contents['Rep'] = $transaction['SalesRepID'] . ' ' . Auth::user()->firstname . ' ' . Auth::user()->lastname;
+                             //$contents['Created By'] = Auth::user()->firstname . ' ' . Auth::user()->lastname;
                         }
                         if (!empty($transaction['SpecialInstructions'])) {
                             $contents['Special Instructions'] = $transaction['SpecialInstructions'];
@@ -785,7 +785,7 @@ class GenericReportsController extends DashboardController
 
                     $contents = [
                         'PO#' => $memo['CustomerPO'],
-                        'Ref Invoice#' => $memo['SalesInvoiceNo'],
+                        'Ref Invoice#' => $memo['RefInvoiceNo'], //change ref invoice number
                         'Customer ID' => $memo['CustomerID'],
                         'Ship Via' => $memo['ShipVia'],
                         'Rep' =>  isset($memo['AgentCompany']) ? $memo['SalesRepID'] . ' ' .$memo['AgentCompany'] :$memo['SalesRepID'],
@@ -1137,6 +1137,7 @@ class GenericReportsController extends DashboardController
             $to_d = Carbon::parse($request->to_date)->format('Y-m-d');
 
             $invoices = $this->ApiObj->Get_Invoices($request->customer, $request->sales_rep, $request->invoice_number, $request->po_number, $from_d, $to_d, $page, $page_size);
+
             $table = array(
                 'thead' => [
                     'invoice_no' => 'Sale Invoice Number',
