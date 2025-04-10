@@ -298,7 +298,7 @@ class GenericReportsController extends DashboardController
                             'RMA#'=>isset($transaction['RMANo'])?$transaction['RMANo']:'N/A',
                             // 'Customer ID' => $transaction['CustomerID'],
                             'Ship Via' => isset($transaction['ShipVia']) ? $transaction['ShipVia'] : '',
-                            'Rep Name' => isset($transaction['AgentCompany']) ? $transaction['SalesRepID'] . ' ' . $transaction['AgentCompany'] : $transaction['SalesRepID'] ,
+                            'Rep' => isset($transaction['AgentCompany']) ? $transaction['SalesRepID'] . ' ' . $transaction['AgentCompany'] : $transaction['SalesRepID'] ,
                             // 'Created By' => $transaction['CreatedBy'],
                             
                         ];
@@ -415,7 +415,7 @@ class GenericReportsController extends DashboardController
                             'ShipVia'=>$ShipVia,
                             // 'SO#' => $transaction['SalesOrderNo'],
                             'OrderPlacedBy' => $transaction['OrderPlacedBy'],
-                            'Rep Name' => isset($transaction['AgentCompany']) ? $transaction['SalesRepID']." ". $transaction['AgentCompany'] : $transaction['SalesRepID'],
+                            'Rep' => isset($transaction['AgentCompany']) ? $transaction['SalesRepID']." ". $transaction['AgentCompany'] : $transaction['SalesRepID'],
                             // 'Created By' => $transaction['CreatedBy'],
                         ];
 
@@ -796,7 +796,7 @@ class GenericReportsController extends DashboardController
                         // 'Customer ID' => $memo['CustomerID'],
                         'RMA#'=>isset($memo['RMANo'])? $memo['RMANo']:'N/A',
                         'Ship Via' => $memo['ShipVia'],
-                        'Rep Name' =>  isset($memo['AgentCompany']) ? $memo['SalesRepID'] . ' ' .$memo['AgentCompany'] :$memo['SalesRepID'],
+                        'Rep' =>  isset($memo['AgentCompany']) ? $memo['SalesRepID'] . ' ' .$memo['AgentCompany'] :$memo['SalesRepID'],
                         // 'Created By' => isset($memo['CreatedBy']) ? $memo['CreatedBy'] : 'N/A'
                     ];
 
@@ -1472,7 +1472,7 @@ class GenericReportsController extends DashboardController
                         'PO#' => $view_order['Header']['CustomerPO'],
                         'ShipVia' => $view_order['Header']['ShipViaCode'],
                         'OrderPlacedBy' => $view_order['Header']['OrderTakenBy'],
-                        'Rep Name' => $view_order['Header']['SalesRepID'] . ' ' . $view_order['Header']['AgentCompany'],
+                        'Rep' => $view_order['Header']['SalesRepID'] . ' ' . $view_order['Header']['AgentCompany'],
                         // 'CreatedBy' => $view_order['Header']['CreatedBy']
                     ];
 
