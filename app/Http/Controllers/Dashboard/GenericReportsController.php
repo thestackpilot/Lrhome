@@ -226,7 +226,7 @@ class GenericReportsController extends DashboardController
 
             $transactions = $this->ApiObj->Get_FinancialTransactions($request->customer, $request->sales_rep, $from_d, $to_d, $request->po_number, $request->invoice_number, $request->cash_receipt_number, $page, $page_size);
 
-         //dd($transactions);
+        // dd($transactions);
             $table = array(
                 'thead' => [
                     'transaction_number' => 'Transaction Number',
@@ -287,20 +287,24 @@ class GenericReportsController extends DashboardController
                             $transaction['Details'][$index] = $column;
                             $transaction['Details'][$index]['Price'] = $view['Price'];
                         }
+                        // if (!empty($transaction['RMANo'])) {
+                        //     $RMA = $transaction['RMANo'];
+                            
+                        // }
 
                         $contents = [
                             'PO#' => $transaction['CustomerPO'],
                             'Ref Invoice#' => $transaction['RefInvoiceNo'], //change ref
-                            'Customer ID' => $transaction['CustomerID'],
+                            'RMA#'=>isset($transaction['RMANo'])?$transaction['RMANo']:'N/A',
+                            // 'Customer ID' => $transaction['CustomerID'],
                             'Ship Via' => isset($transaction['ShipVia']) ? $transaction['ShipVia'] : '',
-                            'Rep' => isset($transaction['AgentCompany']) ? $transaction['SalesRepID'] . ' ' . $transaction['AgentCompany'] : $transaction['SalesRepID'] ,
-                            'Created By' => $transaction['CreatedBy'],
+                            'Rep Name' => isset($transaction['AgentCompany']) ? $transaction['SalesRepID'] . ' ' . $transaction['AgentCompany'] : $transaction['SalesRepID'] ,
+                            // 'Created By' => $transaction['CreatedBy'],
                             
                         ];
-                        if (!empty($transaction['RMANo'])) {
-                            $contents['RMA#'] = $transaction['RMANo'];
-                            
-                        }
+
+                        //dd($contents);
+                        
                         if (!empty($transaction['SalesRepID']) && Auth::user()->is_sale_rep) {
                             // $contents['Rep'] = $transaction['SalesRepID'] . ' ' . Auth::user()->firstname . ' ' . Auth::user()->lastname;
                              //$contents['Created By'] = Auth::user()->firstname . ' ' . Auth::user()->lastname;
@@ -403,18 +407,21 @@ class GenericReportsController extends DashboardController
                             $column['DateCreated'] = Carbon::parse($column['DateCreated'])->format('M-d-Y');
                             $transaction['OrderTrackingDetail'][$index] = $column;
                         }
-
+                        if (!empty($transaction['ShipVia'])) {
+                            $ShipVia = $transaction['ShipVia'];
+                        }
                         $customer_content = [
                             'PO#' => $transaction['CustomerPO'],
+                            'ShipVia'=>$ShipVia,
                             // 'SO#' => $transaction['SalesOrderNo'],
                             'OrderPlacedBy' => $transaction['OrderPlacedBy'],
-                            'Rep' => isset($transaction['AgentCompany']) ? $transaction['SalesRepID']." ". $transaction['AgentCompany'] : $transaction['SalesRepID'],
-                            'Created By' => $transaction['CreatedBy'],
+                            'Rep Name' => isset($transaction['AgentCompany']) ? $transaction['SalesRepID']." ". $transaction['AgentCompany'] : $transaction['SalesRepID'],
+                            // 'Created By' => $transaction['CreatedBy'],
                         ];
 
-                        if (!empty($transaction['ShipVia'])) {
-                            $customer_content['ShipVia'] = $transaction['ShipVia'];
-                        }
+                        // if (!empty($transaction['ShipVia'])) {
+                        //     $customer_content['ShipVia'] = $transaction['ShipVia'];
+                        // }
 
                         if (!empty($transaction['SpecialInstructions'])) {
                             $customer_content['SpecialInstructions'] = $transaction['SpecialInstructions'];
@@ -786,15 +793,14 @@ class GenericReportsController extends DashboardController
                     $contents = [
                         'PO#' => $memo['CustomerPO'],
                         'Ref Invoice#' => $memo['RefInvoiceNo'], //change ref invoice number
-                        'Customer ID' => $memo['CustomerID'],
+                        // 'Customer ID' => $memo['CustomerID'],
+                        'RMA#'=>isset($memo['RMANo'])? $memo['RMANo']:'N/A',
                         'Ship Via' => $memo['ShipVia'],
-                        'Rep' =>  isset($memo['AgentCompany']) ? $memo['SalesRepID'] . ' ' .$memo['AgentCompany'] :$memo['SalesRepID'],
-                        'Created By' => isset($memo['CreatedBy']) ? $memo['CreatedBy'] : 'N/A'
+                        'Rep Name' =>  isset($memo['AgentCompany']) ? $memo['SalesRepID'] . ' ' .$memo['AgentCompany'] :$memo['SalesRepID'],
+                        // 'Created By' => isset($memo['CreatedBy']) ? $memo['CreatedBy'] : 'N/A'
                     ];
 
-                    if (!empty($memo['RMANo'])) {
-                        $contents['RMA#'] = $memo['RMANo'];
-                    }
+                   
 
                     if (!empty($memo['SpecialInstructions'])) {
                         $contents['Special Instructions'] = $memo['SpecialInstructions'];
@@ -1399,6 +1405,7 @@ class GenericReportsController extends DashboardController
             $to_d = Carbon::parse($request->to_date)->format('Y-m-d');
 
             $view_orders = $this->ApiObj->View_Order($request->customer, $request->external_number, $from_d, $to_d, $request->sales_rep, $page, $page_size, $request->status);
+            //dd($view_orders);
             $table = array(
                 'thead' => [
                     'order_no' => 'Order Number',
@@ -1465,8 +1472,8 @@ class GenericReportsController extends DashboardController
                         'PO#' => $view_order['Header']['CustomerPO'],
                         'ShipVia' => $view_order['Header']['ShipViaCode'],
                         'OrderPlacedBy' => $view_order['Header']['OrderTakenBy'],
-                        'Rep' => $view_order['Header']['SalesRepID'] . ' ' . $view_order['Header']['AgentCompany'],
-                        'CreatedBy' => $view_order['Header']['CreatedBy']
+                        'Rep Name' => $view_order['Header']['SalesRepID'] . ' ' . $view_order['Header']['AgentCompany'],
+                        // 'CreatedBy' => $view_order['Header']['CreatedBy']
                     ];
 
                     if (!empty($view_order['Header']['SalesRepID'])) {
@@ -1575,6 +1582,7 @@ class GenericReportsController extends DashboardController
                 }
 
             }
+        //  dd($table);
 
             View::share('view_orders', $view_orders);
             View::share('table', $table);
