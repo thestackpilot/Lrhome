@@ -226,7 +226,7 @@ class GenericReportsController extends DashboardController
 
             $transactions = $this->ApiObj->Get_FinancialTransactions($request->customer, $request->sales_rep, $from_d, $to_d, $request->po_number, $request->invoice_number, $request->cash_receipt_number, $page, $page_size);
 
-        // dd($transactions);
+         dd($transactions);
             $table = array(
                 'thead' => [
                     'transaction_number' => 'Transaction Number',
