@@ -226,7 +226,7 @@ class GenericReportsController extends DashboardController
 
             $transactions = $this->ApiObj->Get_FinancialTransactions($request->customer, $request->sales_rep, $from_d, $to_d, $request->po_number, $request->invoice_number, $request->cash_receipt_number, $page, $page_size);
 
-         //dd($transactions);
+        //  dd($transactions);
             $table = array(
                 'thead' => [
                     'transaction_number' => 'Transaction Number',
@@ -299,7 +299,7 @@ class GenericReportsController extends DashboardController
                             // 'Customer ID' => $transaction['CustomerID'],
                             'Ship Via' => isset($transaction['ShipVia']) ? $transaction['ShipVia'] : '',
                             'Rep' => isset($transaction['AgentCompany']) ? $transaction['SalesRepID'] . ' ' . $transaction['AgentCompany'] : $transaction['SalesRepID'] ,
-                            // 'Created By' => $transaction['CreatedBy'],
+                            'Created By' => $transaction['CreatedBy'],
                             
                         ];
 
@@ -416,7 +416,7 @@ class GenericReportsController extends DashboardController
                             // 'SO#' => $transaction['SalesOrderNo'],
                             'OrderPlacedBy' => $transaction['OrderPlacedBy'],
                             'Rep' => isset($transaction['AgentCompany']) ? $transaction['SalesRepID']." ". $transaction['AgentCompany'] : $transaction['SalesRepID'],
-                            // 'Created By' => $transaction['CreatedBy'],
+                            'Created By' => $transaction['CreatedBy'],
                         ];
 
                         // if (!empty($transaction['ShipVia'])) {
@@ -797,7 +797,7 @@ class GenericReportsController extends DashboardController
                         'RMA#'=>isset($memo['RMANo'])? $memo['RMANo']:'N/A',
                         'Ship Via' => $memo['ShipVia'],
                         'Rep' =>  isset($memo['AgentCompany']) ? $memo['SalesRepID'] . ' ' .$memo['AgentCompany'] :$memo['SalesRepID'],
-                        // 'Created By' => isset($memo['CreatedBy']) ? $memo['CreatedBy'] : 'N/A'
+                         'Created By' => isset($memo['CreatedBy']) ? $memo['CreatedBy'] : 'N/A'
                     ];
 
                    

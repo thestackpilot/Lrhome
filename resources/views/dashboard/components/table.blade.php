@@ -46,12 +46,12 @@
                             if ($action['type'] == 'modal') {
                                 if (isset($row['other_actions_details']) || (isset($row['transaction_type']) && ($row['transaction_type'] === 'Cash Receipt' || $row['transaction_type'] === 'Customer Debit'))) {
                                     $table_body .= '
-                                                                                                                     <button class="btn btn-sm btn-primary other-details" type="button">' . $action['label'] . '</button>
+                                                                                                                     <button class="btn btn-sm btn-primary other-details" type="button" >' . $action['label'] . '</button>
                                                                                                                      <span class="other-row-details" style="display: none !important;">' . json_encode($row['other_actions_details']) . '</span>
                                                                                                                      ';
                                 } else {
                                     $table_body .= '
-                                                                                                                    <button class="btn btn-sm btn-primary view-details" type="button">' . $action['label'] . '</button>
+                                                                                                                    <button class="btn btn-sm btn-primary view-details" style="width:100px; height:40px;" type="button">' . $action['label'] . '</button>
                                                                                                                     <span class="row-details" style="display: none !important;">' . json_encode($row['details']) . '</span>
                                                                                                                     ';
                                 }
@@ -63,7 +63,7 @@
                         foreach ($row['other_actions'] as $other_actions) {
                             if ($other_actions['type'] == 'modal') {
                                 $table_body .= '
-                                                                                                                <button class="btn btn-sm btn-primary other-details" type="button">' . $other_actions['label'] . '</button>
+                                                                                                                <button class="btn btn-sm btn-primary other-details" style="width:100px; height:40px;" type="button">' . $other_actions['label'] . '</button>
                                                                                                                 <span class="other-row-details" style="display: none !important;">' . json_encode($row['other_actions_details']) . '</span>
                                                                                                                 ';
                             }
@@ -326,12 +326,12 @@
                                         if (json.data[i]['actions'][0]['type'] == 'modal') {
                                             if (typeof json.data[i]['transaction_type'] != 'undefined' && (json.data[i]['transaction_type'] === 'Cash Receipt' || json.data[i]['transaction_type'] === 'Customer Debit')) {
                                                 json.data[i]['actions'] = `
-                                                                                                                                <button class="btn btn-sm btn-primary other-details" type="button">${json.data[i]['actions'][0]['label']}</button>
+                                                                                                                                <button class="btn btn-sm btn-primary other-details" style="width:100px; height:40px;" type="button">${json.data[i]['actions'][0]['label']}</button>
                                                                                                                                 <span class="other-row-details" style="display: none !important;">${JSON.stringify(json.data[i]['other_actions_details'])}</span>
                                                                                                                                 `;
                                             } else {
                                                 json.data[i]['actions'] = `
-                                                                                                                                <button class="btn btn-sm btn-primary view-details" type="button">${json.data[i]['actions'][0]['label']}</button>
+                                                                                                                                <button class="btn btn-sm btn-primary view-details" style="width:100px; height:40px;" type="button">${json.data[i]['actions'][0]['label']}</button>
                                                                                                                                 <span class="row-details" style="display: none !important;">${JSON.stringify(json.data[i]['details'])}</span>
                                                                                                                                 `;
                                             }
@@ -339,7 +339,7 @@
                                         }
                                         if (typeof json.data[i]['other_actions'] !== 'undefined' && json.data[i]['other_actions'][0]['type'] == 'modal') {
                                             json.data[i]['other_actions'] = `
-                                                                                                                                <button class="btn btn-sm btn-primary other-details" type="button">${json.data[i]['other_actions'][0]['label']}</button>
+                                                                                                                                <button class="btn btn-sm btn-primary other-details" style="width: 150px; height: 50px;" type="button">${json.data[i]['other_actions'][0]['label']}</button>
                                                                                                                                 <span class="other-row-details" style="display: none !important;">${JSON.stringify(json.data[i]['other_actions_details'])}</span>
                                                                                                                             `;
                                             data.push(json.data[i]);
