@@ -111,45 +111,45 @@ class FormController extends FrontendController
             $form_entry->data    = json_encode( $data );
             $form_entry->save();
 
-            if ( isset( $this->active_theme_json->general->allow_emails ) && $this->active_theme_json->general->allow_emails )
-            {
-                try {
-                    // if ( $slug !== 'newsletter' && $slug !== 'contact_us')
-                    // {
-                        SendMail::dispatch( [
-                            'data'     => $data,
-                            'slug'     => ucwords( str_replace( '_', ' ', $slug ) ),
-                            'email'    => ConstantsController::ADMIN_EMAIL,
-                            'template' => 'email.email'
-                        ] );
-                    // }
+            // if ( isset( $this->active_theme_json->general->allow_emails ) && $this->active_theme_json->general->allow_emails )
+            // {
+            //     try {
+            //         // if ( $slug !== 'newsletter' && $slug !== 'contact_us')
+            //         // {
+            //             SendMail::dispatch( [
+            //                 'data'     => $data,
+            //                 'slug'     => ucwords( str_replace( '_', ' ', $slug ) ),
+            //                 'email'    => ConstantsController::ADMIN_EMAIL,
+            //                 'template' => 'email.email'
+            //             ] );
+            //         // }
 
-                }
-                catch ( \Exception $e )
-                {
-                    prr( "Mail Exception: ".$e->getMessage() );
-                }
+            //     }
+            //     catch ( \Exception $e )
+            //     {
+            //         prr( "Mail Exception: ".$e->getMessage() );
+            //     }
 
-                try {
+            //     try {
 
-                    if ( $this->active_theme->theme_abrv == 'LR' && ( isset( $data['email'] ) && $data['email'] ) || ( isset( $data['business_email'] ) && $data['business_email'] ) )
-                    {
-                        $to_email = ( isset( $data['email'] ) ? $data['email'] : $data['business_email'] );
+            //         if ( $this->active_theme->theme_abrv == 'LR' && ( isset( $data['email'] ) && $data['email'] ) || ( isset( $data['business_email'] ) && $data['business_email'] ) )
+            //         {
+            //             $to_email = ( isset( $data['email'] ) ? $data['email'] : $data['business_email'] );
 
-                        SendMail::dispatch( [
-                            'slug'  => 'Thank You!',
-                            'email' => $to_email,
-                            'body'  => 'Thanks for reaching out to us, our team will be in touch with you soon.'
-                        ] );
-                    }
+            //             SendMail::dispatch( [
+            //                 'slug'  => 'Thank You!',
+            //                 'email' => $to_email,
+            //                 'body'  => 'Thanks for reaching out to us, our team will be in touch with you soon.'
+            //             ] );
+            //         }
 
-                }
-                catch ( \Exception $e )
-                {
-                    prr( "Thank You Mail Exception: ".$e->getMessage() );
-                }
+            //     }
+            //     catch ( \Exception $e )
+            //     {
+            //         prr( "Thank You Mail Exception: ".$e->getMessage() );
+            //     }
 
-            }
+            // }
 
             return redirect()->back()->with( 'message', ['type' => 'success', 'referrer' => $slug, 'body' => $slug == 'newsletter' ? 'Thanks for subscribing!' : 'Thanks for filling out the form. Our team will be in touch with you soon.'] );
         }
