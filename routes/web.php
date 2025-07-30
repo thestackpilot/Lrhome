@@ -71,7 +71,7 @@ Route::get( '/designs/{id}/{filter}/{type}/{with_title}', [DesignController::cla
 Route::post( '/designs/{id}/{filter}/{type}/{page}', [DesignController::class, 'get_paginated_designs'] )->name( 'frontend.designs_page' );
 Route::post( '/designs/{id}/{filter}/{type}/{with_title}/{page}', [DesignController::class, 'get_paginated_designs'] )->name( 'frontend.designs_page' );
 //Item Routes
-Route::get( '/item/{id}/{designId}/{colorId?}', [ItemController::class, 'index'] )->name( 'frontend.item' );
+Route::get( '/item/{id}/{designId}/{colorId?}/{filter?}', [ItemController::class, 'index'] )->name( 'frontend.item' );
 Route::post( '/item/ats', [ItemController::class, 'get_item_ats'] )->name( 'frontend.item.ats' );
 //Search Routes
 Route::get( '/search/{string}/{type?}', [SearchController::class, 'index'] )->name( 'frontend.search' );
@@ -95,10 +95,11 @@ Route::group( ['prefix' => 'checkout', 'middleware' => ['auth']], function ()
 } );
 
 //Form routes (contact us, feedback, careers)
+Route::group(['middleware' => ['web']], function () {
 Route::get( '/forms/{slug}', [FormController::class, 'index'] )->name( 'form.show' );
 Route::post( '/forms/{slug}', [FormController::class, 'submission_request'] )->name( 'form.submission' );
 Route::post( '/forms/store/{slug}', 'Frontend\FormController@store' )->name( 'form.store' );
-
+});
 //Static pages routes (showrooms, faqs, aboutus)
 Route::get( '/static/{type}', 'Frontend\StaticController@index' )->name( 'static.show' );
 
