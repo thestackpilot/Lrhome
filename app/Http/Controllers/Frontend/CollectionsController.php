@@ -121,14 +121,17 @@ class CollectionsController extends FrontendController
     //do not get fucking blind - this function is written by you and you need it in the item controller
     public function generate_single_filter( $key, $value )
     {
-        $link_filter              = array( 'Filters' => array() );
-        $link_filter['Filters'][] = array
+        $link_filter              = array( 'Filters' => array() ); 
+ $link_filter['Filters'][] = array
             (
             "FilterID" => $key,
             "Values"   => is_array( $value ) ? $value : [$value]
         );
 
-        return base64_encode( json_encode( $link_filter ) );
+$json=json_encode($link_filter);
+$formatedJson=preg_replace('/":/', '": ', $json);
+
+        return base64_encode($formatedJson );
     }
 
     public function index( $id, $type )

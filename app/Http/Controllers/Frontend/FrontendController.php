@@ -119,7 +119,7 @@ class FrontendController extends RootController
     }
 
     public function append_breadcrumbs( $key, $value )
-    {
+    {  
         $this->breadcrumbs[$key] = $value;
         View::share( 'breadcrumbs', $this->breadcrumbs );
     }

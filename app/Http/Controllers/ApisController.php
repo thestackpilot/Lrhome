@@ -241,8 +241,8 @@ class ApisController extends RootController
     public function Get_Items( $MainCollectionId = 1, $DesignID = '', $ItemID = '', $ExternalID = '', $SubCategory = '', $CollectionID = '', $ColorID = "", $SizeID = '', $UpdatedDateFrom = '', $UpdatedDateTo = '', $ProductType = '', $IsDeleted = '', $HasExternalID = '' )
     {
         $post_array = array( 'MainCollectionID' => $MainCollectionId, 'DesignID' => $DesignID, 'ItemID' => $ItemID, 'ExternalID' => $ExternalID, 'SubCategory' => $SubCategory, 'CollectionID' => $CollectionID, 'ColorID' => $ColorID, 'SizeID' => $SizeID, 'UpdatedDateFrom' => $UpdatedDateFrom, 'UpdatedDateTo' => $UpdatedDateTo, 'ProductType' => $ProductType, 'IsDeleted' => $IsDeleted, 'HasExternalID' => $HasExternalID );
-
-        return $this->Post_API_Signature( 'Get_Items', 'Get Items', $post_array, ['Items', 'Colors', 'Sizes', 'ItemImages', 'PillowCovers', 'ItemsETA'] );
+//  dd($post_array);
+    return $this->Post_API_Signature( 'Get_Items', 'Get Items', $post_array, ['Items', 'Colors', 'Sizes', 'ItemImages', 'PillowCovers', 'ItemsETA'] );
     }
 
     public function Get_ItemsDetail( $CustomerID, $ProductType = '', $Collection = '', $Design = '', $Color = '', $Size = '' )

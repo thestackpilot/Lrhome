@@ -46,6 +46,58 @@ class FormController extends AdminController
         return view( 'admin.form', ['form' => $form_metas_with_parent] );
     }
 
+    public function export_submissions( Request $request  )
+    {
+        $slug='partner_requests';
+        if ( $request->has( 'draw' ) && $request->draw )
+        {
+            $page      = $request->start == 0 ? 0 : ( $request->start / $request->length );
+            $page_size = $request->length;
+        }
+        else
+        {
+            $page      = 0;
+            $page_size = 25;
+        }
+
+        $form = Form::where( 'slug', $slug )->firstOrFail();
+        
+        // $form_entries = FormEntries::where( 'form_id', $form->id )->limit( $page, $page_size )->get();
+        $form_entries = FormEntries::where( 'form_id', $form->id )
+            ->orderBy( 'created_at', 'DESC' )
+            // ->get();
+            ->paginate( 50 );
+        $table = array( 'thead' => [], 'tbody' => [] );
+
+        foreach ( $form_entries as $k => $form_entry )
+        {
+
+            if ( $k < 1 )
+            {
+                $table['thead'] = array_keys( json_decode( $form_entry->data, 1 ) );
+            }
+
+            $table['tbody'][$k] = json_decode( $form_entry->data, 1 );
+
+            if ( key_exists( 'attachment', $table['tbody'][$k] ) )
+            {
+                $table['tbody'][$k]['attachment'] = '<a href="'.asset( $table['tbody'][$k]['attachment'] ).'" target="_blank">'.asset( $table['tbody'][$k]['attachment'] ).'</a>';
+            }
+
+        }
+
+        foreach ( $table['thead'] as $k => $heading )
+        {
+
+            if ( $heading == '_token' || $heading == 'form' )
+            {
+                unset( $table['thead'][$k] );
+            }
+
+        }
+// dd($table,$form_entries);
+        return view( 'admin.forms-data', ['table' => $table, 'title' => $form->name, 'form_entries' => $form_entries] );
+    }
     public function show_submissions( Request $request, $slug )
     {
 

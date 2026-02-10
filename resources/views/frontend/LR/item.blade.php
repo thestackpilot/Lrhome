@@ -825,6 +825,7 @@ foreach ($items['Items'] as $item) {
     }
 
     function startBuying(ItemID, CustomerID, ATSInfo) {
+        console.log(ATSInfo);
         // console.log(`startBuying::CustomerID: ${CustomerID}`);
         if ($('#login_by_popup').length) {
             show_components(['#login_by_popup', '#cart_main']);
@@ -876,6 +877,7 @@ foreach ($items['Items'] as $item) {
     }
 
     function getQuantityMessage(ATSInfo) {
+    console.log(ATSInfo);
         var date = new Date(ATSInfo.ETADate);
         var formattedDate = new Intl.DateTimeFormat('en-US', { 
             month: 'short', 

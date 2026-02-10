@@ -148,7 +148,7 @@ class HangtagsController extends DashboardController
     }
 
     public function fetch_hangtags( Request $request )
-    {
+    {dd('123');
         $validated_data = $request->validate( [
             'search-type' => 'required',
             'customer'    => 'required'
@@ -303,6 +303,7 @@ class HangtagsController extends DashboardController
 
     public function redirect_to_index()
     {
+        dd('1234');
         return redirect()->route( 'dashboard.hangtags' );
     }
 

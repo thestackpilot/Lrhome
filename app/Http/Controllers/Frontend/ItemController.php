@@ -260,9 +260,10 @@ class ItemController extends FrontendController
 
 // Testing ideal link RZY = http://vcs.local.com/item/3/BQ4189
     // Testing ideal link LR = http://vcs.local.com/item/Rugs%20&%20Carpets/81451
-    public function index( $id, $design_id, $color_id = 0 )
+    public function index( $id, $design_id, $color_id = 0, $filter="" )
     {
         try {
+            
             $items = $this->update_item_prices( $this->generate_size_name( $this->generate_color_name( $this->generate_price_delivery_info( $this->generate_user_customer_info( $this->generate_image_urls( $this->ApiObj->Get_Items( $id, $design_id ) ) ) ) ) ) );
 
 // TODO - Need to REMOVE this chaipi at the top most PRIORITY
@@ -278,8 +279,9 @@ class ItemController extends FrontendController
                 $main_collection  = ( new MainCollectionController() )->get_main_collection( $id );
 
                 $this->append_breadcrumbs( $main_collection['Description'], route( 'frontend.favourite', $id ) );
-                $this->append_breadcrumbs( $items['Items'][0]['QualityDescription'], route( 'frontend.designs', [$id, ( new CollectionsController() )->generate_single_filter( "Collection", $items['Items'][0]['QualityDescription'] ), '0'] ) );
-                // $this->append_breadcrumbs( $items['Items'][0]['ItemName'], route( 'frontend.item', [$id, $design_id] ) );
+                // $this->append_breadcrumbs( $items['Items'][0]['QualityDescription'], route( 'frontend.designs', [$id, ( new CollectionsController() )->generate_single_filter( "Dining_Tables", ($items['Items'][0]['QualityDescription']==='Dining Table 1')? 'Dining_Tables':$items['Items'][0]['QualityDescription'] ), '0'] ) );
+                //$this->append_breadcrumbs( $items['Items'][0]['QualityDescription'], route( 'frontend.designs',  [$id,$filter] ));
+                $this->append_breadcrumbs( $items['Items'][0]['QualityDescription'], route( 'frontend.designs', [$id, $filter, '0'] )  );
             }
 
             return view( 'frontend.'.$this->active_theme->theme_abrv.'.item', [

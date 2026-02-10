@@ -6,6 +6,8 @@
 /storage/*.key
 /.env
 /.env.*
+public/vcs.log
+public/logs/*
 
 # Laravel logs and caches
 /storage/app/

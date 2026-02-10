@@ -77,9 +77,12 @@ else
                                     @if(!$with_title)
                                     <div class="carousel slide">
                                         @endif
+                                        @php
+                                        $segments = Request::segments(); // returns array of URL parts
+                                        $secondLast = count($segments) >= 2 ? $segments[count($segments) - 2] : null;
+                                        @endphp
                                         <div class="slider-for justify-content-center {{ $with_title ? 'rug-callection' : '' }}">
-                                            <a target="_blank" href="{{$collection['LinkUrl']}}">
-                                                <figure class="overflow-hidden m-0">
+                                                <a target="_blank" href="{{ rtrim($collection['LinkUrl'], '/') . '/' . $secondLast }}">                                                <figure class="overflow-hidden m-0">
                                                 @if($with_title)
                                                 <img class="single-img" src="{{CommonController::getApiFullImage($collection['ImageName'])}}" class="img-responsive" onerror="this.onerror=null; this.src='{{url('/').ConstantsController::IMAGE_PLACEHOLDER}}'" />
                                                 @else

@@ -18,6 +18,7 @@ class HangtagsController extends DashboardController
 
     public function download_print_hangtags( Request $request )
     {
+       
         $validated_data = $request->validate( [
             'submit'   => 'required',
             'customer' => 'required',
