@@ -9,8 +9,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\CommonController;
 use App\Http\Controllers\ConstantsController;
 use App\Http\Controllers\Frontend\FrontendController;
-// use ReCaptcha\ReCaptcha;
-
+use Illuminate\Support\Facades\Session;
+use ReCaptcha\ReCaptcha;
+use MeWebStudio\Captcha\Facades\Captcha;
 class FormController extends FrontendController
 {
     public function __construct()
@@ -62,27 +63,38 @@ class FormController extends FrontendController
 
     public function submission_request( Request $request, $slug )
     {
+// dd($request->all());
+// dd($slug);
+Session::start();
+// dd(session()->all());
+
 
         if ( $request->all() )
         {
-            $customMessages = [
-                'captcha.required' => 'Please solve the CAPTCHA to proceed.',
-                'captcha.captcha' => 'The CAPTCHA entered is incorrect. Please try again.',
-            ];
+            // Basic validation and allowlisting of common fields
+            $validated = $request->validate( [
+                'email'           => 'nullable|email:rfc,dns|max:255',
+                'business_email'  => 'nullable|email:rfc,dns|max:255',
+                'name'            => 'nullable|string|max:255',
+                'company'         => 'nullable|string|max:255',
+                'phone'           => 'nullable|string|max:50',
+                'city'            => 'nullable|string|max:255',
+                'Inquiry'         => 'nullable|string|max:5000',
+                'message'         => 'nullable|string|max:5000',
+                'attachment'      => 'nullable|file|mimes:pdf,doc,docx,jpg,jpeg,png|max:5120'
+            ] );
 
             if ($slug == 'contact_us') {
                 $validated = $request->validate([
-                    'captcha_contact' => 'required',
-                ], $customMessages);
+                    'captcha_contact' => 'captcha',
+                ]);
             } else if ($slug == 'newsletter') {
                 $validated = $request->validate([
-                    'captcha_newsletter' => 'required',
-                ], $customMessages);
+                    'captcha_newsletter' => 'captcha',
+                ]);
             } else if ($slug == 'partner_requests') {
                 $validated = $request->validate([
-                    'captcha_partner' => 'required',
-                ], $customMessages, [
-                    'captcha_partner' => 'PartnerForm'
+                    'captcha_partner' => 'captcha',
                 ]);
             }
 
@@ -95,34 +107,61 @@ class FormController extends FrontendController
 
             if ( isset( $data['g-recaptcha-response'] ) && $data['g-recaptcha-response'] )
             {
+		 // Log captcha information
+                $captchaSiteKey = config('services.recaptcha.key');
+                $captchaResponse = $data['g-recaptcha-response'];
+                
+                Log::info('Captcha Information', [
+                    'captcha_site_key_on_screen' => $captchaSiteKey,
+                    'captcha_response_in_request' => $captchaResponse,
+                    'form_slug' => $slug,
+                    'ip_address' => $request->ip()
+                ]);
                 // $recaptcha = new \ReCaptcha\ReCaptcha(env('GOOGLE_RECAPTCHA_SECRET'));
                 // $response = $recaptcha->verify($data['g-recaptcha-response'], $request->ip());
                 // if ($response->isSuccess() && $response->getScore() <= 0.5) return redirect()->back();
                 unset( $data['g-recaptcha-response'] );
             }
 
+            // Simple bot traps retained
             if ( isset( $data['company'] ) && $data['company'] === 'google' ) return redirect()->back();
             if ( isset( $data['name'] ) && $data['name'] === 'Robertsed' ) return redirect()->back();
             if ( isset( $data['city'] ) && $data['city'] === 'Mtskheta' ) return redirect()->back();
 
+            // Sanitize all scalar string inputs to reduce payload risks when stored/emailed
+            foreach ( $data as $key => $value )
+            {
+                if ( is_string( $value ) )
+                {
+                    $clean = trim( strip_tags( $value ) );
+                    $clean = filter_var( $clean, FILTER_UNSAFE_RAW, [ 'flags' => FILTER_FLAG_STRIP_LOW ] );
+                    // Bound extremely long inputs
+                    if ( strlen( $clean ) > 10000 )
+                    {
+                        $clean = substr( $clean, 0, 10000 );
+                    }
+                    $data[$key] = $clean;
+                }
+            }
+
             $form                = Form::where( 'slug', $slug )->firstOrFail();
             $form_entry          = new FormEntries();
             $form_entry->form_id = $form->id;
-            $form_entry->data    = json_encode( $data );
+            $form_entry->data    = json_encode( $data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES );
             $form_entry->save();
 
             if ( isset( $this->active_theme_json->general->allow_emails ) && $this->active_theme_json->general->allow_emails )
             {
                 try {
-                    // if ( $slug !== 'newsletter' && $slug !== 'contact_us')
-                    // {
+                    if ( $slug == 'partner_requests' || $slug == 'contact_us')
+                    {
                         SendMail::dispatch( [
                             'data'     => $data,
                             'slug'     => ucwords( str_replace( '_', ' ', $slug ) ),
-                            'email'    => ConstantsController::ADMIN_EMAIL,
+                            'email'    => ConstantsController::ADMIN_EMAIL, //["qudsiaa.ziaa@gmail.com", "techbugs06@gmail.com"], 
                             'template' => 'email.email'
                         ] );
-                    // }
+                    }
 
                 }
                 catch ( \Exception $e )

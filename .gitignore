@@ -22,3 +22,33 @@
 /node_modules/
 /dist/
 /build/
+
+# Environment
+.env
+.env.*
+
+# Dependencies
+/vendor/
+node_modules/
+
+# Logs
+*.log
+public/logs/
+public/vcs.log
+public/vcs-old.log
+
+# Storage backups
+!storage/framework/
+!storage/logs/
+
+# Dumps & SQL backups
+dumps/
+*.sql
+
+# Backup folders
+public_bk/
+storage/app-bkp/
+
+# OS / Editor
+.vscode/
+.DS_Store

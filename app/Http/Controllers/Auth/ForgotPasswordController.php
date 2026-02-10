@@ -45,20 +45,20 @@ class ForgotPasswordController extends AuthController
     public function submit_forget_password( Request $request )
     {
         $validator = Validator::make($request->all(), [
-            'email' => 'required|exists:users'
+            'email' => 'required' // |exists:users
         ]);
 
-        if($validator->fails())
+        if(true || !$validator->fails())
         {
             $response = $this->ApiObj->ForgotPassword( $request->email );
             if($response['Success'])
             {
                 
-                $user = DB::table('users')->where(['customer_id' => $response['UserID']])->first();
+                $user = DB::table('users')->where(['customer_id' => $response['UserID'], 'parent_id' => null])->first();
                 if($user)
                 {
                     $data = [
-                        'email'   => $response['EmailAddress'],
+                        'email'   => $response['EmailAddress'] ? $response['EmailAddress'] : $request->email,
                         'updated_at' => date( 'Y-m-d H:i:s' )
                     ];
                     DB::table('users')->where( ['customer_id' => $response['UserID']] )->update($data);
@@ -66,7 +66,7 @@ class ForgotPasswordController extends AuthController
                 else
                 {
                     $data = [
-                        'email'          => $response['EmailAddress'] ? $response['EmailAddress'] : null,
+                        'email'          => $response['EmailAddress'] ? $response['EmailAddress'] : $request->email,
                         'password'       => Hash::make( $response['Password'] ),
                         'customer_id'    => $response['UserID'],
                         'is_active'      => 1,
@@ -155,11 +155,11 @@ class ForgotPasswordController extends AuthController
         }
         else
         {
-            // update password in the DB
-            DB::table('password_resets')->where(['email' => $validated_data['email']])->delete();
-            $this->model->update_user( ['password' => Hash::make($validated_data['password'])], $user->id );
-
-            return redirect()->route('auth.login')->withInput()->with( 'message', [ 'type' => 'success', 'referer' => 'login', 'body' => 'Password has been changed successfully.' ] );
+            return redirect()->back()->withInput()->with( 'message', [ 'type' => 'danger', 'referer' => 'login', 'body' => 'Something went wrong, please try again...' ] );
+            // // update password in the DB
+            // DB::table('password_resets')->where(['email' => $validated_data['email']])->delete();
+            // $this->model->update_user( ['password' => Hash::make($validated_data['password'])], $user->id );
+            // return redirect()->route('auth.login')->withInput()->with( 'message', [ 'type' => 'success', 'referer' => 'login', 'body' => 'Password has been changed successfully.' ] );
         }
 
     }

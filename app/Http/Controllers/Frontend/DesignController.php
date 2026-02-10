@@ -132,7 +132,6 @@ class DesignController extends FrontendController
 
     public function index( $id, $filter, $type, $with_title = false )
     {
-
         if ( base64_decode( $filter ) == ConstantsController::NO_FILTER_FLAG )
         {
 
@@ -147,6 +146,7 @@ class DesignController extends FrontendController
         }
 
         $collections     = $this->addDesignUrls( $this->ApiObj->Get_Designs( $id, CommonController::escape_string( base64_decode( $filter ), 1 ) ), $id ); //
+
         $main_collection = ( new MainCollectionController() )->get_main_collection( $id );
         $subCategory     = $this->active_theme_json->general->category_based_filters ? $this->checkSubcategoryForFilters( $filter ) : '';
         $filters         = $this->ApiObj->Get_Filters(

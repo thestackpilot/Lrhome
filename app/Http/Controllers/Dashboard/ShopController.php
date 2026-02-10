@@ -183,385 +183,390 @@ $response = $this->ApiObj->Get_OrderInquiryData( $request->FilterType, $request-
 
     public function place_order( Request $request )
     {
-
-        if ( count( $request->all() ) > 0 )
-        {
-            $meta_array = $this->convert_form_data_into_array(
-                array( 'ItemID' => $request->ItemID, 'OrderQty' => $request->OrderQty, 'MarkFor' => $request->MarkFor ) // , 'UnitPrice' => $request->UnitPrice )
-            );
-
-            $shipping_cost = 0;
-            $details       = [];
-            $cartItems     = [];
-            $total_amount  = 0;
-
-            $item_prices = $this->ApiObj->Get_GetMultipleItemsPrices( $request->customer_id, join( ',', $request->ItemID ) );
-
-            if ( $item_prices['Success'] )
+        try {
+            if ( count( $request->all() ) > 0 )
             {
+                $meta_array = $this->convert_form_data_into_array(
+                    array( 'ItemID' => $request->ItemID, 'OrderQty' => $request->OrderQty, 'MarkFor' => $request->MarkFor ) // , 'UnitPrice' => $request->UnitPrice )
+                );
 
-                if ( count( $item_prices['ItemPrices'] ) != count( array_unique( $request->ItemID ) ) )
+                $shipping_cost = 0;
+                $details       = [];
+                $cartItems     = [];
+                $total_amount  = 0;
+
+                $item_prices = $this->ApiObj->Get_GetMultipleItemsPrices( $request->customer_id, join( ',', $request->ItemID ) );
+
+                if ( $item_prices['Success'] )
                 {
-                    $item_ids = [];
 
-                    foreach ( $meta_array as $index )
+                    if ( count( $item_prices['ItemPrices'] ) != count( array_unique( $request->ItemID ) ) )
                     {
-                        $item_found = false;
+                        $item_ids = [];
 
-                        foreach ( $item_prices['ItemPrices'] as $item )
+                        foreach ( $meta_array as $index )
                         {
-
-                            if ( $index['ItemID'] == $item['ItemID'] )
-                            {
-                                $item_found = true;
-                                break;
-                            }
-
-                        }
-
-                        if ( ! $item_found )
-                        {
-                            $item_ids[] = $index['ItemID'];
-                        }
-
-                    }
-
-                    if ( ! $item_ids )
-                    {
-                        $duplicate_items = [];
-
-                        foreach ( $request->ItemID as $k => $item_id )
-                        {
-                            $key = md5( json_encode( [$item_id, $request->MarkFor[$k]] ) );
+                            $item_found = false;
 
                             foreach ( $item_prices['ItemPrices'] as $item )
                             {
 
-                                if ( $item_id == $item['ItemID'] )
+                                if ( $index['ItemID'] == $item['ItemID'] )
                                 {
-
-                                    if ( array_key_exists( $key, $duplicate_items ) )
-                                    {
-                                        $duplicate_items[$key]++;
-                                    }
-                                    else
-                                    {
-                                        $duplicate_items[$key] = 1;
-                                    }
-
-                                    if ( $duplicate_items[$key] > 1 && ! in_array( $item_id, $item_ids ) )
-                                    {
-                                        $item_ids[] = $item_id;
-                                    }
-
+                                    $item_found = true;
                                     break;
                                 }
 
                             }
 
+                            if ( ! $item_found )
+                            {
+                                $item_ids[] = $index['ItemID'];
+                            }
+
                         }
 
-                        if ( $item_ids )
+                        if ( ! $item_ids )
                         {
-                            return redirect()->back()->withInput()->with( 'message', ['type' => 'danger', 'body' => 'Following item ids are repeated/duplicate : <br> <br> Item ID : '.join( '<br> Item ID : ', $item_ids ).' <br/> <br/> Please if you can cross check these and try again.'] );
+                            $duplicate_items = [];
+
+                            foreach ( $request->ItemID as $k => $item_id )
+                            {
+                                $key = md5( json_encode( [$item_id, $request->MarkFor[$k]] ) );
+
+                                foreach ( $item_prices['ItemPrices'] as $item )
+                                {
+
+                                    if ( $item_id == $item['ItemID'] )
+                                    {
+
+                                        if ( array_key_exists( $key, $duplicate_items ) )
+                                        {
+                                            $duplicate_items[$key]++;
+                                        }
+                                        else
+                                        {
+                                            $duplicate_items[$key] = 1;
+                                        }
+
+                                        if ( $duplicate_items[$key] > 1 && ! in_array( $item_id, $item_ids ) )
+                                        {
+                                            $item_ids[] = $item_id;
+                                        }
+
+                                        break;
+                                    }
+
+                                }
+
+                            }
+
+                            if ( $item_ids )
+                            {
+                                return redirect()->back()->withInput()->with( 'message', ['type' => 'danger', 'body' => 'Following item ids are repeated/duplicate : <br> <br> Item ID : '.join( '<br> Item ID : ', $item_ids ).' <br/> <br/> Please if you can cross check these and try again.'] );
+                            }
+                            else
+                            {
+                                return redirect()->back()->withInput()->with( 'message', ['type' => 'danger', 'body' => 'There seems to be an issue with the data, please if you can cross check these and try again.'] );
+                            }
+
                         }
                         else
                         {
-                            return redirect()->back()->withInput()->with( 'message', ['type' => 'danger', 'body' => 'There seems to be an issue with the data, please if you can cross check these and try again.'] );
+                            return redirect()->back()->withInput()->with( 'message', ['type' => 'danger', 'body' => 'Following item ids seems to be invalid since we were unable to fetch their prices : <br> <br> Item ID : '.join( '<br> Item ID : ', $item_ids ).' <br/> <br/> Please if you can cross check these and try again.'] );
                         }
 
                     }
                     else
                     {
-                        return redirect()->back()->withInput()->with( 'message', ['type' => 'danger', 'body' => 'Following item ids seems to be invalid since we were unable to fetch their prices : <br> <br> Item ID : '.join( '<br> Item ID : ', $item_ids ).' <br/> <br/> Please if you can cross check these and try again.'] );
+                        $allowed_item_quantities = [];
+                        $non_web_rug_items       = [];
+                        $item_quantities         = [];
+
+                        foreach ( $request->ItemID as $k => $item_id )
+                        {
+                            $item_quantities[$item_id] = $request->OrderQty[$k];
+                        }
+
+                        foreach ( $item_prices['ItemPrices'] as $item )
+                        {
+                            $item_ASTQs[] = $item['ATSQ'];
+
+                            foreach ( $meta_array as &$index )
+                            {
+
+                                if ( $index['ItemID'] == $item['ItemID'] )
+                                {
+                                    $index['UnitPrice'] = $item['ItemPrice'];
+
+                                    if (
+                                        (
+                                            CommonController::check_bit_field( $item, 'Discontinued' ) ||
+                                            CommonController::check_bit_field( $item, 'SpecialBuy' ) ||
+                                            CommonController::check_bit_field( $item, 'Reviewed' )
+                                        ) && ( isset( $item['ATSQ'] ) && $item['ATSQ'] < $item_quantities[$item['ItemID']] ) )
+                                    {
+                                        $allowed_item_quantities[] = "{$item['ItemID']} has only {$item['ATSQ']} units available";
+                                    }
+
+                                    // break;
+                                }
+
+                            }
+
+                            if ( ! CommonController::check_bit_field( $item, 'WEBRug' ) )
+                            {
+                                $non_web_rug_items[] = $item['ItemID'];
+                            }
+
+                            array_push( $details, [
+                                'ItemID' => $item['ItemID'],
+                                'Qty'    => $item_quantities[$item['ItemID']],
+                                'Price'  => $item['ItemPrice']
+                            ] );
+
+                            array_push( $cartItems, [
+                                'Image'     => CommonController::getApiFullImage( str_replace(' ', '%20', $item['ImageName']) ),
+                                'ItemID'    => $item['ItemID'],
+                                'Color'     => $item['ColorDescription'],
+                                'Size'      => $item['SizeDescription'],
+                                'OrderQty'  => $item_quantities[$item['ItemID']],
+                                'UnitPrice' => number_format( $item['ItemPrice'], ConstantsController::ALLOWED_DECIMALS, '.', ',' ),
+                                'SubTotal'  => number_format( $item['ItemPrice'] * $item_quantities[$item['ItemID']], ConstantsController::ALLOWED_DECIMALS, '.', ',' ),
+                                'MarkFor'   => isset( $requestDataArray['sidemark'] ) && isset( $requestDataArray['sidemark'][$item['ItemID']] ) ? $requestDataArray['sidemark'][$item['ItemID']] : ''
+                            ]);
+
+                        }
+
+                        if ( $non_web_rug_items ) // when WEBRug is False then show message.
+                        {
+                            return redirect()->back()->withInput()->with( 'message', ['type' => 'danger', 'body' => 'Following Items: <br><br> Item ID : '.join( '<br> Item ID : ', $non_web_rug_items ).' <br> <br> are not marked as webrugs please make the correction before proceeding ahead.'] );
+                        }
+
+                        if ( $allowed_item_quantities )
+                        {
+                            return redirect()->back()->withInput()->with( 'message', ['type' => 'danger', 'body' => join( '<br>', $allowed_item_quantities ).' <br> <br> Please order the correct quantities.'] );
+                        }
+
+                        $shipping_rate_response = $this->ApiObj->Get_Shipping_Rates( $request->customer_id, $request->ship_via_id, $details );
+                        if ( $shipping_rate_response['Success'] == 1 )
+                        {
+                            $shipping_cost = $shipping_rate_response['ShippingRates'][0]['Rate'];
+                        }
+
                     }
 
                 }
                 else
                 {
-                    $allowed_item_quantities = [];
-                    $non_web_rug_items       = [];
-                    $item_quantities         = [];
-
-                    foreach ( $request->ItemID as $k => $item_id )
-                    {
-                        $item_quantities[$item_id] = $request->OrderQty[$k];
-                    }
-
-                    foreach ( $item_prices['ItemPrices'] as $item )
-                    {
-                        $item_ASTQs[] = $item['ATSQ'];
-
-                        foreach ( $meta_array as &$index )
-                        {
-
-                            if ( $index['ItemID'] == $item['ItemID'] )
-                            {
-                                $index['UnitPrice'] = $item['ItemPrice'];
-
-                                if (
-                                    (
-                                        CommonController::check_bit_field( $item, 'Discontinued' ) ||
-                                        CommonController::check_bit_field( $item, 'SpecialBuy' ) ||
-                                        CommonController::check_bit_field( $item, 'Reviewed' )
-                                    ) && ( isset( $item['ATSQ'] ) && $item['ATSQ'] < $item_quantities[$item['ItemID']] ) )
-                                {
-                                    $allowed_item_quantities[] = "{$item['ItemID']} has only {$item['ATSQ']} units available";
-                                }
-
-                                // break;
-                            }
-
-                        }
-
-                        if ( ! CommonController::check_bit_field( $item, 'WEBRug' ) )
-                        {
-                            $non_web_rug_items[] = $item['ItemID'];
-                        }
-
-                        array_push( $details, [
-                            'ItemID' => $item['ItemID'],
-                            'Qty'    => $item_quantities[$item['ItemID']],
-                            'Price'  => $item['ItemPrice']
-                        ] );
-
-                        array_push( $cartItems, [
-                            'Image'     => CommonController::getApiFullImage( str_replace(' ', '%20', $item['ImageName']) ),
-                            'ItemID'    => $item['ItemID'],
-                            'Color'     => $item['ColorDescription'],
-                            'Size'      => $item['SizeDescription'],
-                            'OrderQty'  => $item_quantities[$item['ItemID']],
-                            'UnitPrice' => number_format( $item['ItemPrice'], ConstantsController::ALLOWED_DECIMALS, '.', ',' ),
-                            'SubTotal'  => number_format( $item['ItemPrice'] * $item_quantities[$item['ItemID']], ConstantsController::ALLOWED_DECIMALS, '.', ',' ),
-                            'MarkFor'   => isset( $requestDataArray['sidemark'] ) && isset( $requestDataArray['sidemark'][$item['ItemID']] ) ? $requestDataArray['sidemark'][$item['ItemID']] : ''
-                        ]);
-
-                    }
-
-// when WEBRug is False then show message.
-                    if ( $non_web_rug_items )
-                    {
-                        return redirect()->back()->withInput()->with( 'message', ['type' => 'danger', 'body' => 'Following Items: <br><br> Item ID : '.join( '<br> Item ID : ', $non_web_rug_items ).' <br> <br> are not marked as webrugs please make the correction before proceeding ahead.'] );
-                    }
-
-                    if ( $allowed_item_quantities )
-                    {
-                        return redirect()->back()->withInput()->with( 'message', ['type' => 'danger', 'body' => join( '<br>', $allowed_item_quantities ).' <br> <br> Please order the correct quantities.'] );
-                    }
-
-                    $shipping_rate_response = $this->ApiObj->Get_Shipping_Rates( $request->customer_id, $request->ship_via_id, $details );
-                    if ( $shipping_rate_response['Success'] == 1 )
-                    {
-                        $shipping_cost = $shipping_rate_response['ShippingRates'][0]['Rate'];
-                    }
-
+                    return redirect()->back()->withInput()->with( 'message', ['type' => 'danger', 'body' => $item_prices['Message'].'<br>'.join( '<br>', array_unique( $request->ItemID ) )] );
                 }
 
-            }
-            else
-            {
-                return redirect()->back()->withInput()->with( 'message', ['type' => 'danger', 'body' => $item_prices['Message'].'<br>'.join( '<br>', array_unique( $request->ItemID ) )] );
-            }
+                $headers = [
+                    'CustomerID'   => $request->customer_id,
+                    'CustomerPO'   => $request->customer_po,
+                    'OrderDate'    => date( "Y-m-d", strtotime( $request->order_date ) ),
+                    'FirstName'    => $request->first_name,
+                    'LastName'     => $request->last_name,
+                    'Email'        => $request->email,
+                    'Address1'     => $request->address1,
+                    'Address2'     => $request->address2,
+                    'City'         => $request->city,
+                    'Country'      => $request->country,
+                    'State'        => $request->state,
+                    'Zip'          => $request->postal_code,
+                    'ShipViaCode'  => $request->ship_via_id,
+                    'ShippingCost' => $shipping_cost,
+                    'AddressType'  => 'RESIDENTIAL' // if dropship
+                ];
 
-            $headers = [
-                'CustomerID'   => $request->customer_id,
-                'CustomerPO'   => $request->customer_po,
-                'OrderDate'    => date( "Y-m-d", strtotime( $request->order_date ) ),
-                'FirstName'    => $request->first_name,
-                'LastName'     => $request->last_name,
-                'Email'        => $request->email,
-                'Address1'     => $request->address1,
-                'Address2'     => $request->address2,
-                'City'         => $request->city,
-                'Country'      => $request->country,
-                'State'        => $request->state,
-                'Zip'          => $request->postal_code,
-                'ShipViaCode'  => $request->ship_via_id,
-                'ShippingCost' => $shipping_cost,
-                'AddressType'  => 'RESIDENTIAL' // if dropship
-            ];
-
-            if ( isset( $request->address_id ) && $request->address_id )
-            {
-                $headers['ShipToCode']  = $request->address_id;
-                $headers['AddressType'] = 'COMMERCIAL'; // if selected a given address
-            }
-
-            if ( isset( $request->req_ship_date ) && $request->req_ship_date )
-            {
-                $headers['ShipDate']     = date( 'Y-m-d', strtotime( $request->req_ship_date ) );
-                $headers['DeliveryTime'] = date( 'H:i:s', strtotime( $request->req_ship_date ) );
-            }
-
-            foreach( $cartItems as $item )
-            {
-                $total_amount += $item['SubTotal'];
-            }
-
-            $order_payment_hash             = md5( json_encode( ['general' => $headers, 'items' => $meta_array] ) );
-            $headers['IsAdvancePayment']    = false;
-            $headers['AdvancePaymentAmout'] = 0;
-            $headers['TransactionCode']     = '';
-
-            $order_payment = $this->order_payment_model->updateOrCreate(
-                ['user_id' => Auth::user()->id, 'hash' => $order_payment_hash],
-                [
-                    'user_id'      => Auth::user()->id,
-                    'hash'         => $order_payment_hash,
-                    'order_data'   => serialize( [$headers, $meta_array] ),
-                    'order_status' => ConstantsController::ORDER_STATUS['not-applicable']
-                ]
-            );
-
-            $place_orders = $this->ApiObj->Place_Order(
-                $headers,
-                $meta_array
-            );
-
-            $order_payment = $this->order_payment_model->updateOrCreate(
-                ['user_id' => Auth::user()->id, 'hash' => $order_payment_hash],
-                [
-                    'order_response' => json_encode( $place_orders ),
-                    'order_status'   => ConstantsController::ORDER_STATUS['processed']
-                ]
-            );
-
-            $table = array( 'thead' => [
-                'Message' => 'Message'
-            ], 'tbody' => [] );
-
-            if ( isset( $place_orders['Message'] ) )
-            {
-                $message = $place_orders['Message'];
-
-                if ( isset( $place_orders['ErrorDetail'] ) && $place_orders['ErrorDetail'] )
+                if ( isset( $request->address_id ) && $request->address_id )
                 {
-                    $message .= ", following are the details:";
-
-                    foreach ( $place_orders['ErrorDetail'] as $i => $error )
-                    {
-                        $message .= "<br/>".( $i + 1 ).": {$error['ErrorDescription']}<br/>";
-                    }
-
+                    $headers['ShipToCode']  = $request->address_id;
+                    $headers['AddressType'] = 'COMMERCIAL'; // if selected a given address
                 }
 
-                $table['tbody'][] = [
-                    'Message' => $message
-                ];
-            }
+                if ( isset( $request->req_ship_date ) && $request->req_ship_date )
+                {
+                    $headers['ShipDate']     = date( 'Y-m-d', strtotime( $request->req_ship_date ) );
+                    $headers['DeliveryTime'] = date( 'H:i:s', strtotime( $request->req_ship_date ) );
+                }
 
-            if ( isset( $place_orders['Success'] ) && $place_orders['Success'] )
-            {
+                foreach( $cartItems as $item )
+                {
+                    $total_amount += str_replace(',', '', $item['SubTotal']);
+                }
+
+                $order_payment_hash             = md5( json_encode( ['general' => $headers, 'items' => $meta_array] ) );
+                $headers['IsAdvancePayment']    = false;
+                $headers['AdvancePaymentAmout'] = 0;
+                $headers['TransactionCode']     = '';
 
                 $order_payment = $this->order_payment_model->updateOrCreate(
                     ['user_id' => Auth::user()->id, 'hash' => $order_payment_hash],
                     [
-                        'hash' => md5( json_encode( ['general' => $headers, 'items' => $meta_array, 'status' => ConstantsController::ORDER_STATUS['done']] ) ), // update this hash to avoid any repeating order to be caught by this
-                        'order_status' => ConstantsController::ORDER_STATUS['done']
+                        'user_id'      => Auth::user()->id,
+                        'hash'         => $order_payment_hash,
+                        'order_data'   => serialize( [$headers, $meta_array] ),
+                        'order_status' => ConstantsController::ORDER_STATUS['not-applicable']
                     ]
                 );
 
-                if ( isset($this->active_theme_json->general->order_ack) && $this->active_theme_json->general->order_ack ) {
-                    $cart_data = [
-                        'shipping' => $headers,
-                        'items'    => $cartItems,
-                        'total'    => number_format( $total_amount, ConstantsController::ALLOWED_DECIMALS, '.', ',' )
-                    ];
+                $place_orders = $this->ApiObj->Place_Order(
+                    $headers,
+                    $meta_array
+                );
 
-                    if(array_key_exists('Instructions',$cart_data['shipping']) == false){
-                        $cart_data['shipping']['Instructions'] = $request->shipping_instructions;
-                    }
-                   
-                    $cart_data['shipping']['SO_Number'] = $place_orders['ObjectID'];
-                   
-                    try {
-                       
-                        $to_email = ConstantsController::ORDER_NOTIFICATION;
-    
-                        if(isset($headers['Email']) && $headers['Email'] != ''){
-                            array_push($to_email, $headers['Email']);
-                        }
-                        
-                        SendMail::dispatch( [
-                            'data'     => $cart_data,
-                            'slug'     => "Thank you: Order# " . $place_orders['ObjectID'],
-                            'email'    => $to_email,
-                            'template' => 'email.order-confirmation',
-                            'cc_email' => Auth::user()->is_sale_rep ? (isset(Auth::user()->email) ? Auth::user()->email : '') : ''
-                        ] );
-                        
-                        prr( " :: Order Placement Email Sent :: " );
-                    }
-                    catch ( \Exception $e )
+                $order_payment = $this->order_payment_model->updateOrCreate(
+                    ['user_id' => Auth::user()->id, 'hash' => $order_payment_hash],
+                    [
+                        'order_response' => json_encode( $place_orders ),
+                        'order_status'   => ConstantsController::ORDER_STATUS['processed']
+                    ]
+                );
+
+                $table = array( 'thead' => [
+                    'Message' => 'Message'
+                ], 'tbody' => [] );
+
+                if ( isset( $place_orders['Message'] ) )
+                {
+                    $message = $place_orders['Message'];
+
+                    if ( isset( $place_orders['ErrorDetail'] ) && $place_orders['ErrorDetail'] )
                     {
-                        prr( "Order Placement Email Exception :: ".$e->getMessage() );
+                        $message .= ", following are the details:";
+
+                        foreach ( $place_orders['ErrorDetail'] as $i => $error )
+                        {
+                            $message .= "<br/>".( $i + 1 ).": {$error['ErrorDescription']}<br/>";
+                        }
+
                     }
+
+                    $table['tbody'][] = [
+                        'Message' => $message
+                    ];
                 }
 
-                return redirect()->back()->with( 'message', ['type' => 'success', 'body' => $message] );
+                if ( isset( $place_orders['Success'] ) && $place_orders['Success'] )
+                {
+
+                    $order_payment = $this->order_payment_model->updateOrCreate(
+                        ['user_id' => Auth::user()->id, 'hash' => $order_payment_hash],
+                        [
+                            'hash' => md5( json_encode( ['general' => $headers, 'items' => $meta_array, 'status' => ConstantsController::ORDER_STATUS['done']] ) ), // update this hash to avoid any repeating order to be caught by this
+                            'order_status' => ConstantsController::ORDER_STATUS['done']
+                        ]
+                    );
+
+                    if ( isset($this->active_theme_json->general->order_ack) && $this->active_theme_json->general->order_ack ) {
+                        $cart_data = [
+                            'shipping' => $headers,
+                            'items'    => $cartItems,
+                            'total'    => number_format( $total_amount, ConstantsController::ALLOWED_DECIMALS, '.', ',' )
+                        ];
+
+                        if(array_key_exists('Instructions',$cart_data['shipping']) == false){
+                            $cart_data['shipping']['Instructions'] = $request->shipping_instructions;
+                        }
+                    
+                        $cart_data['shipping']['SO_Number'] = $place_orders['ObjectID'];
+                    
+                        try {
+                        
+                            $to_email = ConstantsController::ORDER_NOTIFICATION;
+        
+                            if(isset($headers['Email']) && $headers['Email'] != ''){
+                                array_push($to_email, $headers['Email']);
+                            }
+                            
+                            SendMail::dispatch( [
+                                'data'     => $cart_data,
+                                'slug'     => "Thank you: Order# " . $place_orders['ObjectID'],
+                                'email'    => $to_email,
+                                'template' => 'email.order-confirmation',
+                                'cc_email' => Auth::user()->is_sale_rep ? (isset(Auth::user()->email) ? Auth::user()->email : '') : ''
+                            ] );
+                            
+                            prr( " :: Order Placement Email Sent :: " );
+                        }
+                        catch ( \Exception $e )
+                        {
+                            prr( "Order Placement Email Exception :: ".$e->getMessage() );
+                        }
+                    }
+
+                    return redirect()->back()->with( 'message', ['type' => 'success', 'body' => $message] );
+                }
+                else
+                {
+                    $order_payment = $this->order_payment_model->updateOrCreate(
+                        ['user_id' => Auth::user()->id, 'hash' => $order_payment_hash],
+                        [
+                            'order_status' => ConstantsController::ORDER_STATUS['failed']
+                        ]
+                    );
+
+                    return redirect()->back()->withInput()->with( 'message', ['type' => 'danger', 'body' => $message] );
+                }
+
+                View::share( 'place_orders', $place_orders );
+                View::share( 'table', $table );
+
+            }
+
+            $shippings = $this->ApiObj->Get_ShipViaList();
+
+            if ( $shippings )
+            {
+                $temp = [];
+
+                foreach ( $shippings['ShipVias'] as $shipping )
+                {
+                    $temp[$shipping['Description']] = $shipping;
+                }
+
+                ksort( $temp );
+                $shippings['ShipVias'] = $temp;
+            }
+
+            $ship_vias = [];
+
+            if ( $shippings && isset( $shippings['ShipVias'] ) )
+            {
+
+                foreach ( $shippings['ShipVias'] as $ship_via )
+                {
+                    $ship_vias[] = [
+                        'value' => $ship_via['ShipViaID'],
+                        'label' => $ship_via['ShipViaID']." - ".$ship_via['Description']
+                    ];
+                }
+
+            }
+
+            $default_ship_via_id = '';
+
+            if ( $request->ship_via_id || old( 'ship_via_id' ) )
+            {
+                $default_ship_via_id = $request->ship_via_id || old( 'ship_via_id' );
             }
             else
             {
-                $order_payment = $this->order_payment_model->updateOrCreate(
-                    ['user_id' => Auth::user()->id, 'hash' => $order_payment_hash],
-                    [
-                        'order_status' => ConstantsController::ORDER_STATUS['failed']
-                    ]
-                );
+                $shipping_options = $this->ApiObj->Get_Shipping_Options( Auth::user()->customer_id );
 
-                return redirect()->back()->withInput()->with( 'message', ['type' => 'danger', 'body' => $message] );
+                if ( $shipping_options && $shipping_options['Success'] == true )
+                {
+                    $default_ship_via_id = $shipping_options['CustomerShipVias'][0]['ShipViaID'];
+                }
+
             }
 
-            View::share( 'place_orders', $place_orders );
-            View::share( 'table', $table );
-
-        }
-
-        $shippings = $this->ApiObj->Get_ShipViaList();
-
-        if ( $shippings )
-        {
-            $temp = [];
-
-            foreach ( $shippings['ShipVias'] as $shipping )
-            {
-                $temp[$shipping['Description']] = $shipping;
-            }
-
-            ksort( $temp );
-            $shippings['ShipVias'] = $temp;
-        }
-
-        $ship_vias = [];
-
-        if ( $shippings && isset( $shippings['ShipVias'] ) )
-        {
-
-            foreach ( $shippings['ShipVias'] as $ship_via )
-            {
-                $ship_vias[] = [
-                    'value' => $ship_via['ShipViaID'],
-                    'label' => $ship_via['ShipViaID']." - ".$ship_via['Description']
-                ];
-            }
-
-        }
-
-        $default_ship_via_id = '';
-
-        if ( $request->ship_via_id || old( 'ship_via_id' ) )
-        {
-            $default_ship_via_id = $request->ship_via_id || old( 'ship_via_id' );
-        }
-        else
-        {
-            $shipping_options = $this->ApiObj->Get_Shipping_Options( Auth::user()->customer_id );
-
-            if ( $shipping_options && $shipping_options['Success'] == true )
-            {
-                $default_ship_via_id = $shipping_options['CustomerShipVias'][0]['ShipViaID'];
-            }
-
+        } catch ( \Exception $e) {
+            return redirect()->back()->withInput()->with( 'message', ['type' => 'danger', 'body' => 'Something went wrong, please try again.'] );
+        } catch ( \Error $e) {
+            return redirect()->back()->withInput()->with( 'message', ['type' => 'danger', 'body' => 'Something went wrong, please try again.'] );
         }
 
         $countries = $states = [];

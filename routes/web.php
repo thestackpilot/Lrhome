@@ -97,7 +97,7 @@ Route::group( ['prefix' => 'checkout', 'middleware' => ['auth']], function ()
 //Form routes (contact us, feedback, careers)
 Route::group(['middleware' => ['web']], function () {
 Route::get( '/forms/{slug}', [FormController::class, 'index'] )->name( 'form.show' );
-Route::post( '/forms/{slug}', [FormController::class, 'submission_request'] )->name( 'form.submission' );
+Route::post( '/forms/{slug}', [FormController::class, 'submission_request'] )->middleware('throttle:10,1')->name( 'form.submission' );
 Route::post( '/forms/store/{slug}', 'Frontend\FormController@store' )->name( 'form.store' );
 });
 //Static pages routes (showrooms, faqs, aboutus)

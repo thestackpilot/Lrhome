@@ -263,6 +263,7 @@ class ItemController extends FrontendController
     public function index( $id, $design_id, $color_id = 0, $filter="" )
     {
         try {
+            
             $items = $this->update_item_prices( $this->generate_size_name( $this->generate_color_name( $this->generate_price_delivery_info( $this->generate_user_customer_info( $this->generate_image_urls( $this->ApiObj->Get_Items( $id, $design_id ) ) ) ) ) ) );
 
 // TODO - Need to REMOVE this chaipi at the top most PRIORITY
@@ -321,6 +322,7 @@ class ItemController extends FrontendController
         );
 
         $data['ATSQtyOrig'] = $data['ATSQty'];
+        // $data['ATSQty']     = $data['ATSQty'] - ( new Cart() )->get_item_quantity( $item_id );
         $data['ATSQty']     = $data['ATSQty'] - ( new Cart() )->get_item_quantity( $item_id );
         $data['ETADate']    = date( 'Y-m-d', strtotime( $data['ETADate'] ) );
 

@@ -80,7 +80,31 @@ class FormController extends AdminController
 
             if ( key_exists( 'attachment', $table['tbody'][$k] ) )
             {
-                $table['tbody'][$k]['attachment'] = '<a href="'.asset( $table['tbody'][$k]['attachment'] ).'" target="_blank">'.asset( $table['tbody'][$k]['attachment'] ).'</a>';
+                //$table['tbody'][$k]['attachment'] = '<a href="'.asset( $table['tbody'][$k]['attachment'] ).'" target="_blank">'.asset( $table['tbody'][$k]['attachment'] ).'</a>';
+                $attachment = $table['tbody'][$k]['attachment'];
+
+                if ( is_array( $attachment ) )
+                {
+                    $links = [];
+                    foreach ( $attachment as $att )
+                    {
+                        if ( is_string( $att ) && strlen( $att ) )
+                        {
+                            $url      = asset( $att );
+                            $links[]  = '<a href="'.$url.'" target="_blank">'.$url.'</a>';
+                        }
+                    }
+                    $table['tbody'][$k]['attachment'] = implode( ', ', $links );
+                }
+                elseif ( is_string( $attachment ) && strlen( $attachment ) )
+                {
+                    $url = asset( $attachment );
+                    $table['tbody'][$k]['attachment'] = '<a href="'.$url.'" target="_blank">'.$url.'</a>';
+                }
+                else
+                {
+                    $table['tbody'][$k]['attachment'] = '';
+                }
             }
 
         }

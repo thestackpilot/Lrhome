@@ -25,10 +25,59 @@ class MenuController extends AdminController
 
     public function update(Request $request, $menu_id)
     {
-        $this->menu_model->update_is_active($menu_id,$request-> is_active);
+      
+         if($request->image_file){
+            foreach(array_keys($request->image_file) as $val){
+               $url= $this->upload_image_remove_old($request,$val);
+               if ($url) {
+                                $updatedImages = $request->image; // get current array
+                                $updatedImages[$val] = $url;      // update the specific index
+
+                                $request->merge(['image' => $updatedImages]); // merge back
+                            }
+            }
+         }
+        $this->menu_model->update_is_active($menu_id,$request-> is_active);  // will update item is active or not etc
         $meta_array = $this->create_menu_meta_array($menu_id, $request->key, $request->title, $request->url, $request->parent, $request->image);
         $this-> menu_meta_model-> update_meta($menu_id ,$meta_array);
         return redirect()->route('admin.menu',['menu_id' => $menu_id]);
+    }
+    
+        public function upload_image_remove_old(&$request, $val)
+    {
+        // Remove old image if exists
+        $oldUrl = $request->image[$val] ?? null;
+        if ($oldUrl) {
+            $relativePath = parse_url($oldUrl, PHP_URL_PATH); // /media/images/abc.jpg
+            $localPath = public_path($relativePath);
+            if (file_exists($localPath)) {
+                unlink($localPath);
+            }
+        }
+
+        // Upload new image
+        $image = $request->image_file[$val] ?? null;
+        if ($image) {
+            $name = time() . '-' . uniqid() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('media/images');
+
+            if (!file_exists($location)) {
+                mkdir($location, 0755, true);
+            }
+
+            $movedFile = $image->move($location, $name);
+
+            // Relative path for DB
+            $relativePath = 'media/images/' . $movedFile->getFilename();
+
+            // URL for frontend
+            $url = asset($relativePath);
+
+            // Update request variable with URL (or you can store $relativePath if you prefer)
+            // $request->image[$val] = $url;
+
+            return $url;
+        }
     }
 
     public function create_menu_meta_array($menu_id, $keys, $titles, $urls, $parents, $images)
