@@ -237,7 +237,7 @@ function getCount( $subfilters, $filter ) {
             if ('{{isset($default_filter) && $default_filter}}' == '1') {
                 var defaultFilter = {!!$default_filter ?? "''"!!};
                 defaultFilter['Filters'].forEach(function(filter){
-                    if (!filter_types.includes(filter.FilterID) && (filter.FilterID !== 'Size' || filter.FilterID !== 'Height') && typeof filter.FilterID.length !== 'undefined')
+                    if (!filter_types.includes(filter.FilterID) && filter.FilterID !== 'Size' && filter.FilterID !== 'Height' && typeof filter.FilterID.length !== 'undefined')
                         Filters.push(JSON.stringify(filter));
                 });
             }
@@ -294,6 +294,16 @@ function getCount( $subfilters, $filter ) {
                         Filterarr.push(JSON.stringify(filter));
                 });
                 FiltersArray = btoa('{"Filters": [' + Filterarr + ']}');
+            } else if (clearAll) {
+                var decodedDefault = JSON.parse(atob(Filterarr));
+                var pageLevelFilters = decodedDefault.Filters.filter(function(filter) {
+                    return !filter_types.includes(filter.FilterID) && filter.FilterID !== 'Size' && filter.FilterID !== 'Height';
+                });
+                if (pageLevelFilters.length > 0) {
+                    FiltersArray = btoa(JSON.stringify({ Filters: pageLevelFilters }));
+                } else {
+                    FiltersArray = Filterarr;
+                }
             } else {
                 const FILTERS = {
                     Rugs: 'Rugs',
@@ -331,7 +341,6 @@ function getCount( $subfilters, $filter ) {
                 const filteredFilters = jsonData.Filters.filter((filter) => FILTERS.hasOwnProperty(filter.FilterID));
                 const result = { Filters: filteredFilters, };
                 FiltersArray = jsonToBase64(result);
-                // FiltersArray = Filterarr;
             }
         }
 
@@ -413,9 +422,7 @@ function getCount( $subfilters, $filter ) {
         .off('click', '.reset_filters, .clear_all_filters')
         .on('click', '.reset_filters, .clear_all_filters', function() {
             var FiltersArray = '{!!base64_encode(isset($default_filter) && $default_filter ? $default_filter : ConstantsController::NO_FILTER_FLAG)!!}';
-            var noFiltersArray = '{!!base64_encode(ConstantsController::NO_FILTER_FLAG)!!}';
-            filterManager(initialLoad ? noFiltersArray : FiltersArray, true);
-            //filterManager(noFiltersArray, true);
+            filterManager(FiltersArray, true);
             $('input:checkbox').removeAttr('checked');
         });
 
