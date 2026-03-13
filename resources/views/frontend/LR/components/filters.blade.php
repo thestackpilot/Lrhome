@@ -232,9 +232,12 @@ function getCount( $subfilters, $filter ) {
             }
         @endphp
         var FiltersArray = '{!!base64_encode(isset($default_filter) && $default_filter ? $default_filter : ConstantsController::NO_FILTER_FLAG)!!}';
+        
         if (Filterarr == null) {
             var Filters =[];
-            if ('{{isset($default_filter) && $default_filter}}' == '1') {
+            // Only add default_filter filters if filters haven't been cleared
+            // IMPORTANT: After clearing, we should NEVER add back default_filter filters
+            if ('{{isset($default_filter) && $default_filter}}' == '1' && !filtersCleared) {
                 var defaultFilter = {!!$default_filter ?? "''"!!};
                 defaultFilter['Filters'].forEach(function(filter){
                     if (!filter_types.includes(filter.FilterID) && (filter.FilterID !== 'Size' || filter.FilterID !== 'Height') && typeof filter.FilterID.length !== 'undefined')
@@ -259,8 +262,6 @@ function getCount( $subfilters, $filter ) {
                 Filters.push('{"FilterID":"Size","Values":[' + sizes + ']}')
             }
 
-	    console.log('Filters: ', Filters);
-
             var heights = [];
             $.each($("input[name='Height']:checked"), function() {
                 var val = $(this).val();
@@ -273,7 +274,24 @@ function getCount( $subfilters, $filter ) {
 
             if (Filters.length != 0) {
                 FiltersArray = btoa('{"Filters": [' + Filters + ']}');
-            } else if ('{{isset($default_filter) && $default_filter}}' == '1') {
+                // Only reset filtersCleared if we actually have user-selected filters (not from default_filter)
+                // Check if any filters came from checkboxes, not from default_filter
+                var hasUserSelectedFilters = false;
+                filter_types.forEach(function(filter) {
+                    var response = fill_filter_array(filter);
+                    if (response.length) {
+                        hasUserSelectedFilters = true;
+                    }
+                });
+                if (hasUserSelectedFilters || sizes.length > 0 || heights.length > 0) {
+                    // Only reset if filtersCleared was false (meaning we're not in a post-clear state)
+                    // If filtersCleared is true, it means we just cleared, so don't reset it yet
+                    // The flag will be reset after the AJAX response if the operation wasn't clearAll
+                    if (!filtersCleared) {
+                        filtersCleared = false; // Reset flag only when user actually selects new filters
+                    }
+                }
+            } else if ('{{isset($default_filter) && $default_filter}}' == '1' && !filtersCleared) {
                 var defaultFilter = {!!$default_filter ?? "''"!!};
                 var count = 0;
                 defaultFilter['Filters'].forEach(function(filter){
@@ -283,6 +301,9 @@ function getCount( $subfilters, $filter ) {
 
                 if ( count == (defaultFilter['Filters']).length )
                     FiltersArray = btoa('{!!ConstantsController::NO_FILTER_FLAG!!}');
+            } else {
+                // If filters were cleared and no new filters are selected, use NO_FILTER_FLAG
+                FiltersArray = btoa('{!!ConstantsController::NO_FILTER_FLAG!!}');
             }
         } else {
             if (
@@ -340,9 +361,6 @@ function getCount( $subfilters, $filter ) {
         var url = window.location.origin + "/designs/" + mainCollectionId + "/" + FiltersArray + "/" + return_type;
         var designPagePath = window.location.origin + '/designs';
         var currentPagePath = window.location.origin + window.location.pathname;
-        // console.log(`currentPagePath: ${currentPagePath}`);
-        // console.log(`designPagePath: ${designPagePath}`);
-        // console.log(`URL: ${url}`);
         initialLoad = false;
         if (currentPagePath.match(designPagePath) == null) {
             window.location.href = url;
@@ -367,6 +385,39 @@ function getCount( $subfilters, $filter ) {
                 if ($('#pageLoader').length) {
                     $('#pageLoader').addClass('d-none');
                 }
+                // Reset filtersCleared flag only if URL contains actual filters (not empty array)
+                // Check if FiltersArray represents an empty filters array or NO_FILTER_FLAG
+                try {
+                    var decodedFilters = atob(FiltersArray);
+                    var parsedFilters = JSON.parse(decodedFilters);
+                    var hasActualFilters = parsedFilters.Filters && parsedFilters.Filters.length > 0;
+                    
+                    if (hasActualFilters) {
+                        // Only reset if last operation was NOT clearAll (meaning user applied new filters, not cleared)
+                        if (!lastOperationWasClearAll) {
+                            filtersCleared = false;
+                        }
+                    } else {
+                        // Empty filters - this means filters were cleared, so keep filtersCleared true
+                        if (lastOperationWasClearAll) {
+                            filtersCleared = true;
+                        }
+                    }
+                } catch(e) {
+                    // If FiltersArray is NO_FILTER_FLAG or can't be decoded, keep filtersCleared as is
+                    if (FiltersArray === btoa('{!!ConstantsController::NO_FILTER_FLAG!!}')) {
+                        if (lastOperationWasClearAll) {
+                            filtersCleared = true;
+                        }
+                    } else {
+                        if (!lastOperationWasClearAll) {
+                            filtersCleared = false;
+                        }
+                    }
+                }
+                
+                // Reset the flag after processing
+                lastOperationWasClearAll = false;
                 applyFilterTrigger();
                 bindClicks();
             });
@@ -407,16 +458,19 @@ function getCount( $subfilters, $filter ) {
 
     var xhr = null;
     var initialLoad = true;
+    var filtersCleared = false;
+    var lastOperationWasClearAll = false;
 
     function bindClicks() {
         $(document)
         .off('click', '.reset_filters, .clear_all_filters')
         .on('click', '.reset_filters, .clear_all_filters', function() {
-            var FiltersArray = '{!!base64_encode(isset($default_filter) && $default_filter ? $default_filter : ConstantsController::NO_FILTER_FLAG)!!}';
             var noFiltersArray = '{!!base64_encode(ConstantsController::NO_FILTER_FLAG)!!}';
-            filterManager(initialLoad ? noFiltersArray : FiltersArray, true);
-            //filterManager(noFiltersArray, true);
+            filtersCleared = true;
+            lastOperationWasClearAll = true;
+            filterManager(noFiltersArray, true);
             $('input:checkbox').removeAttr('checked');
+            $('input:radio').removeAttr('checked');
         });
 
         $(document)

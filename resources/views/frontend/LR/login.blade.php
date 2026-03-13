@@ -796,6 +796,8 @@ $login_page = isset(Session::get('message')['referrer']) ? false : $login_page;
     if (n == (x.length - 1)) {
       $('#nextBtn').addClass('d-none');
       $('#review').removeClass('d-none');
+       // Refresh CAPTCHA when reaching the last step so the token is fresh
+      refreshCaptcha();
       // document.getElementById("nextBtn").innerHTML = "<input type='submit' name='btnSubmit' value='Submit' class='btn btn--md btn--border_1 set-btn'>";
     } else {
       document.getElementById("nextBtn").innerHTML = "Next";
